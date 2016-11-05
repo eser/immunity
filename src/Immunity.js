@@ -21,6 +21,25 @@ export class Immunity {
         return Object.assign({}, ...values, instance);
     }
 
+    filterArray(instance, predicate) {
+        return instance.filter(predicate);
+    }
+
+    filterObject(instance, predicate) {
+        return Object.keys(instance).reduce(
+            (obj, itemKey) => {
+                if (predicate(itemKey, instance[itemKey])) {
+                    return Object.assign({}, obj, {
+                        [itemKey]: instance[itemKey]
+                    });
+                }
+
+                return obj;
+            },
+            {}
+        );
+    }
+
     removeFromArray(instance, ...values) {
         return instance.filter(
             (item) => values.indexOf(item) === -1
