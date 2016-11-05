@@ -1,0 +1,8 @@
+# npm
+node_modules/
+
+# sey
+.sey/
+
+# OS X
+.DS_Store
