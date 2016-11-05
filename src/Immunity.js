@@ -1,13 +1,24 @@
 export class Immunity {
-    addToArray(instance, ...values) {
+    appendToArray(instance, ...values) {
         return [
             ...instance,
             ...values
         ];
     }
 
-    addToObject(instance, ...values) {
+    prependToArray(instance, ...values) {
+        return [
+            ...values,
+            ...instance
+        ];
+    }
+
+    appendToObject(instance, ...values) {
         return Object.assign({}, instance, ...values);
+    }
+
+    prependToObject(instance, ...values) {
+        return Object.assign({}, ...values, instance);
     }
 
     removeFromArray(instance, ...values) {
