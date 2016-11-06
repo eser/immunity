@@ -4,7 +4,7 @@ export class Immunity {
             (obj, itemKey) => {
                 if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
                     return Object.assign(new instance.constructor(), obj, {
-                        [itemKey]: this.fromObject(instance[itemKey])
+                        [itemKey]: this.copy(instance[itemKey])
                     });
                 }
 
