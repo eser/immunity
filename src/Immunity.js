@@ -1,4 +1,21 @@
 export class Immunity {
+    copy(instance) {
+        return Object.keys(instance).reduce(
+            (obj, itemKey) => {
+                if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
+                    return Object.assign(new instance.constructor(), obj, {
+                        [itemKey]: this.fromObject(instance[itemKey])
+                    });
+                }
+
+                return Object.assign(new instance.constructor(), obj, {
+                    [itemKey]: instance[itemKey]
+                });
+            },
+            new instance.constructor()
+        );
+    }
+
     appendToArray(instance, ...values) {
         return [
             ...instance,
