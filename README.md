@@ -8,7 +8,7 @@
 
 ## What is the Immunity?
 
-*No description yet.*
+Immunity provides a set of helper methods that do not mutate existing data structures.
 
 
 ## Quick start

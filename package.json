@@ -1,8 +1,15 @@
 {
   "name": "immunity",
-  "description": "No description yet",
-  "keywords": [],
-  "version": "0.0.6",
+  "description": "Library for not mutating existing data structures",
+  "keywords": [
+    "immutable",
+    "immunity",
+    "functional",
+    "data structure",
+    "mutation",
+    "mutate"
+  ],
+  "version": "0.0.7",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -23,7 +30,7 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "engines": {
-    "node": ">=4.2.0"
+    "node": ">=6.9.0"
   },
   "scripts": {},
   "directories": {
