@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -42,5 +42,7 @@
   ],
   "bin": {},
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/es6-shim": "^0.31.32"
+  }
 }
