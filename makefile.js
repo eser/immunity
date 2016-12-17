@@ -29,5 +29,5 @@ jsmake.task('deps', function (argv) {
 
 jsmake.desc('Builds the source code.');
 jsmake.task('build', function (argv) {
-    jsmake.utils.os.shell('sey rebuild');
+    jsmake.utils.os.shell('tsc');
 });

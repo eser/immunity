@@ -1,44 +1,48 @@
+import { assign } from './utils/assign';
+
 export class Immunity {
-    copy(instance) {
+    copy(instance: Object): Object {
+        const type: any = instance.constructor;
+
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
                 if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
-                    return Object.assign(new instance.constructor(), obj, {
+                    return assign(new type(), obj, {
                         [itemKey]: this.copy(instance[itemKey])
                     });
                 }
 
-                return Object.assign(new instance.constructor(), obj, {
+                return assign(new type(), obj, {
                     [itemKey]: instance[itemKey]
                 });
             },
-            new instance.constructor()
+            new type()
         );
     }
 
-    appendToArray(instance, ...values) {
+    appendToArray(instance: any[], ...values: any[]): any[] {
         return [
             ...instance,
             ...values
         ];
     }
 
-    prependToArray(instance, ...values) {
+    prependToArray(instance: any[], ...values: any[]): any[] {
         return [
             ...values,
             ...instance
         ];
     }
 
-    appendToObject(instance, ...values) {
-        return Object.assign({}, instance, ...values);
+    appendToObject(instance: Object, ...values: Object[]): Object {
+        return assign({}, instance, ...values);
     }
 
-    prependToObject(instance, ...values) {
-        return Object.assign({}, ...values, instance);
+    prependToObject(instance: Object, ...values: Object[]): Object {
+        return assign({}, ...values, instance);
     }
 
-    splitArray(instance, n) {
+    splitArray(instance: any[], n: number): { items: any[], remainder: any[] } {
         const offset = (n >= 0) ? n : instance.length + n;
 
         return {
@@ -47,7 +51,7 @@ export class Immunity {
         };
     }
 
-    splitObject(instance, n) {
+    splitObject(instance: Object, n: number): { items: Object, remainder: Object } {
         const keys = Object.keys(instance),
             offset = (n >= 0) ? n : keys.length + n;
 
@@ -60,28 +64,28 @@ export class Immunity {
                     index += 1;
 
                     return {
-                        items: Object.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
+                        items: assign({}, obj.items, { [itemKey]: instance[itemKey] }),
                         remainder: obj.remainder
                     };
                 }
 
                 return {
                     items: obj.items,
-                    remainder: Object.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+                    remainder: assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
                 };
             },
             {
-                items: [],
-                remainder: []
+                items: {},
+                remainder: {}
             }
         );
     }
 
-    takeFromArray(instance, n) {
+    takeFromArray(instance: any[], n: number): any[] {
         return instance.slice(0, n);
     }
 
-    takeFromObject(instance, n) {
+    takeFromObject(instance: Object, n: number): Object {
         let index = 0;
 
         return Object.keys(instance).reduce(
@@ -90,7 +94,7 @@ export class Immunity {
                 if (index < n) {
                     index += 1;
 
-                    return Object.assign({}, obj, { [itemKey]: instance[itemKey] });
+                    return assign({}, obj, { [itemKey]: instance[itemKey] });
                 }
 
                 return obj;
@@ -99,11 +103,11 @@ export class Immunity {
         );
     }
 
-    dropFromArray(instance, n) {
+    dropFromArray(instance: any[], n: number): any[] {
         return instance.slice(instance.length - n);
     }
 
-    dropFromObject(instance, n) {
+    dropFromObject(instance: Object, n: number): Object {
         const keys = Object.keys(instance),
             offset = keys.length - n;
 
@@ -113,7 +117,7 @@ export class Immunity {
             (obj, itemKey) => {
 
                 if (index >= offset) {
-                    return Object.assign({}, obj, { [itemKey]: instance[itemKey] });
+                    return assign({}, obj, { [itemKey]: instance[itemKey] });
                 }
 
                 index += 1;
@@ -124,15 +128,15 @@ export class Immunity {
         );
     }
 
-    filterArray(instance, predicate) {
+    filterArray(instance: any[], predicate): any[] {
         return instance.filter(predicate);
     }
 
-    filterObject(instance, predicate) {
+    filterObject(instance: Object, predicate): Object {
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
                 if (predicate(itemKey, instance[itemKey])) {
-                    return Object.assign({}, obj, {
+                    return assign({}, obj, {
                         [itemKey]: instance[itemKey]
                     });
                 }
@@ -143,17 +147,17 @@ export class Immunity {
         );
     }
 
-    removeFromArray(instance, ...values) {
+    removeFromArray(instance: any[], ...values: any[]): any[] {
         return instance.filter(
             (item) => values.indexOf(item) === -1
         );
     }
 
-    removeKeyFromObject(instance, ...keys) {
+    removeKeyFromObject(instance: Object, ...keys: string[]): Object {
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
                 if (keys.indexOf(itemKey) === -1) {
-                    return Object.assign({}, obj, {
+                    return assign({}, obj, {
                         [itemKey]: instance[itemKey]
                     });
                 }
@@ -164,11 +168,11 @@ export class Immunity {
         );
     }
 
-    removeValueFromObject(instance, ...values) {
+    removeValueFromObject(instance: Object, ...values: any[]): Object {
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
                 if (values.indexOf(instance[itemKey]) === -1) {
-                    return Object.assign({}, obj, {
+                    return assign({}, obj, {
                         [itemKey]: instance[itemKey]
                     });
                 }
@@ -179,15 +183,15 @@ export class Immunity {
         );
     }
 
-    mergeArrays(...arrays) {
+    mergeArrays(...arrays: any[][]): any[] {
         return arrays.reduce(
             (obj, array) => [ ...obj, ...array ],
-            {}
+            []
         );
     }
 
-    mergeObjects(...objects) {
-        return Object.assign({}, ...objects);
+    mergeObjects(...objects: Object[]): Object {
+        return assign({}, ...objects);
     }
 }
 
