@@ -4,6 +4,14 @@ export declare class Immunity {
     prependToArray(instance: any[], ...values: any[]): any[];
     appendToObject(instance: Object, ...values: Object[]): Object;
     prependToObject(instance: Object, ...values: Object[]): Object;
+    pickFromArray(instance: any[], items: any[]): {
+        items: any[];
+        remainder: any[];
+    };
+    pickFromObject(instance: any, items: any): {
+        items: {};
+        remainder: {};
+    };
     splitArray(instance: any[], n: number): {
         items: any[];
         remainder: any[];

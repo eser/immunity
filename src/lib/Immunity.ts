@@ -42,6 +42,52 @@ export class Immunity {
         return assign({}, ...values, instance);
     }
 
+    pickFromArray(instance: any[], items: any[]): { items: any[], remainder: any[] } {
+        return instance.reduce(
+            (obj, itemValue, itemKey) => {
+                if (items.indexOf(itemKey) !== -1) {
+                    return {
+                        items: [...obj.items, itemValue],
+                        remainder: obj.remainder
+                    };
+                }
+
+                return {
+                    items: obj.items,
+                    remainder: [...obj.remainder, itemValue]
+                };
+            },
+            {
+                items: [],
+                remainder: []
+            }
+        );
+    }
+
+    pickFromObject(instance, items) {
+        const keys = Object.keys(instance);
+
+        return keys.reduce(
+            (obj, itemKey) => {
+                if (items.indexOf(itemKey) !== -1) {
+                    return {
+                        items: assign({}, obj.items, { [itemKey]: instance[itemKey] }),
+                        remainder: obj.remainder
+                    };
+                }
+
+                return {
+                    items: obj.items,
+                    remainder: assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+                };
+            },
+            {
+                items: {},
+                remainder: {}
+            }
+        );
+    }
+
     splitArray(instance: any[], n: number): { items: any[], remainder: any[] } {
         const offset = (n >= 0) ? n : instance.length + n;
 
@@ -59,7 +105,6 @@ export class Immunity {
 
         return keys.reduce(
             (obj, itemKey) => {
-
                 if (index < offset) {
                     index += 1;
 
@@ -90,7 +135,6 @@ export class Immunity {
 
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
-
                 if (index < n) {
                     index += 1;
 
@@ -115,7 +159,6 @@ export class Immunity {
 
         return Object.keys(instance).reduce(
             (obj, itemKey) => {
-
                 if (index >= offset) {
                     return assign({}, obj, { [itemKey]: instance[itemKey] });
                 }
@@ -185,7 +228,7 @@ export class Immunity {
 
     mergeArrays(...arrays: any[][]): any[] {
         return arrays.reduce(
-            (obj, array) => [ ...obj, ...array ],
+            (obj, array) => [...obj, ...array],
             []
         );
     }
