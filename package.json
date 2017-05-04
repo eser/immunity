@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.0.12",
+  "version": "0.0.13",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -29,6 +29,7 @@
   },
   "license": "Apache-2.0",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=6.9.0"
   },
