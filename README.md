@@ -1,55 +1,18 @@
-# [immunity](https://github.com/eserozvataf/immunity)
-
-[![npm version][npm-image]][npm-url]
-[![npm download][download-image]][npm-url]
-[![dependencies][dep-image]][dep-url]
-[![license][license-image]][license-url]
+# [jsmake-libraries](https://github.com/eserozvataf/jsmake-libraries)
 
 
-## What is the Immunity?
-
-Immunity provides a set of helper methods that do not mutate existing data structures.
-
-
-## Quick start
-
-Execute `npm install immunity --save` to install immunity and its dependencies into your project directory.
-
-
-## Todo List
-
-See [GitHub Projects](https://github.com/eserozvataf/immunity/projects) for more.
-
-
-## Requirements
-
-* node.js (https://nodejs.org/)
-
-
-## License
-
-Apache 2.0, for further details, please see [LICENSE](LICENSE) file
-
-
-## Contributing
-
-See [contributors.md](contributors.md)
-
-It is publicly open for any contribution. Bugfixes, new features and extra modules are welcome.
-
-* To contribute to code: Fork the repo, push your changes to your fork, and submit a pull request.
-* To report a bug: If something does not work, please report it using [GitHub Issues](https://github.com/eserozvataf/immunity/issues).
+| Library                                   | Description                                                                    |
+| ----------------------------------------- | ------------------------------------------------------------------------------ |
+| [immunity](01_immunity/)                  | JavaScript library for not mutating existing data structures                   |
+| [evangelist](02_evangelist/)              | Library for overriding or wrapping functions                                   |
+| [es6-eventemitter](03_es6-eventemitter/)  | An Event Emitter alternative written in ES2015                                 |
+| [enthusiast](04_enthusiast/)              | -                                                                              |
+| [cofounder](05_cofounder/)                | Library offers additional file system functionalities to extend fs library     |
+| [maester](06_maester/)                    | Library to take over all exception handling and logging                        |
+| [senior](07_senior/)                      | Plugin host and manager for installable/removable npm packages                 |
+| [consultant](08_consultant/)              | Library for getting parameters from various sources                            |
 
 
 ## To Support
 
 [Visit my patreon profile at patreon.com/eserozvataf](https://www.patreon.com/eserozvataf)
-
-
-[npm-image]: https://img.shields.io/npm/v/immunity.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/immunity
-[download-image]: https://img.shields.io/npm/dt/immunity.svg?style=flat-square
-[dep-image]: https://img.shields.io/david/eserozvataf/immunity.svg?style=flat-square
-[dep-url]: https://github.com/eserozvataf/immunity
-[license-image]: https://img.shields.io/npm/l/immunity.svg?style=flat-square
-[license-url]: https://github.com/eserozvataf/immunity/blob/master/LICENSE

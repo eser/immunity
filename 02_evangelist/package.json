@@ -1,0 +1,49 @@
+{
+  "name": "evangelist",
+  "description": "Library for overriding or wrapping functions",
+  "keywords": [
+    "override",
+    "overriding",
+    "wrap",
+    "wrapping",
+    "function",
+    "method"
+  ],
+  "version": "0.6.0",
+  "homepage": "",
+  "author": "Eser Ozvataf <eser@ozvataf.com>",
+  "contributors": [
+    {
+      "name": "Eser Ozvataf",
+      "email": "eser@ozvataf.com",
+      "url": "http://eser.ozvataf.com/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eserozvataf/jsmake-libraries.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eserozvataf/jsmake-libraries/issues",
+    "email": "eser@ozvataf.com"
+  },
+  "license": "Apache-2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {},
+  "directories": {
+    "lib": "./lib"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "bin": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@types/es6-shim": "^0.31.34"
+  }
+}

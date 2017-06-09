@@ -1,0 +1,14 @@
+# npm
+node_modules/
+
+# OS X
+.DS_Store
+
+# Git
+.git*
+
+# TypeScript
+tsconfig.json
+
+# jsmake
+makefile.js
