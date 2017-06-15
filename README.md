@@ -3,14 +3,14 @@
 
 | Library                                   | Description                                                                    |
 | ----------------------------------------- | ------------------------------------------------------------------------------ |
-| [immunity](01_immunity/)                  | JavaScript library for not mutating existing data structures                   |
-| [evangelist](02_evangelist/)              | Library for overriding or wrapping functions                                   |
-| [es6-eventemitter](03_es6-eventemitter/)  | An Event Emitter alternative written in ES2015                                 |
-| [enthusiast](04_enthusiast/)              | -                                                                              |
-| [cofounder](05_cofounder/)                | Library offers additional file system functionalities to extend fs library     |
-| [maester](06_maester/)                    | Library to take over all exception handling and logging                        |
-| [senior](07_senior/)                      | Plugin host and manager for installable/removable npm packages                 |
-| [consultant](08_consultant/)              | Library for getting parameters from various sources                            |
+| [immunity](packages/01_immunity/)                  | JavaScript library for not mutating existing data structures                   |
+| [evangelist](packages/02_evangelist/)              | Library for overriding or wrapping functions                                   |
+| [es6-eventemitter](packages/03_es6-eventemitter/)  | An Event Emitter alternative written in ES2015                                 |
+| [enthusiast](packages/04_enthusiast/)              | -                                                                              |
+| [cofounder](packages/05_cofounder/)                | Library offers additional file system functionalities to extend fs library     |
+| [maester](packages/06_maester/)                    | Library to take over all exception handling and logging                        |
+| [senior](packages/07_senior/)                      | Plugin host and manager for installable/removable npm packages                 |
+| [consultant](packages/08_consultant/)              | Library for getting parameters from various sources                            |
 
 
 ## To Support
