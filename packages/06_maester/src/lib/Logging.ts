@@ -2,6 +2,10 @@ import immunity = require('immunity');
 import { flexibleClass } from './utils/flexibleClass';
 
 export class Logging {
+    owner: any;
+    loggerTypes: object;
+    loggers: object;
+
     constructor(owner) {
         this.owner = owner;
 
@@ -31,7 +35,7 @@ export class Logging {
         const loggerType = this.getLogger(loggerTypeOrTypeName),
             logger = new loggerType(this.owner);
 
-        this.loggers = immunity.appendToArray(this.loggers, {
+        this.loggers = immunity.appendToObject(this.loggers, {
             [name]: logger
         });
 

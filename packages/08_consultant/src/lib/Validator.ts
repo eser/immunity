@@ -22,7 +22,7 @@ export class Validator {
         return keys;
     }
 
-    static prepareValue(value: any[], childKey: string, child: Rule) {
+    static async prepareValue(value: any[], childKey: string, child: Rule) {
         let errors: ConsultationError[] = [],
             newValue: any = value;
 
@@ -68,7 +68,7 @@ export class Validator {
 
         if (child.validate !== undefined) {
             newValue.forEach((currentValue) => {
-                const validationMethodResult = child.validate(currentValue);
+                const validationMethodResult = await child.validate(currentValue);
 
                 if (validationMethodResult !== true) {
                     errors = immunity.appendToArray(
@@ -85,7 +85,7 @@ export class Validator {
         };
     }
 
-    processSingleParameter(childKey: string, child: Rule, argv: object) {
+    async processSingleParameter(childKey: string, child: Rule, argv: object) {
         let argvRemainder = argv,
             errors: ConsultationError[] | undefined,
             values;
@@ -106,7 +106,7 @@ export class Validator {
                 argvRemainder = immunity.removeKeyFromObject(argvRemainder, argvKey);
             }
 
-            const valueResult = Validator.prepareValue(values, childKey, child);
+            const valueResult = await Validator.prepareValue(values, childKey, child);
             values = valueResult.value;
             errors = valueResult.errors;
         }
@@ -121,7 +121,7 @@ export class Validator {
         };
     }
 
-    processParameters(children: RuleCollection, argv: object) {
+    async processParameters(children: RuleCollection, argv: object) {
         let argvRemainder = argv,
             values = {},
             errors = {};
@@ -133,7 +133,7 @@ export class Validator {
                 continue;
             }
 
-            const result = this.processSingleParameter(childKey, child, argvRemainder);
+            const result = await this.processSingleParameter(childKey, child, argvRemainder);
 
             argvRemainder = result.argvRemainder;
 
@@ -219,7 +219,7 @@ export class Validator {
 
         if (children !== undefined) {
             // parameters first
-            const result1 = this.processParameters(children, argvRemainder);
+            const result1 = await this.processParameters(children, argvRemainder);
             values = immunity.mergeObjects(values, result1.values);
             errors = immunity.mergeObjects(errors, result1.errors);
             argvRemainder = result1.argvRemainder;

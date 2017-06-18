@@ -1,4 +1,7 @@
 export declare class Logging {
+    owner: any;
+    loggerTypes: object;
+    loggers: object;
     constructor(owner: any);
     addLoggerType(name: any, loggerType: any): void;
     removeLoggerType(name: any): void;

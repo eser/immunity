@@ -1,4 +1,6 @@
 export class ConsoleLogger {
+    owner: any;
+
     constructor(owner) {
         this.owner = owner;
     }

@@ -5,6 +5,14 @@ import EventEmitter = require('es6-eventemitter');
 import immunity = require('immunity');
 
 export class Senior {
+    name: string;
+    modulePrefix: string;
+
+    events: EventEmitter;
+
+    homePath: string;
+    packageJsonFile: string;
+
     constructor(name, modulePrefix = '') {
         this.name = name;
         this.modulePrefix = modulePrefix;

@@ -1,5 +1,9 @@
+import Fs from './Fs';
+
 export class Json {
-    constructor(fs) {
+    fs: Fs;
+
+    constructor(fs: Fs) {
         this.fs = fs;
     }
 

@@ -23,14 +23,14 @@ export class Consultation {
         this.source = argv;
     }
 
-    validate(): ConsultationResult {
+    async validate(): Promise<ConsultationResult> {
         const validator = new Validator();
 
         if (this.source === undefined) {
             throw new Error('source is empty.');
         }
 
-        return validator.validate(this.rules, this.source);
+        return await validator.validate(this.rules, this.source);
     }
 
     async inquire(): Promise<ConsultationResult> {

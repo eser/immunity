@@ -29,7 +29,7 @@ export class Fs {
         return null;
     }
 
-    readdir(pathstr, options) {
+    readdir(pathstr, options?): Promise<any> {
         return new Promise((resolve, reject) => {
             const defaultOptions = { encoding: 'utf8' };
 
@@ -53,7 +53,7 @@ export class Fs {
         });
     }
 
-    glob(str, options) {
+    glob(str, options?): Promise<any> {
         return new Promise((resolve, reject) => {
             const defaultOptions = {
                 nosort: true,
@@ -102,7 +102,7 @@ export class Fs {
         });
     }
 
-    async mkdirP(pathstr, mode) {
+    async mkdirP(pathstr, mode?) {
         let directories = [
             pathstr
         ];
@@ -186,7 +186,7 @@ export class Fs {
                                 pushedBack = true;
                             }
 
-                            directories = immuity.appendToArray(directories, [ itemPath, false ]);
+                            directories = immunity.appendToArray(directories, [ itemPath, false ]);
 
                             continue;
                         }
@@ -216,7 +216,7 @@ export class Fs {
         }
     }
 
-    lstat(pathstr) {
+    lstat(pathstr): Promise<any> {
         return new Promise((resolve, reject) => {
             fs.lstat(
                 pathstr,
@@ -233,7 +233,7 @@ export class Fs {
         });
     }
 
-    readFile(pathstr, options) {
+    readFile(pathstr, options?): Promise<any> {
         return new Promise((resolve, reject) => {
             const defaultOptions = { encoding: 'utf8' };
 
@@ -257,7 +257,7 @@ export class Fs {
         });
     }
 
-    writeFile(pathstr, content, options) {
+    writeFile(pathstr, content, options?) {
         return new Promise((resolve, reject) => {
             const defaultOptions = { encoding: 'utf8' };
 
@@ -282,10 +282,10 @@ export class Fs {
         });
     }
 
-    async writeFileP(pathstr, content, options) {
+    async writeFileP(pathstr, content, options?) {
         const parentDirectory = path.dirname(pathstr);
 
-        this.mkdirP(parentDirectory);
+        await this.mkdirP(parentDirectory);
 
         await this.writeFile(pathstr, content, options);
     }
@@ -298,7 +298,7 @@ export class Fs {
     async cpP(str, dest) {
         const list = await this.glob(str);
 
-        let createdDirectories = [];
+        let createdDirectories: Array<any> = [];
 
         for (const item of list) {
             const globParent = this.globParentOf(str, item),
@@ -337,7 +337,7 @@ export class Fs {
     async mvP(str, dest) {
         const list = await this.glob(str, { nodir: false });
 
-        let createdDirectories = [];
+        let createdDirectories: Array<any> = [];
 
         for (const item of list) {
             const globParent = this.globParentOf(str, item),
@@ -373,9 +373,9 @@ export class Fs {
     }
 
     async rmP(str, recursiveForDirectories) {
-        const list = this.glob(str, false);
+        const list = await this.glob(str, false);
 
-        let directories = [];
+        let directories: Array<any> = [];
 
         for (const item of list) {
             const itemStat = await this.lstat(item);

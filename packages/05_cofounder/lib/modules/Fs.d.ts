@@ -1,16 +1,16 @@
 export declare class Fs {
     globParent(str: any): any;
     globParentOf(str: any, pathstr: any): any;
-    readdir(pathstr: any, options: any): Promise<{}>;
-    glob(str: any, options: any): Promise<{}>;
+    readdir(pathstr: any, options?: any): Promise<any>;
+    glob(str: any, options?: any): Promise<any>;
     mkdir(pathstr: any, mode: any): Promise<{}>;
-    mkdirP(pathstr: any, mode: any): Promise<void>;
+    mkdirP(pathstr: any, mode?: any): Promise<void>;
     rmdir(pathstr: any): Promise<{}>;
     rmdirP(pathstr: any): Promise<void>;
-    lstat(pathstr: any): Promise<{}>;
-    readFile(pathstr: any, options: any): Promise<{}>;
-    writeFile(pathstr: any, content: any, options: any): Promise<{}>;
-    writeFileP(pathstr: any, content: any, options: any): Promise<void>;
+    lstat(pathstr: any): Promise<any>;
+    readFile(pathstr: any, options?: any): Promise<any>;
+    writeFile(pathstr: any, content: any, options?: any): Promise<{}>;
+    writeFileP(pathstr: any, content: any, options?: any): Promise<void>;
     cp(pathstr: any, dest: any): void;
     cpP(str: any, dest: any): Promise<void>;
     mv(pathstr: any, dest: any): Promise<{}>;

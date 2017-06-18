@@ -1,4 +1,6 @@
 export class BaseException {
+    exception: any;
+
     constructor(input, exception = null) {
         Object.keys(input).forEach((key) => {
             if (key in this) {

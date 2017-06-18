@@ -2,20 +2,20 @@ import { ConsultationResult, ConsultationError } from './Consultation';
 import { Rule, RuleCollection } from './Rule';
 export declare class Validator {
     static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): string[];
-    static prepareValue(value: any[], childKey: string, child: Rule): {
+    static prepareValue(value: any[], childKey: string, child: Rule): Promise<{
         value: any;
         errors: ConsultationError[] | undefined;
-    };
-    processSingleParameter(childKey: string, child: Rule, argv: object): {
+    }>;
+    processSingleParameter(childKey: string, child: Rule, argv: object): Promise<{
         values: any;
         errors: ConsultationError[] | undefined;
         argvRemainder: object;
-    };
-    processParameters(children: RuleCollection, argv: object): {
+    }>;
+    processParameters(children: RuleCollection, argv: object): Promise<{
         values: {};
         errors: {};
         argvRemainder: object;
-    };
+    }>;
     processSingleCommand(childKey: string, child: Rule, argv: object): {
         commandKey: string;
         argvRemainder: object;

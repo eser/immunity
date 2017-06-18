@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function alignedString(input, initial) {
-    if (initial === void 0) { initial = ''; }
-    var output = initial;
+function alignedString(input, initial = '') {
+    let output = initial;
     while (input.length >= 2) {
-        var pos = input.shift();
+        const pos = input.shift();
         if (output.length < pos) {
             output += ' '.repeat(pos - output.length);
         }

@@ -1,13 +1,15 @@
 // TODO credit and license to juliangruber/stream
 
-import immunity from 'immunity';
-import EventEmitter from 'es6-eventemitter';
+import immunity = require('immunity');
+import EventEmitter = require('es6-eventemitter');
 
 export class Stream extends EventEmitter {
+    readable: boolean;
+
     pipe(destination, options) {
         const defaultOptions = {};
 
-        const options_ = (options === undefined) ?
+        const options_: any = (options === undefined) ?
                 defaultOptions :
                 immunity.appendToObject(options, defaultOptions);
 
@@ -57,7 +59,7 @@ export class Stream extends EventEmitter {
 
         let detach;
 
-        const onError = function (err) {
+        const onError = (err) => {
             detach();
 
             if (this.listenerCount('error') === 0) {

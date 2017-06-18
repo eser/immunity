@@ -1,4 +1,4 @@
-import { Stream } from './Stream.js';
+import { Stream } from './Stream';
 
 export class Readable extends Stream {
 

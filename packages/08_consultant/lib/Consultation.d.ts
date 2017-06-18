@@ -15,7 +15,7 @@ export declare class Consultation {
     rules: Rule;
     source?: object;
     constructor(rules: Rule, argv?: object);
-    validate(): ConsultationResult;
+    validate(): Promise<ConsultationResult>;
     inquire(): Promise<ConsultationResult>;
 }
 export default Consultation;

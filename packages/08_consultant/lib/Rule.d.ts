@@ -2,7 +2,7 @@ import { Types } from './Types';
 export declare type RuleCollection = {
     [key: string]: Rule;
 };
-export declare type ValidateMethod = (value: any) => ValidationResult;
+export declare type ValidateMethod = (value: any) => Promise<ValidationResult>;
 export declare type ValidationResult = boolean | string;
 export interface Rule {
     type?: Types;

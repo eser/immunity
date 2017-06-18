@@ -6,6 +6,15 @@ import { ConsoleLogger } from './loggers/ConsoleLogger';
 import { Logging } from './Logging';
 
 export class Maester {
+    events: EventEmitter;
+    colors: any;
+
+    exception: any;
+    logging: Logging;
+
+    paused: boolean;
+    severities: object;
+
     constructor() {
         this.events = new EventEmitter();
         this.colors = colors;
@@ -36,7 +45,7 @@ export class Maester {
         this.severities = immunity.copy(severities);
 
         for (const severity of Object.keys(this.severities)) {
-            this[severity] = (...args) => this.log(severity, ...args);
+            this[severity] = (message) => this.log(severity, message);
         }
     }
 

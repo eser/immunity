@@ -1,10 +1,21 @@
 export declare class EventEmitter {
+    static defaultMaxListeners: number;
+    events: {
+        [key: string]: any;
+    };
+    maxListeners: number;
+    paused: boolean;
+    emitQueue: Array<{
+        async: boolean;
+        eventName: string;
+        params: any;
+    }>;
     constructor();
-    getMaxListeners(): any;
+    getMaxListeners(): number;
     setMaxListeners(value: any): this;
     eventNames(): string[];
     listenerCount(eventName: any): any;
-    listeners(eventName: any, exists: any): any;
+    listeners(eventName: any, exists: any): boolean | any[];
     emit(eventName: any, ...args: any[]): boolean;
     emitAsync(eventName: any, ...args: any[]): Promise<boolean>;
     on(eventName: any, listener: any, context: any, prepend: any): this;

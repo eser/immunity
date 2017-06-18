@@ -1,9 +1,16 @@
 import immunity = require('immunity');
 
 export class EventEmitter {
+    static defaultMaxListeners = 10;
+
+    events: { [key: string]: any };
+    maxListeners: number;
+    paused: boolean;
+    emitQueue: Array<{ async: boolean, eventName: string, params: any }>;
+
     constructor() {
         this.events = {};
-        this.maxListeners = this.constructor.defaultMaxListeners;
+        this.maxListeners = EventEmitter.defaultMaxListeners;
 
         this.paused = false;
         this.emitQueue = [];
@@ -125,7 +132,7 @@ export class EventEmitter {
         return true;
     }
 
-    on(eventName, listener, context, prepend) {
+    on(eventName, listener, context?, prepend?) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -161,7 +168,7 @@ export class EventEmitter {
         return this;
     }
 
-    once(eventName, listener, context, prepend) {
+    once(eventName, listener, context?, prepend?) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -216,15 +223,15 @@ export class EventEmitter {
         return this;
     }
 
-    addListener(eventName, listener, context) {
+    addListener(eventName, listener, context?) {
         return this.on(eventName, listener, context, false);
     }
 
-    prependListener(eventName, listener, context) {
+    prependListener(eventName, listener, context?) {
         return this.on(eventName, listener, context, true);
     }
 
-    prependOnceListener(eventName, listener, context) {
+    prependOnceListener(eventName, listener, context?) {
         return this.once(eventName, listener, context, true);
     }
 
@@ -265,7 +272,5 @@ export class EventEmitter {
         this.emitQueue = [];
     }
 }
-
-EventEmitter.defaultMaxListeners = 10;
 
 export default EventEmitter;

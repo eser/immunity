@@ -1,212 +1,170 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var assign_1 = require("./utils/assign");
-var Immunity = (function () {
-    function Immunity() {
-    }
-    Immunity.prototype.copy = function (instance) {
-        var _this = this;
-        var type = instance.constructor;
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+const assign_1 = require("./utils/assign");
+class Immunity {
+    copy(instance) {
+        const type = instance.constructor;
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
-                return assign_1.assign(new type(), obj, (_a = {},
-                    _a[itemKey] = _this.copy(instance[itemKey]),
-                    _a));
+                return assign_1.assign(new type(), obj, {
+                    [itemKey]: this.copy(instance[itemKey])
+                });
             }
-            return assign_1.assign(new type(), obj, (_b = {},
-                _b[itemKey] = instance[itemKey],
-                _b));
-            var _a, _b;
+            return assign_1.assign(new type(), obj, {
+                [itemKey]: instance[itemKey]
+            });
         }, new type());
-    };
-    Immunity.prototype.appendToArray = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return instance.concat(values);
-    };
-    Immunity.prototype.prependToArray = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return values.concat(instance);
-    };
-    Immunity.prototype.appendToObject = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return assign_1.assign.apply(void 0, [{}, instance].concat(values));
-    };
-    Immunity.prototype.prependToObject = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return assign_1.assign.apply(void 0, [{}].concat(values, [instance]));
-    };
-    Immunity.prototype.pickFromArray = function (instance, items) {
-        return instance.reduce(function (obj, itemValue, itemKey) {
+    }
+    appendToArray(instance, ...values) {
+        return [
+            ...instance,
+            ...values
+        ];
+    }
+    prependToArray(instance, ...values) {
+        return [
+            ...values,
+            ...instance
+        ];
+    }
+    appendToObject(instance, ...values) {
+        return assign_1.assign({}, instance, ...values);
+    }
+    prependToObject(instance, ...values) {
+        return assign_1.assign({}, ...values, instance);
+    }
+    pickFromArray(instance, items) {
+        return instance.reduce((obj, itemValue, itemKey) => {
             if (items.indexOf(itemKey) !== -1) {
                 return {
-                    items: obj.items.concat([itemValue]),
+                    items: [...obj.items, itemValue],
                     remainder: obj.remainder
                 };
             }
             return {
                 items: obj.items,
-                remainder: obj.remainder.concat([itemValue])
+                remainder: [...obj.remainder, itemValue]
             };
         }, {
             items: [],
             remainder: []
         });
-    };
-    Immunity.prototype.pickFromObject = function (instance, items) {
-        var keys = Object.keys(instance);
-        return keys.reduce(function (obj, itemKey) {
+    }
+    pickFromObject(instance, items) {
+        const keys = Object.keys(instance);
+        return keys.reduce((obj, itemKey) => {
             if (items.indexOf(itemKey) !== -1) {
                 return {
-                    items: assign_1.assign({}, obj.items, (_a = {}, _a[itemKey] = instance[itemKey], _a)),
+                    items: assign_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
                     remainder: obj.remainder
                 };
             }
             return {
                 items: obj.items,
-                remainder: assign_1.assign({}, obj.remainder, (_b = {}, _b[itemKey] = instance[itemKey], _b))
+                remainder: assign_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
             };
-            var _a, _b;
         }, {
             items: {},
             remainder: {}
         });
-    };
-    Immunity.prototype.splitArray = function (instance, n) {
-        var offset = (n >= 0) ? n : instance.length + n;
+    }
+    splitArray(instance, n) {
+        const offset = (n >= 0) ? n : instance.length + n;
         return {
             items: instance.slice(0, offset),
             remainder: instance.slice(offset)
         };
-    };
-    Immunity.prototype.splitObject = function (instance, n) {
-        var keys = Object.keys(instance), offset = (n >= 0) ? n : keys.length + n;
-        var index = 0;
-        return keys.reduce(function (obj, itemKey) {
+    }
+    splitObject(instance, n) {
+        const keys = Object.keys(instance), offset = (n >= 0) ? n : keys.length + n;
+        let index = 0;
+        return keys.reduce((obj, itemKey) => {
             if (index < offset) {
                 index += 1;
                 return {
-                    items: assign_1.assign({}, obj.items, (_a = {}, _a[itemKey] = instance[itemKey], _a)),
+                    items: assign_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
                     remainder: obj.remainder
                 };
             }
             return {
                 items: obj.items,
-                remainder: assign_1.assign({}, obj.remainder, (_b = {}, _b[itemKey] = instance[itemKey], _b))
+                remainder: assign_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
             };
-            var _a, _b;
         }, {
             items: {},
             remainder: {}
         });
-    };
-    Immunity.prototype.takeFromArray = function (instance, n) {
+    }
+    takeFromArray(instance, n) {
         return instance.slice(0, n);
-    };
-    Immunity.prototype.takeFromObject = function (instance, n) {
-        var index = 0;
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+    }
+    takeFromObject(instance, n) {
+        let index = 0;
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (index < n) {
                 index += 1;
-                return assign_1.assign({}, obj, (_a = {}, _a[itemKey] = instance[itemKey], _a));
+                return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
             }
             return obj;
-            var _a;
         }, {});
-    };
-    Immunity.prototype.dropFromArray = function (instance, n) {
+    }
+    dropFromArray(instance, n) {
         return instance.slice(instance.length - n);
-    };
-    Immunity.prototype.dropFromObject = function (instance, n) {
-        var keys = Object.keys(instance), offset = keys.length - n;
-        var index = 0;
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+    }
+    dropFromObject(instance, n) {
+        const keys = Object.keys(instance), offset = keys.length - n;
+        let index = 0;
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (index >= offset) {
-                return assign_1.assign({}, obj, (_a = {}, _a[itemKey] = instance[itemKey], _a));
+                return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
             }
             index += 1;
             return obj;
-            var _a;
         }, {});
-    };
-    Immunity.prototype.filterArray = function (instance, predicate) {
+    }
+    filterArray(instance, predicate) {
         return instance.filter(predicate);
-    };
-    Immunity.prototype.filterObject = function (instance, predicate) {
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+    }
+    filterObject(instance, predicate) {
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (predicate(itemKey, instance[itemKey])) {
-                return assign_1.assign({}, obj, (_a = {},
-                    _a[itemKey] = instance[itemKey],
-                    _a));
+                return assign_1.assign({}, obj, {
+                    [itemKey]: instance[itemKey]
+                });
             }
             return obj;
-            var _a;
         }, {});
-    };
-    Immunity.prototype.removeFromArray = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return instance.filter(function (item) { return values.indexOf(item) === -1; });
-    };
-    Immunity.prototype.removeKeyFromObject = function (instance) {
-        var keys = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            keys[_i - 1] = arguments[_i];
-        }
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+    }
+    removeFromArray(instance, ...values) {
+        return instance.filter((item) => values.indexOf(item) === -1);
+    }
+    removeKeyFromObject(instance, ...keys) {
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (keys.indexOf(itemKey) === -1) {
-                return assign_1.assign({}, obj, (_a = {},
-                    _a[itemKey] = instance[itemKey],
-                    _a));
+                return assign_1.assign({}, obj, {
+                    [itemKey]: instance[itemKey]
+                });
             }
             return obj;
-            var _a;
         }, {});
-    };
-    Immunity.prototype.removeValueFromObject = function (instance) {
-        var values = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            values[_i - 1] = arguments[_i];
-        }
-        return Object.keys(instance).reduce(function (obj, itemKey) {
+    }
+    removeValueFromObject(instance, ...values) {
+        return Object.keys(instance).reduce((obj, itemKey) => {
             if (values.indexOf(instance[itemKey]) === -1) {
-                return assign_1.assign({}, obj, (_a = {},
-                    _a[itemKey] = instance[itemKey],
-                    _a));
+                return assign_1.assign({}, obj, {
+                    [itemKey]: instance[itemKey]
+                });
             }
             return obj;
-            var _a;
         }, {});
-    };
-    Immunity.prototype.mergeArrays = function () {
-        var arrays = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            arrays[_i] = arguments[_i];
-        }
-        return arrays.reduce(function (obj, array) { return obj.concat(array); }, []);
-    };
-    Immunity.prototype.mergeObjects = function () {
-        var objects = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            objects[_i] = arguments[_i];
-        }
-        return assign_1.assign.apply(void 0, [{}].concat(objects));
-    };
-    return Immunity;
-}());
+    }
+    mergeArrays(...arrays) {
+        return arrays.reduce((obj, array) => [...obj, ...array], []);
+    }
+    mergeObjects(...objects) {
+        return assign_1.assign({}, ...objects);
+    }
+}
 exports.Immunity = Immunity;
 exports.default = Immunity;
 //# sourceMappingURL=Immunity.js.map

@@ -18,7 +18,7 @@ export class Os {
             }
         );
 
-        process.on('SIGTERM', () => proc.kill('SIGTERM'));
+        process.on('SIGTERM', () => (<any>proc).kill('SIGTERM'));
 
         return proc;
     }

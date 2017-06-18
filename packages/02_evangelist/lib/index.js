@@ -1,5 +1,5 @@
 "use strict";
-var Evangelist_1 = require("./Evangelist");
-var evangelist = new Evangelist_1.Evangelist();
+const Evangelist_1 = require("./Evangelist");
+const evangelist = new Evangelist_1.Evangelist();
 module.exports = evangelist;
 //# sourceMappingURL=index.js.map
