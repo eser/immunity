@@ -7,7 +7,7 @@
     "handling",
     "log"
   ],
-  "version": "0.6.2",
+  "version": "0.7.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -42,10 +42,7 @@
   "bin": {},
   "dependencies": {
     "colors": "^1.1.2",
-    "es6-eventemitter": "^0.6.2",
-    "immunity": "^0.6.2"
-  },
-  "devDependencies": {
-    "@types/es6-shim": "^0.31.34"
+    "es6-eventemitter": "^0.7.0",
+    "immunity": "^0.7.0"
   }
 }

@@ -6,7 +6,7 @@
     "file",
     "system"
   ],
-  "version": "0.6.2",
+  "version": "0.7.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -40,11 +40,9 @@
   ],
   "bin": {},
   "dependencies": {
+    "@types/node": "^7.0.31",
     "glob-all": "^3.1.0",
     "glob-parent": "^3.1.0",
-    "immunity": "^0.6.2"
-  },
-  "devDependencies": {
-    "@types/es6-shim": "^0.31.34"
+    "immunity": "^0.7.0"
   }
 }

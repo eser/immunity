@@ -7,7 +7,7 @@
     "emitter",
     "es6"
   ],
-  "version": "0.6.2",
+  "version": "0.7.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -41,9 +41,6 @@
   ],
   "bin": {},
   "dependencies": {
-    "immunity": "^0.6.2"
-  },
-  "devDependencies": {
-    "@types/es6-shim": "^0.31.34"
+    "immunity": "^0.7.0"
   }
 }
