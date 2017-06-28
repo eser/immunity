@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const immunity = require("immunity");
+const ponyfills_1 = require("ponyfills");
 const Rule_1 = require("./Rule");
 const Types_1 = require("./Types");
 class Validator {
@@ -17,6 +18,25 @@ class Validator {
             }
         }
         return keys;
+    }
+    static async executeValidatorSingle(validatorFunc, childKey, value) {
+        const validationMethodResult = await validatorFunc(value);
+        if (validationMethodResult !== true) {
+            return [
+                { error: `validation failed for ${childKey}. value is "${value}": ${validationMethodResult}` }
+            ];
+        }
+        return [];
+    }
+    static async executeValidator(validatorFunc, childKey, value) {
+        if (!Array.isArray(value)) {
+            return await this.executeValidatorSingle(validatorFunc, childKey, value);
+        }
+        let errors = [];
+        for (const currentValue of value) {
+            errors = immunity.mergeArrays(errors, await this.executeValidatorSingle(validatorFunc, childKey, currentValue));
+        }
+        return errors;
     }
     static async prepareValue(value, childKey, child) {
         let errors = [], newValue = value;
@@ -53,13 +73,7 @@ class Validator {
             errors = immunity.appendToArray(errors, { error: `minimum length violation for ${childKey}` });
         }
         if (child.validate !== undefined) {
-            const validateMethod = child.validate;
-            newValue.forEach((currentValue) => {
-                const validationMethodResult = await validateMethod(currentValue);
-                if (validationMethodResult !== true) {
-                    errors = immunity.appendToArray(errors, { error: `validation failed for ${childKey}. value is "${currentValue}": ${validationMethodResult}` });
-                }
-            });
+            errors = immunity.mergeArrays(errors, await this.executeValidator(child.validate, childKey, newValue));
         }
         return {
             value: newValue,
@@ -73,7 +87,7 @@ class Validator {
             values = [];
             for (const argvKey of argvKeys) {
                 if (Array.isArray(argvRemainder[argvKey])) {
-                    values = values.concat(argvRemainder[argvKey]);
+                    values = immunity.mergeArrays(values, argvRemainder[argvKey]);
                 }
                 else {
                     values = immunity.appendToArray(values, argvRemainder[argvKey]);
@@ -147,7 +161,7 @@ class Validator {
                 }
             }
             if (commandKey !== undefined) {
-                argvRemainder = Object.assign({}, argvRemainder, { _: argvRemainder._.slice(1) });
+                argvRemainder = ponyfills_1.assign({}, argvRemainder, { _: argvRemainder._.slice(1) });
             }
         }
         return {

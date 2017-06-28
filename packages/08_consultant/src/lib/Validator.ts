@@ -1,6 +1,7 @@
 import immunity = require('immunity');
+import { assign } from 'ponyfills';
 import { ConsultationResult, ConsultationError } from './Consultation';
-import { Rule, RuleCollection, getRuleChildren } from './Rule';
+import { Rule, RuleCollection, ValidateMethod, getRuleChildren } from './Rule';
 import { Types } from './Types';
 
 export class Validator {
@@ -20,6 +21,35 @@ export class Validator {
         }
 
         return keys;
+    }
+
+    static async executeValidatorSingle(validatorFunc: ValidateMethod, childKey, value): Promise<ConsultationError[]> {
+        const validationMethodResult = await validatorFunc(value);
+
+        if (validationMethodResult !== true) {
+            return [
+                { error: `validation failed for ${childKey}. value is "${value}": ${validationMethodResult}` }
+            ];
+        }
+
+        return [];
+    }
+
+    static async executeValidator(validatorFunc: ValidateMethod, childKey, value): Promise<ConsultationError[]> {
+        if (!Array.isArray(value)) {
+            return await this.executeValidatorSingle(validatorFunc, childKey, value);
+        }
+
+        let errors: ConsultationError[] = [];
+
+        for (const currentValue of value) {
+            errors = immunity.mergeArrays(
+                errors,
+                await this.executeValidatorSingle(validatorFunc, childKey, currentValue)
+            );
+        }
+
+        return errors;
     }
 
     static async prepareValue(value: any[], childKey: string, child: Rule) {
@@ -67,18 +97,10 @@ export class Validator {
         }
 
         if (child.validate !== undefined) {
-            const validateMethod = child.validate;
-
-            newValue.forEach((currentValue) => {
-                const validationMethodResult = await validateMethod(currentValue);
-
-                if (validationMethodResult !== true) {
-                    errors = immunity.appendToArray(
-                        errors,
-                        { error: `validation failed for ${childKey}. value is "${currentValue}": ${validationMethodResult}` }
-                    );
-                }
-            });
+            errors = immunity.mergeArrays(
+                errors,
+                await this.executeValidator(child.validate, childKey, newValue)
+            );
         }
 
         return {
@@ -99,7 +121,7 @@ export class Validator {
 
             for (const argvKey of argvKeys) {
                 if (Array.isArray(argvRemainder[argvKey])) {
-                    values = values.concat(argvRemainder[argvKey]);
+                    values = immunity.mergeArrays(values, argvRemainder[argvKey]);
                 }
                 else {
                     values = immunity.appendToArray(values, argvRemainder[argvKey]);
@@ -197,7 +219,7 @@ export class Validator {
             }
 
             if (commandKey !== undefined) {
-                argvRemainder = Object.assign(
+                argvRemainder = assign(
                     {},
                     argvRemainder,
                     { _: argvRemainder._.slice(1) }

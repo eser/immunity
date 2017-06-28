@@ -1,7 +1,9 @@
 import { ConsultationResult, ConsultationError } from './Consultation';
-import { Rule, RuleCollection } from './Rule';
+import { Rule, RuleCollection, ValidateMethod } from './Rule';
 export declare class Validator {
     static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): string[];
+    static executeValidatorSingle(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<ConsultationError[]>;
+    static executeValidator(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<ConsultationError[]>;
     static prepareValue(value: any[], childKey: string, child: Rule): Promise<{
         value: any;
         errors: ConsultationError[] | undefined;

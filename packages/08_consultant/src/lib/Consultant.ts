@@ -26,7 +26,7 @@ export class Consultant {
     //         return target;
     //     }
 
-    //     return Object.assign(
+    //     return assign(
     //         {},
     //         target,
     //         {
