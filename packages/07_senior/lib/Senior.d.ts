@@ -5,15 +5,32 @@ export declare class Senior {
     events: EventEmitter;
     homePath: string;
     packageJsonFile: string;
-    constructor(name: any, modulePrefix?: string);
+    constructor(name: string, modulePrefix?: string);
     ensureRequirements(): Promise<void>;
-    list(): {};
-    install(moduleName: any): Promise<boolean>;
-    uninstall(moduleName: any): Promise<boolean>;
-    getModulePath(moduleName: any): string;
-    getModuleIndex(moduleName: any): string;
-    getModules(): {};
-    load(moduleName: any, globals: any): any;
-    loadAll(globals: any): {};
+    list(): {
+        [key: string]: string;
+    };
+    install(moduleName: string): Promise<boolean>;
+    uninstall(moduleName: string): Promise<boolean>;
+    getModulePath(moduleName: string): string;
+    getModuleIndex(moduleName: string): string;
+    getModules(): {
+        [key: string]: string;
+    };
+    loadFile(filepath: string, globals: {
+        [key: string]: any;
+    }): any;
+    load(moduleName: string, globals: {
+        [key: string]: any;
+    }, loader?: (filepath: string, globals: {
+        [key: string]: any;
+    }) => any): any;
+    loadAll(globals: {
+        [key: string]: any;
+    }, loader?: (filepath: string, globals: {
+        [key: string]: any;
+    }) => any): {
+        [key: string]: any;
+    };
 }
 export default Senior;

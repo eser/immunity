@@ -13,7 +13,7 @@ export class Senior {
     homePath: string;
     packageJsonFile: string;
 
-    constructor(name, modulePrefix = '') {
+    constructor(name: string, modulePrefix: string = '') {
         this.name = name;
         this.modulePrefix = modulePrefix;
 
@@ -23,7 +23,7 @@ export class Senior {
         this.packageJsonFile = path.join(this.homePath, 'package.json');
     }
 
-    async ensureRequirements() {
+    async ensureRequirements(): Promise<void> {
         await cofounder.fs.mkdirP(this.homePath);
 
         try {
@@ -36,7 +36,7 @@ export class Senior {
         }
     }
 
-    list() {
+    list(): { [key: string]: string } {
         let dependencies = {};
 
         try {
@@ -55,7 +55,7 @@ export class Senior {
         return dependencies;
     }
 
-    async install(moduleName) {
+    async install(moduleName: string): Promise<boolean> {
         await this.ensureRequirements();
 
         const moduleName_ = `${this.modulePrefix}${moduleName}`;
@@ -71,7 +71,7 @@ export class Senior {
         return false;
     }
 
-    async uninstall(moduleName) {
+    async uninstall(moduleName: string): Promise<boolean> {
         await this.ensureRequirements();
 
         const moduleName_ = `${this.modulePrefix}${moduleName}`;
@@ -87,11 +87,11 @@ export class Senior {
         return false;
     }
 
-    getModulePath(moduleName) {
+    getModulePath(moduleName: string): string {
         return path.join(this.homePath, 'node_modules', moduleName);
     }
 
-    getModuleIndex(moduleName) {
+    getModuleIndex(moduleName: string): string {
         const pathstr = this.getModulePath(moduleName),
             modulePackage = path.join(pathstr, 'package.json');
 
@@ -112,21 +112,24 @@ export class Senior {
         return pathstr;
     }
 
-    getModules() {
+    getModules(): { [key: string]: string } {
         const list = this.list();
 
         let result = {};
 
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, { [dependencyKey]: this.getModuleIndex(dependencyKey) });
+            result = immunity.appendToObject(
+                result,
+                {
+                    [dependencyKey]: this.getModuleIndex(dependencyKey)
+                }
+            );
         }
 
         return result;
     }
 
-    load(moduleName, globals) {
-        const moduleIndex = this.getModuleIndex(moduleName);
-
+    loadFile(filepath: string, globals: { [key: string]: any }): any {
         let gBackups = {};
 
         for (const globalKey of Object.keys(globals)) {
@@ -135,7 +138,7 @@ export class Senior {
         }
 
         try {
-            const loadedModule = require(moduleIndex);
+            const loadedModule = require(filepath);
 
             return loadedModule;
         }
@@ -153,13 +156,24 @@ export class Senior {
         return null;
     }
 
-    loadAll(globals) {
+    load(moduleName: string, globals: { [key: string]: any }, loader: (filepath: string, globals: { [key: string]: any }) => any = this.loadFile): any {
+        const moduleIndex = this.getModuleIndex(moduleName);
+
+        return loader(moduleIndex, globals);
+    }
+
+    loadAll(globals: { [key: string]: any }, loader: (filepath: string, globals: { [key: string]: any }) => any = this.loadFile): { [key: string]: any } {
         const list = this.list();
 
         let result = {};
 
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, { [dependencyKey]: this.load(dependencyKey, globals) });
+            result = immunity.appendToObject(
+                result,
+                {
+                    [dependencyKey]: this.load(dependencyKey, globals, loader)
+                }
+            );
         }
 
         return result;

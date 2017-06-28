@@ -81,19 +81,20 @@ class Senior {
         const list = this.list();
         let result = {};
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, { [dependencyKey]: this.getModuleIndex(dependencyKey) });
+            result = immunity.appendToObject(result, {
+                [dependencyKey]: this.getModuleIndex(dependencyKey)
+            });
         }
         return result;
     }
-    load(moduleName, globals) {
-        const moduleIndex = this.getModuleIndex(moduleName);
+    loadFile(filepath, globals) {
         let gBackups = {};
         for (const globalKey of Object.keys(globals)) {
             gBackups = immunity.appendToObject(gBackups, { [globalKey]: global[globalKey] });
             global[globalKey] = globals[globalKey];
         }
         try {
-            const loadedModule = require(moduleIndex);
+            const loadedModule = require(filepath);
             return loadedModule;
         }
         catch (ex) {
@@ -108,11 +109,17 @@ class Senior {
         }
         return null;
     }
-    loadAll(globals) {
+    load(moduleName, globals, loader = this.loadFile) {
+        const moduleIndex = this.getModuleIndex(moduleName);
+        return loader(moduleIndex, globals);
+    }
+    loadAll(globals, loader = this.loadFile) {
         const list = this.list();
         let result = {};
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, { [dependencyKey]: this.load(dependencyKey, globals) });
+            result = immunity.appendToObject(result, {
+                [dependencyKey]: this.load(dependencyKey, globals, loader)
+            });
         }
         return result;
     }

@@ -1,9 +1,11 @@
 import { Maester } from './Maester';
+import { BaseException } from './exceptions/BaseException';
 
 const maester = new Maester();
 
 export {
-    Maester
+    Maester,
+    BaseException
 };
 
 export default maester;
