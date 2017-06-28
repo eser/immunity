@@ -6,28 +6,50 @@ export declare class Validator {
         value: any;
         errors: ConsultationError[] | undefined;
     }>;
-    processSingleParameter(childKey: string, child: Rule, argv: object): Promise<{
+    processSingleParameter(childKey: string, child: Rule, argv: {
+        [key: string]: any;
+    }): Promise<{
         values: any;
         errors: ConsultationError[] | undefined;
-        argvRemainder: object;
+        argvRemainder: {
+            [key: string]: any;
+        };
     }>;
-    processParameters(children: RuleCollection, argv: object): Promise<{
+    processParameters(children: RuleCollection, argv: {
+        [key: string]: any;
+    }): Promise<{
         values: {};
         errors: {};
-        argvRemainder: object;
+        argvRemainder: {
+            [key: string]: any;
+        };
     }>;
-    processSingleCommand(childKey: string, child: Rule, argv: object): {
+    processSingleCommand(childKey: string, child: Rule, argv: {
+        [key: string]: any;
+    }): {
         commandKey: string;
-        argvRemainder: object;
+        argvRemainder: {
+            [key: string]: any;
+        };
     } | {
         commandKey: undefined;
-        argvRemainder: object;
+        argvRemainder: {
+            [key: string]: any;
+        };
     };
-    processCommands(children: RuleCollection, argv: object): {
+    processCommands(children: RuleCollection, argv: {
+        [key: string]: any;
+    }): {
         commandKey: string | undefined;
-        argvRemainder: object;
+        argvRemainder: {
+            [key: string]: any;
+        };
     };
-    validateSingle(rule: Rule, argv: object): any;
-    validate(rules: Rule, argv: object): Promise<ConsultationResult>;
+    validateSingle(rule: Rule, argv: {
+        [key: string]: any;
+    }): any;
+    validate(rules: Rule, argv: {
+        [key: string]: any;
+    }): Promise<ConsultationResult>;
 }
 export default Validator;

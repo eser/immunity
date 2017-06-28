@@ -6,10 +6,10 @@ import EventEmitter = require('es6-eventemitter');
 export class Stream extends EventEmitter {
     readable: boolean;
 
-    pipe(destination, options) {
+    pipe(destination, options?): any {
         const defaultOptions = {};
 
-        const options_: any = (options === undefined) ?
+        const options_: { [key: string]: any } = (options === undefined) ?
                 defaultOptions :
                 immunity.appendToObject(options, defaultOptions);
 

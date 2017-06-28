@@ -53,8 +53,9 @@ class Validator {
             errors = immunity.appendToArray(errors, { error: `minimum length violation for ${childKey}` });
         }
         if (child.validate !== undefined) {
+            const validateMethod = child.validate;
             newValue.forEach((currentValue) => {
-                const validationMethodResult = await child.validate(currentValue);
+                const validationMethodResult = await validateMethod(currentValue);
                 if (validationMethodResult !== true) {
                     errors = immunity.appendToArray(errors, { error: `validation failed for ${childKey}. value is "${currentValue}": ${validationMethodResult}` });
                 }

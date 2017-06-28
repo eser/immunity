@@ -1,6 +1,6 @@
 export declare enum Types {
-    command,
-    stringParameter,
-    booleanParameter,
+    command = "command",
+    stringParameter = "stringParameter",
+    booleanParameter = "booleanParameter",
 }
 export default Types;

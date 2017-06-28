@@ -16,21 +16,21 @@ export class EventEmitter {
         this.emitQueue = [];
     }
 
-    getMaxListeners() {
+    getMaxListeners(): number {
         return this.maxListeners;
     }
 
-    setMaxListeners(value) {
+    setMaxListeners(value: number): EventEmitter {
         this.maxListeners = value;
 
         return this;
     }
 
-    eventNames() {
+    eventNames(): string[] {
         return Object.getOwnPropertyNames(this.events);
     }
 
-    listenerCount(eventName) {
+    listenerCount(eventName: string): number {
         const available = this.events.hasOwnProperty(eventName);
 
         if (!available) {
@@ -42,7 +42,7 @@ export class EventEmitter {
         return eventListeners.on.length + eventListeners.once.length;
     }
 
-    listeners(eventName, exists) {
+    listeners(eventName: string, exists): any {
         const available = this.events.hasOwnProperty(eventName);
 
         if (exists) {
@@ -61,7 +61,7 @@ export class EventEmitter {
         );
     }
 
-    emit(eventName, ...args) {
+    emit(eventName: string, ...args): boolean {
         if (!this.events.hasOwnProperty(eventName)) {
             return false;
         }
@@ -91,7 +91,7 @@ export class EventEmitter {
         return true;
     }
 
-    async emitAsync(eventName, ...args) {
+    async emitAsync(eventName: string, ...args): Promise<boolean> {
         if (!this.events.hasOwnProperty(eventName)) {
             return false;
         }
@@ -132,7 +132,7 @@ export class EventEmitter {
         return true;
     }
 
-    on(eventName, listener, context?, prepend?) {
+    on(eventName: string, listener, context?, prepend?): EventEmitter {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -168,7 +168,7 @@ export class EventEmitter {
         return this;
     }
 
-    once(eventName, listener, context?, prepend?) {
+    once(eventName: string, listener, context?, prepend?): EventEmitter {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -204,7 +204,7 @@ export class EventEmitter {
         return this;
     }
 
-    off(eventName, listener) {
+    off(eventName: string, listener): EventEmitter {
         const listenerRemoveFilter = (item) => item.listener !== listener;
 
         if (eventName in this.events) {
@@ -223,23 +223,23 @@ export class EventEmitter {
         return this;
     }
 
-    addListener(eventName, listener, context?) {
+    addListener(eventName: string, listener, context?): EventEmitter {
         return this.on(eventName, listener, context, false);
     }
 
-    prependListener(eventName, listener, context?) {
+    prependListener(eventName: string, listener, context?): EventEmitter {
         return this.on(eventName, listener, context, true);
     }
 
-    prependOnceListener(eventName, listener, context?) {
+    prependOnceListener(eventName: string, listener, context?): EventEmitter {
         return this.once(eventName, listener, context, true);
     }
 
-    removeListener(eventName, listener) {
+    removeListener(eventName: string, listener): EventEmitter {
         return this.off(eventName, listener);
     }
 
-    removeAllListeners(eventName) {
+    removeAllListeners(eventName: string): void {
         if (eventName === undefined) {
             this.events = {};
 
@@ -249,11 +249,11 @@ export class EventEmitter {
         this.events = immunity.removeKeyFromObject(this.events, eventName);
     }
 
-    pause() {
+    pause(): void {
         this.paused = true;
     }
 
-    resume() {
+    resume(): void {
         if (!this.paused) {
             return;
         }

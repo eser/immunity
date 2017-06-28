@@ -67,8 +67,10 @@ export class Validator {
         }
 
         if (child.validate !== undefined) {
+            const validateMethod = child.validate;
+
             newValue.forEach((currentValue) => {
-                const validationMethodResult = await child.validate(currentValue);
+                const validationMethodResult = await validateMethod(currentValue);
 
                 if (validationMethodResult !== true) {
                     errors = immunity.appendToArray(
@@ -85,7 +87,7 @@ export class Validator {
         };
     }
 
-    async processSingleParameter(childKey: string, child: Rule, argv: object) {
+    async processSingleParameter(childKey: string, child: Rule, argv: { [key: string]: any }) {
         let argvRemainder = argv,
             errors: ConsultationError[] | undefined,
             values;
@@ -121,7 +123,7 @@ export class Validator {
         };
     }
 
-    async processParameters(children: RuleCollection, argv: object) {
+    async processParameters(children: RuleCollection, argv: { [key: string]: any }) {
         let argvRemainder = argv,
             values = {},
             errors = {};
@@ -153,7 +155,7 @@ export class Validator {
         };
     }
 
-    processSingleCommand(childKey: string, child: Rule, argv: object) {
+    processSingleCommand(childKey: string, child: Rule, argv: { [key: string]: any }) {
         let argvRemainder = argv;
 
         const argvKeys = Validator.getArgvKeys(child, childKey, (key) => argvRemainder._.indexOf(key) >= 0);
@@ -173,7 +175,7 @@ export class Validator {
         };
     }
 
-    processCommands(children: RuleCollection, argv: object) {
+    processCommands(children: RuleCollection, argv: { [key: string]: any }) {
         let argvRemainder = argv,
             commandKey: string | undefined;
 
@@ -209,7 +211,7 @@ export class Validator {
         };
     }
 
-    async validateSingle(rule: Rule, argv: object) {
+    async validateSingle(rule: Rule, argv: { [key: string]: any }) {
         let commandId: string | undefined;
         const children = await getRuleChildren(rule);
 
@@ -253,7 +255,7 @@ export class Validator {
         };
     }
 
-    async validate(rules: Rule, argv: object): Promise<ConsultationResult> {
+    async validate(rules: Rule, argv: { [key: string]: any }): Promise<ConsultationResult> {
         const result = await this.validateSingle(rules, argv);
 
         // TODO don't throw any exception if argvRemainder._.length > 0 && lastCommand.strict == false

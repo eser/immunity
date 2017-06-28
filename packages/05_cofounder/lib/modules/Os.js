@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const childProcess = require("child_process");
 const immunity = require("immunity");
+const emptyArray = [];
 class Os {
-    shell(command, args = [], env) {
+    shell(command, args = emptyArray, env) {
         const env_ = (env === undefined) ?
             process.env :
             immunity.appendToObject(process.env, env);

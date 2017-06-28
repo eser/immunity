@@ -1,8 +1,10 @@
 import childProcess = require('child_process');
 import immunity = require('immunity');
 
+const emptyArray = [];
+
 export class Os {
-    shell(command, args = [], env) {
+    shell(command: string, args = emptyArray, env?: { [key: string]: string }) {
         const env_ = (env === undefined) ?
             process.env :
             immunity.appendToObject(process.env, env);
