@@ -43,8 +43,8 @@
   "bin": {},
   "dependencies": {
     "colors": "^1.1.2",
-    "es6-eventemitter": "^0.7.4",
-    "immunity": "^0.7.4",
-    "ponyfills": "^0.7.4"
+    "es6-eventemitter": "^0.7.5",
+    "immunity": "^0.7.5",
+    "ponyfills": "^0.7.5"
   }
 }
