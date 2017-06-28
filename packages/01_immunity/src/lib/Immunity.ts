@@ -1,4 +1,4 @@
-import { assign } from './utils/assign';
+import { assign } from 'ponyfills';
 
 export class Immunity {
     copy(instance: Object): Object {

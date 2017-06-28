@@ -1,13 +1,10 @@
 {
-  "name": "immunity",
-  "description": "Library for not mutating existing data structures",
+  "name": "ponyfills",
+  "description": "a set of modules exports native versions or their alternate implementations if native ones are not available",
   "keywords": [
-    "immutable",
-    "immunity",
-    "functional",
-    "data structure",
-    "mutation",
-    "mutate"
+    "ponyfill",
+    "polyfill",
+    "assign"
   ],
   "version": "0.7.1",
   "homepage": "",
@@ -41,8 +38,5 @@
     "lib",
     "bin"
   ],
-  "bin": {},
-  "dependencies": {
-    "ponyfills": "^0.7.1"
-  }
+  "bin": {}
 }

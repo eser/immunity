@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const assign_1 = require("./utils/assign");
+const ponyfills_1 = require("ponyfills");
 class Immunity {
     copy(instance) {
         const type = instance.constructor;
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
-                return assign_1.assign(new type(), obj, {
+                return ponyfills_1.assign(new type(), obj, {
                     [itemKey]: this.copy(instance[itemKey])
                 });
             }
-            return assign_1.assign(new type(), obj, {
+            return ponyfills_1.assign(new type(), obj, {
                 [itemKey]: instance[itemKey]
             });
         }, new type());
@@ -28,10 +28,10 @@ class Immunity {
         ];
     }
     appendToObject(instance, ...values) {
-        return assign_1.assign({}, instance, ...values);
+        return ponyfills_1.assign({}, instance, ...values);
     }
     prependToObject(instance, ...values) {
-        return assign_1.assign({}, ...values, instance);
+        return ponyfills_1.assign({}, ...values, instance);
     }
     pickFromArray(instance, items) {
         return instance.reduce((obj, itemValue, itemKey) => {
@@ -55,13 +55,13 @@ class Immunity {
         return keys.reduce((obj, itemKey) => {
             if (items.indexOf(itemKey) !== -1) {
                 return {
-                    items: assign_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
+                    items: ponyfills_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
                     remainder: obj.remainder
                 };
             }
             return {
                 items: obj.items,
-                remainder: assign_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+                remainder: ponyfills_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
             };
         }, {
             items: {},
@@ -82,13 +82,13 @@ class Immunity {
             if (index < offset) {
                 index += 1;
                 return {
-                    items: assign_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
+                    items: ponyfills_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
                     remainder: obj.remainder
                 };
             }
             return {
                 items: obj.items,
-                remainder: assign_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+                remainder: ponyfills_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
             };
         }, {
             items: {},
@@ -103,7 +103,7 @@ class Immunity {
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (index < n) {
                 index += 1;
-                return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
+                return ponyfills_1.assign({}, obj, { [itemKey]: instance[itemKey] });
             }
             return obj;
         }, {});
@@ -116,7 +116,7 @@ class Immunity {
         let index = 0;
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (index >= offset) {
-                return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
+                return ponyfills_1.assign({}, obj, { [itemKey]: instance[itemKey] });
             }
             index += 1;
             return obj;
@@ -128,7 +128,7 @@ class Immunity {
     filterObject(instance, predicate) {
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (predicate(itemKey, instance[itemKey])) {
-                return assign_1.assign({}, obj, {
+                return ponyfills_1.assign({}, obj, {
                     [itemKey]: instance[itemKey]
                 });
             }
@@ -141,7 +141,7 @@ class Immunity {
     removeKeyFromObject(instance, ...keys) {
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (keys.indexOf(itemKey) === -1) {
-                return assign_1.assign({}, obj, {
+                return ponyfills_1.assign({}, obj, {
                     [itemKey]: instance[itemKey]
                 });
             }
@@ -151,7 +151,7 @@ class Immunity {
     removeValueFromObject(instance, ...values) {
         return Object.keys(instance).reduce((obj, itemKey) => {
             if (values.indexOf(instance[itemKey]) === -1) {
-                return assign_1.assign({}, obj, {
+                return ponyfills_1.assign({}, obj, {
                     [itemKey]: instance[itemKey]
                 });
             }
@@ -162,7 +162,7 @@ class Immunity {
         return arrays.reduce((obj, array) => [...obj, ...array], []);
     }
     mergeObjects(...objects) {
-        return assign_1.assign({}, ...objects);
+        return ponyfills_1.assign({}, ...objects);
     }
 }
 exports.Immunity = Immunity;
