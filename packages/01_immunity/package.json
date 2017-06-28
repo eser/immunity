@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.7.5",
+  "version": "0.8.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -44,6 +44,6 @@
   ],
   "bin": {},
   "dependencies": {
-    "ponyfills": "^0.7.5"
+    "ponyfills": "^0.8.0"
   }
 }

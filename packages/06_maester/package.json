@@ -7,7 +7,7 @@
     "handling",
     "log"
   ],
-  "version": "0.7.5",
+  "version": "0.8.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -43,8 +43,8 @@
   "bin": {},
   "dependencies": {
     "colors": "^1.1.2",
-    "es6-eventemitter": "^0.7.5",
-    "immunity": "^0.7.5",
-    "ponyfills": "^0.7.5"
+    "es6-eventemitter": "^0.8.0",
+    "immunity": "^0.8.0",
+    "ponyfills": "^0.8.0"
   }
 }

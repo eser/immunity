@@ -2,7 +2,7 @@
   "name": "enthusiast",
   "description": "A stream library for working on both node and web platforms",
   "keywords": [],
-  "version": "0.7.5",
+  "version": "0.8.0",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -37,7 +37,7 @@
   ],
   "bin": {},
   "dependencies": {
-    "es6-eventemitter": "^0.7.5",
-    "immunity": "^0.7.5"
+    "es6-eventemitter": "^0.8.0",
+    "immunity": "^0.8.0"
   }
 }
