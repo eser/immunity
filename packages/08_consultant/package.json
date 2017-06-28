@@ -16,7 +16,7 @@
     "cli",
     "line"
   ],
-  "version": "0.7.1",
+  "version": "0.7.2",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -52,8 +52,8 @@
   "dependencies": {
     "@types/node": "^7.0.31",
     "colors": "^1.1.2",
-    "evangelist": "^0.7.1",
-    "immunity": "^0.7.1",
+    "evangelist": "^0.7.2",
+    "immunity": "^0.7.2",
     "inquirer": "^3.1.0",
     "yargs-parser": "^7.0.0"
   }

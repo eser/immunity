@@ -8,7 +8,7 @@
     "npm",
     "package"
   ],
-  "version": "0.7.1",
+  "version": "0.7.2",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -43,8 +43,8 @@
   "bin": {},
   "dependencies": {
     "@types/node": "^7.0.31",
-    "cofounder": "^0.7.1",
-    "es6-eventemitter": "^0.7.1",
-    "immunity": "^0.7.1"
+    "cofounder": "^0.7.2",
+    "es6-eventemitter": "^0.7.2",
+    "immunity": "^0.7.2"
   }
 }
