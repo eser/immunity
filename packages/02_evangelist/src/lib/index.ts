@@ -1,5 +1,7 @@
-import { Evangelist } from './Evangelist';
+import { pipe } from './pipe/';
+import { wrap } from './wrap/';
 
-const evangelist = new Evangelist();
-
-export = evangelist;
+export = {
+    pipe,
+    wrap
+};

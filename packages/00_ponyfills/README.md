@@ -13,7 +13,7 @@ Ponyfills provides a set of modules exports native versions or their alternate i
 For example, to ensure Object.assign's availability:
 
 ```
-import { assign } from 'polyfills';
+import { assign } from 'ponyfills';
 
 const test = assign({}, { test: true });
 

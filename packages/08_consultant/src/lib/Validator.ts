@@ -1,5 +1,5 @@
 import immunity = require('immunity');
-import { assign } from 'ponyfills';
+import { assign } from 'ponyfills/lib/assign';
 import { ConsultationResult, ConsultationError } from './Consultation';
 import { Rule, RuleCollection, ValidateMethod, getRuleChildren } from './Rule';
 import { Types } from './Types';

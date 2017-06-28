@@ -1,4 +1,4 @@
-import { assign } from 'ponyfills';
+import { assign } from 'ponyfills/lib/assign';
 
 export function flexibleClass(definition) {
     if (definition instanceof Function) {

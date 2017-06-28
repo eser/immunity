@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const immunity = require("immunity");
-const ponyfills_1 = require("ponyfills");
+const assign_1 = require("ponyfills/lib/assign");
 const Rule_1 = require("./Rule");
 const Types_1 = require("./Types");
 class Validator {
@@ -161,7 +161,7 @@ class Validator {
                 }
             }
             if (commandKey !== undefined) {
-                argvRemainder = ponyfills_1.assign({}, argvRemainder, { _: argvRemainder._.slice(1) });
+                argvRemainder = assign_1.assign({}, argvRemainder, { _: argvRemainder._.slice(1) });
             }
         }
         return {
