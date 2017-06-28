@@ -40,9 +40,11 @@
   ],
   "bin": {},
   "dependencies": {
-    "@types/node": "^7.0.31",
     "glob-all": "^3.1.0",
     "glob-parent": "^3.1.0",
     "immunity": "^0.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.31"
   }
 }

@@ -42,9 +42,11 @@
   ],
   "bin": {},
   "dependencies": {
-    "@types/node": "^7.0.31",
     "cofounder": "^0.7.2",
     "es6-eventemitter": "^0.7.2",
     "immunity": "^0.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.31"
   }
 }
