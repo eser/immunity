@@ -6,7 +6,7 @@
     "file",
     "system"
   ],
-  "version": "0.7.2",
+  "version": "0.7.3",
   "homepage": "",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -42,7 +42,7 @@
   "dependencies": {
     "glob-all": "^3.1.0",
     "glob-parent": "^3.1.0",
-    "immunity": "^0.7.2"
+    "immunity": "^0.7.3"
   },
   "devDependencies": {
     "@types/node": "^7.0.31"
