@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class BaseException {
     constructor(input, exception = null) {
-        Object.keys(input).forEach((key) => {
+        for (let key in input) {
             if (key in this) {
-                return;
+                continue;
             }
             this[key] = input[key];
-        });
+        }
         this.exception = exception;
     }
     static wrap(input, ex) {

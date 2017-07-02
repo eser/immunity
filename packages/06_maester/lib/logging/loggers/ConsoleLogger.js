@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class ConsoleLogger {
-    constructor(owner) {
-        this.owner = owner;
+    constructor(formatter) {
+        this.formatter = formatter;
     }
     log(severity, message) {
-        const s = this.owner.severities[severity];
-        console.log(this.owner.colors[s.color](s.label), message);
+        console.dir(this.formatter.format(severity, message), { depth: null });
     }
 }
 exports.ConsoleLogger = ConsoleLogger;

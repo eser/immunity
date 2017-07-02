@@ -2,13 +2,13 @@ export class BaseException {
     exception: any;
 
     constructor(input, exception = null) {
-        Object.keys(input).forEach((key) => {
+        for (let key in input) {
             if (key in this) {
-                return;
+                continue;
             }
 
             this[key] = input[key];
-        });
+        }
 
         this.exception = exception;
     }

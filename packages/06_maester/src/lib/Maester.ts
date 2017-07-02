@@ -1,55 +1,36 @@
-import EventEmitter = require('es6-eventemitter');
-import immunity = require('immunity');
+import { EventEmitter } from 'es6-eventemitter/lib/esm';
 import colors = require('colors/safe');
-import { BaseException } from './exceptions/BaseException';
-import { ConsoleLogger } from './loggers/ConsoleLogger';
-import { Logging } from './Logging';
+import { LogManager, SeverityType } from './logging';
+import { ExceptionManager } from './exceptions/';
 
 export class Maester {
     events: EventEmitter;
     colors: any;
 
-    exception: any;
-    logging: Logging;
+    logging: LogManager;
+    exceptions: ExceptionManager;
 
     paused: boolean;
-    severities: object;
 
     constructor() {
         this.events = new EventEmitter();
         this.colors = colors;
 
-        this.exception = BaseException;
-
-        this.logging = new Logging(this);
-        this.logging.addLoggerType('console', ConsoleLogger);
+        this.logging = new LogManager(this.events, this.colors);
+        this.exceptions = new ExceptionManager();
 
         this.paused = false;
 
-        this.severities = {};
-
-        this.setSeverities({
-            debug: { color: 'gray', label: 'debug' },
-            info: { color: 'white', label: 'info' },
-            warn: { color: 'yellow', label: 'warn' },
-            error: { color: 'red', label: 'err!' }
-        });
+        this.logging.linkSeverities(this);
     }
 
-    setSeverities(severities) {
-        for (const severity of Object.keys(this.severities)) {
-            this[severity] = undefined;
-            delete this[severity];
-        }
-
-        this.severities = immunity.copy(severities);
-
-        for (const severity of Object.keys(this.severities)) {
-            this[severity] = (message) => this.log(severity, message);
-        }
+    setSeverities(severities: { [key: string]: SeverityType }): void {
+        this.logging.unlinkSeverities(this);
+        this.logging.severities = severities;
+        this.logging.linkSeverities(this);
     }
 
-    resume() {
+    resume(): void {
         if (!this.paused) {
             return;
         }
@@ -58,7 +39,7 @@ export class Maester {
         this.paused = false;
     }
 
-    pause() {
+    pause(): void {
         if (this.paused) {
             return;
         }
@@ -67,12 +48,22 @@ export class Maester {
         this.paused = true;
     }
 
-    log(severity, message) {
-        this.events.emit('log', severity, message, this);
+    log(severity, message): void {
+        this.events.emit(
+            'log',
+            this.logging.severities[severity],
+            message,
+            this
+        );
     }
 
-    async logAsync(severity, message) {
-        await this.events.emitAsync('log', severity, message, this);
+    async logAsync(severity, message): Promise<void> {
+        await this.events.emitAsync(
+            'log',
+            this.logging.severities[severity],
+            message,
+            this
+        );
     }
 }
 

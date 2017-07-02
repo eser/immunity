@@ -1,14 +1,16 @@
-import EventEmitter = require('es6-eventemitter');
-import { Logging } from './Logging';
+import { EventEmitter } from 'es6-eventemitter/lib/esm';
+import { LogManager, SeverityType } from './logging';
+import { ExceptionManager } from './exceptions/';
 export declare class Maester {
     events: EventEmitter;
     colors: any;
-    exception: any;
-    logging: Logging;
+    logging: LogManager;
+    exceptions: ExceptionManager;
     paused: boolean;
-    severities: object;
     constructor();
-    setSeverities(severities: any): void;
+    setSeverities(severities: {
+        [key: string]: SeverityType;
+    }): void;
     resume(): void;
     pause(): void;
     log(severity: any, message: any): void;

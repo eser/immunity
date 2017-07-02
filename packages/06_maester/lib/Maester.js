@@ -1,36 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const EventEmitter = require("es6-eventemitter");
-const immunity = require("immunity");
+const esm_1 = require("es6-eventemitter/lib/esm");
 const colors = require("colors/safe");
-const BaseException_1 = require("./exceptions/BaseException");
-const ConsoleLogger_1 = require("./loggers/ConsoleLogger");
-const Logging_1 = require("./Logging");
+const logging_1 = require("./logging");
+const _1 = require("./exceptions/");
 class Maester {
     constructor() {
-        this.events = new EventEmitter();
+        this.events = new esm_1.EventEmitter();
         this.colors = colors;
-        this.exception = BaseException_1.BaseException;
-        this.logging = new Logging_1.Logging(this);
-        this.logging.addLoggerType('console', ConsoleLogger_1.ConsoleLogger);
+        this.logging = new logging_1.LogManager(this.events, this.colors);
+        this.exceptions = new _1.ExceptionManager();
         this.paused = false;
-        this.severities = {};
-        this.setSeverities({
-            debug: { color: 'gray', label: 'debug' },
-            info: { color: 'white', label: 'info' },
-            warn: { color: 'yellow', label: 'warn' },
-            error: { color: 'red', label: 'err!' }
-        });
+        this.logging.linkSeverities(this);
     }
     setSeverities(severities) {
-        for (const severity of Object.keys(this.severities)) {
-            this[severity] = undefined;
-            delete this[severity];
-        }
-        this.severities = immunity.copy(severities);
-        for (const severity of Object.keys(this.severities)) {
-            this[severity] = (message) => this.log(severity, message);
-        }
+        this.logging.unlinkSeverities(this);
+        this.logging.severities = severities;
+        this.logging.linkSeverities(this);
     }
     resume() {
         if (!this.paused) {
@@ -47,10 +33,10 @@ class Maester {
         this.paused = true;
     }
     log(severity, message) {
-        this.events.emit('log', severity, message, this);
+        this.events.emit('log', this.logging.severities[severity], message, this);
     }
     async logAsync(severity, message) {
-        await this.events.emitAsync('log', severity, message, this);
+        await this.events.emitAsync('log', this.logging.severities[severity], message, this);
     }
 }
 exports.Maester = Maester;
