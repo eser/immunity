@@ -8,6 +8,7 @@ export interface ConsultationError {
 
 export interface ConsultationResult {
     commandId?: string,
+    // tags: string[],
     values: object;
     isValid: boolean;
     isCancelled: boolean;

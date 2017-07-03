@@ -110,6 +110,8 @@ export class Validator {
     }
 
     async processSingleParameter(childKey: string, child: Rule, argv: { [key: string]: any }) {
+        // const tags: string[] = [];
+
         let argvRemainder = argv,
             errors: ConsultationError[] | undefined,
             values;
@@ -138,9 +140,16 @@ export class Validator {
             values = child.default;
         }
 
+        // if (values !== undefined && child.id !== undefined) {
+        //     if (child.type !== Types.booleanParameter || values === true || Array.isArray(values) && values.some(x => x === true)) {
+        //         tags.push(child.id);
+        //     }
+        // }
+
         return {
             values: values,
             errors: errors,
+            // tags: tags,
             argvRemainder: argvRemainder
         };
     }
@@ -149,6 +158,7 @@ export class Validator {
         let argvRemainder = argv,
             values = {},
             errors = {};
+            // tags: string[] = [];
 
         for (const childKey in children) {
             const child = children[childKey];
@@ -168,11 +178,16 @@ export class Validator {
             if (result.errors !== undefined) {
                 errors = immunity.appendToObject(errors, { [childKey]: result.errors });
             }
+
+            // if (result.tags.length > 0) {
+            //     tags = immunity.mergeArrays(tags, result.tags);
+            // }
         }
 
         return {
             values: values,
             errors: errors,
+            // tags: tags,
             argvRemainder: argvRemainder
         };
     }
@@ -240,12 +255,14 @@ export class Validator {
         let argvRemainder = argv,
             values = {},
             errors = {};
+            // tags: string[] = [];
 
         if (children !== undefined) {
             // parameters first
             const result1 = await this.processParameters(children, argvRemainder);
             values = immunity.mergeObjects(values, result1.values);
             errors = immunity.mergeObjects(errors, result1.errors);
+            // tags = immunity.mergeArrays(tags, result1.tags);
             argvRemainder = result1.argvRemainder;
 
             // locate command
@@ -271,6 +288,7 @@ export class Validator {
 
         return {
             commandId: commandId,
+            // tags: tags,
             values: values,
             errors: errors,
             argvRemainder: argvRemainder
@@ -287,6 +305,7 @@ export class Validator {
         // TODO
         return {
             commandId: result.commandId,
+            // tags: result.tags,
             values: result.values,
             errors: result.errors,
             isValid: Object.keys(result.errors).length === 0,

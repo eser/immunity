@@ -8,7 +8,13 @@
 
 ## What is the Ponyfills?
 
-Ponyfills provides a set of modules exports native versions or their alternate implementations if native ones are not available.
+Ponyfills provides a set of modules, which work natively in modern node.js runtime and modern browsers, however, it needs extra fallback code in order to run in some environments.
+
+It simply tests the availability of native functionality first, then delivers the closest/best alternative implementation if native ones are not available.
+
+Compared to its alternatives, ponyfills doesn't assign its modules anywhere or doesn't patch anything in the runtime environment. Instead, it just delivers the required functionality with ES6 modules or commonjs.
+
+Plus, as a library, Ponyfills is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Ponyfills package.
 
 For example, to ensure Object.assign's availability:
 
@@ -19,6 +25,22 @@ const test = assign({}, { test: true });
 
 console.log(`Result: ${test}`);
 console.log(`Is Native: ${assign == Object.assign}`);
+```
+
+Alternative usage I:
+
+```
+import * as ponyfills from 'ponyfills';
+
+const test = ponyfills.assign({}, { test: true });
+```
+
+Alternative usage II:
+
+```
+import assign from 'ponyfills/lib/assign';
+
+const test = assign({}, { test: true });
 ```
 
 

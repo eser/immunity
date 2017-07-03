@@ -49,6 +49,7 @@ const rules = {
         },
         tasks: {
             type: consultant.types.booleanParameter,
+            // id: 'tasks',
             aliases: [ 't' ],
             label: 'Tasks',
             description: 'Lists defined tasks',
@@ -67,6 +68,7 @@ const rules = {
         },
         version: {
             type: consultant.types.booleanParameter,
+            // id: 'version',
             aliases: [ 'v' ],
             label: 'Version',
             description: 'Displays the jsmake version',
@@ -75,6 +77,7 @@ const rules = {
         },
         help: {
             type: consultant.types.booleanParameter,
+            // id: 'help',
             aliases: [ 'h', '?' ],
             label: 'Help',
             description: 'Displays this help message',

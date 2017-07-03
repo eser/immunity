@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class Inquirer {
     async inquire(rules) {
         return Promise.resolve({
+            tags: [],
             values: {},
             isValid: false,
             isCancelled: true,
