@@ -8,13 +8,20 @@
 
 ## What is the Evangelist?
 
-Evangelist is a JavaScript library which allows you to override or wrap any function with another one.
+Evangelist is a modern JavaScript utility belt consists of reusable helper functions.
+
+Plus, as a library, Evangelist is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Evangelist package.
 
 
-## Example Usage
+## Quick start
+
+Execute `npm install evangelist` to install evangelist and its dependencies into your project directory.
+
+
+## Usage
 
 ```js
-import evangelist from 'evangelist';
+import * as evangelist from 'evangelist';
 
 // wrap - calculator sample
 let fnc = () => 5;
@@ -37,9 +44,10 @@ console.log(`slug: ${message}`); // outputs 'slug: hello-world'
 ```
 
 
-## Quick start
+## List of modules
 
-Execute `npm install evangelist` to install evangelist and its dependencies into your project directory.
+- pipe
+- wrap
 
 
 ## Todo List

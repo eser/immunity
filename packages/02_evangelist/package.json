@@ -1,6 +1,6 @@
 {
   "name": "evangelist",
-  "description": "Library for overriding or wrapping functions",
+  "description": "Method library consists of reusable helper functions to help you save time",
   "keywords": [
     "override",
     "overriding",

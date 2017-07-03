@@ -5,7 +5,7 @@
 | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | [ponyfills](packages/00_ponyfills/)                   | Ponyfills are provided as modules, which deliver native functions first if available   |
 | [immunity](packages/01_immunity/)                    | Method library for creating new immutable data from existing data structures           |
-| [evangelist](packages/02_evangelist/)                  | Library for overriding or wrapping functions                                           |
+| [evangelist](packages/02_evangelist/)                  | Method library consists of reusable helper functions to help you save time             |
 | [es6-eventemitter](packages/03_es6-eventemitter/)             | An Event Emitter alternative written in ES2015                                         |
 | [enthusiast](packages/04_enthusiast/)                  | A stream library for working on both node and web platforms                            |
 | [cofounder](packages/05_cofounder/)                   | Library offers additional file system functionalities to extend fs library             |
