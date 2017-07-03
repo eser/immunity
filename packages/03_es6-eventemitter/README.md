@@ -1,4 +1,4 @@
-# [ES6 EventEmitter](https://github.com/eserozvataf/jsmake-libraries)
+# [ES6-EventEmitter](https://github.com/eserozvataf/jsmake-libraries)
 
 [![npm version][npm-image]][npm-url]
 [![npm download][download-image]][npm-url]
@@ -6,15 +6,29 @@
 [![license][license-image]][license-url]
 
 
-## What is the ES6 EventEmitter?
+## What is the ES6-EventEmitter?
 
-This project is an alternative implementation of node.js's event emitter.
-
+ES6-EventEmitter is an alternative implementation of node.js's event emitter module. While maintaining the same API with node.js version, it also runs on browser environment.
 
 
 ## Quick start
 
 Execute `npm install es6-eventemitter` to install es6-eventemitter and its dependencies into your project directory.
+
+
+## Usage
+
+```js
+import EventEmitter from 'es6-eventemitter';
+
+const events = new EventEmitter();
+
+// subscribe on event 'test'
+events.on('test', (value) => { console.log(`event test: ${value}`); });
+
+// invoke event 'test' with parameters
+events.emit('test', 'hello world');
+```
 
 
 ## Todo List

@@ -1,6 +1,6 @@
 {
   "name": "es6-eventemitter",
-  "description": "An Event Emitter alternative written in ES2015",
+  "description": "An Event Emitter implementation written in ES2015, also runs on browsers",
   "keywords": [
     "events",
     "event",
