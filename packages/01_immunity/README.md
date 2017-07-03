@@ -8,12 +8,73 @@
 
 ## What is the Immunity?
 
-Immunity provides a set of helper methods that do not mutate existing data structures.
+Immunity is a set of helper methods in order to construct a new version of data without mutating/updating existing data structure in-place.
+
+Compared to its alternatives, immunity only provides utility functions instead of delivering new data types/structures as a solution.
+
+Additionally, as a library, Immunity is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Immunity package.
 
 
 ## Quick start
 
 Execute `npm install immunity` to install immunity and its dependencies into your project directory.
+
+
+## Usage
+
+For example, to append a new item to an existing array:
+
+```js
+import { appendToArray } from 'immunity';
+
+const source = [ 'a', 'b' ];
+const newOne = appendToArray(source, 'c');
+
+console.log(`Result: ${newOne}`);
+console.log(`Is Same: ${source === newOne}`);
+```
+
+Alternative usage I:
+
+```js
+import * as immunity from 'immunity';
+
+const source = [ 'a', 'b' ];
+const newOne = immunity.appendToArray(source, 'c');
+```
+
+Alternative usage II:
+
+```js
+import appendToArray from 'immunity/lib/appendToArray';
+
+const source = [ 'a', 'b' ];
+const newOne = appendToArray(source, 'c');
+```
+
+
+## List of modules
+
+- appendToArray
+- appendToObject
+- copy
+- dropFromArray
+- dropFromObject
+- filterArray
+- filterObject
+- mergeArrays
+- mergeObjects
+- pickFromArray
+- pickFromObject
+- prependToArray
+- prependToObject
+- removeFromArray
+- removeKeyFromObject
+- removeValueFromObject
+- splitArray
+- splitObject
+- takeFromArray
+- takeFromObject
 
 
 ## Todo List

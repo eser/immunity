@@ -16,20 +16,28 @@ Compared to its alternatives, ponyfills doesn't assign its modules anywhere or d
 
 Plus, as a library, Ponyfills is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Ponyfills package.
 
+
+## Quick start
+
+Execute `npm install ponyfills` to install ponyfills and its dependencies into your project directory.
+
+
+## Usage
+
 For example, to ensure Object.assign's availability:
 
-```
+```js
 import { assign } from 'ponyfills';
 
 const test = assign({}, { test: true });
 
 console.log(`Result: ${test}`);
-console.log(`Is Native: ${assign == Object.assign}`);
+console.log(`Is Native: ${assign === Object.assign}`);
 ```
 
 Alternative usage I:
 
-```
+```js
 import * as ponyfills from 'ponyfills';
 
 const test = ponyfills.assign({}, { test: true });
@@ -37,16 +45,16 @@ const test = ponyfills.assign({}, { test: true });
 
 Alternative usage II:
 
-```
+```js
 import assign from 'ponyfills/lib/assign';
 
 const test = assign({}, { test: true });
 ```
 
 
-## Quick start
+## List of modules
 
-Execute `npm install ponyfills` to install ponyfills and its dependencies into your project directory.
+- assign: [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 
 ## Todo List

@@ -1,6 +1,6 @@
 {
   "name": "ponyfills",
-  "description": "A set of ponyfills that deliver native functions as first choice",
+  "description": "Ponyfills are provided as modules, which deliver native functions first if available",
   "keywords": [
     "ponyfill",
     "polyfill",
