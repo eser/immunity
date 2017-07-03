@@ -8,12 +8,21 @@
 
 ## What is the Enthusiast?
 
-*No description yet.*
+Enthusiast is a stream library implementation runs on browsers and node.js.
+
+Additionally, as a library, Enthusiast is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Enthusiast package.
 
 
 ## Quick start
 
 Execute `npm install enthusiast` to install enthusiast and its dependencies into your project directory.
+
+
+## List of modules
+
+- Stream
+- Readable
+- Writable
 
 
 ## Todo List

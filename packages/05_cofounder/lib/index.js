@@ -1,5 +1,10 @@
 "use strict";
-const CoFounder_1 = require("./CoFounder");
-const cofounder = new CoFounder_1.CoFounder();
-module.exports = cofounder;
+const fs = require("./fs/");
+const json = require("./json/");
+const os = require("./os/");
+module.exports = {
+    fs,
+    json,
+    os
+};
 //# sourceMappingURL=index.js.map

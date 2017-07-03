@@ -4,5 +4,6 @@ const Stream_1 = require("./Stream");
 class Writable extends Stream_1.Stream {
 }
 exports.Writable = Writable;
+;
 exports.default = Writable;
 //# sourceMappingURL=Writable.js.map

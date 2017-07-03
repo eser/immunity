@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const immunity = require("immunity");
+const appendToArray_1 = require("immunity/lib/appendToArray");
+const appendToObject_1 = require("immunity/lib/appendToObject");
+const mergeArrays_1 = require("immunity/lib/mergeArrays");
+const prependToArray_1 = require("immunity/lib/prependToArray");
+const removeKeyFromObject_1 = require("immunity/lib/removeKeyFromObject");
 class EventEmitter {
     constructor() {
         this.events = {};
@@ -35,18 +39,18 @@ class EventEmitter {
             return [];
         }
         const eventListeners = this.events[eventName];
-        return immunity.mergeArrays(eventListeners.on.map((item) => item.listener), eventListeners.once.map((item) => item.listener));
+        return mergeArrays_1.mergeArrays(eventListeners.on.map((item) => item.listener), eventListeners.once.map((item) => item.listener));
     }
     emit(eventName, ...args) {
         if (!this.events.hasOwnProperty(eventName)) {
             return false;
         }
         if (this.paused) {
-            this.emitQueue = immunity.appendToArray(this.emitQueue, { async: false, eventName: eventName, params: args });
+            this.emitQueue = appendToArray_1.appendToArray(this.emitQueue, { async: false, eventName: eventName, params: args });
             return true;
         }
         const eventListeners = this.events[eventName], listenerCallDelegate = (item) => item.listener.apply(item.context, args);
-        this.events = immunity.appendToObject(this.events, {
+        this.events = appendToObject_1.appendToObject(this.events, {
             [eventName]: {
                 on: eventListeners.on,
                 once: []
@@ -61,7 +65,7 @@ class EventEmitter {
             return false;
         }
         if (this.paused) {
-            this.emitQueue = immunity.appendToArray(this.emitQueue, { async: true, eventName: eventName, params: args });
+            this.emitQueue = appendToArray_1.appendToArray(this.emitQueue, { async: true, eventName: eventName, params: args });
             return true;
         }
         const eventListeners = this.events[eventName], listenerCallDelegate = (item) => new Promise((resolve, reject) => {
@@ -72,22 +76,22 @@ class EventEmitter {
                 reject(err);
             }
         });
-        this.events = immunity.appendToObject(this.events, {
+        this.events = appendToObject_1.appendToObject(this.events, {
             [eventName]: {
                 on: eventListeners.on,
                 once: []
             }
         });
-        const result = immunity.mergeArrays(eventListeners.on.map(listenerCallDelegate), eventListeners.once.map(listenerCallDelegate));
+        const result = mergeArrays_1.mergeArrays(eventListeners.on.map(listenerCallDelegate), eventListeners.once.map(listenerCallDelegate));
         await Promise.all(result);
         return true;
     }
     on(eventName, listener, context, prepend) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = immunity.appendToObject(this.events, {
+            this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
-                    on: ((prepend) ? immunity.prependToArray : immunity.appendToArray)(eventListeners.on, {
+                    on: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.on, {
                         listener: listener,
                         context: context
                     }),
@@ -96,7 +100,7 @@ class EventEmitter {
             });
         }
         else {
-            this.events = immunity.appendToObject(this.events, {
+            this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
                     on: [
                         {
@@ -113,10 +117,10 @@ class EventEmitter {
     once(eventName, listener, context, prepend) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = immunity.appendToObject(this.events, {
+            this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
                     on: eventListeners.on,
-                    once: ((prepend) ? immunity.prependToArray : immunity.appendToArray)(eventListeners.once, {
+                    once: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.once, {
                         listener: listener,
                         context: context
                     })
@@ -124,7 +128,7 @@ class EventEmitter {
             });
         }
         else {
-            this.events = immunity.appendToObject(this.events, {
+            this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
                     on: [],
                     once: [
@@ -142,7 +146,7 @@ class EventEmitter {
         const listenerRemoveFilter = (item) => item.listener !== listener;
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = immunity.appendToObject(this.events, {
+            this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
                     on: eventListeners.on.filter(listenerRemoveFilter),
                     once: eventListeners.once.filter(listenerRemoveFilter)
@@ -168,7 +172,7 @@ class EventEmitter {
             this.events = {};
             return;
         }
-        this.events = immunity.removeKeyFromObject(this.events, eventName);
+        this.events = removeKeyFromObject_1.removeKeyFromObject(this.events, eventName);
     }
     pause() {
         this.paused = true;
@@ -191,5 +195,6 @@ class EventEmitter {
 }
 EventEmitter.defaultMaxListeners = 10;
 exports.EventEmitter = EventEmitter;
+;
 exports.default = EventEmitter;
 //# sourceMappingURL=EventEmitter.js.map

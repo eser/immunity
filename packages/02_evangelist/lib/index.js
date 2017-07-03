@@ -1,8 +1,8 @@
 "use strict";
-const _1 = require("./pipe/");
-const _2 = require("./wrap/");
+const pipe_1 = require("./pipe");
+const wrap_1 = require("./wrap");
 module.exports = {
-    pipe: _1.pipe,
-    wrap: _2.wrap
+    pipe: pipe_1.pipe,
+    wrap: wrap_1.wrap
 };
 //# sourceMappingURL=index.js.map

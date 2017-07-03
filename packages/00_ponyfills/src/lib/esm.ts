@@ -1,4 +1,4 @@
-import { assign, assignPolyfill } from './assign/';
+import { assign, assignPolyfill } from './assign';
 
 export {
     assign,

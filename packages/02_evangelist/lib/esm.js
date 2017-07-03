@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = require("./pipe/");
-exports.pipe = _1.pipe;
-const _2 = require("./wrap/");
-exports.wrap = _2.wrap;
+const pipe_1 = require("./pipe");
+exports.pipe = pipe_1.pipe;
+const wrap_1 = require("./wrap");
+exports.wrap = wrap_1.wrap;
 //# sourceMappingURL=esm.js.map

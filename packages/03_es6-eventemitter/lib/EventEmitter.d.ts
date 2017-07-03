@@ -1,3 +1,8 @@
+export declare type EmitQueueItemType = {
+    async: boolean;
+    eventName: string;
+    params: any;
+};
 export declare class EventEmitter {
     static defaultMaxListeners: number;
     events: {
@@ -5,11 +10,7 @@ export declare class EventEmitter {
     };
     maxListeners: number;
     paused: boolean;
-    emitQueue: Array<{
-        async: boolean;
-        eventName: string;
-        params: any;
-    }>;
+    emitQueue: Array<EmitQueueItemType>;
     constructor();
     getMaxListeners(): number;
     setMaxListeners(value: number): EventEmitter;

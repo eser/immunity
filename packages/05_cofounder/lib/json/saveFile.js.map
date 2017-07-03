@@ -1,0 +1,1 @@
+{"version":3,"file":"saveFile.js","sourceRoot":"","sources":["../../src/lib/json/saveFile.ts"],"names":[],"mappings":";;AAAA,+CAA4C;AAErC,KAAK,mBAAmB,OAAe,EAAE,aAAkB;IAC9D,MAAM,YAAY,GAAG,IAAI,CAAC,SAAS,CAAC,aAAa,EAAE,IAAI,EAAE,IAAI,CAAC,CAAC;IAE/D,MAAM,qBAAS,CAAC,OAAO,EAAE,YAAY,CAAC,CAAC;AAC3C,CAAC;AAJD,4BAIC;AAAA,CAAC;AAEF,kBAAe,QAAQ,CAAC"}

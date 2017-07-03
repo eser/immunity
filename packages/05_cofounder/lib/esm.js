@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CoFounder_1 = require("./CoFounder");
-exports.CoFounder = CoFounder_1.CoFounder;
-const cofounder = new CoFounder_1.CoFounder();
-exports.default = cofounder;
+const fs = require("./fs/");
+exports.fs = fs;
+const json = require("./json/");
+exports.json = json;
+const os = require("./os/");
+exports.os = os;
 //# sourceMappingURL=esm.js.map

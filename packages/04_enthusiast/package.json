@@ -1,6 +1,6 @@
 {
   "name": "enthusiast",
-  "description": "A stream library for working on both node and web platforms",
+  "description": "A stream library implementation runs on browsers and node.js",
   "keywords": [],
   "version": "0.8.1",
   "homepage": "",

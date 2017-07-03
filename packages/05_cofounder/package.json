@@ -1,6 +1,6 @@
 {
   "name": "cofounder",
-  "description": "Library offers additional file system functionalities to extend fs library",
+  "description": "Method library offers additional functionalities besides node.js's fs library",
   "keywords": [
     "fs",
     "file",

@@ -1,44 +1,44 @@
 "use strict";
-const _1 = require("./appendToArray/");
-const _2 = require("./appendToObject/");
-const _3 = require("./copy/");
-const _4 = require("./dropFromArray/");
-const _5 = require("./dropFromObject/");
-const _6 = require("./filterArray/");
-const _7 = require("./filterObject/");
-const _8 = require("./mergeArrays/");
-const _9 = require("./mergeObjects/");
-const _10 = require("./pickFromArray/");
-const _11 = require("./pickFromObject/");
-const _12 = require("./prependToArray/");
-const _13 = require("./prependToObject/");
-const _14 = require("./removeFromArray/");
-const _15 = require("./removeKeyFromObject/");
-const _16 = require("./removeValueFromObject/");
-const _17 = require("./splitArray/");
-const _18 = require("./splitObject/");
-const _19 = require("./takeFromArray/");
-const _20 = require("./takeFromObject/");
+const appendToArray_1 = require("./appendToArray");
+const appendToObject_1 = require("./appendToObject");
+const copy_1 = require("./copy");
+const dropFromArray_1 = require("./dropFromArray");
+const dropFromObject_1 = require("./dropFromObject");
+const filterArray_1 = require("./filterArray");
+const filterObject_1 = require("./filterObject");
+const mergeArrays_1 = require("./mergeArrays");
+const mergeObjects_1 = require("./mergeObjects");
+const pickFromArray_1 = require("./pickFromArray");
+const pickFromObject_1 = require("./pickFromObject");
+const prependToArray_1 = require("./prependToArray");
+const prependToObject_1 = require("./prependToObject");
+const removeFromArray_1 = require("./removeFromArray");
+const removeKeyFromObject_1 = require("./removeKeyFromObject");
+const removeValueFromObject_1 = require("./removeValueFromObject");
+const splitArray_1 = require("./splitArray");
+const splitObject_1 = require("./splitObject");
+const takeFromArray_1 = require("./takeFromArray");
+const takeFromObject_1 = require("./takeFromObject");
 module.exports = {
-    appendToArray: _1.appendToArray,
-    appendToObject: _2.appendToObject,
-    copy: _3.copy,
-    dropFromArray: _4.dropFromArray,
-    dropFromObject: _5.dropFromObject,
-    filterArray: _6.filterArray,
-    filterObject: _7.filterObject,
-    mergeArrays: _8.mergeArrays,
-    mergeObjects: _9.mergeObjects,
-    pickFromArray: _10.pickFromArray,
-    pickFromObject: _11.pickFromObject,
-    prependToArray: _12.prependToArray,
-    prependToObject: _13.prependToObject,
-    removeFromArray: _14.removeFromArray,
-    removeKeyFromObject: _15.removeKeyFromObject,
-    removeValueFromObject: _16.removeValueFromObject,
-    splitArray: _17.splitArray,
-    splitObject: _18.splitObject,
-    takeFromArray: _19.takeFromArray,
-    takeFromObject: _20.takeFromObject
+    appendToArray: appendToArray_1.appendToArray,
+    appendToObject: appendToObject_1.appendToObject,
+    copy: copy_1.copy,
+    dropFromArray: dropFromArray_1.dropFromArray,
+    dropFromObject: dropFromObject_1.dropFromObject,
+    filterArray: filterArray_1.filterArray,
+    filterObject: filterObject_1.filterObject,
+    mergeArrays: mergeArrays_1.mergeArrays,
+    mergeObjects: mergeObjects_1.mergeObjects,
+    pickFromArray: pickFromArray_1.pickFromArray,
+    pickFromObject: pickFromObject_1.pickFromObject,
+    prependToArray: prependToArray_1.prependToArray,
+    prependToObject: prependToObject_1.prependToObject,
+    removeFromArray: removeFromArray_1.removeFromArray,
+    removeKeyFromObject: removeKeyFromObject_1.removeKeyFromObject,
+    removeValueFromObject: removeValueFromObject_1.removeValueFromObject,
+    splitArray: splitArray_1.splitArray,
+    splitObject: splitObject_1.splitObject,
+    takeFromArray: takeFromArray_1.takeFromArray,
+    takeFromObject: takeFromObject_1.takeFromObject
 };
 //# sourceMappingURL=index.js.map

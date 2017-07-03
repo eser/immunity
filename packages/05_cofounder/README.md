@@ -10,6 +10,8 @@
 
 This project is designed to offer additional file system functionalities apart from node.js's bundled fs library.
 
+Plug, as a library, CoFounder is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole CoFounder package.
+
 
 ## Why CoFounder?
 
@@ -28,6 +30,31 @@ As an file system library it offers,
 ## Quick start
 
 Execute `npm install cofounder` to install cofounder and its dependencies into your project directory.
+
+
+## List of modules
+
+- fs.cp
+- fs.cpP
+- fs.glob
+- fs.globParent
+- fs.globParentOf
+- fs.lstat
+- fs.mkdir
+- fs.mkdirP
+- fs.mv
+- fs.mvP
+- fs.readdir
+- fs.readFile
+- fs.rm
+- fs.rmdir
+- fs.rmdirP
+- fs.rmP
+- fs.writeFile
+- fs.writeFileP
+- json.loadFile
+- json.saveFile
+- os.shell
 
 
 ## Todo List

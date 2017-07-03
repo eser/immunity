@@ -1,7 +1,7 @@
 // TODO credit and license to juliangruber/stream
 
-import immunity = require('immunity');
-import EventEmitter = require('es6-eventemitter');
+import { appendToObject } from 'immunity/lib/appendToObject';
+import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
 
 export class Stream extends EventEmitter {
     readable: boolean;
@@ -11,7 +11,7 @@ export class Stream extends EventEmitter {
 
         const options_: { [key: string]: any } = (options === undefined) ?
                 defaultOptions :
-                immunity.appendToObject(options, defaultOptions);
+                appendToObject(options, defaultOptions);
 
         // eslint-disable-next-line
         const source = this,
@@ -105,6 +105,6 @@ export class Stream extends EventEmitter {
 
         return destination;
     }
-}
+};
 
 export default Stream;

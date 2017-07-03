@@ -1,7 +1,7 @@
 "use strict";
-const _1 = require("./assign/");
+const assign_1 = require("./assign");
 module.exports = {
-    assign: _1.assign,
-    assignPolyfill: _1.assignPolyfill
+    assign: assign_1.assign,
+    assignPolyfill: assign_1.assignPolyfill
 };
 //# sourceMappingURL=index.js.map

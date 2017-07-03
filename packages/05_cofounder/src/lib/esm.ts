@@ -1,9 +1,9 @@
-import { CoFounder } from './CoFounder';
-
-const cofounder = new CoFounder();
+import * as fs from './fs/';
+import * as json from './json/';
+import * as os from './os/';
 
 export {
-    CoFounder
+    fs,
+    json,
+    os
 };
-
-export default cofounder;

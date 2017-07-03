@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const immunity = require("immunity");
-const EventEmitter = require("es6-eventemitter");
-class Stream extends EventEmitter {
+const appendToObject_1 = require("immunity/lib/appendToObject");
+const EventEmitter_1 = require("es6-eventemitter/lib/EventEmitter");
+class Stream extends EventEmitter_1.EventEmitter {
     pipe(destination, options) {
         const defaultOptions = {};
         const options_ = (options === undefined) ?
             defaultOptions :
-            immunity.appendToObject(options, defaultOptions);
+            appendToObject_1.appendToObject(options, defaultOptions);
         const source = this, isDisposable = (!destination.isStdio && options_.end !== false);
         const onData = (chunk) => {
             if (destination.writable) {
@@ -80,5 +80,6 @@ class Stream extends EventEmitter {
     }
 }
 exports.Stream = Stream;
+;
 exports.default = Stream;
 //# sourceMappingURL=Stream.js.map

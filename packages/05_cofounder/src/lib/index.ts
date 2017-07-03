@@ -1,5 +1,9 @@
-import { CoFounder } from './CoFounder';
+import * as fs from './fs/';
+import * as json from './json/';
+import * as os from './os/';
 
-const cofounder = new CoFounder();
-
-export = cofounder;
+export = {
+    fs,
+    json,
+    os
+};
