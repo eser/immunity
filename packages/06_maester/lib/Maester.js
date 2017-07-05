@@ -1,22 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const esm_1 = require("es6-eventemitter/lib/esm");
-const colors = require("colors/safe");
-const logging_1 = require("./logging");
-const _1 = require("./exceptions/");
+const EventEmitter_1 = require("es6-eventemitter/lib/EventEmitter");
+const _1 = require("./logging/");
+const _2 = require("./exceptions/");
 class Maester {
     constructor() {
-        this.events = new esm_1.EventEmitter();
-        this.colors = colors;
-        this.logging = new logging_1.LogManager(this.events, this.colors);
-        this.exceptions = new _1.ExceptionManager();
+        this.events = new EventEmitter_1.EventEmitter();
+        this.logging = new _1.LogManager(this.events);
+        this.exceptions = new _2.ExceptionManager();
         this.paused = false;
-        this.logging.linkSeverities(this);
+        this.logging.linkLogMethods(this);
     }
     setSeverities(severities) {
-        this.logging.unlinkSeverities(this);
-        this.logging.severities = severities;
-        this.logging.linkSeverities(this);
+        this.logging.unlinkLogMethods(this);
+        this.logging.setSeverities(severities);
+        this.logging.linkLogMethods(this);
     }
     resume() {
         if (!this.paused) {
@@ -32,13 +30,8 @@ class Maester {
         this.events.pause();
         this.paused = true;
     }
-    log(severity, message) {
-        this.events.emit('log', this.logging.severities[severity], message, this);
-    }
-    async logAsync(severity, message) {
-        await this.events.emitAsync('log', this.logging.severities[severity], message, this);
-    }
 }
 exports.Maester = Maester;
+;
 exports.default = Maester;
 //# sourceMappingURL=Maester.js.map

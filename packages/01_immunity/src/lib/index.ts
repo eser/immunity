@@ -11,6 +11,8 @@ import { pickFromArray } from './pickFromArray';
 import { pickFromObject } from './pickFromObject';
 import { prependToArray } from './prependToArray';
 import { prependToObject } from './prependToObject';
+import { removeFirstMatchFromArray } from './removeFirstMatchFromArray';
+import { removeFirstMatchFromObject } from './removeFirstMatchFromObject';
 import { removeFromArray } from './removeFromArray';
 import { removeKeyFromObject } from './removeKeyFromObject';
 import { removeValueFromObject } from './removeValueFromObject';
@@ -33,6 +35,8 @@ export = {
     pickFromObject,
     prependToArray,
     prependToObject,
+    removeFirstMatchFromArray,
+    removeFirstMatchFromObject,
     removeFromArray,
     removeKeyFromObject,
     removeValueFromObject,

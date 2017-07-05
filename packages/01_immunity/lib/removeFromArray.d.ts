@@ -1,2 +1,2 @@
-export declare function removeFromArray(instance: any[], ...values: any[]): any[];
+export declare function removeFromArray(instance: Array<any>, ...values: Array<any>): Array<any>;
 export default removeFromArray;

@@ -1,5 +1,5 @@
-export declare function splitObject(instance: Object, n: number): {
-    items: Object;
-    remainder: Object;
+export declare function splitObject(instance: any, n: number): {
+    items: any;
+    remainder: any;
 };
 export default splitObject;

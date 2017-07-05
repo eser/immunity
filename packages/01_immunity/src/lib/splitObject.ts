@@ -1,6 +1,6 @@
 import { assign } from 'ponyfills/lib/assign';
 
-export function splitObject(instance: Object, n: number): { items: Object, remainder: Object } {
+export function splitObject(instance: any, n: number): { items: any, remainder: any } {
     const keys = Object.keys(instance),
         offset = (n >= 0) ? n : keys.length + n;
 

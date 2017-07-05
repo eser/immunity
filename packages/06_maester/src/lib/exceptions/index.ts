@@ -6,6 +6,6 @@ export class ExceptionManager {
     constructor() {
         this.base = BaseException;
     }
-}
+};
 
 export default ExceptionManager;

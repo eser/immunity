@@ -1,6 +1,6 @@
 import { assign } from 'ponyfills/lib/assign';
 
-export function prependToObject(instance: Object, ...values: Object[]): Object {
+export function prependToObject(instance: any, ...values: Array<any>): any {
     return assign({}, ...values, instance);
 };
 

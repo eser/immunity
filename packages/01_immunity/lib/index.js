@@ -12,6 +12,8 @@ const pickFromArray_1 = require("./pickFromArray");
 const pickFromObject_1 = require("./pickFromObject");
 const prependToArray_1 = require("./prependToArray");
 const prependToObject_1 = require("./prependToObject");
+const removeFirstMatchFromArray_1 = require("./removeFirstMatchFromArray");
+const removeFirstMatchFromObject_1 = require("./removeFirstMatchFromObject");
 const removeFromArray_1 = require("./removeFromArray");
 const removeKeyFromObject_1 = require("./removeKeyFromObject");
 const removeValueFromObject_1 = require("./removeValueFromObject");
@@ -33,6 +35,8 @@ module.exports = {
     pickFromObject: pickFromObject_1.pickFromObject,
     prependToArray: prependToArray_1.prependToArray,
     prependToObject: prependToObject_1.prependToObject,
+    removeFirstMatchFromArray: removeFirstMatchFromArray_1.removeFirstMatchFromArray,
+    removeFirstMatchFromObject: removeFirstMatchFromObject_1.removeFirstMatchFromObject,
     removeFromArray: removeFromArray_1.removeFromArray,
     removeKeyFromObject: removeKeyFromObject_1.removeKeyFromObject,
     removeValueFromObject: removeValueFromObject_1.removeValueFromObject,

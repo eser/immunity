@@ -7,9 +7,9 @@ export class StreamLogger {
         this.targetStream = targetStream;
     }
 
-    log(severity: any, message: string): void {
-        this.targetStream.write(`${this.formatter.format(severity, message)}\n`);
+    log(severity: any, message: string, extraData?: any): void {
+        this.targetStream.write(`${this.formatter.format(severity, message, extraData)}\n`);
     }
-}
+};
 
 export default StreamLogger;

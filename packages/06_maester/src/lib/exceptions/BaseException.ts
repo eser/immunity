@@ -20,6 +20,6 @@ export class BaseException {
 
         return new this(input, ex);
     }
-}
+};
 
 export default BaseException;

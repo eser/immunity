@@ -5,9 +5,9 @@ export class ConsoleLogger {
         this.formatter = formatter;
     }
 
-    log(severity: any, message: string): void {
-        console.dir(this.formatter.format(severity, message), { depth: null });
+    log(severity: any, message: string, extraData?: any): void {
+        console.log(this.formatter.format(severity, message, extraData));
     }
-}
+};
 
 export default ConsoleLogger;

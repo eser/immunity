@@ -1,5 +1,5 @@
-export declare function pickFromObject(instance: any, items: any): {
-    items: {};
-    remainder: {};
+export declare function pickFromObject(instance: any, items: Array<any>): {
+    items: any;
+    remainder: any;
 };
 export default pickFromObject;

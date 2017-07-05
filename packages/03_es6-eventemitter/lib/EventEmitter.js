@@ -30,7 +30,7 @@ class EventEmitter {
         const eventListeners = this.events[eventName];
         return eventListeners.on.length + eventListeners.once.length;
     }
-    listeners(eventName, exists) {
+    listeners(eventName, exists = false) {
         const available = this.events.hasOwnProperty(eventName);
         if (exists) {
             return available;
@@ -86,14 +86,15 @@ class EventEmitter {
         await Promise.all(result);
         return true;
     }
-    on(eventName, listener, context, prepend) {
+    on(eventName, listener, context, prepend = false, tag) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
             this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
                     on: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.on, {
                         listener: listener,
-                        context: context
+                        context: context,
+                        tag: tag
                     }),
                     once: eventListeners.once
                 }
@@ -105,7 +106,8 @@ class EventEmitter {
                     on: [
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     ],
                     once: []
@@ -114,7 +116,7 @@ class EventEmitter {
         }
         return this;
     }
-    once(eventName, listener, context, prepend) {
+    once(eventName, listener, context, prepend = false, tag) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
             this.events = appendToObject_1.appendToObject(this.events, {
@@ -122,7 +124,8 @@ class EventEmitter {
                     on: eventListeners.on,
                     once: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.once, {
                         listener: listener,
-                        context: context
+                        context: context,
+                        tag: tag
                     })
                 }
             });
@@ -134,7 +137,8 @@ class EventEmitter {
                     once: [
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     ]
                 }
@@ -142,27 +146,29 @@ class EventEmitter {
         }
         return this;
     }
-    off(eventName, listener) {
-        const listenerRemoveFilter = (item) => item.listener !== listener;
+    offByPredicate(eventName, predicate) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
             this.events = appendToObject_1.appendToObject(this.events, {
                 [eventName]: {
-                    on: eventListeners.on.filter(listenerRemoveFilter),
-                    once: eventListeners.once.filter(listenerRemoveFilter)
+                    on: eventListeners.on.filter(predicate),
+                    once: eventListeners.once.filter(predicate)
                 }
             });
         }
         return this;
     }
-    addListener(eventName, listener, context) {
-        return this.on(eventName, listener, context, false);
+    off(eventName, listener) {
+        return this.offByPredicate(eventName, (item) => item.listener !== listener);
     }
-    prependListener(eventName, listener, context) {
-        return this.on(eventName, listener, context, true);
+    addListener(eventName, listener, context, tag) {
+        return this.on(eventName, listener, context, false, tag);
     }
-    prependOnceListener(eventName, listener, context) {
-        return this.once(eventName, listener, context, true);
+    prependListener(eventName, listener, context, tag) {
+        return this.on(eventName, listener, context, true, tag);
+    }
+    prependOnceListener(eventName, listener, context, tag) {
+        return this.once(eventName, listener, context, true, tag);
     }
     removeListener(eventName, listener) {
         return this.off(eventName, listener);

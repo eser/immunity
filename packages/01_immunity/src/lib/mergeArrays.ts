@@ -1,4 +1,4 @@
-export function mergeArrays(...arrays: any[][]): any[] {
+export function mergeArrays(...arrays: Array<Array<any>>): Array<any> {
     return arrays.reduce(
         (obj, array) => [...obj, ...array],
         []

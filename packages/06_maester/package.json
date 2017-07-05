@@ -46,5 +46,8 @@
     "es6-eventemitter": "^0.8.1",
     "immunity": "^0.8.1",
     "ponyfills": "^0.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.33"
   }
 }

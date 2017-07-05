@@ -1,7 +1,11 @@
-import { EventEmitter } from 'es6-eventemitter/lib/esm';
+import { assign } from 'ponyfills/lib/assign';
+import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
+import { appendToObject } from 'immunity/lib/appendToObject';
+import { removeKeyFromObject } from 'immunity/lib/removeKeyFromObject';
 import { ConsoleLogger } from './loggers/ConsoleLogger';
 import { StreamLogger } from './loggers/StreamLogger';
 import { BasicFormatter } from './formatters/BasicFormatter';
+import { NodeConsoleFormatter } from './formatters/NodeConsoleFormatter';
 
 export type SeverityType = {
     color: string,
@@ -13,7 +17,11 @@ export type FormatterType = {
 };
 
 export type LoggerType = {
-    log(severity: SeverityType, formatter: FormatterType, message: string): void | Promise<void>;
+    log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>;
+};
+
+export type LoggerTypeConstructorType = {
+    new(formatter: FormatterType, ...args: Array<any>): LoggerType
 };
 
 export const defaultSeverities = {
@@ -25,26 +33,30 @@ export const defaultSeverities = {
 
 export class LogManager {
     events: EventEmitter;
-    colors: any;
 
-    loggerTypes: { [key: string]: any };
+    loggerTypes: { [key: string]: LoggerTypeConstructorType };
     formatters: { [key: string]: FormatterType };
     severities: { [key: string]: SeverityType };
+    severityIndexes: { [key: string]: number };
     loggers: { [key: string]: LoggerType };
 
-    constructor(events: EventEmitter, colors: any) {
+    level: string;
+
+    constructor(events: EventEmitter) {
         this.events = events;
-        this.colors = colors;
 
         this.loggerTypes = {
             'console': ConsoleLogger,
             'stream': StreamLogger
         };
         this.formatters = {
-            'basic': new BasicFormatter(this.colors)
+            'basic': new BasicFormatter(),
+            'nodeConsole': new NodeConsoleFormatter()
         };
-        this.severities = defaultSeverities;
+        this.setSeverities(defaultSeverities);
         this.loggers = {};
+
+        this.level = 'info';
     }
 
     addLogger(name: string, loggerTypeName: string, formatterTypeName: string, ...args: any[]): void {
@@ -52,29 +64,85 @@ export class LogManager {
             formatter = this.formatters[formatterTypeName],
             logger = new loggerType(formatter, ...args);
 
-        this.loggers[name] = logger;
-        this.events.on('log', logger.log, logger);
+        this.loggers = appendToObject(this.loggers, { [name]: logger });
+
+        this.events.on('log', logger.log, logger, false, name);
     }
 
     removeLogger(name: string): void {
-        this.events.off('log', this.loggers[name].log);
+        if (!(name in this.loggers)) {
+            return;
+        }
 
-        // this.loggers[name] = undefined;
-        delete this.loggers[name];
+        this.events.offByPredicate(
+            'log',
+            (item) => (item.listener === this.loggers[name].log && item.tag === name)
+        );
+
+        this.loggers = removeKeyFromObject(this.loggers, name);
     }
 
-    linkSeverities(target: any): void {
+    setSeverities(severities: { [key: string]: SeverityType }): void {
+        this.severities = severities;
+
+        this.severityIndexes = Object.keys(severities).reduce(
+            (obj, itemKey, itemIndex) => {
+                return appendToObject(obj, { [itemKey]: itemIndex });
+            },
+            {}
+        );
+    }
+
+    linkLogMethods(target: any): void {
+        target.log = this.log.bind(this);
+        target.logAsync = this.logAsync.bind(this);
+
         for (const severity of Object.keys(this.severities)) {
-            target[severity] = (message) => target.log(severity, message);
+            target[severity] = (message: string, extraData?: any) => this.log(severity, message, extraData);
         }
     }
 
-    unlinkSeverities(target: any): void {
+    unlinkLogMethods(target: any): void {
         for (const severity of Object.keys(this.severities)) {
-            target[severity] = undefined;
+            // target[severity] = undefined;
+
             delete target[severity];
         }
+
+        // target.log = undefined;
+        delete target.log;
+
+        // target.logAsync = undefined;
+        delete target.logAsync;
     }
-}
+
+    log(severity: string, message: string, extraData?: any): void {
+        if (this.severityIndexes[severity] < this.severityIndexes[this.level]) {
+            return;
+        }
+
+        this.events.emit(
+            'log',
+            this.severities[severity],
+            message,
+            extraData,
+            this
+        );
+    }
+
+    async logAsync(severity: string, message: string, extraData?: any): Promise<void> {
+        if (this.severityIndexes[severity] < this.severityIndexes[this.level]) {
+            return;
+        }
+
+        await this.events.emitAsync(
+            'log',
+            this.severities[severity],
+            message,
+            extraData,
+            this
+        );
+    }
+};
 
 export default LogManager;

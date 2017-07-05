@@ -1,2 +1,2 @@
-export declare function dropFromArray(instance: any[], n: number): any[];
+export declare function dropFromArray(instance: Array<any>, n: number): any[];
 export default dropFromArray;

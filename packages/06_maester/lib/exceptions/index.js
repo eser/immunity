@@ -7,5 +7,6 @@ class ExceptionManager {
     }
 }
 exports.ExceptionManager = ExceptionManager;
+;
 exports.default = ExceptionManager;
 //# sourceMappingURL=index.js.map

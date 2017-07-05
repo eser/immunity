@@ -18,5 +18,6 @@ class BaseException {
     }
 }
 exports.BaseException = BaseException;
+;
 exports.default = BaseException;
 //# sourceMappingURL=BaseException.js.map

@@ -1,6 +1,6 @@
 import { assign } from 'ponyfills/lib/assign';
 
-export function takeFromObject(instance: Object, n: number): Object {
+export function takeFromObject(instance: any, n: number): any {
     let index = 0;
 
     return Object.keys(instance).reduce(

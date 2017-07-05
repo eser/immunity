@@ -1,6 +1,4 @@
 export declare class BasicFormatter {
-    colors: any;
-    constructor(colors: any);
-    format(severity: any, message: string): string;
+    format(severity: any, message: string, extraData?: any): string;
 }
 export default BasicFormatter;

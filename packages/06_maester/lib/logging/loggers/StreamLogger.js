@@ -5,10 +5,11 @@ class StreamLogger {
         this.formatter = formatter;
         this.targetStream = targetStream;
     }
-    log(severity, message) {
-        this.targetStream.write(`${this.formatter.format(severity, message)}\n`);
+    log(severity, message, extraData) {
+        this.targetStream.write(`${this.formatter.format(severity, message, extraData)}\n`);
     }
 }
 exports.StreamLogger = StreamLogger;
+;
 exports.default = StreamLogger;
 //# sourceMappingURL=StreamLogger.js.map

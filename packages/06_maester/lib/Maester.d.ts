@@ -1,9 +1,8 @@
-import { EventEmitter } from 'es6-eventemitter/lib/esm';
-import { LogManager, SeverityType } from './logging';
+import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
+import { LogManager, SeverityType } from './logging/';
 import { ExceptionManager } from './exceptions/';
 export declare class Maester {
     events: EventEmitter;
-    colors: any;
     logging: LogManager;
     exceptions: ExceptionManager;
     paused: boolean;
@@ -13,7 +12,5 @@ export declare class Maester {
     }): void;
     resume(): void;
     pause(): void;
-    log(severity: any, message: any): void;
-    logAsync(severity: any, message: any): Promise<void>;
 }
 export default Maester;

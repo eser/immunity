@@ -5,5 +5,6 @@ exports.Maester = Maester_1.Maester;
 const BaseException_1 = require("./exceptions/BaseException");
 exports.BaseException = BaseException_1.BaseException;
 const maester = new Maester_1.Maester();
+maester.logging.addLogger('default', 'console', 'console');
 exports.default = maester;
 //# sourceMappingURL=esm.js.map

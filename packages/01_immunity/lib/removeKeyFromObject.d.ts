@@ -1,2 +1,2 @@
-export declare function removeKeyFromObject(instance: Object, ...keys: string[]): Object;
+export declare function removeKeyFromObject(instance: any, ...keys: Array<string>): any;
 export default removeKeyFromObject;

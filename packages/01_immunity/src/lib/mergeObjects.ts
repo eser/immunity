@@ -1,6 +1,6 @@
 import { assign } from 'ponyfills/lib/assign';
 
-export function mergeObjects(...objects: Object[]): Object {
+export function mergeObjects(...objects: Array<any>): any {
     return assign({}, ...objects);
 };
 

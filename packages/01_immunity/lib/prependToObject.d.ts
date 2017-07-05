@@ -1,2 +1,2 @@
-export declare function prependToObject(instance: Object, ...values: Object[]): Object;
+export declare function prependToObject(instance: any, ...values: Array<any>): any;
 export default prependToObject;

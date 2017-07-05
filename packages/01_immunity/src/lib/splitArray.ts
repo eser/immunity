@@ -1,4 +1,4 @@
-export function splitArray(instance: any[], n: number): { items: any[], remainder: any[] } {
+export function splitArray(instance: Array<any>, n: number): { items: Array<any>, remainder: Array<any> } {
     const offset = (n >= 0) ? n : instance.length + n;
 
     return {

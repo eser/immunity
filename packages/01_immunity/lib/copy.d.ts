@@ -1,2 +1,2 @@
-export declare function copy(instance: Object): Object;
+export declare function copy(instance: any): any;
 export default copy;

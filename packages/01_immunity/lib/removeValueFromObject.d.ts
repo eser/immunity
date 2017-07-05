@@ -1,2 +1,2 @@
-export declare function removeValueFromObject(instance: Object, ...values: any[]): Object;
+export declare function removeValueFromObject(instance: any, ...values: Array<any>): any;
 export default removeValueFromObject;

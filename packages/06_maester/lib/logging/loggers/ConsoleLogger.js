@@ -4,10 +4,11 @@ class ConsoleLogger {
     constructor(formatter) {
         this.formatter = formatter;
     }
-    log(severity, message) {
-        console.dir(this.formatter.format(severity, message), { depth: null });
+    log(severity, message, extraData) {
+        console.log(this.formatter.format(severity, message, extraData));
     }
 }
 exports.ConsoleLogger = ConsoleLogger;
+;
 exports.default = ConsoleLogger;
 //# sourceMappingURL=ConsoleLogger.js.map

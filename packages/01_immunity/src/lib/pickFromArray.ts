@@ -1,4 +1,4 @@
-export function pickFromArray(instance: any[], items: any[]): { items: any[], remainder: any[] } {
+export function pickFromArray(instance: Array<any>, items: Array<any>): { items: Array<any>, remainder: Array<any> } {
     return instance.reduce(
         (obj, itemValue, itemKey) => {
             if (items.indexOf(itemKey) !== -1) {

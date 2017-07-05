@@ -1,2 +1,2 @@
-export declare function takeFromArray(instance: any[], n: number): any[];
+export declare function takeFromArray(instance: Array<any>, n: number): Array<any>;
 export default takeFromArray;

@@ -1,2 +1,2 @@
-export declare function mergeArrays(...arrays: any[][]): any[];
+export declare function mergeArrays(...arrays: Array<Array<any>>): Array<any>;
 export default mergeArrays;

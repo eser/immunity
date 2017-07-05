@@ -1,4 +1,4 @@
-export function prependToArray(instance: any[], ...values: any[]): any[] {
+export function prependToArray(instance: Array<any>, ...values: Array<any>): Array<any> {
     return [
         ...values,
         ...instance

@@ -1,2 +1,2 @@
-export declare function appendToArray(instance: any[], ...values: any[]): any[];
+export declare function appendToArray(instance: Array<any>, ...values: Array<any>): Array<any>;
 export default appendToArray;

@@ -1,4 +1,4 @@
-import { EventEmitter } from 'es6-eventemitter/lib/esm';
+import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
 export declare type SeverityType = {
     color: string;
     label: string;
@@ -7,7 +7,10 @@ export declare type FormatterType = {
     format(severity: SeverityType, message: string): string;
 };
 export declare type LoggerType = {
-    log(severity: SeverityType, formatter: FormatterType, message: string): void | Promise<void>;
+    log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>;
+};
+export declare type LoggerTypeConstructorType = {
+    new (formatter: FormatterType, ...args: Array<any>): LoggerType;
 };
 export declare const defaultSeverities: {
     debug: {
@@ -29,9 +32,8 @@ export declare const defaultSeverities: {
 };
 export declare class LogManager {
     events: EventEmitter;
-    colors: any;
     loggerTypes: {
-        [key: string]: any;
+        [key: string]: LoggerTypeConstructorType;
     };
     formatters: {
         [key: string]: FormatterType;
@@ -39,13 +41,22 @@ export declare class LogManager {
     severities: {
         [key: string]: SeverityType;
     };
+    severityIndexes: {
+        [key: string]: number;
+    };
     loggers: {
         [key: string]: LoggerType;
     };
-    constructor(events: EventEmitter, colors: any);
+    level: string;
+    constructor(events: EventEmitter);
     addLogger(name: string, loggerTypeName: string, formatterTypeName: string, ...args: any[]): void;
     removeLogger(name: string): void;
-    linkSeverities(target: any): void;
-    unlinkSeverities(target: any): void;
+    setSeverities(severities: {
+        [key: string]: SeverityType;
+    }): void;
+    linkLogMethods(target: any): void;
+    unlinkLogMethods(target: any): void;
+    log(severity: string, message: string, extraData?: any): void;
+    logAsync(severity: string, message: string, extraData?: any): Promise<void>;
 }
 export default LogManager;

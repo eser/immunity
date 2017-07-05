@@ -1,6 +1,6 @@
 import { assign } from 'ponyfills/lib/assign';
 
-export function copy(instance: Object): Object {
+export function copy(instance: any): any {
     const type: any = instance.constructor;
 
     return Object.keys(instance).reduce(

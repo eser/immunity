@@ -2,6 +2,7 @@ import { appendToArray } from 'immunity/lib/appendToArray';
 import { appendToObject } from 'immunity/lib/appendToObject';
 import { mergeArrays } from 'immunity/lib/mergeArrays';
 import { prependToArray } from 'immunity/lib/prependToArray';
+import { removeFirstMatchFromArray } from 'immunity/lib/removeFirstMatchFromArray';
 import { removeKeyFromObject } from 'immunity/lib/removeKeyFromObject';
 
 export type EmitQueueItemType = {
@@ -36,7 +37,7 @@ export class EventEmitter {
         return this;
     }
 
-    eventNames(): string[] {
+    eventNames(): Array<string> {
         return Object.getOwnPropertyNames(this.events);
     }
 
@@ -52,7 +53,7 @@ export class EventEmitter {
         return eventListeners.on.length + eventListeners.once.length;
     }
 
-    listeners(eventName: string, exists): any {
+    listeners(eventName: string, exists = false): boolean | Array<any> {
         const available = this.events.hasOwnProperty(eventName);
 
         if (exists) {
@@ -101,7 +102,7 @@ export class EventEmitter {
         return true;
     }
 
-    async emitAsync(eventName: string, ...args): Promise<boolean> {
+    async emitAsync(eventName: string, ...args: Array<any>): Promise<boolean> {
         if (!this.events.hasOwnProperty(eventName)) {
             return false;
         }
@@ -142,7 +143,7 @@ export class EventEmitter {
         return true;
     }
 
-    on(eventName: string, listener, context?, prepend?): EventEmitter {
+    on(eventName: string, listener: any, context?: any, prepend: boolean = false, tag?: string): EventEmitter {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -152,7 +153,8 @@ export class EventEmitter {
                         eventListeners.on,
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     ),
                     once: eventListeners.once
@@ -165,7 +167,8 @@ export class EventEmitter {
                     on: [
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     ],
                     once: []
@@ -178,7 +181,7 @@ export class EventEmitter {
         return this;
     }
 
-    once(eventName: string, listener, context?, prepend?): EventEmitter {
+    once(eventName: string, listener: any, context?: any, prepend: boolean = false, tag?: string): EventEmitter {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
@@ -189,7 +192,8 @@ export class EventEmitter {
                         eventListeners.once,
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     )
                 }
@@ -202,7 +206,8 @@ export class EventEmitter {
                     once: [
                         {
                             listener: listener,
-                            context: context
+                            context: context,
+                            tag: tag
                         }
                     ]
                 }
@@ -214,16 +219,14 @@ export class EventEmitter {
         return this;
     }
 
-    off(eventName: string, listener): EventEmitter {
-        const listenerRemoveFilter = (item) => item.listener !== listener;
-
+    offByPredicate(eventName: string, predicate: (itemValue) => boolean): EventEmitter {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
 
             this.events = appendToObject(this.events, {
                 [eventName]: {
-                    on: eventListeners.on.filter(listenerRemoveFilter),
-                    once: eventListeners.once.filter(listenerRemoveFilter)
+                    on: eventListeners.on.filter(predicate),
+                    once: eventListeners.once.filter(predicate)
                 }
             });
         }
@@ -233,19 +236,26 @@ export class EventEmitter {
         return this;
     }
 
-    addListener(eventName: string, listener, context?): EventEmitter {
-        return this.on(eventName, listener, context, false);
+    off(eventName: string, listener: any): EventEmitter {
+        return this.offByPredicate(
+            eventName,
+            (item) => item.listener !== listener
+        );
     }
 
-    prependListener(eventName: string, listener, context?): EventEmitter {
-        return this.on(eventName, listener, context, true);
+    addListener(eventName: string, listener: any, context?: any, tag?: string): EventEmitter {
+        return this.on(eventName, listener, context, false, tag);
     }
 
-    prependOnceListener(eventName: string, listener, context?): EventEmitter {
-        return this.once(eventName, listener, context, true);
+    prependListener(eventName: string, listener: any, context?: any, tag?: string): EventEmitter {
+        return this.on(eventName, listener, context, true, tag);
     }
 
-    removeListener(eventName: string, listener): EventEmitter {
+    prependOnceListener(eventName: string, listener: any, context?: any, tag?: string): EventEmitter {
+        return this.once(eventName, listener, context, true, tag);
+    }
+
+    removeListener(eventName: string, listener: any): EventEmitter {
         return this.off(eventName, listener);
     }
 
