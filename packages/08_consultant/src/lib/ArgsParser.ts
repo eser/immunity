@@ -14,6 +14,6 @@ export class ArgsParser {
     static parse(args) {
         return yargsParser(args, yargsConfiguration);
     }
-}
+};
 
 export default ArgsParser;

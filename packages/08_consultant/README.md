@@ -8,7 +8,7 @@
 
 ## What is the Consultant?
 
-Consultant is a JavaScript library which allows us getting parameters (or options) from various sources such as command line, string or interactive menu.
+Consultant is a JavaScript library which allows you gathering options from various sources such as command line, optstring or interactive menu.
 
 Provides:
 
@@ -16,83 +16,99 @@ Provides:
 - Declerative approach.
 - Multiple methods for getting parameter (or options)
     - Parsing command line input like `cmd --parameter=value --option1 --option2`.
-    - Interactive command line user interface to getting options directly from user. 
+    - Interactive command line user interface to getting options directly from user.
 - Prepares an help output based on model definition.
 
 
-## Example Usage
+## Usage
 
 ```js
-import consultant from 'consultant';
+import { Consultant } from 'consultant';
 
 const rules = {
-    makefile: {
-        type: String,
-        aliases: [ 'f' ],
-        label: 'Makefile',
-        description: 'Load tasks from FILE',
-        parameter: 'FILE',
-        'default': [ 'makefile.js' ],
-        uiHidden: false,
-        min: 0,
-        max: undefined,
-        validate: (value) => value.length >= 3 || 'minimum 3 chars required'
-    },
-    tasks: {
-        type: Boolean,
-        aliases: [ 't' ],
-        label: 'Tasks',
-        description: 'Lists defined tasks',
-        'default': false,
-        uiHidden: true,
-        min: 0,
-        max: 1
-    },
-    verbosity: {
-        type: String,
-        label: 'Verbosity',
-        description: 'Sets verbosity of log messages [debug, warn, info, error]',
-        'default': 'info',
-        values: [ 'debug', 'warn', 'info', 'error' ],
-        uiHidden: true,
-        min: 0,
-        max: 1
-    },
-    version: {
-        type: Boolean,
-        aliases: [ 'v' ],
-        label: 'Version',
-        description: 'Displays the jsmake version',
-        'default': false,
-        uiHidden: true,
-        min: 0,
-        max: 1
-    },
-    help: {
-        type: Boolean,
-        aliases: [ 'h', '?' ],
-        label: 'Help',
-        description: 'Displays this help message',
-        'default': false,
-        uiHidden: true,
-        min: 0,
-        max: 1
+    label: 'sample menu',
+    children: {
+        plugins: {
+            type: Consultant.types.command,
+            aliases: [ 'p' ],
+            id: 'plugins',
+            label: 'Plugin commands',
+            description: 'Add/list plugins',
+
+            children: {
+                add: {
+                    type: Consultant.types.command,
+                    id: 'plugins-add',
+                    label: 'Add',
+                    description: 'Adds a plugin'
+                },
+                repo: {
+                    type: Consultant.types.stringParameter,
+                    label: 'Repo',
+                    description: 'Specifies repo address',
+                    'default': 'http://github.com/eserozvataf/',
+                    min: 0,
+                    max: 1
+                }
+            }
+        },
+        makefile: {
+            type: Consultant.types.stringParameter,
+            aliases: [ 'f' ],
+            label: 'Makefile',
+            description: 'Load tasks from FILE',
+            parameter: 'FILE',
+            'default': [ 'makefile.js' ],
+            min: 0,
+            max: undefined,
+            validate: (value) => value.length >= 3 || 'minimum 3 chars required'
+        },
+        tasks: {
+            type: Consultant.types.booleanParameter,
+            aliases: [ 't' ],
+            label: 'Tasks',
+            description: 'Lists defined tasks',
+            'default': false
+        },
+        verbosity: {
+            type: Consultant.types.stringParameter,
+            label: 'Verbosity',
+            description: 'Sets verbosity of log messages [debug, warn, info, error]',
+            'default': 'info',
+            values: [ 'debug', 'warn', 'info', 'error' ],
+            min: 0,
+            max: 1
+        },
+        version: {
+            type: Consultant.types.booleanParameter,
+            aliases: [ 'v' ],
+            label: 'Version',
+            description: 'Displays the jsmake version',
+            'default': false
+        },
+        help: {
+            type: Consultant.types.booleanParameter,
+            aliases: [ 'h', '?' ],
+            label: 'Help',
+            description: 'Displays this help message',
+            'default': false
+        }
     }
 };
 
+const params = new Consultant(rules);
+
 // string parsing
-const input1 = consultant.input.fromString('eser testing --makefile testfile.js');
-console.log(input1.validate(rules));
+const input1 = await params.fromString('plugins add --makefile testfile.js');
+console.log(input1.commandId); // plugins-add
+console.log(input1.values.makefile); // [ 'testfile.js' ]
 
 // command line parsing
-const input2 = consultant.input.fromCommandLine();
-console.log(input2.validate(rules));
+const input2 = await params.fromCommandLine();
+console.log(input2.values.verbosity); // info
 
 // command line user interface
-consultant.input.fromInquiry(rules)
-    .then((input3) => {
-        console.log(input3.validate(rules));
-    });
+const input3 = await params.fromInquiry();
 ```
 
 

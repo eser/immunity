@@ -12,6 +12,6 @@ export class Inquirer {
             errors: {}
         });
     }
-}
+};
 
 export default Inquirer;

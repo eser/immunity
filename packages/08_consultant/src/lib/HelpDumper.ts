@@ -135,6 +135,6 @@ export class HelpDumper {
 
         await this.dumpSingle(rules, stream, indentation);
     }
-}
+};
 
 export default HelpDumper;

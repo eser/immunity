@@ -1,6 +1,6 @@
 {
   "name": "consultant",
-  "description": "Library for getting parameters from various sources",
+  "description": "Gathers structural and validateable input from command line or interative menu",
   "keywords": [
     "interactive",
     "menu",

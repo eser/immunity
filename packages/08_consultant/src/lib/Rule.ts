@@ -27,7 +27,7 @@ export interface Rule {
 
     children?: RuleCollection;
     getChildren?: (id?: string) => Promise<RuleCollection>;
-}
+};
 
 export async function getRuleChildren(rule: Rule): Promise<RuleCollection | undefined> {
     if (rule.getChildren !== undefined) {
@@ -35,6 +35,6 @@ export async function getRuleChildren(rule: Rule): Promise<RuleCollection | unde
     }
 
     return rule.children;
-}
+};
 
 export default Rule;

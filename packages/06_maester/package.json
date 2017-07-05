@@ -1,6 +1,6 @@
 {
   "name": "maester",
-  "description": "Library to take over all exception handling and logging",
+  "description": "Async logging and exception handling library runs on browsers and node.js",
   "keywords": [
     "logging",
     "exception",

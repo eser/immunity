@@ -91,7 +91,7 @@ export class Validator {
                 }
             }
         }
-        
+
         if (child.min > length) {
             errors = immunity.appendToArray(errors, { error: `minimum length violation for ${childKey}` });
         }
@@ -312,6 +312,6 @@ export class Validator {
             isCancelled: false
         };
     }
-}
+};
 
 export default Validator;

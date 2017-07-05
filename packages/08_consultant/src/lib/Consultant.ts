@@ -103,6 +103,6 @@ export class Consultant {
 
         await dumper.dump(rule, process.stdout);
     }
-}
+};
 
 export default Consultant;

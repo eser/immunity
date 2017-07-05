@@ -9,9 +9,9 @@
 | [es6-eventemitter](packages/03_es6-eventemitter/)             | An Event Emitter implementation written in ES2015, also runs on browsers               |
 | [enthusiast](packages/04_enthusiast/)                  | A stream library implementation runs on browsers and node.js                           |
 | [cofounder](packages/05_cofounder/)                   | Method library offers additional functionalities besides node.js's fs library          |
-| [maester](packages/06_maester/)                     | Library to take over all exception handling and logging                                |
+| [maester](packages/06_maester/)                     | Async logging and exception handling library runs on browsers and node.js              |
 | [senior](packages/07_senior/)                      | Plugin host and manager for installable/removable npm packages                         |
-| [consultant](packages/08_consultant/)                  | Library for getting parameters from various sources                                    |
+| [consultant](packages/08_consultant/)                  | Gathers structural and validateable input from command line or interative menu         |
 
 
 ## To Support

@@ -8,20 +8,22 @@
 
 ## What is the Maester?
 
-This project is designed to take over all exception handling and logging features that a node.js application needs.
+This project is designed for being responsible of all exception handling and logging features that a JavaScript application needs.
 
 
 ## Why Maester?
 
-I like standartization in general concepts like error handling and logging. I have several node.js projects and most of the time I try to keep my code design similar, portable and shareable for applicability to other scenerios. Maester is the one of the products that I have developed with this mindset.
+I like standartization in general concepts like error handling and logging. I have several node.js and browser application projects and most of the time I try to keep my code design similar, portable and shareable for applicability to other scenerios. Maester is the one of the products that I have developed with this mindset.
 
 As an exception handling and logging library,
 
-- Delivers base exception and logger classes,
+- Delivers base exception classes,
 - Provides a logging interface can be called in any module,
 - Event-based system can be easily subscribed by other parties,
 - Built-in and extensible loggers/appenders can be attached or detached at any time,
 - Customizable severity levels,
+- Formatters for log entries,
+- Multiplatform support for browsers and node.js,
 
 
 ## Quick start
@@ -29,11 +31,25 @@ As an exception handling and logging library,
 Execute `npm install maester` to install maester and its dependencies into your project directory.
 
 
+## Usage
+
+For example, to append a new item to an existing array:
+
+```js
+import maester from 'maester';
+
+maester.info('An information message');
+maester.error('An error occurred', { user: localStorage.userId });
+```
+
+
 ## Todo List
 
 - FileLogger, RollingFileLogger, StreamLogger etc.
-- Message formatters
 - Exception formatters
+- DateTime entries
+- Custom severities for each logger
+- Events for handling exceptions
 
 See [GitHub Projects](https://github.com/eserozvataf/jsmake-libraries/projects) for more.
 

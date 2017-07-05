@@ -4,7 +4,7 @@ import { Validator } from './Validator';
 
 export interface ConsultationError {
     error: string;
-}
+};
 
 export interface ConsultationResult {
     commandId?: string,
@@ -13,7 +13,7 @@ export interface ConsultationResult {
     isValid: boolean;
     isCancelled: boolean;
     errors: { [key: string]: ConsultationError[] };
-}
+};
 
 export class Consultation {
     rules: Rule;
@@ -39,6 +39,6 @@ export class Consultation {
 
         return await inquirer.inquire(this.rules);
     }
-}
+};
 
 export default Consultation;

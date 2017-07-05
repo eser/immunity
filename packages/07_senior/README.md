@@ -8,14 +8,16 @@
 
 ## What is the Senior?
 
-Senior is a tiny plugin host which allows npm modules to be installed and uninstalled.
+Senior is a lightweight plugin host which allows npm modules to be installed and uninstalled on demand.
 
 
 ## Quick start
 
 Execute `npm install senior` to install senior and its dependencies into your project directory.
 
-Sample:
+
+## Usage
+
 ```js
 import Senior from 'senior';
 
@@ -27,6 +29,7 @@ plugins.install('myApp-plugin-first');
 // executes all installed plugins
 plugins.loadAll();
 ```
+
 
 ## Todo List
 

@@ -178,6 +178,6 @@ export class Senior {
 
         return result;
     }
-}
+};
 
 export default Senior;
