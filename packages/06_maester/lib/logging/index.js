@@ -31,12 +31,14 @@ class LogManager {
         const loggerType = this.loggerTypes[loggerTypeName], formatter = this.formatters[formatterTypeName], logger = new loggerType(formatter, ...args);
         this.loggers = appendToObject_1.appendToObject(this.loggers, { [name]: logger });
         this.events.on('log', logger.log, logger, false, name);
+        this.events.on('write', logger.direct, logger, false, name);
     }
     removeLogger(name) {
         if (!(name in this.loggers)) {
             return;
         }
         this.events.offByPredicate('log', (item) => (item.listener === this.loggers[name].log && item.tag === name));
+        this.events.offByPredicate('write', (item) => (item.listener === this.loggers[name].direct && item.tag === name));
         this.loggers = removeKeyFromObject_1.removeKeyFromObject(this.loggers, name);
     }
     setSeverities(severities) {
@@ -48,6 +50,8 @@ class LogManager {
     linkLogMethods(target) {
         target.log = this.log.bind(this);
         target.logAsync = this.logAsync.bind(this);
+        target.write = this.write.bind(this);
+        target.writeAsync = this.writeAsync.bind(this);
         for (const severity of Object.keys(this.severities)) {
             target[severity] = (message, extraData) => this.log(severity, message, extraData);
         }
@@ -70,6 +74,12 @@ class LogManager {
             return;
         }
         await this.events.emitAsync('log', this.severities[severity], message, extraData, this);
+    }
+    write(message) {
+        this.events.emit('write', message, this);
+    }
+    async writeAsync(message) {
+        await this.events.emitAsync('write', message, this);
     }
 }
 exports.LogManager = LogManager;

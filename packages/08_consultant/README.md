@@ -20,6 +20,11 @@ Provides:
 - Prepares an help output based on model definition.
 
 
+## Quick start
+
+Execute `npm install consultant` to install consultant and its dependencies into your project directory.
+
+
 ## Usage
 
 ```js
@@ -110,11 +115,6 @@ console.log(input2.values.verbosity); // info
 // command line user interface
 const input3 = await params.fromInquiry();
 ```
-
-
-## Quick start
-
-Execute `npm install consultant` to install consultant and its dependencies into your project directory.
 
 
 ## Todo List

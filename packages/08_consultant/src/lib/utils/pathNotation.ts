@@ -1,4 +1,4 @@
-export function pathNotation(sourceObj, targetPath, defaultValue = undefined, delimiter = '.'): any {
+export function pathNotation(sourceObj: any, targetPath: string, defaultValue?: any, delimiter: string = '.'): any {
     const targetPath_ = targetPath.split(delimiter);
 
     let sourceObj_ = sourceObj;
@@ -6,7 +6,7 @@ export function pathNotation(sourceObj, targetPath, defaultValue = undefined, de
     while (targetPath_.length > 0) {
         const property = targetPath_.shift();
 
-        if (!(property in sourceObj_)) {
+        if (property === undefined || !(property in sourceObj_)) {
             return defaultValue;
         }
 

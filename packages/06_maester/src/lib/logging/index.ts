@@ -17,7 +17,8 @@ export type FormatterType = {
 };
 
 export type LoggerType = {
-    log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>;
+    log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>,
+    direct(message: string): void | Promise<void>
 };
 
 export type LoggerTypeConstructorType = {
@@ -67,6 +68,7 @@ export class LogManager {
         this.loggers = appendToObject(this.loggers, { [name]: logger });
 
         this.events.on('log', logger.log, logger, false, name);
+        this.events.on('write', logger.direct, logger, false, name);
     }
 
     removeLogger(name: string): void {
@@ -77,6 +79,11 @@ export class LogManager {
         this.events.offByPredicate(
             'log',
             (item) => (item.listener === this.loggers[name].log && item.tag === name)
+        );
+
+        this.events.offByPredicate(
+            'write',
+            (item) => (item.listener === this.loggers[name].direct && item.tag === name)
         );
 
         this.loggers = removeKeyFromObject(this.loggers, name);
@@ -96,6 +103,9 @@ export class LogManager {
     linkLogMethods(target: any): void {
         target.log = this.log.bind(this);
         target.logAsync = this.logAsync.bind(this);
+
+        target.write = this.write.bind(this);
+        target.writeAsync = this.writeAsync.bind(this);
 
         for (const severity of Object.keys(this.severities)) {
             target[severity] = (message: string, extraData?: any) => this.log(severity, message, extraData);
@@ -140,6 +150,22 @@ export class LogManager {
             this.severities[severity],
             message,
             extraData,
+            this
+        );
+    }
+
+    write(message: string): void {
+        this.events.emit(
+            'write',
+            message,
+            this
+        );
+    }
+
+    async writeAsync(message: string): Promise<void> {
+        await this.events.emitAsync(
+            'write',
+            message,
             this
         );
     }

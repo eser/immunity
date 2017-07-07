@@ -6,5 +6,6 @@ var Types;
     Types["stringParameter"] = "stringParameter";
     Types["booleanParameter"] = "booleanParameter";
 })(Types = exports.Types || (exports.Types = {}));
+;
 exports.default = Types;
 //# sourceMappingURL=Types.js.map

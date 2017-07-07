@@ -104,5 +104,6 @@ class HelpDumper {
     }
 }
 exports.HelpDumper = HelpDumper;
+;
 exports.default = HelpDumper;
 //# sourceMappingURL=HelpDumper.js.map

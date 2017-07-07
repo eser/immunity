@@ -8,6 +8,7 @@ export declare type FormatterType = {
 };
 export declare type LoggerType = {
     log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>;
+    direct(message: string): void | Promise<void>;
 };
 export declare type LoggerTypeConstructorType = {
     new (formatter: FormatterType, ...args: Array<any>): LoggerType;
@@ -58,5 +59,7 @@ export declare class LogManager {
     unlinkLogMethods(target: any): void;
     log(severity: string, message: string, extraData?: any): void;
     logAsync(severity: string, message: string, extraData?: any): Promise<void>;
+    write(message: string): void;
+    writeAsync(message: string): Promise<void>;
 }
 export default LogManager;

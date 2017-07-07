@@ -16,5 +16,6 @@ class ArgsParser {
     }
 }
 exports.ArgsParser = ArgsParser;
+;
 exports.default = ArgsParser;
 //# sourceMappingURL=ArgsParser.js.map

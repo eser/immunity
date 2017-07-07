@@ -11,7 +11,7 @@ const yargsConfiguration = {
 };
 
 export class ArgsParser {
-    static parse(args) {
+    static parse(args): any {
         return yargsParser(args, yargsConfiguration);
     }
 };

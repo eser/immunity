@@ -8,6 +8,9 @@ class StreamLogger {
     log(severity, message, extraData) {
         this.targetStream.write(`${this.formatter.format(severity, message, extraData)}\n`);
     }
+    direct(message) {
+        this.targetStream.write(`${message}`);
+    }
 }
 exports.StreamLogger = StreamLogger;
 ;

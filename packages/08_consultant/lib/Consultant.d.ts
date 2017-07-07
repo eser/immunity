@@ -9,8 +9,9 @@ export declare class Consultant {
     fromString(args: string): Promise<ConsultationResult>;
     fromCommandLine(): Promise<ConsultationResult>;
     fromInquiry(): Promise<ConsultationResult>;
-    getRule(predicate: (key: string, rule: Rule) => boolean, node?: Rule): any;
-    getRuleById(id: string): Promise<any>;
+    static getRuleInternal(predicate: (key: string, rule: Rule) => boolean, node: Rule): Promise<Rule | undefined>;
+    getRule(predicate: (key: string, rule: Rule) => boolean): Promise<Rule | undefined>;
+    getRuleById(id: string): Promise<Rule | undefined>;
     help(): Promise<void>;
     helpForId(id: string): Promise<void>;
 }

@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Inquirer_1 = require("./Inquirer");
 const Validator_1 = require("./Validator");
+;
+;
 class Consultation {
     constructor(rules, argv) {
         this.rules = rules;
@@ -20,5 +22,6 @@ class Consultation {
     }
 }
 exports.Consultation = Consultation;
+;
 exports.default = Consultation;
 //# sourceMappingURL=Consultation.js.map

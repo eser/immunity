@@ -1,10 +1,8 @@
-import immunity = require('immunity');
 import { ArgsParser } from './ArgsParser';
 import { Types } from './Types';
 import { Consultation, ConsultationResult } from './Consultation';
 import { HelpDumper } from './HelpDumper';
 import { Rule, getRuleChildren } from './Rule';
-import { pathNotation } from './utils/pathNotation';
 
 export class Consultant {
     static types = Types;
@@ -14,30 +12,6 @@ export class Consultant {
     constructor(rules: Rule) {
         this.rules = rules;
     }
-
-    // static pickRulesOf(source: Rule, path: string, keys?: string[]): Rule | undefined {
-    //     // TODO: .getChildren() ?
-    //     const target = pathNotation(
-    //         source.children,
-    //         path.replace(/\./g, '.children.')
-    //     );
-
-    //     if (keys === undefined) {
-    //         return target;
-    //     }
-
-    //     return assign(
-    //         {},
-    //         target,
-    //         {
-    //             children: immunity.pickFromObject(target.children, keys).items
-    //         }
-    //     );
-    // }
-
-    // pickRules(path: string, keys?: string[]): Rule | undefined {
-    //     return Consultant.pickRulesOf(this.rules, path, keys);
-    // }
 
     async fromObject(argv: object): Promise<ConsultationResult> {
         const consultation = new Consultation(this.rules, argv);
@@ -63,19 +37,19 @@ export class Consultant {
         return await consultation.inquire();
     }
 
-    async getRule(predicate: (key: string, rule: Rule) => boolean, node: Rule = this.rules) {
+    static async getRuleInternal(predicate: (key: string, rule: Rule) => boolean, node: Rule): Promise<Rule | undefined> {
         const children = await getRuleChildren(node);
 
         if (children !== undefined) {
             for (const childKey in children) {
-                const child: Rule = children[childKey];
+                const child = children[childKey];
 
                 if (predicate(childKey, child)) {
                     return child;
                 }
 
                 if (child.children !== undefined || child.getChildren !== undefined) {
-                    const result = this.getRule(predicate, child);
+                    const result = await Consultant.getRuleInternal(predicate, child);
 
                     if (result !== undefined) {
                         return result;
@@ -87,19 +61,27 @@ export class Consultant {
         return undefined;
     }
 
-    async getRuleById(id: string) {
+    async getRule(predicate: (key: string, rule: Rule) => boolean): Promise<Rule | undefined> {
+        return Consultant.getRuleInternal(predicate, this.rules);
+    }
+
+    async getRuleById(id: string): Promise<Rule | undefined> {
         return await this.getRule((key, rule) => rule.id === id);
     }
 
-    async help() {
+    async help(): Promise<void> {
         const dumper = new HelpDumper();
 
         await dumper.dump(this.rules, process.stdout);
     }
 
-    async helpForId(id: string) {
+    async helpForId(id: string): Promise<void> {
         const rule = await this.getRuleById(id),
             dumper = new HelpDumper();
+
+        if (rule === undefined) {
+            throw new Error(`rule id '${id}' is not found.`);
+        }
 
         await dumper.dump(rule, process.stdout);
     }

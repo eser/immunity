@@ -1,18 +1,32 @@
 import { ConsultationResult, ConsultationError } from './Consultation';
 import { Rule, RuleCollection, ValidateMethod } from './Rule';
+export declare type ValidationOutputType = {
+    commandId?: string;
+    values: {
+        [key: string]: any;
+    };
+    errors: {
+        [key: string]: Array<ConsultationError>;
+    };
+    argvRemainder: {
+        [key: string]: any;
+    };
+};
 export declare class Validator {
-    static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): string[];
-    static executeValidatorSingle(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<ConsultationError[]>;
-    static executeValidator(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<ConsultationError[]>;
+    static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): Array<string>;
+    static executeValidatorSingle(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<Array<ConsultationError>>;
+    static executeValidator(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<Array<ConsultationError>>;
     static prepareValue(value: any[], childKey: string, child: Rule): Promise<{
         value: any;
-        errors: ConsultationError[] | undefined;
+        errors?: Array<ConsultationError>;
     }>;
     processSingleParameter(childKey: string, child: Rule, argv: {
         [key: string]: any;
     }): Promise<{
-        values: any;
-        errors: ConsultationError[] | undefined;
+        values: {
+            [key: string]: any;
+        };
+        errors?: Array<ConsultationError>;
         argvRemainder: {
             [key: string]: any;
         };
@@ -20,8 +34,12 @@ export declare class Validator {
     processParameters(children: RuleCollection, argv: {
         [key: string]: any;
     }): Promise<{
-        values: {};
-        errors: {};
+        values: {
+            [key: string]: any;
+        };
+        errors?: {
+            [key: string]: Array<ConsultationError>;
+        };
         argvRemainder: {
             [key: string]: any;
         };
@@ -29,12 +47,7 @@ export declare class Validator {
     processSingleCommand(childKey: string, child: Rule, argv: {
         [key: string]: any;
     }): {
-        commandKey: string;
-        argvRemainder: {
-            [key: string]: any;
-        };
-    } | {
-        commandKey: undefined;
+        commandKey?: string;
         argvRemainder: {
             [key: string]: any;
         };
@@ -42,14 +55,14 @@ export declare class Validator {
     processCommands(children: RuleCollection, argv: {
         [key: string]: any;
     }): {
-        commandKey: string | undefined;
+        commandKey?: string;
         argvRemainder: {
             [key: string]: any;
         };
     };
     validateSingle(rule: Rule, argv: {
         [key: string]: any;
-    }): any;
+    }): Promise<ValidationOutputType>;
     validate(rules: Rule, argv: {
         [key: string]: any;
     }): Promise<ConsultationResult>;

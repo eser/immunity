@@ -4,8 +4,15 @@ import { ConsultationResult, ConsultationError } from './Consultation';
 import { Rule, RuleCollection, ValidateMethod, getRuleChildren } from './Rule';
 import { Types } from './Types';
 
+export type ValidationOutputType = {
+    commandId?: string,
+    values: { [key: string]: any },
+    errors: { [key: string]: Array<ConsultationError> },
+    argvRemainder: { [key: string]: any }
+};
+
 export class Validator {
-    static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): string[] {
+    static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): Array<string> {
         let keys: string[] = [];
 
         if (condition(key)) {
@@ -23,7 +30,7 @@ export class Validator {
         return keys;
     }
 
-    static async executeValidatorSingle(validatorFunc: ValidateMethod, childKey, value): Promise<ConsultationError[]> {
+    static async executeValidatorSingle(validatorFunc: ValidateMethod, childKey, value): Promise<Array<ConsultationError>> {
         const validationMethodResult = await validatorFunc(value);
 
         if (validationMethodResult !== true) {
@@ -35,7 +42,7 @@ export class Validator {
         return [];
     }
 
-    static async executeValidator(validatorFunc: ValidateMethod, childKey, value): Promise<ConsultationError[]> {
+    static async executeValidator(validatorFunc: ValidateMethod, childKey, value): Promise<Array<ConsultationError>> {
         if (!Array.isArray(value)) {
             return await this.executeValidatorSingle(validatorFunc, childKey, value);
         }
@@ -52,7 +59,7 @@ export class Validator {
         return errors;
     }
 
-    static async prepareValue(value: any[], childKey: string, child: Rule) {
+    static async prepareValue(value: any[], childKey: string, child: Rule): Promise<{ value: any, errors?: Array<ConsultationError> }> {
         let errors: ConsultationError[] = [],
             newValue: any = value;
 
@@ -109,9 +116,7 @@ export class Validator {
         };
     }
 
-    async processSingleParameter(childKey: string, child: Rule, argv: { [key: string]: any }) {
-        // const tags: string[] = [];
-
+    async processSingleParameter(childKey: string, child: Rule, argv: { [key: string]: any }): Promise<{ values: { [key: string]: any }, errors?: Array<ConsultationError>, argvRemainder: { [key: string]: any } }> {
         let argvRemainder = argv,
             errors: ConsultationError[] | undefined,
             values;
@@ -140,25 +145,17 @@ export class Validator {
             values = child.default;
         }
 
-        // if (values !== undefined && child.id !== undefined) {
-        //     if (child.type !== Types.booleanParameter || values === true || Array.isArray(values) && values.some(x => x === true)) {
-        //         tags.push(child.id);
-        //     }
-        // }
-
         return {
             values: values,
             errors: errors,
-            // tags: tags,
             argvRemainder: argvRemainder
         };
     }
 
-    async processParameters(children: RuleCollection, argv: { [key: string]: any }) {
+    async processParameters(children: RuleCollection, argv: { [key: string]: any }): Promise<{ values: { [key: string]: any }, errors?: { [key: string]: Array<ConsultationError> }, argvRemainder: { [key: string]: any } }> {
         let argvRemainder = argv,
             values = {},
             errors = {};
-            // tags: string[] = [];
 
         for (const childKey in children) {
             const child = children[childKey];
@@ -178,21 +175,16 @@ export class Validator {
             if (result.errors !== undefined) {
                 errors = immunity.appendToObject(errors, { [childKey]: result.errors });
             }
-
-            // if (result.tags.length > 0) {
-            //     tags = immunity.mergeArrays(tags, result.tags);
-            // }
         }
 
         return {
             values: values,
             errors: errors,
-            // tags: tags,
             argvRemainder: argvRemainder
         };
     }
 
-    processSingleCommand(childKey: string, child: Rule, argv: { [key: string]: any }) {
+    processSingleCommand(childKey: string, child: Rule, argv: { [key: string]: any }): { commandKey?: string, argvRemainder: { [key: string]: any } } {
         let argvRemainder = argv;
 
         const argvKeys = Validator.getArgvKeys(child, childKey, (key) => argvRemainder._.indexOf(key) >= 0);
@@ -212,7 +204,7 @@ export class Validator {
         };
     }
 
-    processCommands(children: RuleCollection, argv: { [key: string]: any }) {
+    processCommands(children: RuleCollection, argv: { [key: string]: any }): { commandKey?: string, argvRemainder: { [key: string]: any } } {
         let argvRemainder = argv,
             commandKey: string | undefined;
 
@@ -248,21 +240,19 @@ export class Validator {
         };
     }
 
-    async validateSingle(rule: Rule, argv: { [key: string]: any }) {
+    async validateSingle(rule: Rule, argv: { [key: string]: any }): Promise<ValidationOutputType> {
         let commandId: string | undefined;
         const children = await getRuleChildren(rule);
 
         let argvRemainder = argv,
             values = {},
             errors = {};
-            // tags: string[] = [];
 
         if (children !== undefined) {
             // parameters first
             const result1 = await this.processParameters(children, argvRemainder);
             values = immunity.mergeObjects(values, result1.values);
             errors = immunity.mergeObjects(errors, result1.errors);
-            // tags = immunity.mergeArrays(tags, result1.tags);
             argvRemainder = result1.argvRemainder;
 
             // locate command
@@ -288,7 +278,6 @@ export class Validator {
 
         return {
             commandId: commandId,
-            // tags: tags,
             values: values,
             errors: errors,
             argvRemainder: argvRemainder
@@ -305,7 +294,6 @@ export class Validator {
         // TODO
         return {
             commandId: result.commandId,
-            // tags: result.tags,
             values: result.values,
             errors: result.errors,
             isValid: Object.keys(result.errors).length === 0,

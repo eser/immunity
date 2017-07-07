@@ -7,6 +7,9 @@ class ConsoleLogger {
     log(severity, message, extraData) {
         console.log(this.formatter.format(severity, message, extraData));
     }
+    direct(message) {
+        console.log(message);
+    }
 }
 exports.ConsoleLogger = ConsoleLogger;
 ;

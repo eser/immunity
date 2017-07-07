@@ -10,6 +10,10 @@ export class StreamLogger {
     log(severity: any, message: string, extraData?: any): void {
         this.targetStream.write(`${this.formatter.format(severity, message, extraData)}\n`);
     }
+
+    direct(message: string): void {
+        this.targetStream.write(`${message}`);
+    }
 };
 
 export default StreamLogger;

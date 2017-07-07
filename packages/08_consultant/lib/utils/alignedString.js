@@ -12,5 +12,6 @@ function alignedString(input, initial = '') {
     return output;
 }
 exports.alignedString = alignedString;
+;
 exports.default = alignedString;
 //# sourceMappingURL=alignedString.js.map

@@ -1,4 +1,4 @@
-export function alignedString(input: (number | string)[], initial: string = ''): string {
+export function alignedString(input: Array<number | string>, initial: string = ''): string {
     let output = initial;
 
     while (input.length >= 2) {
@@ -12,6 +12,6 @@ export function alignedString(input: (number | string)[], initial: string = ''):
     }
 
     return output;
-}
+};
 
 export default alignedString;

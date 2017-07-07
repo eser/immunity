@@ -25,7 +25,7 @@ class Consultant {
         const consultation = new Consultation_1.Consultation(this.rules);
         return await consultation.inquire();
     }
-    async getRule(predicate, node = this.rules) {
+    static async getRuleInternal(predicate, node) {
         const children = await Rule_1.getRuleChildren(node);
         if (children !== undefined) {
             for (const childKey in children) {
@@ -34,7 +34,7 @@ class Consultant {
                     return child;
                 }
                 if (child.children !== undefined || child.getChildren !== undefined) {
-                    const result = this.getRule(predicate, child);
+                    const result = await Consultant.getRuleInternal(predicate, child);
                     if (result !== undefined) {
                         return result;
                     }
@@ -42,6 +42,9 @@ class Consultant {
             }
         }
         return undefined;
+    }
+    async getRule(predicate) {
+        return Consultant.getRuleInternal(predicate, this.rules);
     }
     async getRuleById(id) {
         return await this.getRule((key, rule) => rule.id === id);
@@ -52,10 +55,14 @@ class Consultant {
     }
     async helpForId(id) {
         const rule = await this.getRuleById(id), dumper = new HelpDumper_1.HelpDumper();
+        if (rule === undefined) {
+            throw new Error(`rule id '${id}' is not found.`);
+        }
         await dumper.dump(rule, process.stdout);
     }
 }
 Consultant.types = Types_1.Types;
 exports.Consultant = Consultant;
+;
 exports.default = Consultant;
 //# sourceMappingURL=Consultant.js.map

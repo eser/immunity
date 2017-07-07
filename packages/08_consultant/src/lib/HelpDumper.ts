@@ -121,7 +121,7 @@ export class HelpDumper {
         return lines;
     }
 
-    async dump(rules: Rule, stream: any, indentation: string = '') {
+    async dump(rules: Rule, stream: any, indentation: string = ''): Promise<void> {
         if (rules.label !== undefined) {
             stream.write(`${indentation}${rules.label}\n`);
             stream.write(`${indentation}${'='.repeat(rules.label.length)}\n`);
