@@ -29,7 +29,6 @@
   },
   "license": "Apache-2.0",
   "main": "./lib/index.js",
-  "module": "./lib/esm.js",
   "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=8.0.0"
@@ -42,5 +41,8 @@
     "lib",
     "bin"
   ],
-  "bin": {}
+  "bin": {},
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
 }

@@ -1,9 +1,9 @@
 import path = require('path');
-import { appendToArray } from 'immunity/lib/appendToArray';
-import { splitArray } from 'immunity/lib/splitArray';
-import { mkdir } from './mkdir';
+import appendToArray from 'immunity/lib/appendToArray';
+import splitArray from 'immunity/lib/splitArray';
+import mkdir from './mkdir';
 
-export async function mkdirP(pathstr, mode?) {
+async function mkdirP(pathstr, mode?) {
     let directories = [
         pathstr
     ];
@@ -30,6 +30,8 @@ export async function mkdirP(pathstr, mode?) {
             throw ex;
         }
     }
-};
+}
 
-export default mkdirP;
+export {
+    mkdirP as default,
+};

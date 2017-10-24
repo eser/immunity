@@ -1,17 +1,17 @@
 import immunity = require('immunity');
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 import { ConsultationResult, ConsultationError } from './Consultation';
-import { Rule, RuleCollection, ValidateMethod, getRuleChildren } from './Rule';
-import { Types } from './Types';
+import Rule, { RuleCollection, ValidateMethod, getRuleChildren } from './Rule';
+import Types from './Types';
 
-export type ValidationOutputType = {
+type ValidationOutputType = {
     commandId?: string,
     values: { [key: string]: any },
     errors: { [key: string]: Array<ConsultationError> },
-    argvRemainder: { [key: string]: any }
-};
+    argvRemainder: { [key: string]: any },
+}
 
-export class Validator {
+class Validator {
     static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): Array<string> {
         let keys: string[] = [];
 
@@ -300,6 +300,9 @@ export class Validator {
             isCancelled: false
         };
     }
-};
+}
 
-export default Validator;
+export {
+    ValidationOutputType,
+    Validator as default,
+};

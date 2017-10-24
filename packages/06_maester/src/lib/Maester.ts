@@ -1,8 +1,8 @@
-import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
-import { LogManager, SeverityType } from './logging/';
-import { ExceptionManager } from './exceptions/';
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+import LogManager, { SeverityType } from './logging/';
+import ExceptionManager from './exceptions/';
 
-export class Maester {
+class Maester {
     events: EventEmitter;
 
     logging: LogManager;
@@ -44,6 +44,8 @@ export class Maester {
         this.events.pause();
         this.paused = true;
     }
-};
+}
 
-export default Maester;
+export {
+    Maester as default,
+};

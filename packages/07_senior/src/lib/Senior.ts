@@ -1,10 +1,11 @@
 import path = require('path');
 import os = require('os');
-import cofounder = require('cofounder');
-import EventEmitter = require('es6-eventemitter');
-import immunity = require('immunity');
+import * as cofounder from 'cofounder';
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+import mergeObjects from 'immunity/lib/mergeObjects';
+import appendToObject from 'immunity/lib/appendToObject';
 
-export class Senior {
+class Senior {
     name: string;
     modulePrefix: string;
 
@@ -43,7 +44,7 @@ export class Senior {
             const packageJson = require(this.packageJsonFile);
 
             if (packageJson.dependencies !== undefined) {
-                dependencies = immunity.mergeObjects(dependencies, packageJson.dependencies);
+                dependencies = mergeObjects(dependencies, packageJson.dependencies);
             }
         }
         catch (ex) {
@@ -118,10 +119,10 @@ export class Senior {
         let result = {};
 
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(
+            result = appendToObject(
                 result,
                 {
-                    [dependencyKey]: this.getModuleIndex(dependencyKey)
+                    [dependencyKey]: this.getModuleIndex(dependencyKey),
                 }
             );
         }
@@ -133,7 +134,7 @@ export class Senior {
         let gBackups = {};
 
         for (const globalKey of Object.keys(globals)) {
-            gBackups = immunity.appendToObject(gBackups, { [globalKey]: global[globalKey] });
+            gBackups = appendToObject(gBackups, { [globalKey]: global[globalKey] });
             global[globalKey] = globals[globalKey];
         }
 
@@ -168,16 +169,18 @@ export class Senior {
         let result = {};
 
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(
+            result = appendToObject(
                 result,
                 {
-                    [dependencyKey]: this.load(dependencyKey, globals, loader)
+                    [dependencyKey]: this.load(dependencyKey, globals, loader),
                 }
             );
         }
 
         return result;
     }
-};
+}
 
-export default Senior;
+export {
+    Senior as default,
+};

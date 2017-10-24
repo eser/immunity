@@ -7,7 +7,7 @@ function writeFile(pathstr, content, options) {
         const defaultOptions = { encoding: 'utf8' };
         const options_ = (options === undefined) ?
             defaultOptions :
-            appendToObject_1.appendToObject(options, defaultOptions);
+            appendToObject_1.default(options, defaultOptions);
         fs.writeFile(pathstr, content, options_, (err) => {
             if (err) {
                 reject(err);
@@ -17,7 +17,5 @@ function writeFile(pathstr, content, options) {
         });
     });
 }
-exports.writeFile = writeFile;
-;
 exports.default = writeFile;
 //# sourceMappingURL=writeFile.js.map

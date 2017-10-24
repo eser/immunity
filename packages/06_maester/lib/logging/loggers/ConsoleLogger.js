@@ -11,7 +11,5 @@ class ConsoleLogger {
         console.log(message);
     }
 }
-exports.ConsoleLogger = ConsoleLogger;
-;
 exports.default = ConsoleLogger;
 //# sourceMappingURL=ConsoleLogger.js.map

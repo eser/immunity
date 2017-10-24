@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-export function lstat(pathstr): Promise<any> {
+function lstat(pathstr): Promise<any> {
     return new Promise((resolve, reject) => {
         fs.lstat(
             pathstr,
@@ -15,6 +15,8 @@ export function lstat(pathstr): Promise<any> {
             }
         );
     });
-};
+}
 
-export default lstat;
+export {
+    lstat as default,
+};

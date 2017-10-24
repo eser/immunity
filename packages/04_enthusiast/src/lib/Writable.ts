@@ -1,7 +1,9 @@
-import { Stream } from './Stream';
+import Stream from './Stream';
 
-export class Writable extends Stream {
+class Writable extends Stream {
 
+}
+
+export {
+    Writable as default,
 };
-
-export default Writable;

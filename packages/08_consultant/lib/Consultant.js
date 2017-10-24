@@ -10,11 +10,11 @@ class Consultant {
         this.rules = rules;
     }
     async fromObject(argv) {
-        const consultation = new Consultation_1.Consultation(this.rules, argv);
+        const consultation = new Consultation_1.default(this.rules, argv);
         return await consultation.validate();
     }
     async fromString(args) {
-        const argv = ArgsParser_1.ArgsParser.parse(args);
+        const argv = ArgsParser_1.default.parse(args);
         return await this.fromObject(argv);
     }
     async fromCommandLine() {
@@ -22,7 +22,7 @@ class Consultant {
         return await this.fromString(args);
     }
     async fromInquiry() {
-        const consultation = new Consultation_1.Consultation(this.rules);
+        const consultation = new Consultation_1.default(this.rules);
         return await consultation.inquire();
     }
     static async getRuleInternal(predicate, node) {
@@ -50,19 +50,17 @@ class Consultant {
         return await this.getRule((key, rule) => rule.id === id);
     }
     async help() {
-        const dumper = new HelpDumper_1.HelpDumper();
+        const dumper = new HelpDumper_1.default();
         await dumper.dump(this.rules, process.stdout);
     }
     async helpForId(id) {
-        const rule = await this.getRuleById(id), dumper = new HelpDumper_1.HelpDumper();
+        const rule = await this.getRuleById(id), dumper = new HelpDumper_1.default();
         if (rule === undefined) {
             throw new Error(`rule id '${id}' is not found.`);
         }
         await dumper.dump(rule, process.stdout);
     }
 }
-Consultant.types = Types_1.Types;
-exports.Consultant = Consultant;
-;
+Consultant.types = Types_1.default;
 exports.default = Consultant;
 //# sourceMappingURL=Consultant.js.map

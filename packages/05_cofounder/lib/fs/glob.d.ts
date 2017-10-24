@@ -1,2 +1,2 @@
-export declare function glob(str: any, options?: any): Promise<any>;
-export default glob;
+declare function glob(str: any, options?: any): Promise<any>;
+export { glob as default };

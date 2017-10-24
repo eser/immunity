@@ -1,38 +1,38 @@
-import { assign } from 'ponyfills/lib/assign';
-import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
-import { appendToObject } from 'immunity/lib/appendToObject';
-import { removeKeyFromObject } from 'immunity/lib/removeKeyFromObject';
-import { ConsoleLogger } from './loggers/ConsoleLogger';
-import { StreamLogger } from './loggers/StreamLogger';
-import { BasicFormatter } from './formatters/BasicFormatter';
-import { NodeConsoleFormatter } from './formatters/NodeConsoleFormatter';
+import assign from 'ponyfills/lib/assign';
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+import appendToObject from 'immunity/lib/appendToObject';
+import removeKeyFromObject from 'immunity/lib/removeKeyFromObject';
+import ConsoleLogger from './loggers/ConsoleLogger';
+import StreamLogger from './loggers/StreamLogger';
+import BasicFormatter from './formatters/BasicFormatter';
+import NodeConsoleFormatter from './formatters/NodeConsoleFormatter';
 
-export type SeverityType = {
+type SeverityType = {
     color: string,
-    label: string
-};
+    label: string,
+}
 
-export type FormatterType = {
-    format(severity: SeverityType, message: string): string
-};
+type FormatterType = {
+    format(severity: SeverityType, message: string): string,
+}
 
-export type LoggerType = {
+type LoggerType = {
     log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>,
-    direct(message: string): void | Promise<void>
-};
+    direct(message: string): void | Promise<void>,
+}
 
-export type LoggerTypeConstructorType = {
-    new(formatter: FormatterType, ...args: Array<any>): LoggerType
-};
+type LoggerTypeConstructorType = {
+    new(formatter: FormatterType, ...args: Array<any>): LoggerType,
+}
 
-export const defaultSeverities = {
+const defaultSeverities = {
     debug: { color: 'gray', label: 'debug' },
     info: { color: 'white', label: 'info' },
     warn: { color: 'yellow', label: 'warn' },
-    error: { color: 'red', label: 'err!' }
+    error: { color: 'red', label: 'err!' },
 };
 
-export class LogManager {
+class LogManager {
     events: EventEmitter;
 
     loggerTypes: { [key: string]: LoggerTypeConstructorType };
@@ -48,11 +48,11 @@ export class LogManager {
 
         this.loggerTypes = {
             'console': ConsoleLogger,
-            'stream': StreamLogger
+            'stream': StreamLogger,
         };
         this.formatters = {
             'basic': new BasicFormatter(),
-            'nodeConsole': new NodeConsoleFormatter()
+            'nodeConsole': new NodeConsoleFormatter(),
         };
         this.setSeverities(defaultSeverities);
         this.loggers = {};
@@ -169,6 +169,13 @@ export class LogManager {
             this
         );
     }
-};
+}
 
-export default LogManager;
+export {
+    SeverityType,
+    FormatterType,
+    LoggerType,
+    LoggerTypeConstructorType,
+    defaultSeverities,
+    LogManager as default,
+};

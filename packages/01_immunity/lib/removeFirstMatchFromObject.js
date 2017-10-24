@@ -8,12 +8,10 @@ function removeFirstMatchFromObject(instance, predicate) {
             notFound = false;
             return obj;
         }
-        return assign_1.assign({}, obj, {
-            [itemKey]: instance[itemKey]
+        return assign_1.default({}, obj, {
+            [itemKey]: instance[itemKey],
         });
     }, {});
 }
-exports.removeFirstMatchFromObject = removeFirstMatchFromObject;
-;
 exports.default = removeFirstMatchFromObject;
 //# sourceMappingURL=removeFirstMatchFromObject.js.map

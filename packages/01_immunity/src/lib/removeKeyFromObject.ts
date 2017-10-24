@@ -1,11 +1,11 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function removeKeyFromObject(instance: any, ...keys: Array<string>): any {
+function removeKeyFromObject(instance: any, ...keys: Array<string>): any {
     return Object.keys(instance).reduce(
         (obj, itemKey) => {
             if (keys.indexOf(itemKey) === -1) {
                 return assign({}, obj, {
-                    [itemKey]: instance[itemKey]
+                    [itemKey]: instance[itemKey],
                 });
             }
 
@@ -13,6 +13,8 @@ export function removeKeyFromObject(instance: any, ...keys: Array<string>): any 
         },
         {}
     );
-};
+}
 
-export default removeKeyFromObject;
+export {
+    removeKeyFromObject as default,
+};

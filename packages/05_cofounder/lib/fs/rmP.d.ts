@@ -1,2 +1,2 @@
-export declare function rmP(str: any, recursiveForDirectories: any): Promise<void>;
-export default rmP;
+declare function rmP(str: any, recursiveForDirectories: any): Promise<void>;
+export { rmP as default };

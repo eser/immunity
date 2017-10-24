@@ -1,10 +1,7 @@
-import { Types } from './Types';
-export declare type RuleCollection = {
-    [key: string]: Rule;
-};
-export declare type ValidateMethod = (value: any) => Promise<ValidationResult>;
-export declare type ValidationResult = boolean | string;
-export interface Rule {
+import Types from './Types';
+declare type ValidateMethod = (value: any) => Promise<ValidationResult>;
+declare type ValidationResult = boolean | string;
+interface Rule {
     type?: Types;
     strict?: boolean;
     aliases: string[];
@@ -22,8 +19,15 @@ export interface Rule {
     min: number;
     max?: number;
     validate?: ValidateMethod;
-    children?: RuleCollection;
-    getChildren?: (id?: string) => Promise<RuleCollection>;
+    children?: {
+        [key: string]: Rule;
+    };
+    getChildren?: (id?: string) => Promise<{
+        [key: string]: Rule;
+    }>;
 }
-export declare function getRuleChildren(rule: Rule): Promise<RuleCollection | undefined>;
-export default Rule;
+declare type RuleCollection = {
+    [key: string]: Rule;
+};
+declare function getRuleChildren(rule: Rule): Promise<RuleCollection | undefined>;
+export { ValidationResult, ValidateMethod, Rule as default, RuleCollection, getRuleChildren };

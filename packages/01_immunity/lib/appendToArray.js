@@ -3,10 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function appendToArray(instance, ...values) {
     return [
         ...instance,
-        ...values
+        ...values,
     ];
 }
-exports.appendToArray = appendToArray;
-;
 exports.default = appendToArray;
 //# sourceMappingURL=appendToArray.js.map

@@ -1,4 +1,4 @@
-export function pipe(...funcs: Function[]): Function {
+function pipe(...funcs: Function[]): Function {
     return funcs.reduce(
         function (previousValue: Function, currentValue: Function): Function {
             return function (...args): any {
@@ -6,6 +6,8 @@ export function pipe(...funcs: Function[]): Function {
             }
         }
     );
-};
+}
 
-export default pipe;
+export {
+    pipe as default,
+};

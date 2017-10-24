@@ -1,4 +1,4 @@
-export declare function appendToObject(instance: any, ...values: Array<{
+declare function appendToObject(instance: any, ...values: Array<{
     [key: string]: any;
 }>): any;
-export default appendToObject;
+export { appendToObject as default };

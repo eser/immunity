@@ -10,7 +10,5 @@ function removeFirstMatchFromArray(instance, predicate) {
         return true;
     });
 }
-exports.removeFirstMatchFromArray = removeFirstMatchFromArray;
-;
 exports.default = removeFirstMatchFromArray;
 //# sourceMappingURL=removeFirstMatchFromArray.js.map

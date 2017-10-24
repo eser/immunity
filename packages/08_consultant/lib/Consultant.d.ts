@@ -1,7 +1,7 @@
-import { Types } from './Types';
+import Types from './Types';
 import { ConsultationResult } from './Consultation';
-import { Rule } from './Rule';
-export declare class Consultant {
+import Rule from './Rule';
+declare class Consultant {
     static types: typeof Types;
     rules: Rule;
     constructor(rules: Rule);
@@ -15,4 +15,4 @@ export declare class Consultant {
     help(): Promise<void>;
     helpForId(id: string): Promise<void>;
 }
-export default Consultant;
+export { Consultant as default };

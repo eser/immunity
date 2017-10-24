@@ -1,6 +1,6 @@
 import { ConsultationResult, ConsultationError } from './Consultation';
-import { Rule, RuleCollection, ValidateMethod } from './Rule';
-export declare type ValidationOutputType = {
+import Rule, { RuleCollection, ValidateMethod } from './Rule';
+declare type ValidationOutputType = {
     commandId?: string;
     values: {
         [key: string]: any;
@@ -12,7 +12,7 @@ export declare type ValidationOutputType = {
         [key: string]: any;
     };
 };
-export declare class Validator {
+declare class Validator {
     static getArgvKeys(rule: Rule, key: string, condition: (key: string) => boolean): Array<string>;
     static executeValidatorSingle(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<Array<ConsultationError>>;
     static executeValidator(validatorFunc: ValidateMethod, childKey: any, value: any): Promise<Array<ConsultationError>>;
@@ -67,4 +67,4 @@ export declare class Validator {
         [key: string]: any;
     }): Promise<ConsultationResult>;
 }
-export default Validator;
+export { ValidationOutputType, Validator as default };

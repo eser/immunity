@@ -12,7 +12,5 @@ function lstat(pathstr) {
         });
     });
 }
-exports.lstat = lstat;
-;
 exports.default = lstat;
 //# sourceMappingURL=lstat.js.map

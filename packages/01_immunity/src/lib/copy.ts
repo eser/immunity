@@ -1,22 +1,24 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function copy(instance: any): any {
+function copy(instance: any): any {
     const type: any = instance.constructor;
 
     return Object.keys(instance).reduce(
         (obj, itemKey) => {
             if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
                 return assign(new type(), obj, {
-                    [itemKey]: copy(instance[itemKey])
+                    [itemKey]: copy(instance[itemKey]),
                 });
             }
 
             return assign(new type(), obj, {
-                [itemKey]: instance[itemKey]
+                [itemKey]: instance[itemKey],
             });
         },
         new type()
     );
-};
+}
 
-export default copy;
+export {
+    copy as default,
+};

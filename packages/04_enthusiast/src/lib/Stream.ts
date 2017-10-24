@@ -1,9 +1,9 @@
 // TODO credit and license to juliangruber/stream
 
-import { appendToObject } from 'immunity/lib/appendToObject';
-import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
+import appendToObject from 'immunity/lib/appendToObject';
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
 
-export class Stream extends EventEmitter {
+class Stream extends EventEmitter {
     readable: boolean;
 
     pipe(destination, options?): any {
@@ -105,6 +105,8 @@ export class Stream extends EventEmitter {
 
         return destination;
     }
-};
+}
 
-export default Stream;
+export {
+    Stream as default,
+};

@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-export function mv(pathstr, dest): Promise<void> {
+function mv(pathstr, dest): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         fs.rename(
             pathstr,
@@ -16,6 +16,8 @@ export function mv(pathstr, dest): Promise<void> {
             }
         );
     });
-};
+}
 
-export default mv;
+export {
+    mv as default,
+};

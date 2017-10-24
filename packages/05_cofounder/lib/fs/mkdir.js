@@ -18,7 +18,5 @@ function mkdir(pathstr, mode) {
         }
     });
 }
-exports.mkdir = mkdir;
-;
 exports.default = mkdir;
 //# sourceMappingURL=mkdir.js.map

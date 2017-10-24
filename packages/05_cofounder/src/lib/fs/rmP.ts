@@ -1,11 +1,11 @@
-import { prependToArray } from 'immunity/lib/prependToArray';
-import { glob } from './glob';
-import { lstat } from './lstat';
-import { rm } from './rm';
-import { rmdir } from './rmdir';
-import { rmdirP } from './rmdirP';
+import prependToArray from 'immunity/lib/prependToArray';
+import glob from './glob';
+import lstat from './lstat';
+import rm from './rm';
+import rmdir from './rmdir';
+import rmdirP from './rmdirP';
 
-export async function rmP(str, recursiveForDirectories) {
+async function rmP(str, recursiveForDirectories) {
     const list = await glob(str, false);
 
     let directories: Array<any> = [];
@@ -30,6 +30,8 @@ export async function rmP(str, recursiveForDirectories) {
             await rmdir(directory);
         }
     }
-};
+}
 
-export default rmP;
+export {
+    rmP as default,
+};

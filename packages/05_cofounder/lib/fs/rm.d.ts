@@ -1,2 +1,2 @@
-export declare function rm(pathstr: any): Promise<void>;
-export default rm;
+declare function rm(pathstr: any): Promise<void>;
+export { rm as default };

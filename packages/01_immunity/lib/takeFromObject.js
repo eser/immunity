@@ -6,12 +6,10 @@ function takeFromObject(instance, n) {
     return Object.keys(instance).reduce((obj, itemKey) => {
         if (index < n) {
             index += 1;
-            return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
+            return assign_1.default({}, obj, { [itemKey]: instance[itemKey] });
         }
         return obj;
     }, {});
 }
-exports.takeFromObject = takeFromObject;
-;
 exports.default = takeFromObject;
 //# sourceMappingURL=takeFromObject.js.map

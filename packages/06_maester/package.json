@@ -27,7 +27,6 @@
   },
   "license": "Apache-2.0",
   "main": "./lib/index.js",
-  "module": "./lib/esm.js",
   "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=8.0.0"
@@ -48,6 +47,7 @@
     "ponyfills": "^0.8.4"
   },
   "devDependencies": {
-    "@types/node": "^7.0.33"
+    "@types/node": "^8.0.46",
+    "jest": "^21.2.1"
   }
 }

@@ -6,30 +6,31 @@ const ConsoleLogger_1 = require("./loggers/ConsoleLogger");
 const StreamLogger_1 = require("./loggers/StreamLogger");
 const BasicFormatter_1 = require("./formatters/BasicFormatter");
 const NodeConsoleFormatter_1 = require("./formatters/NodeConsoleFormatter");
-exports.defaultSeverities = {
+const defaultSeverities = {
     debug: { color: 'gray', label: 'debug' },
     info: { color: 'white', label: 'info' },
     warn: { color: 'yellow', label: 'warn' },
-    error: { color: 'red', label: 'err!' }
+    error: { color: 'red', label: 'err!' },
 };
+exports.defaultSeverities = defaultSeverities;
 class LogManager {
     constructor(events) {
         this.events = events;
         this.loggerTypes = {
-            'console': ConsoleLogger_1.ConsoleLogger,
-            'stream': StreamLogger_1.StreamLogger
+            'console': ConsoleLogger_1.default,
+            'stream': StreamLogger_1.default,
         };
         this.formatters = {
-            'basic': new BasicFormatter_1.BasicFormatter(),
-            'nodeConsole': new NodeConsoleFormatter_1.NodeConsoleFormatter()
+            'basic': new BasicFormatter_1.default(),
+            'nodeConsole': new NodeConsoleFormatter_1.default(),
         };
-        this.setSeverities(exports.defaultSeverities);
+        this.setSeverities(defaultSeverities);
         this.loggers = {};
         this.level = 'info';
     }
     addLogger(name, loggerTypeName, formatterTypeName, ...args) {
         const loggerType = this.loggerTypes[loggerTypeName], formatter = this.formatters[formatterTypeName], logger = new loggerType(formatter, ...args);
-        this.loggers = appendToObject_1.appendToObject(this.loggers, { [name]: logger });
+        this.loggers = appendToObject_1.default(this.loggers, { [name]: logger });
         this.events.on('log', logger.log, logger, false, name);
         this.events.on('write', logger.direct, logger, false, name);
     }
@@ -39,12 +40,12 @@ class LogManager {
         }
         this.events.offByPredicate('log', (item) => (item.listener === this.loggers[name].log && item.tag === name));
         this.events.offByPredicate('write', (item) => (item.listener === this.loggers[name].direct && item.tag === name));
-        this.loggers = removeKeyFromObject_1.removeKeyFromObject(this.loggers, name);
+        this.loggers = removeKeyFromObject_1.default(this.loggers, name);
     }
     setSeverities(severities) {
         this.severities = severities;
         this.severityIndexes = Object.keys(severities).reduce((obj, itemKey, itemIndex) => {
-            return appendToObject_1.appendToObject(obj, { [itemKey]: itemIndex });
+            return appendToObject_1.default(obj, { [itemKey]: itemIndex });
         }, {});
     }
     linkLogMethods(target) {
@@ -82,7 +83,5 @@ class LogManager {
         await this.events.emitAsync('write', message, this);
     }
 }
-exports.LogManager = LogManager;
-;
 exports.default = LogManager;
 //# sourceMappingURL=index.js.map

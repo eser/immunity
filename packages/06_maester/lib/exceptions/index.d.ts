@@ -1,5 +1,6 @@
-export declare class ExceptionManager {
+import BaseException from './BaseException';
+declare class ExceptionManager {
     base: any;
     constructor();
 }
-export default ExceptionManager;
+export { ExceptionManager as default, BaseException };

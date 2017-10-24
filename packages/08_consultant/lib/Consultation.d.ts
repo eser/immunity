@@ -1,8 +1,8 @@
-import { Rule } from './Rule';
-export interface ConsultationError {
+import Rule from './Rule';
+interface ConsultationError {
     error: string;
 }
-export interface ConsultationResult {
+interface ConsultationResult {
     commandId?: string;
     values: object;
     isValid: boolean;
@@ -11,11 +11,11 @@ export interface ConsultationResult {
         [key: string]: ConsultationError[];
     };
 }
-export declare class Consultation {
+declare class Consultation {
     rules: Rule;
     source?: object;
     constructor(rules: Rule, argv?: object);
     validate(): Promise<ConsultationResult>;
     inquire(): Promise<ConsultationResult>;
 }
-export default Consultation;
+export { ConsultationError, ConsultationResult, Consultation as default };

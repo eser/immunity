@@ -11,7 +11,5 @@ class NodeConsoleFormatter {
         return formatted;
     }
 }
-exports.NodeConsoleFormatter = NodeConsoleFormatter;
-;
 exports.default = NodeConsoleFormatter;
 //# sourceMappingURL=NodeConsoleFormatter.js.map

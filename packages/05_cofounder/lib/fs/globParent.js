@@ -4,7 +4,5 @@ const globParentLib = require("glob-parent");
 function globParent(str) {
     return globParentLib(str);
 }
-exports.globParent = globParent;
-;
 exports.default = globParent;
 //# sourceMappingURL=globParent.js.map

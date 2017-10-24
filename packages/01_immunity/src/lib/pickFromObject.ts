@@ -1,6 +1,6 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function pickFromObject(instance: any, items: Array<any>): { items: any, remainder: any } {
+function pickFromObject(instance: any, items: Array<any>): { items: any, remainder: any } {
     const keys = Object.keys(instance);
 
     return keys.reduce(
@@ -8,20 +8,22 @@ export function pickFromObject(instance: any, items: Array<any>): { items: any, 
             if (items.indexOf(itemKey) !== -1) {
                 return {
                     items: assign({}, obj.items, { [itemKey]: instance[itemKey] }),
-                    remainder: obj.remainder
+                    remainder: obj.remainder,
                 };
             }
 
             return {
                 items: obj.items,
-                remainder: assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+                remainder: assign({}, obj.remainder, { [itemKey]: instance[itemKey] }),
             };
         },
         {
             items: {},
-            remainder: {}
+            remainder: {},
         }
     );
-};
+}
 
-export default pickFromObject;
+export {
+    pickFromObject as default,
+};

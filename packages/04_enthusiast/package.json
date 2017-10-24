@@ -22,7 +22,6 @@
   },
   "license": "Apache-2.0",
   "main": "./lib/index.js",
-  "module": "./lib/esm.js",
   "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=8.0.0"
@@ -39,5 +38,8 @@
   "dependencies": {
     "es6-eventemitter": "^0.8.4",
     "immunity": "^0.8.4"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }

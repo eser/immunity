@@ -6,14 +6,16 @@ const yargsConfiguration = {
         'camel-case-expansion': true,
         'dot-notation': false,
         'parse-numbers': false,
-        'boolean-negation': true // --bool for true, --no-bool for false
-    }
+        'boolean-negation': true, // --bool for true, --no-bool for false
+    },
 };
 
-export class ArgsParser {
+class ArgsParser {
     static parse(args): any {
         return yargsParser(args, yargsConfiguration);
     }
-};
+}
 
-export default ArgsParser;
+export {
+    ArgsParser as default,
+};

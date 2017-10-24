@@ -1,17 +1,17 @@
-import { appendToArray } from 'immunity/lib/appendToArray';
-import { appendToObject } from 'immunity/lib/appendToObject';
-import { mergeArrays } from 'immunity/lib/mergeArrays';
-import { prependToArray } from 'immunity/lib/prependToArray';
-import { removeFirstMatchFromArray } from 'immunity/lib/removeFirstMatchFromArray';
-import { removeKeyFromObject } from 'immunity/lib/removeKeyFromObject';
+import appendToArray from 'immunity/lib/appendToArray';
+import appendToObject from 'immunity/lib/appendToObject';
+import mergeArrays from 'immunity/lib/mergeArrays';
+import prependToArray from 'immunity/lib/prependToArray';
+import removeFirstMatchFromArray from 'immunity/lib/removeFirstMatchFromArray';
+import removeKeyFromObject from 'immunity/lib/removeKeyFromObject';
 
-export type EmitQueueItemType = {
+type EmitQueueItemType = {
     async: boolean,
     eventName: string,
-    params: any
-};
+    params: any,
+}
 
-export class EventEmitter {
+class EventEmitter {
     static defaultMaxListeners = 10;
 
     events: { [key: string]: any };
@@ -92,8 +92,8 @@ export class EventEmitter {
         this.events = appendToObject(this.events, {
             [eventName]: {
                 on: eventListeners.on,
-                once: []
-            }
+                once: [],
+            },
         });
 
         eventListeners.on.forEach(listenerCallDelegate);
@@ -129,8 +129,8 @@ export class EventEmitter {
         this.events = appendToObject(this.events, {
             [eventName]: {
                 on: eventListeners.on,
-                once: []
-            }
+                once: [],
+            },
         });
 
         const result = mergeArrays(
@@ -154,11 +154,11 @@ export class EventEmitter {
                         {
                             listener: listener,
                             context: context,
-                            tag: tag
+                            tag: tag,
                         }
                     ),
-                    once: eventListeners.once
-                }
+                    once: eventListeners.once,
+                },
             });
         }
         else {
@@ -168,11 +168,11 @@ export class EventEmitter {
                         {
                             listener: listener,
                             context: context,
-                            tag: tag
-                        }
+                            tag: tag,
+                        },
                     ],
-                    once: []
-                }
+                    once: [],
+                },
             });
         }
 
@@ -193,10 +193,10 @@ export class EventEmitter {
                         {
                             listener: listener,
                             context: context,
-                            tag: tag
+                            tag: tag,
                         }
-                    )
-                }
+                    ),
+                },
             });
         }
         else {
@@ -208,9 +208,9 @@ export class EventEmitter {
                             listener: listener,
                             context: context,
                             tag: tag
-                        }
-                    ]
-                }
+                        },
+                    ],
+                },
             });
         }
 
@@ -226,8 +226,8 @@ export class EventEmitter {
             this.events = appendToObject(this.events, {
                 [eventName]: {
                     on: eventListeners.on.filter(predicate),
-                    once: eventListeners.once.filter(predicate)
-                }
+                    once: eventListeners.once.filter(predicate),
+                },
             });
         }
 
@@ -291,6 +291,9 @@ export class EventEmitter {
 
         this.emitQueue = [];
     }
-};
+}
 
-export default EventEmitter;
+export {
+    EmitQueueItemType,
+    EventEmitter as default,
+};

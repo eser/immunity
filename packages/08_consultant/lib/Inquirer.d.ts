@@ -1,6 +1,6 @@
 import { ConsultationResult } from './Consultation';
-import { Rule } from './Rule';
-export declare class Inquirer {
+import Rule from './Rule';
+declare class Inquirer {
     inquire(rules: Rule): Promise<ConsultationResult>;
 }
-export default Inquirer;
+export { Inquirer as default };

@@ -1,48 +1,47 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const appendToArray_1 = require("./appendToArray");
+exports.appendToArray = appendToArray_1.default;
 const appendToObject_1 = require("./appendToObject");
+exports.appendToObject = appendToObject_1.default;
 const copy_1 = require("./copy");
+exports.copy = copy_1.default;
 const dropFromArray_1 = require("./dropFromArray");
+exports.dropFromArray = dropFromArray_1.default;
 const dropFromObject_1 = require("./dropFromObject");
+exports.dropFromObject = dropFromObject_1.default;
 const filterArray_1 = require("./filterArray");
+exports.filterArray = filterArray_1.default;
 const filterObject_1 = require("./filterObject");
+exports.filterObject = filterObject_1.default;
 const mergeArrays_1 = require("./mergeArrays");
+exports.mergeArrays = mergeArrays_1.default;
 const mergeObjects_1 = require("./mergeObjects");
+exports.mergeObjects = mergeObjects_1.default;
 const pickFromArray_1 = require("./pickFromArray");
+exports.pickFromArray = pickFromArray_1.default;
 const pickFromObject_1 = require("./pickFromObject");
+exports.pickFromObject = pickFromObject_1.default;
 const prependToArray_1 = require("./prependToArray");
+exports.prependToArray = prependToArray_1.default;
 const prependToObject_1 = require("./prependToObject");
+exports.prependToObject = prependToObject_1.default;
 const removeFirstMatchFromArray_1 = require("./removeFirstMatchFromArray");
+exports.removeFirstMatchFromArray = removeFirstMatchFromArray_1.default;
 const removeFirstMatchFromObject_1 = require("./removeFirstMatchFromObject");
+exports.removeFirstMatchFromObject = removeFirstMatchFromObject_1.default;
 const removeFromArray_1 = require("./removeFromArray");
+exports.removeFromArray = removeFromArray_1.default;
 const removeKeyFromObject_1 = require("./removeKeyFromObject");
+exports.removeKeyFromObject = removeKeyFromObject_1.default;
 const removeValueFromObject_1 = require("./removeValueFromObject");
+exports.removeValueFromObject = removeValueFromObject_1.default;
 const splitArray_1 = require("./splitArray");
+exports.splitArray = splitArray_1.default;
 const splitObject_1 = require("./splitObject");
+exports.splitObject = splitObject_1.default;
 const takeFromArray_1 = require("./takeFromArray");
+exports.takeFromArray = takeFromArray_1.default;
 const takeFromObject_1 = require("./takeFromObject");
-module.exports = {
-    appendToArray: appendToArray_1.appendToArray,
-    appendToObject: appendToObject_1.appendToObject,
-    copy: copy_1.copy,
-    dropFromArray: dropFromArray_1.dropFromArray,
-    dropFromObject: dropFromObject_1.dropFromObject,
-    filterArray: filterArray_1.filterArray,
-    filterObject: filterObject_1.filterObject,
-    mergeArrays: mergeArrays_1.mergeArrays,
-    mergeObjects: mergeObjects_1.mergeObjects,
-    pickFromArray: pickFromArray_1.pickFromArray,
-    pickFromObject: pickFromObject_1.pickFromObject,
-    prependToArray: prependToArray_1.prependToArray,
-    prependToObject: prependToObject_1.prependToObject,
-    removeFirstMatchFromArray: removeFirstMatchFromArray_1.removeFirstMatchFromArray,
-    removeFirstMatchFromObject: removeFirstMatchFromObject_1.removeFirstMatchFromObject,
-    removeFromArray: removeFromArray_1.removeFromArray,
-    removeKeyFromObject: removeKeyFromObject_1.removeKeyFromObject,
-    removeValueFromObject: removeValueFromObject_1.removeValueFromObject,
-    splitArray: splitArray_1.splitArray,
-    splitObject: splitObject_1.splitObject,
-    takeFromArray: takeFromArray_1.takeFromArray,
-    takeFromObject: takeFromObject_1.takeFromObject
-};
+exports.takeFromObject = takeFromObject_1.default;
 //# sourceMappingURL=index.js.map

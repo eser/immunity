@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-export function mkdir(pathstr, mode) {
+function mkdir(pathstr, mode) {
     return new Promise((resolve, reject) => {
         const callback = (err) => {
             if (err) {
@@ -19,6 +19,8 @@ export function mkdir(pathstr, mode) {
             fs.mkdir(pathstr, mode, callback);
         }
     });
-};
+}
 
-export default mkdir;
+export {
+    mkdir as default,
+};

@@ -11,7 +11,7 @@ function glob(str, options) {
         };
         const options_ = (options === undefined) ?
             defaultOptions :
-            appendToObject_1.appendToObject(options, defaultOptions);
+            appendToObject_1.default(options, defaultOptions);
         globAll(str, options_, (err, contents) => {
             if (err) {
                 reject(err);
@@ -21,7 +21,5 @@ function glob(str, options) {
         });
     });
 }
-exports.glob = glob;
-;
 exports.default = glob;
 //# sourceMappingURL=glob.js.map

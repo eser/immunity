@@ -7,15 +7,13 @@ const yargsConfiguration = {
         'camel-case-expansion': true,
         'dot-notation': false,
         'parse-numbers': false,
-        'boolean-negation': true
-    }
+        'boolean-negation': true,
+    },
 };
 class ArgsParser {
     static parse(args) {
         return yargsParser(args, yargsConfiguration);
     }
 }
-exports.ArgsParser = ArgsParser;
-;
 exports.default = ArgsParser;
 //# sourceMappingURL=ArgsParser.js.map

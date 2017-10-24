@@ -1,7 +1,7 @@
 import fs = require('fs');
-import { appendToObject } from 'immunity/lib/appendToObject';
+import appendToObject from 'immunity/lib/appendToObject';
 
-export function readFile(pathstr, options?): Promise<any> {
+function readFile(pathstr, options?): Promise<any> {
     return new Promise((resolve, reject) => {
         const defaultOptions = { encoding: 'utf8' };
 
@@ -23,6 +23,8 @@ export function readFile(pathstr, options?): Promise<any> {
             }
         );
     });
-};
+}
 
-export default readFile;
+export {
+    readFile as default,
+};

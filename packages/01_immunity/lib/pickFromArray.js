@@ -5,19 +5,17 @@ function pickFromArray(instance, items) {
         if (items.indexOf(itemKey) !== -1) {
             return {
                 items: [...obj.items, itemValue],
-                remainder: obj.remainder
+                remainder: obj.remainder,
             };
         }
         return {
             items: obj.items,
-            remainder: [...obj.remainder, itemValue]
+            remainder: [...obj.remainder, itemValue],
         };
     }, {
         items: [],
-        remainder: []
+        remainder: [],
     });
 }
-exports.pickFromArray = pickFromArray;
-;
 exports.default = pickFromArray;
 //# sourceMappingURL=pickFromArray.js.map

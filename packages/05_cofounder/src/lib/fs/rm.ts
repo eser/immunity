@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-export function rm(pathstr): Promise<void> {
+function rm(pathstr): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         fs.unlink(
             pathstr,
@@ -15,6 +15,8 @@ export function rm(pathstr): Promise<void> {
             }
         );
     });
-};
+}
 
-export default rm;
+export {
+    rm as default,
+};

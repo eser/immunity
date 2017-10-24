@@ -13,7 +13,7 @@ class HelpDumper {
             if (child.helpHidden) {
                 continue;
             }
-            if (child.type !== Types_1.Types.command) {
+            if (child.type !== Types_1.default.command) {
                 continue;
             }
             if (lines === 0) {
@@ -29,7 +29,7 @@ class HelpDumper {
             if (child.parameter !== undefined) {
                 lineOutput += ` ${child.parameter}`;
             }
-            stream.write(`${indentation}${alignedString_1.alignedString([
+            stream.write(`${indentation}${alignedString_1.default([
                 tabstops[0] - indentation.length, colors.gray(lineOutput),
                 tabstops[1] - indentation.length, colors.gray(child.description)
             ])}\n`);
@@ -46,7 +46,7 @@ class HelpDumper {
             if (child.helpHidden) {
                 continue;
             }
-            if (child.type === Types_1.Types.command) {
+            if (child.type === Types_1.default.command) {
                 continue;
             }
             if (lines === 0) {
@@ -62,7 +62,7 @@ class HelpDumper {
             if (child.parameter !== undefined) {
                 lineOutput += ` ${child.parameter}`;
             }
-            stream.write(`${indentation}${alignedString_1.alignedString([
+            stream.write(`${indentation}${alignedString_1.default([
                 tabstops[0] - indentation.length, colors.gray(lineOutput),
                 tabstops[1] - indentation.length, colors.gray(child.description)
             ])}\n`);
@@ -103,7 +103,5 @@ class HelpDumper {
         await this.dumpSingle(rules, stream, indentation);
     }
 }
-exports.HelpDumper = HelpDumper;
-;
 exports.default = HelpDumper;
 //# sourceMappingURL=HelpDumper.js.map

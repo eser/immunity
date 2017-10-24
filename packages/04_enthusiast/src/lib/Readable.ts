@@ -1,7 +1,9 @@
-import { Stream } from './Stream';
+import Stream from './Stream';
 
-export class Readable extends Stream {
+class Readable extends Stream {
 
+}
+
+export {
+    Readable as default,
 };
-
-export default Readable;

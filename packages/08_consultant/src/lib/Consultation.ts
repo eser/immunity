@@ -1,21 +1,21 @@
-import { Inquirer } from './Inquirer';
-import { Rule } from './Rule';
-import { Validator } from './Validator';
+import Inquirer from './Inquirer';
+import Rule from './Rule';
+import Validator from './Validator';
 
-export interface ConsultationError {
+interface ConsultationError {
     error: string;
-};
+}
 
-export interface ConsultationResult {
+interface ConsultationResult {
     commandId?: string,
     // tags: string[],
     values: object;
     isValid: boolean;
     isCancelled: boolean;
     errors: { [key: string]: ConsultationError[] };
-};
+}
 
-export class Consultation {
+class Consultation {
     rules: Rule;
     source?: object;
 
@@ -39,6 +39,10 @@ export class Consultation {
 
         return await inquirer.inquire(this.rules);
     }
-};
+}
 
-export default Consultation;
+export {
+    ConsultationError,
+    ConsultationResult,
+    Consultation as default,
+};

@@ -1,10 +1,10 @@
-import { ArgsParser } from './ArgsParser';
-import { Types } from './Types';
-import { Consultation, ConsultationResult } from './Consultation';
-import { HelpDumper } from './HelpDumper';
-import { Rule, getRuleChildren } from './Rule';
+import ArgsParser from './ArgsParser';
+import Types from './Types';
+import Consultation, { ConsultationResult } from './Consultation';
+import HelpDumper from './HelpDumper';
+import Rule, { getRuleChildren } from './Rule';
 
-export class Consultant {
+class Consultant {
     static types = Types;
 
     rules: Rule;
@@ -85,6 +85,8 @@ export class Consultant {
 
         await dumper.dump(rule, process.stdout);
     }
-};
+}
 
-export default Consultant;
+export {
+    Consultant as default,
+};

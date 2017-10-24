@@ -5,9 +5,9 @@ const _1 = require("./logging/");
 const _2 = require("./exceptions/");
 class Maester {
     constructor() {
-        this.events = new EventEmitter_1.EventEmitter();
-        this.logging = new _1.LogManager(this.events);
-        this.exceptions = new _2.ExceptionManager();
+        this.events = new EventEmitter_1.default();
+        this.logging = new _1.default(this.events);
+        this.exceptions = new _2.default();
         this.paused = false;
         this.logging.linkLogMethods(this);
     }
@@ -31,7 +31,5 @@ class Maester {
         this.paused = true;
     }
 }
-exports.Maester = Maester;
-;
 exports.default = Maester;
 //# sourceMappingURL=Maester.js.map

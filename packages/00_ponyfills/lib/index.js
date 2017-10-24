@@ -1,7 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const assign_1 = require("./assign");
-module.exports = {
-    assign: assign_1.assign,
-    assignPolyfill: assign_1.assignPolyfill
-};
+exports.assign = assign_1.default;
 //# sourceMappingURL=index.js.map

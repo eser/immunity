@@ -1,2 +1,2 @@
-export declare function writeFile(pathstr: any, content: any, options?: any): Promise<{}>;
-export default writeFile;
+declare function writeFile(pathstr: any, content: any, options?: any): Promise<{}>;
+export { writeFile as default };

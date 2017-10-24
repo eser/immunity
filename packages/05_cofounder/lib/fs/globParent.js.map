@@ -1,1 +1,1 @@
-{"version":3,"file":"globParent.js","sourceRoot":"","sources":["../../src/lib/fs/globParent.ts"],"names":[],"mappings":";;AAAA,6CAA8C;AAE9C,oBAA2B,GAAG;IAC1B,MAAM,CAAC,aAAa,CAAC,GAAG,CAAC,CAAC;AAC9B,CAAC;AAFD,gCAEC;AAAA,CAAC;AAEF,kBAAe,UAAU,CAAC"}
+{"version":3,"file":"globParent.js","sourceRoot":"","sources":["../../src/lib/fs/globParent.ts"],"names":[],"mappings":";;AAAA,6CAA8C;AAE9C,oBAAoB,GAAG;IACnB,MAAM,CAAC,aAAa,CAAC,GAAG,CAAC,CAAC;AAC9B,CAAC;AAGiB,6BAAO"}

@@ -1,7 +1,7 @@
 import fs = require('fs');
-import { appendToObject } from 'immunity/lib/appendToObject';
+import appendToObject from 'immunity/lib/appendToObject';
 
-export function writeFile(pathstr, content, options?) {
+function writeFile(pathstr, content, options?) {
     return new Promise((resolve, reject) => {
         const defaultOptions = { encoding: 'utf8' };
 
@@ -24,6 +24,8 @@ export function writeFile(pathstr, content, options?) {
             }
         );
     });
-};
+}
 
-export default writeFile;
+export {
+    writeFile as default,
+};

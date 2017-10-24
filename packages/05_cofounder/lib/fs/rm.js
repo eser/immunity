@@ -12,7 +12,5 @@ function rm(pathstr) {
         });
     });
 }
-exports.rm = rm;
-;
 exports.default = rm;
 //# sourceMappingURL=rm.js.map

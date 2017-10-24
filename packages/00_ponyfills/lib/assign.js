@@ -9,7 +9,6 @@ function assignPolyfill(target, ...sources) {
     return target;
 }
 exports.assignPolyfill = assignPolyfill;
-;
-exports.assign = (Object.assign !== undefined) ? Object.assign : assignPolyfill;
-exports.default = exports.assign;
+const assign = (Object.assign !== undefined) ? Object.assign : assignPolyfill;
+exports.default = assign;
 //# sourceMappingURL=assign.js.map

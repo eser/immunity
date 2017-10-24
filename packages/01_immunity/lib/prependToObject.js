@@ -2,9 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const assign_1 = require("ponyfills/lib/assign");
 function prependToObject(instance, ...values) {
-    return assign_1.assign({}, ...values, instance);
+    return assign_1.default({}, ...values, instance);
 }
-exports.prependToObject = prependToObject;
-;
 exports.default = prependToObject;
 //# sourceMappingURL=prependToObject.js.map

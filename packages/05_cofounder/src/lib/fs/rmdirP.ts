@@ -1,12 +1,12 @@
 import path = require('path');
-import { appendToArray } from 'immunity/lib/appendToArray';
-import { splitArray } from 'immunity/lib/splitArray';
-import { lstat } from './lstat';
-import { readdir } from './readdir';
-import { rm } from './rm';
-import { rmdir } from './rmdir';
+import appendToArray from 'immunity/lib/appendToArray';
+import splitArray from 'immunity/lib/splitArray';
+import lstat from './lstat';
+import readdir from './readdir';
+import rm from './rm';
+import rmdir from './rmdir';
 
-export async function rmdirP(pathstr) {
+async function rmdirP(pathstr) {
     let directories = [
         [ pathstr, false ]
     ];
@@ -72,6 +72,8 @@ export async function rmdirP(pathstr) {
             throw ex;
         }
     }
-};
+}
 
-export default rmdirP;
+export {
+    rmdirP as default,
+};

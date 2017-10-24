@@ -1,6 +1,6 @@
-import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
-export declare class Stream extends EventEmitter {
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+declare class Stream extends EventEmitter {
     readable: boolean;
     pipe(destination: any, options?: any): any;
 }
-export default Stream;
+export { Stream as default };

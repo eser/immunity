@@ -1,9 +1,9 @@
-export declare type EmitQueueItemType = {
+declare type EmitQueueItemType = {
     async: boolean;
     eventName: string;
     params: any;
 };
-export declare class EventEmitter {
+declare class EventEmitter {
     static defaultMaxListeners: number;
     events: {
         [key: string]: any;
@@ -31,4 +31,4 @@ export declare class EventEmitter {
     pause(): void;
     resume(): void;
 }
-export default EventEmitter;
+export { EmitQueueItemType, EventEmitter as default };

@@ -7,26 +7,24 @@ const rm_1 = require("./rm");
 const rmdir_1 = require("./rmdir");
 const rmdirP_1 = require("./rmdirP");
 async function rmP(str, recursiveForDirectories) {
-    const list = await glob_1.glob(str, false);
+    const list = await glob_1.default(str, false);
     let directories = [];
     for (const item of list) {
-        const itemStat = await lstat_1.lstat(item);
+        const itemStat = await lstat_1.default(item);
         if (itemStat.isDirectory()) {
-            directories = prependToArray_1.prependToArray(directories, item);
+            directories = prependToArray_1.default(directories, item);
             continue;
         }
-        await rm_1.rm(item);
+        await rm_1.default(item);
     }
     for (const directory of directories) {
         if (recursiveForDirectories) {
-            await rmdirP_1.rmdirP(directory);
+            await rmdirP_1.default(directory);
         }
         else {
-            await rmdir_1.rmdir(directory);
+            await rmdir_1.default(directory);
         }
     }
 }
-exports.rmP = rmP;
-;
 exports.default = rmP;
 //# sourceMappingURL=rmP.js.map

@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-export function rmdir(pathstr): Promise<void> {
+function rmdir(pathstr): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         fs.rmdir(
             pathstr,
@@ -15,6 +15,8 @@ export function rmdir(pathstr): Promise<void> {
             }
         );
     });
-};
+}
 
-export default rmdir;
+export {
+    rmdir as default,
+};

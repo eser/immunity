@@ -1,7 +1,7 @@
-import { pipe } from './pipe';
-import { wrap } from './wrap';
+import pipe from './pipe';
+import wrap from './wrap';
 
-export = {
+export {
     pipe,
-    wrap
+    wrap,
 };

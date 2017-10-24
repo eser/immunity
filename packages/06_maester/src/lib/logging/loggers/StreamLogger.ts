@@ -1,4 +1,4 @@
-export class StreamLogger {
+class StreamLogger {
     formatter: any;
     targetStream: any;
 
@@ -14,6 +14,8 @@ export class StreamLogger {
     direct(message: string): void {
         this.targetStream.write(`${message}`);
     }
-};
+}
 
-export default StreamLogger;
+export {
+    StreamLogger as default,
+};

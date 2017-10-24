@@ -12,7 +12,5 @@ class StreamLogger {
         this.targetStream.write(`${message}`);
     }
 }
-exports.StreamLogger = StreamLogger;
-;
 exports.default = StreamLogger;
 //# sourceMappingURL=StreamLogger.js.map

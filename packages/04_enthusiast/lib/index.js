@@ -1,10 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Stream_1 = require("./Stream");
+exports.Stream = Stream_1.default;
 const Readable_1 = require("./Readable");
+exports.Readable = Readable_1.default;
 const Writable_1 = require("./Writable");
-module.exports = {
-    Stream: Stream_1.Stream,
-    Readable: Readable_1.Readable,
-    Writable: Writable_1.Writable
-};
+exports.Writable = Writable_1.default;
 //# sourceMappingURL=index.js.map

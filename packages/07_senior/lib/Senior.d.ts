@@ -1,5 +1,5 @@
-import EventEmitter = require('es6-eventemitter');
-export declare class Senior {
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+declare class Senior {
     name: string;
     modulePrefix: string;
     events: EventEmitter;
@@ -33,4 +33,4 @@ export declare class Senior {
         [key: string]: any;
     };
 }
-export default Senior;
+export { Senior as default };

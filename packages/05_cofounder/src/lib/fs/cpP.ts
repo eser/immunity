@@ -1,11 +1,11 @@
 import path = require('path');
-import { appendToArray } from 'immunity/lib/appendToArray';
-import { cp } from './cp';
-import { glob } from './glob';
-import { globParentOf } from './globParentOf';
-import { mkdirP } from './mkdirP';
+import appendToArray from 'immunity/lib/appendToArray';
+import cp from './cp';
+import glob from './glob';
+import globParentOf from './globParentOf';
+import mkdirP from './mkdirP';
 
-export async function cpP(str, dest) {
+async function cpP(str, dest) {
     const list = await glob(str);
 
     let createdDirectories: Array<any> = [];
@@ -24,6 +24,8 @@ export async function cpP(str, dest) {
 
         cp(item, destFile);
     }
-};
+}
 
-export default cpP;
+export {
+    cpP as default,
+};

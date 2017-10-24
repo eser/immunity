@@ -1,2 +1,2 @@
-export declare function lstat(pathstr: any): Promise<any>;
-export default lstat;
+declare function lstat(pathstr: any): Promise<any>;
+export { lstat as default };

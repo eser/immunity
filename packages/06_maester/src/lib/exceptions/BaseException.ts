@@ -1,4 +1,4 @@
-export class BaseException {
+class BaseException {
     exception: any;
 
     constructor(input, exception = null) {
@@ -20,6 +20,8 @@ export class BaseException {
 
         return new this(input, ex);
     }
-};
+}
 
-export default BaseException;
+export {
+    BaseException as default,
+};

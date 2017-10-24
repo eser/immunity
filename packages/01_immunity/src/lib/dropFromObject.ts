@@ -1,6 +1,6 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function dropFromObject(instance: any, n: number): any {
+function dropFromObject(instance: any, n: number): any {
     const keys = Object.keys(instance),
         offset = keys.length - n;
 
@@ -9,7 +9,9 @@ export function dropFromObject(instance: any, n: number): any {
     return Object.keys(instance).reduce(
         (obj, itemKey) => {
             if (index >= offset) {
-                return assign({}, obj, { [itemKey]: instance[itemKey] });
+                return assign({}, obj, {
+                    [itemKey]: instance[itemKey],
+                });
             }
 
             index += 1;
@@ -18,6 +20,8 @@ export function dropFromObject(instance: any, n: number): any {
         },
         {}
     );
-};
+}
 
-export default dropFromObject;
+export {
+    dropFromObject as default,
+};

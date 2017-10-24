@@ -1,4 +1,4 @@
-export class ConsoleLogger {
+class ConsoleLogger {
     formatter: any;
 
     constructor(formatter: any) {
@@ -12,6 +12,8 @@ export class ConsoleLogger {
     direct(message: string): void {
         console.log(message);
     }
-};
+}
 
-export default ConsoleLogger;
+export {
+    ConsoleLogger as default,
+};

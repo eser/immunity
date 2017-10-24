@@ -1,2 +1,2 @@
-export declare function rmdirP(pathstr: any): Promise<void>;
-export default rmdirP;
+declare function rmdirP(pathstr: any): Promise<void>;
+export { rmdirP as default };

@@ -1,8 +1,10 @@
-export function mergeArrays(...arrays: Array<Array<any>>): Array<any> {
+function mergeArrays(...arrays: Array<Array<any>>): Array<any> {
     return arrays.reduce(
-        (obj, array) => [...obj, ...array],
+        (obj, array) => [ ...obj, ...array ],
         []
     );
-};
+}
 
-export default mergeArrays;
+export {
+    mergeArrays as default,
+};

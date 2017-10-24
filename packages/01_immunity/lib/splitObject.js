@@ -8,20 +8,18 @@ function splitObject(instance, n) {
         if (index < offset) {
             index += 1;
             return {
-                items: assign_1.assign({}, obj.items, { [itemKey]: instance[itemKey] }),
-                remainder: obj.remainder
+                items: assign_1.default({}, obj.items, { [itemKey]: instance[itemKey] }),
+                remainder: obj.remainder,
             };
         }
         return {
             items: obj.items,
-            remainder: assign_1.assign({}, obj.remainder, { [itemKey]: instance[itemKey] })
+            remainder: assign_1.default({}, obj.remainder, { [itemKey]: instance[itemKey] }),
         };
     }, {
         items: {},
-        remainder: {}
+        remainder: {},
     });
 }
-exports.splitObject = splitObject;
-;
 exports.default = splitObject;
 //# sourceMappingURL=splitObject.js.map

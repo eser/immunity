@@ -1,8 +1,10 @@
-export function prependToArray(instance: Array<any>, ...values: Array<any>): Array<any> {
+function prependToArray(instance: Array<any>, ...values: Array<any>): Array<any> {
     return [
         ...values,
-        ...instance
+        ...instance,
     ];
 };
 
-export default prependToArray;
+export {
+    prependToArray as default,
+};

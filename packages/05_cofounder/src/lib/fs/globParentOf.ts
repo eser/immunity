@@ -1,6 +1,6 @@
-import { globParent } from './globParent';
+import globParent from './globParent';
 
-export function globParentOf(str, pathstr) {
+function globParentOf(str, pathstr) {
     const str_ = Array.isArray(str) ? str : [ str ];
 
     for (const strItem of str_) {
@@ -18,6 +18,8 @@ export function globParentOf(str, pathstr) {
     }
 
     return null;
-};
+}
 
-export default globParentOf;
+export {
+    globParentOf as default,
+};

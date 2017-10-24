@@ -1,2 +1,2 @@
-export declare function loadFile(pathstr: string): Promise<any>;
-export default loadFile;
+declare function loadFile(pathstr: string): Promise<any>;
+export { loadFile as default };

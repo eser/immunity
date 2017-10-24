@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Consultant_1 = require("./Consultant");
-module.exports = Consultant_1.Consultant;
+exports.default = Consultant_1.default;
 //# sourceMappingURL=index.js.map

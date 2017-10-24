@@ -1,11 +1,11 @@
 import colors = require('colors/safe');
-import { Rule, RuleCollection, getRuleChildren } from './Rule';
-import { Types } from './Types';
-import { alignedString } from './utils/alignedString';
+import Rule, { RuleCollection, getRuleChildren } from './Rule';
+import Types from './Types';
+import alignedString from './utils/alignedString';
 
 const tabstops = [ 0, 35 ];
 
-export class HelpDumper {
+class HelpDumper {
     async dumpCommands(children: RuleCollection, stream: any, indentation: string): Promise<number> {
         let lines = 0;
 
@@ -135,6 +135,8 @@ export class HelpDumper {
 
         await this.dumpSingle(rules, stream, indentation);
     }
-};
+}
 
-export default HelpDumper;
+export {
+    HelpDumper as default,
+};

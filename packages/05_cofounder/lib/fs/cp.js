@@ -5,7 +5,5 @@ function cp(pathstr, dest) {
     fs.createReadStream(pathstr)
         .pipe(fs.createWriteStream(dest));
 }
-exports.cp = cp;
-;
 exports.default = cp;
 //# sourceMappingURL=cp.js.map

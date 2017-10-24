@@ -1,4 +1,4 @@
-export declare class BasicFormatter {
+declare class BasicFormatter {
     format(severity: any, message: string, extraData?: any): string;
 }
-export default BasicFormatter;
+export { BasicFormatter as default };

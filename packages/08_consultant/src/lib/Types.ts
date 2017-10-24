@@ -1,7 +1,9 @@
-export enum Types {
+enum Types {
     command = 'command',
     stringParameter = 'stringParameter',
-    booleanParameter = 'booleanParameter'
-};
+    booleanParameter = 'booleanParameter',
+}
 
-export default Types;
+export {
+    Types as default,
+};

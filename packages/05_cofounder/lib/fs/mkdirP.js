@@ -9,14 +9,14 @@ async function mkdirP(pathstr, mode) {
         pathstr
     ];
     while (directories.length > 0) {
-        const splitted = splitArray_1.splitArray(directories, -1), directory = splitted.items[0];
+        const splitted = splitArray_1.default(directories, -1), directory = splitted.items[0];
         directories = splitted.remainder;
         try {
-            await mkdir_1.mkdir(directory, mode);
+            await mkdir_1.default(directory, mode);
         }
         catch (ex) {
             if (ex.code === 'ENOENT') {
-                directories = appendToArray_1.appendToArray(directories, directory, path.dirname(directory));
+                directories = appendToArray_1.default(directories, directory, path.dirname(directory));
                 continue;
             }
             if (ex.code === 'EEXIST') {
@@ -26,7 +26,5 @@ async function mkdirP(pathstr, mode) {
         }
     }
 }
-exports.mkdirP = mkdirP;
-;
 exports.default = mkdirP;
 //# sourceMappingURL=mkdirP.js.map

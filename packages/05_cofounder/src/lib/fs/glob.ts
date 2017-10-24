@@ -1,7 +1,7 @@
 import globAll = require('glob-all');
-import { appendToObject } from 'immunity/lib/appendToObject';
+import appendToObject from 'immunity/lib/appendToObject';
 
-export function glob(str, options?): Promise<any> {
+function glob(str, options?): Promise<any> {
     return new Promise((resolve, reject) => {
         const defaultOptions = {
             nosort: true,
@@ -27,6 +27,8 @@ export function glob(str, options?): Promise<any> {
             }
         );
     });
-};
+}
 
-export default glob;
+export {
+    glob as default,
+};

@@ -1,19 +1,19 @@
-import { EventEmitter } from 'es6-eventemitter/lib/EventEmitter';
-export declare type SeverityType = {
+import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+declare type SeverityType = {
     color: string;
     label: string;
 };
-export declare type FormatterType = {
+declare type FormatterType = {
     format(severity: SeverityType, message: string): string;
 };
-export declare type LoggerType = {
+declare type LoggerType = {
     log(severity: SeverityType, message: string, extraData?: any): void | Promise<void>;
     direct(message: string): void | Promise<void>;
 };
-export declare type LoggerTypeConstructorType = {
+declare type LoggerTypeConstructorType = {
     new (formatter: FormatterType, ...args: Array<any>): LoggerType;
 };
-export declare const defaultSeverities: {
+declare const defaultSeverities: {
     debug: {
         color: string;
         label: string;
@@ -31,7 +31,7 @@ export declare const defaultSeverities: {
         label: string;
     };
 };
-export declare class LogManager {
+declare class LogManager {
     events: EventEmitter;
     loggerTypes: {
         [key: string]: LoggerTypeConstructorType;
@@ -62,4 +62,4 @@ export declare class LogManager {
     write(message: string): void;
     writeAsync(message: string): Promise<void>;
 }
-export default LogManager;
+export { SeverityType, FormatterType, LoggerType, LoggerTypeConstructorType, defaultSeverities, LogManager as default };

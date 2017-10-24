@@ -1,4 +1,4 @@
-export declare class ArgsParser {
+declare class ArgsParser {
     static parse(args: any): any;
 }
-export default ArgsParser;
+export { ArgsParser as default };

@@ -1,5 +1,5 @@
-import { shell } from './shell';
+import shell from './shell';
 
 export {
-    shell
+    shell,
 };

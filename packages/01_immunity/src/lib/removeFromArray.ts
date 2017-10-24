@@ -1,7 +1,9 @@
-export function removeFromArray(instance: Array<any>, ...values: Array<any>): Array<any> {
+function removeFromArray(instance: Array<any>, ...values: Array<any>): Array<any> {
     return instance.filter(
         (item) => values.indexOf(item) === -1
     );
-};
+}
 
-export default removeFromArray;
+export {
+    removeFromArray as default,
+};

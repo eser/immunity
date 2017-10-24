@@ -7,7 +7,5 @@ function pipe(...funcs) {
         };
     });
 }
-exports.pipe = pipe;
-;
 exports.default = pipe;
 //# sourceMappingURL=pipe.js.map

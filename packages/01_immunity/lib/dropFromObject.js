@@ -6,13 +6,13 @@ function dropFromObject(instance, n) {
     let index = 0;
     return Object.keys(instance).reduce((obj, itemKey) => {
         if (index >= offset) {
-            return assign_1.assign({}, obj, { [itemKey]: instance[itemKey] });
+            return assign_1.default({}, obj, {
+                [itemKey]: instance[itemKey],
+            });
         }
         index += 1;
         return obj;
     }, {});
 }
-exports.dropFromObject = dropFromObject;
-;
 exports.default = dropFromObject;
 //# sourceMappingURL=dropFromObject.js.map

@@ -1,6 +1,6 @@
-export declare enum Types {
+declare enum Types {
     command = "command",
     stringParameter = "stringParameter",
     booleanParameter = "booleanParameter",
 }
-export default Types;
+export { Types as default };

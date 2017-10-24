@@ -12,7 +12,5 @@ function rmdir(pathstr) {
         });
     });
 }
-exports.rmdir = rmdir;
-;
 exports.default = rmdir;
 //# sourceMappingURL=rmdir.js.map

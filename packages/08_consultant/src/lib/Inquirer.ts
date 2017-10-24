@@ -1,8 +1,8 @@
 import inquirer = require('inquirer');
 import { ConsultationResult } from './Consultation';
-import { Rule } from './Rule';
+import Rule from './Rule';
 
-export class Inquirer {
+class Inquirer {
     async inquire(rules: Rule) : Promise<ConsultationResult> {
         // TODO need implementation
 
@@ -16,6 +16,8 @@ export class Inquirer {
         //     errors: {}
         // });
     }
-};
+}
 
-export default Inquirer;
+export {
+    Inquirer as default,
+};

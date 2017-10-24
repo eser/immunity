@@ -1,11 +1,11 @@
 import path = require('path');
-import { appendToArray } from 'immunity/lib/appendToArray';
-import { glob } from './glob';
-import { globParentOf } from './globParentOf';
-import { mkdirP } from './mkdirP';
-import { mv } from './mv';
+import appendToArray from 'immunity/lib/appendToArray';
+import glob from './glob';
+import globParentOf from './globParentOf';
+import mkdirP from './mkdirP';
+import mv from './mv';
 
-export async function mvP(str, dest) {
+async function mvP(str, dest) {
     const list = await glob(str, { nodir: false });
 
     let createdDirectories: Array<any> = [];
@@ -24,6 +24,8 @@ export async function mvP(str, dest) {
 
         mv(item, destFile);
     }
-};
+}
 
-export default mvP;
+export {
+    mvP as default,
+};

@@ -1,2 +1,2 @@
-export declare function dropFromObject(instance: any, n: number): any;
-export default dropFromObject;
+declare function dropFromObject(instance: any, n: number): any;
+export { dropFromObject as default };

@@ -1,2 +1,2 @@
-export declare function takeFromObject(instance: any, n: number): any;
-export default takeFromObject;
+declare function takeFromObject(instance: any, n: number): any;
+export { takeFromObject as default };

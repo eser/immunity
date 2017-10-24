@@ -1,4 +1,4 @@
-export function assignPolyfill(target: Object, ...sources: Object[]) {
+function assignPolyfill(target: Object, ...sources: Object[]) {
     for (const source of sources) {
         for (const key of Object.getOwnPropertyNames(source)) {
             target[key] = source[key];
@@ -6,8 +6,11 @@ export function assignPolyfill(target: Object, ...sources: Object[]) {
     }
 
     return target;
+}
+
+const assign = (Object.assign !== undefined) ? Object.assign : assignPolyfill;
+
+export {
+    assign as default,
+    assignPolyfill,
 };
-
-export const assign = (Object.assign !== undefined) ? Object.assign : assignPolyfill;
-
-export default assign;

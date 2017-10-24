@@ -39,22 +39,22 @@ class EventEmitter {
             return [];
         }
         const eventListeners = this.events[eventName];
-        return mergeArrays_1.mergeArrays(eventListeners.on.map((item) => item.listener), eventListeners.once.map((item) => item.listener));
+        return mergeArrays_1.default(eventListeners.on.map((item) => item.listener), eventListeners.once.map((item) => item.listener));
     }
     emit(eventName, ...args) {
         if (!this.events.hasOwnProperty(eventName)) {
             return false;
         }
         if (this.paused) {
-            this.emitQueue = appendToArray_1.appendToArray(this.emitQueue, { async: false, eventName: eventName, params: args });
+            this.emitQueue = appendToArray_1.default(this.emitQueue, { async: false, eventName: eventName, params: args });
             return true;
         }
         const eventListeners = this.events[eventName], listenerCallDelegate = (item) => item.listener.apply(item.context, args);
-        this.events = appendToObject_1.appendToObject(this.events, {
+        this.events = appendToObject_1.default(this.events, {
             [eventName]: {
                 on: eventListeners.on,
-                once: []
-            }
+                once: [],
+            },
         });
         eventListeners.on.forEach(listenerCallDelegate);
         eventListeners.once.forEach(listenerCallDelegate);
@@ -65,7 +65,7 @@ class EventEmitter {
             return false;
         }
         if (this.paused) {
-            this.emitQueue = appendToArray_1.appendToArray(this.emitQueue, { async: true, eventName: eventName, params: args });
+            this.emitQueue = appendToArray_1.default(this.emitQueue, { async: true, eventName: eventName, params: args });
             return true;
         }
         const eventListeners = this.events[eventName], listenerCallDelegate = (item) => new Promise((resolve, reject) => {
@@ -76,42 +76,42 @@ class EventEmitter {
                 reject(err);
             }
         });
-        this.events = appendToObject_1.appendToObject(this.events, {
+        this.events = appendToObject_1.default(this.events, {
             [eventName]: {
                 on: eventListeners.on,
-                once: []
-            }
+                once: [],
+            },
         });
-        const result = mergeArrays_1.mergeArrays(eventListeners.on.map(listenerCallDelegate), eventListeners.once.map(listenerCallDelegate));
+        const result = mergeArrays_1.default(eventListeners.on.map(listenerCallDelegate), eventListeners.once.map(listenerCallDelegate));
         await Promise.all(result);
         return true;
     }
     on(eventName, listener, context, prepend = false, tag) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = appendToObject_1.appendToObject(this.events, {
+            this.events = appendToObject_1.default(this.events, {
                 [eventName]: {
-                    on: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.on, {
+                    on: ((prepend) ? prependToArray_1.default : appendToArray_1.default)(eventListeners.on, {
                         listener: listener,
                         context: context,
-                        tag: tag
+                        tag: tag,
                     }),
-                    once: eventListeners.once
-                }
+                    once: eventListeners.once,
+                },
             });
         }
         else {
-            this.events = appendToObject_1.appendToObject(this.events, {
+            this.events = appendToObject_1.default(this.events, {
                 [eventName]: {
                     on: [
                         {
                             listener: listener,
                             context: context,
-                            tag: tag
-                        }
+                            tag: tag,
+                        },
                     ],
-                    once: []
-                }
+                    once: [],
+                },
             });
         }
         return this;
@@ -119,19 +119,19 @@ class EventEmitter {
     once(eventName, listener, context, prepend = false, tag) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = appendToObject_1.appendToObject(this.events, {
+            this.events = appendToObject_1.default(this.events, {
                 [eventName]: {
                     on: eventListeners.on,
-                    once: ((prepend) ? prependToArray_1.prependToArray : appendToArray_1.appendToArray)(eventListeners.once, {
+                    once: ((prepend) ? prependToArray_1.default : appendToArray_1.default)(eventListeners.once, {
                         listener: listener,
                         context: context,
-                        tag: tag
-                    })
-                }
+                        tag: tag,
+                    }),
+                },
             });
         }
         else {
-            this.events = appendToObject_1.appendToObject(this.events, {
+            this.events = appendToObject_1.default(this.events, {
                 [eventName]: {
                     on: [],
                     once: [
@@ -139,9 +139,9 @@ class EventEmitter {
                             listener: listener,
                             context: context,
                             tag: tag
-                        }
-                    ]
-                }
+                        },
+                    ],
+                },
             });
         }
         return this;
@@ -149,11 +149,11 @@ class EventEmitter {
     offByPredicate(eventName, predicate) {
         if (eventName in this.events) {
             const eventListeners = this.events[eventName];
-            this.events = appendToObject_1.appendToObject(this.events, {
+            this.events = appendToObject_1.default(this.events, {
                 [eventName]: {
                     on: eventListeners.on.filter(predicate),
-                    once: eventListeners.once.filter(predicate)
-                }
+                    once: eventListeners.once.filter(predicate),
+                },
             });
         }
         return this;
@@ -178,7 +178,7 @@ class EventEmitter {
             this.events = {};
             return;
         }
-        this.events = removeKeyFromObject_1.removeKeyFromObject(this.events, eventName);
+        this.events = removeKeyFromObject_1.default(this.events, eventName);
     }
     pause() {
         this.paused = true;
@@ -200,7 +200,5 @@ class EventEmitter {
     }
 }
 EventEmitter.defaultMaxListeners = 10;
-exports.EventEmitter = EventEmitter;
-;
 exports.default = EventEmitter;
 //# sourceMappingURL=EventEmitter.js.map

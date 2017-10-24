@@ -1,7 +1,7 @@
 import colors = require('colors/safe');
 import util = require('util');
 
-export class NodeConsoleFormatter {
+class NodeConsoleFormatter {
     format(severity: any, message: string, extraData?: any): string {
         const formatted = `${colors[severity.color](severity.label)} ${message}`;
 
@@ -11,6 +11,8 @@ export class NodeConsoleFormatter {
 
         return formatted;
     }
-};
+}
 
-export default NodeConsoleFormatter;
+export {
+    NodeConsoleFormatter as default,
+};

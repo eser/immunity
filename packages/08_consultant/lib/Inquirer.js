@@ -5,7 +5,5 @@ class Inquirer {
         throw new Error('Inquirer is not implemented yet.');
     }
 }
-exports.Inquirer = Inquirer;
-;
 exports.default = Inquirer;
 //# sourceMappingURL=Inquirer.js.map

@@ -12,14 +12,14 @@ async function rmdirP(pathstr) {
         [pathstr, false]
     ];
     while (directories.length > 0) {
-        const splitted = splitArray_1.splitArray(directories, -1), directory = splitted.items[0];
+        const splitted = splitArray_1.default(directories, -1), directory = splitted.items[0];
         directories = splitted.remainder;
         try {
             if (directory[1]) {
-                await rmdir_1.rmdir(directory[0]);
+                await rmdir_1.default(directory[0]);
                 continue;
             }
-            const list = await readdir_1.readdir(directory[0]);
+            const list = await readdir_1.default(directory[0]);
             let pushedBack = false;
             for (const item of list) {
                 if (item === '.' || item === '..') {
@@ -27,16 +27,16 @@ async function rmdirP(pathstr) {
                 }
                 const itemPath = path.join(directory[0], item);
                 try {
-                    const itemStat = await lstat_1.lstat(itemPath);
+                    const itemStat = await lstat_1.default(itemPath);
                     if (itemStat.isDirectory()) {
                         if (!pushedBack) {
-                            directories = appendToArray_1.appendToArray(directories, [directory[0], true]);
+                            directories = appendToArray_1.default(directories, [directory[0], true]);
                             pushedBack = true;
                         }
-                        directories = appendToArray_1.appendToArray(directories, [itemPath, false]);
+                        directories = appendToArray_1.default(directories, [itemPath, false]);
                         continue;
                     }
-                    await rm_1.rm(itemPath);
+                    await rm_1.default(itemPath);
                 }
                 catch (ex2) {
                     if (ex2.code === 'ENOENT') {
@@ -46,7 +46,7 @@ async function rmdirP(pathstr) {
                 }
             }
             if (!pushedBack) {
-                await rmdir_1.rmdir(directory[0]);
+                await rmdir_1.default(directory[0]);
             }
         }
         catch (ex) {
@@ -57,7 +57,5 @@ async function rmdirP(pathstr) {
         }
     }
 }
-exports.rmdirP = rmdirP;
-;
 exports.default = rmdirP;
 //# sourceMappingURL=rmdirP.js.map

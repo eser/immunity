@@ -1,3 +1,3 @@
-import { Maester } from './Maester';
+import Maester from './Maester';
 declare const maester: Maester;
-export = maester;
+export { maester as default, Maester };

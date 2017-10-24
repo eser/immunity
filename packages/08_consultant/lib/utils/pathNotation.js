@@ -12,6 +12,5 @@ function pathNotation(sourceObj, targetPath, defaultValue, delimiter = '.') {
     }
     return sourceObj_;
 }
-exports.pathNotation = pathNotation;
 exports.default = pathNotation;
 //# sourceMappingURL=pathNotation.js.map

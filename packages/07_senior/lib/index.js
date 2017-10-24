@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Senior_1 = require("./Senior");
-module.exports = Senior_1.Senior;
+exports.default = Senior_1.default;
 //# sourceMappingURL=index.js.map

@@ -1,9 +1,9 @@
-import { Stream } from './Stream';
-import { Readable } from './Readable';
-import { Writable } from './Writable';
+import Stream from './Stream';
+import Readable from './Readable';
+import Writable from './Writable';
 
-export = {
+export {
     Stream,
     Readable,
-    Writable
+    Writable,
 };

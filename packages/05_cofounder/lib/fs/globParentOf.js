@@ -7,7 +7,7 @@ function globParentOf(str, pathstr) {
         if (strItem[0] === '!') {
             continue;
         }
-        const strItemParent = globParent_1.globParent(strItem);
+        const strItemParent = globParent_1.default(strItem);
         if ((pathstr.length > strItemParent.length) &&
             (pathstr.substring(0, strItemParent.length) === strItemParent)) {
             return strItemParent;
@@ -15,7 +15,5 @@ function globParentOf(str, pathstr) {
     }
     return null;
 }
-exports.globParentOf = globParentOf;
-;
 exports.default = globParentOf;
 //# sourceMappingURL=globParentOf.js.map

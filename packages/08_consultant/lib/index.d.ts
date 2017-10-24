@@ -1,2 +1,2 @@
-import { Consultant } from './Consultant';
-export = Consultant;
+import Consultant from './Consultant';
+export { Consultant as default };

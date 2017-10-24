@@ -7,7 +7,7 @@ function readFile(pathstr, options) {
         const defaultOptions = { encoding: 'utf8' };
         const options_ = (options === undefined) ?
             defaultOptions :
-            appendToObject_1.appendToObject(options, defaultOptions);
+            appendToObject_1.default(options, defaultOptions);
         fs.readFile(pathstr, options_, (err, content) => {
             if (err) {
                 reject(err);
@@ -17,7 +17,5 @@ function readFile(pathstr, options) {
         });
     });
 }
-exports.readFile = readFile;
-;
 exports.default = readFile;
 //# sourceMappingURL=readFile.js.map

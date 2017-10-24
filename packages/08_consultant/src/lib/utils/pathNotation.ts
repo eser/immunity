@@ -1,4 +1,4 @@
-export function pathNotation(sourceObj: any, targetPath: string, defaultValue?: any, delimiter: string = '.'): any {
+function pathNotation(sourceObj: any, targetPath: string, defaultValue?: any, delimiter: string = '.'): any {
     const targetPath_ = targetPath.split(delimiter);
 
     let sourceObj_ = sourceObj;
@@ -16,4 +16,6 @@ export function pathNotation(sourceObj: any, targetPath: string, defaultValue?: 
     return sourceObj_;
 }
 
-export default pathNotation;
+export {
+    pathNotation as default,
+};

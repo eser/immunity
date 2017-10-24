@@ -12,7 +12,5 @@ function mv(pathstr, dest) {
         });
     });
 }
-exports.mv = mv;
-;
 exports.default = mv;
 //# sourceMappingURL=mv.js.map

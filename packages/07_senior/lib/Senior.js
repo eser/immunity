@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
 const os = require("os");
 const cofounder = require("cofounder");
-const EventEmitter = require("es6-eventemitter");
-const immunity = require("immunity");
+const EventEmitter_1 = require("es6-eventemitter/lib/EventEmitter");
+const mergeObjects_1 = require("immunity/lib/mergeObjects");
+const appendToObject_1 = require("immunity/lib/appendToObject");
 class Senior {
     constructor(name, modulePrefix = '') {
         this.name = name;
         this.modulePrefix = modulePrefix;
-        this.events = new EventEmitter();
+        this.events = new EventEmitter_1.default();
         this.homePath = path.join(os.homedir(), `.${this.name}`);
         this.packageJsonFile = path.join(this.homePath, 'package.json');
     }
@@ -29,7 +30,7 @@ class Senior {
         try {
             const packageJson = require(this.packageJsonFile);
             if (packageJson.dependencies !== undefined) {
-                dependencies = immunity.mergeObjects(dependencies, packageJson.dependencies);
+                dependencies = mergeObjects_1.default(dependencies, packageJson.dependencies);
             }
         }
         catch (ex) {
@@ -81,8 +82,8 @@ class Senior {
         const list = this.list();
         let result = {};
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, {
-                [dependencyKey]: this.getModuleIndex(dependencyKey)
+            result = appendToObject_1.default(result, {
+                [dependencyKey]: this.getModuleIndex(dependencyKey),
             });
         }
         return result;
@@ -90,7 +91,7 @@ class Senior {
     loadFile(filepath, globals) {
         let gBackups = {};
         for (const globalKey of Object.keys(globals)) {
-            gBackups = immunity.appendToObject(gBackups, { [globalKey]: global[globalKey] });
+            gBackups = appendToObject_1.default(gBackups, { [globalKey]: global[globalKey] });
             global[globalKey] = globals[globalKey];
         }
         try {
@@ -117,13 +118,12 @@ class Senior {
         const list = this.list();
         let result = {};
         for (const dependencyKey of Object.keys(list)) {
-            result = immunity.appendToObject(result, {
-                [dependencyKey]: this.load(dependencyKey, globals, loader)
+            result = appendToObject_1.default(result, {
+                [dependencyKey]: this.load(dependencyKey, globals, loader),
             });
         }
         return result;
     }
 }
-exports.Senior = Senior;
 exports.default = Senior;
 //# sourceMappingURL=Senior.js.map

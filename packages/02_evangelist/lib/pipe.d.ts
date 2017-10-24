@@ -1,2 +1,2 @@
-export declare function pipe(...funcs: Function[]): Function;
-export default pipe;
+declare function pipe(...funcs: Function[]): Function;
+export { pipe as default };

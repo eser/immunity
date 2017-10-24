@@ -1,6 +1,6 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function removeFirstMatchFromArray(instance: Array<any>, predicate: (value: any, index: number, array: Array<any>) => any): Array<any> {
+function removeFirstMatchFromArray(instance: Array<any>, predicate: (value: any, index: number, array: Array<any>) => any): Array<any> {
     let notFound = true;
 
     return instance.filter(
@@ -14,6 +14,8 @@ export function removeFirstMatchFromArray(instance: Array<any>, predicate: (valu
             return true;
         }
     );
-};
+}
 
-export default removeFirstMatchFromArray;
+export {
+    removeFirstMatchFromArray as default,
+};

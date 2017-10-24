@@ -1,39 +1,23 @@
-declare const _default: {
-    appendToArray: (instance: any[], ...values: any[]) => any[];
-    appendToObject: (instance: any, ...values: {
-        [key: string]: any;
-    }[]) => any;
-    copy: (instance: any) => any;
-    dropFromArray: (instance: any[], n: number) => any[];
-    dropFromObject: (instance: any, n: number) => any;
-    filterArray: (instance: any[], predicate: (value: any, index?: number | undefined, array?: any[] | undefined) => any) => any[];
-    filterObject: (instance: any, predicate: (value: any, index: number, object: any) => any) => any;
-    mergeArrays: (...arrays: any[][]) => any[];
-    mergeObjects: (...objects: any[]) => any;
-    pickFromArray: (instance: any[], items: any[]) => {
-        items: any[];
-        remainder: any[];
-    };
-    pickFromObject: (instance: any, items: any[]) => {
-        items: any;
-        remainder: any;
-    };
-    prependToArray: (instance: any[], ...values: any[]) => any[];
-    prependToObject: (instance: any, ...values: any[]) => any;
-    removeFirstMatchFromArray: (instance: any[], predicate: (value: any, index: number, array: any[]) => any) => any[];
-    removeFirstMatchFromObject: (instance: any, predicate: (value: any, index: number, object: any) => any) => any;
-    removeFromArray: (instance: any[], ...values: any[]) => any[];
-    removeKeyFromObject: (instance: any, ...keys: string[]) => any;
-    removeValueFromObject: (instance: any, ...values: any[]) => any;
-    splitArray: (instance: any[], n: number) => {
-        items: any[];
-        remainder: any[];
-    };
-    splitObject: (instance: any, n: number) => {
-        items: any;
-        remainder: any;
-    };
-    takeFromArray: (instance: any[], n: number) => any[];
-    takeFromObject: (instance: any, n: number) => any;
-};
-export = _default;
+import appendToArray from './appendToArray';
+import appendToObject from './appendToObject';
+import copy from './copy';
+import dropFromArray from './dropFromArray';
+import dropFromObject from './dropFromObject';
+import filterArray from './filterArray';
+import filterObject from './filterObject';
+import mergeArrays from './mergeArrays';
+import mergeObjects from './mergeObjects';
+import pickFromArray from './pickFromArray';
+import pickFromObject from './pickFromObject';
+import prependToArray from './prependToArray';
+import prependToObject from './prependToObject';
+import removeFirstMatchFromArray from './removeFirstMatchFromArray';
+import removeFirstMatchFromObject from './removeFirstMatchFromObject';
+import removeFromArray from './removeFromArray';
+import removeKeyFromObject from './removeKeyFromObject';
+import removeValueFromObject from './removeValueFromObject';
+import splitArray from './splitArray';
+import splitObject from './splitObject';
+import takeFromArray from './takeFromArray';
+import takeFromObject from './takeFromObject';
+export { appendToArray, appendToObject, copy, dropFromArray, dropFromObject, filterArray, filterObject, mergeArrays, mergeObjects, pickFromArray, pickFromObject, prependToArray, prependToObject, removeFirstMatchFromArray, removeFirstMatchFromObject, removeFromArray, removeKeyFromObject, removeValueFromObject, splitArray, splitObject, takeFromArray, takeFromObject };

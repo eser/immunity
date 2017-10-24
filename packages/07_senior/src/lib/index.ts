@@ -1,3 +1,5 @@
-import { Senior } from './Senior';
+import Senior from './Senior';
 
-export = Senior;
+export {
+    Senior as default,
+};

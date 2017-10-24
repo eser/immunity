@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const appendToObject_1 = require("immunity/lib/appendToObject");
 const EventEmitter_1 = require("es6-eventemitter/lib/EventEmitter");
-class Stream extends EventEmitter_1.EventEmitter {
+class Stream extends EventEmitter_1.default {
     pipe(destination, options) {
         const defaultOptions = {};
         const options_ = (options === undefined) ?
             defaultOptions :
-            appendToObject_1.appendToObject(options, defaultOptions);
+            appendToObject_1.default(options, defaultOptions);
         const source = this, isDisposable = (!destination.isStdio && options_.end !== false);
         const onData = (chunk) => {
             if (destination.writable) {
@@ -79,7 +79,5 @@ class Stream extends EventEmitter_1.EventEmitter {
         return destination;
     }
 }
-exports.Stream = Stream;
-;
 exports.default = Stream;
 //# sourceMappingURL=Stream.js.map

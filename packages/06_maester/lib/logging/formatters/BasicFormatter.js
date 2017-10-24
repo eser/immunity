@@ -5,7 +5,5 @@ class BasicFormatter {
         return `${severity.label} ${message}`;
     }
 }
-exports.BasicFormatter = BasicFormatter;
-;
 exports.default = BasicFormatter;
 //# sourceMappingURL=BasicFormatter.js.map

@@ -7,7 +7,7 @@ function readdir(pathstr, options) {
         const defaultOptions = { encoding: 'utf8' };
         const options_ = (options === undefined) ?
             defaultOptions :
-            appendToObject_1.appendToObject(options, defaultOptions);
+            appendToObject_1.default(options, defaultOptions);
         fs.readdir(pathstr, options_, (err, contents) => {
             if (err) {
                 reject(err);
@@ -17,7 +17,5 @@ function readdir(pathstr, options) {
         });
     });
 }
-exports.readdir = readdir;
-;
 exports.default = readdir;
 //# sourceMappingURL=readdir.js.map

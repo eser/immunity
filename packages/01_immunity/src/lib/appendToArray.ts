@@ -1,8 +1,10 @@
-export function appendToArray(instance: Array<any>, ...values: Array<any>): Array<any> {
+function appendToArray(instance: Array<any>, ...values: Array<any>): Array<any> {
     return [
         ...instance,
-        ...values
+        ...values,
     ];
-};
+}
 
-export default appendToArray;
+export {
+    appendToArray as default,
+};

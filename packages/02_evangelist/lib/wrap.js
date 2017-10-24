@@ -5,7 +5,6 @@ function wrap(target, wrapper) {
         return wrapper(...args, target);
     };
 }
-exports.wrap = wrap;
-;
 exports.default = wrap;
+;
 //# sourceMappingURL=wrap.js.map

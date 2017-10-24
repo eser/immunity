@@ -1,7 +1,9 @@
-import { assign } from 'ponyfills/lib/assign';
+import assign from 'ponyfills/lib/assign';
 
-export function mergeObjects(...objects: Array<any>): any {
+function mergeObjects(...objects: Array<any>): any {
     return assign({}, ...objects);
 };
 
-export default mergeObjects;
+export {
+    mergeObjects as default,
+};

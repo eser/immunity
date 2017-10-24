@@ -17,7 +17,5 @@ class BaseException {
         return new this(input, ex);
     }
 }
-exports.BaseException = BaseException;
-;
 exports.default = BaseException;
 //# sourceMappingURL=BaseException.js.map

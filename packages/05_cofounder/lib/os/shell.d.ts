@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import childProcess = require('child_process');
-export declare function shell(command: string, args?: never[], env?: {
+declare function shell(command: string, args?: never[], env?: {
     [key: string]: string;
 }): childProcess.SpawnSyncReturns<string>;
-export default shell;
+export { shell as default };

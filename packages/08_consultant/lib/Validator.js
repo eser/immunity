@@ -41,7 +41,7 @@ class Validator {
     static async prepareValue(value, childKey, child) {
         let errors = [], newValue = value;
         const length = value.length;
-        if (child.type === Types_1.Types.booleanParameter) {
+        if (child.type === Types_1.default.booleanParameter) {
             if (length > 1) {
                 errors = immunity.appendToArray(errors, { error: `many occurences for ${childKey}` });
             }
@@ -111,7 +111,7 @@ class Validator {
         let argvRemainder = argv, values = {}, errors = {};
         for (const childKey in children) {
             const child = children[childKey];
-            if (child.type === Types_1.Types.command) {
+            if (child.type === Types_1.default.command) {
                 continue;
             }
             const result = await this.processSingleParameter(childKey, child, argvRemainder);
@@ -150,7 +150,7 @@ class Validator {
         if (argvRemainder._ !== undefined) {
             for (const childKey in children) {
                 const child = children[childKey];
-                if (child.type !== Types_1.Types.command) {
+                if (child.type !== Types_1.default.command) {
                     continue;
                 }
                 const result = this.processSingleCommand(childKey, child, argvRemainder);
@@ -161,7 +161,7 @@ class Validator {
                 }
             }
             if (commandKey !== undefined) {
-                argvRemainder = assign_1.assign({}, argvRemainder, { _: argvRemainder._.slice(1) });
+                argvRemainder = assign_1.default({}, argvRemainder, { _: argvRemainder._.slice(1) });
             }
         }
         return {
@@ -210,7 +210,5 @@ class Validator {
         };
     }
 }
-exports.Validator = Validator;
-;
 exports.default = Validator;
 //# sourceMappingURL=Validator.js.map

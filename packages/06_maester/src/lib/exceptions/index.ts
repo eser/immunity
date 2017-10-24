@@ -1,11 +1,14 @@
-import { BaseException } from './BaseException';
+import BaseException from './BaseException';
 
-export class ExceptionManager {
+class ExceptionManager {
     base: any;
 
     constructor() {
         this.base = BaseException;
     }
-};
+}
 
-export default ExceptionManager;
+export {
+    ExceptionManager as default,
+    BaseException,
+};
