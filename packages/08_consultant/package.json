@@ -1,6 +1,6 @@
 {
   "name": "consultant",
-  "description": "Gathers structural and validateable input from command line or interative menu",
+  "description": "Gathers structural and validateable input from command line or interactive menu",
   "keywords": [
     "interactive",
     "menu",

@@ -11,7 +11,7 @@
 | [cofounder](packages/05_cofounder/)                   | Released | Method library offers additional functionalities besides node.js's fs library          |
 | [maester](packages/06_maester/)                     | Beta     | Async logging and exception handling library runs on browsers and node.js              |
 | [senior](packages/07_senior/)                      | Beta     | Plugin host and manager for installable/removable npm packages                         |
-| [consultant](packages/08_consultant/)                  | Beta     | Gathers structural and validateable input from command line or interative menu         |
+| [consultant](packages/08_consultant/)                  | Beta     | Gathers structural and validateable input from command line or interactive menu        |
 
 
 ## To Support
