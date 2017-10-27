@@ -30,7 +30,10 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint ./src/",
+    "test": "jest"
+  },
   "directories": {
     "lib": "./lib"
   },
@@ -46,6 +49,9 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.46",
+    "eslint": "^4.5.0",
+    "eslint-config-eser": "^2.0.7",
+    "eslint-plugin-import": "^2.7.0",
     "jest": "^21.2.1"
   }
 }
