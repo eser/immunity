@@ -21,7 +21,7 @@ function writeFile(pathstr, content, options?) {
                 }
 
                 resolve();
-            }
+            },
         );
     });
 }

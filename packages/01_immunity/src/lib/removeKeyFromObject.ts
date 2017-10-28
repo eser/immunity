@@ -11,7 +11,7 @@ function removeKeyFromObject(instance: any, ...keys: Array<string>): any {
 
             return obj;
         },
-        {}
+        {},
     );
 }
 

@@ -1,7 +1,7 @@
 import path = require('path');
 import os = require('os');
 import * as cofounder from 'cofounder';
-import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+import EventEmitter from 'es6-eventemitter/lib/eventEmitter';
 import mergeObjects from 'immunity/lib/mergeObjects';
 import appendToObject from 'immunity/lib/appendToObject';
 

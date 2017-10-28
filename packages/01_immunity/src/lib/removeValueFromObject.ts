@@ -11,7 +11,7 @@ function removeValueFromObject(instance: any, ...values: Array<any>): any {
 
             return obj;
         },
-        {}
+        {},
     );
 }
 

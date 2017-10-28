@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const EventEmitter_1 = require("./EventEmitter");
-exports.default = EventEmitter_1.default;
+const eventEmitter_1 = require("./eventEmitter");
+exports.default = eventEmitter_1.default;
 //# sourceMappingURL=index.js.map

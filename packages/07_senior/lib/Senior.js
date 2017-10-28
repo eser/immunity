@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
 const os = require("os");
 const cofounder = require("cofounder");
-const EventEmitter_1 = require("es6-eventemitter/lib/EventEmitter");
+const eventEmitter_1 = require("es6-eventemitter/lib/eventEmitter");
 const mergeObjects_1 = require("immunity/lib/mergeObjects");
 const appendToObject_1 = require("immunity/lib/appendToObject");
 class Senior {
     constructor(name, modulePrefix = '') {
         this.name = name;
         this.modulePrefix = modulePrefix;
-        this.events = new EventEmitter_1.default();
+        this.events = new eventEmitter_1.default();
         this.homePath = path.join(os.homedir(), `.${this.name}`);
         this.packageJsonFile = path.join(this.homePath, 'package.json');
     }

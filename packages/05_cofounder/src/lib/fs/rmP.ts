@@ -1,4 +1,3 @@
-import prependToArray from 'immunity/lib/prependToArray';
 import glob from './glob';
 import lstat from './lstat';
 import rm from './rm';
@@ -14,7 +13,7 @@ async function rmP(str, recursiveForDirectories) {
         const itemStat = await lstat(item);
 
         if (itemStat.isDirectory()) {
-            directories = prependToArray(directories, item);
+            directories = [ item, ...directories ];
 
             continue;
         }

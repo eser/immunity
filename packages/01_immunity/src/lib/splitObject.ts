@@ -25,7 +25,7 @@ function splitObject(instance: any, n: number): { items: any, remainder: any } {
         {
             items: {},
             remainder: {},
-        }
+        },
     );
 }
 

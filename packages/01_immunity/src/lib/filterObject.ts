@@ -11,7 +11,7 @@ function filterObject(instance: any, predicate: (value: any, index: number, obje
 
             return obj;
         },
-        {}
+        {},
     );
 }
 

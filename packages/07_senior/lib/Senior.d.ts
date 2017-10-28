@@ -1,4 +1,4 @@
-import EventEmitter from 'es6-eventemitter/lib/EventEmitter';
+import EventEmitter from 'es6-eventemitter/lib/eventEmitter';
 declare class Senior {
     name: string;
     modulePrefix: string;

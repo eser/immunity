@@ -1,5 +1,4 @@
 import path = require('path');
-import appendToArray from 'immunity/lib/appendToArray';
 import splitArray from 'immunity/lib/splitArray';
 import lstat from './lstat';
 import readdir from './readdir';
@@ -8,12 +7,12 @@ import rmdir from './rmdir';
 
 async function rmdirP(pathstr) {
     let directories = [
-        [ pathstr, false ]
+        [ pathstr, false ],
     ];
 
     while (directories.length > 0) {
-        const splitted = splitArray(directories, -1),
-            directory = splitted.items[0];
+        const splitted = splitArray(directories, -1);
+        const directory = splitted.items[0];
 
         directories = splitted.remainder;
 
@@ -40,11 +39,11 @@ async function rmdirP(pathstr) {
 
                     if (itemStat.isDirectory()) {
                         if (!pushedBack) {
-                            directories = appendToArray(directories, [ directory[0], true ]);
+                            directories = [ ...directories, [ directory[0], true ] ];
                             pushedBack = true;
                         }
 
-                        directories = appendToArray(directories, [ itemPath, false ]);
+                        directories = [ ...directories, [ itemPath, false ] ];
 
                         continue;
                     }

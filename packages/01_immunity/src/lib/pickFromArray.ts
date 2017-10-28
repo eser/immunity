@@ -16,7 +16,7 @@ function pickFromArray(instance: Array<any>, items: Array<any>): { items: Array<
         {
             items: [],
             remainder: [],
-        }
+        },
     );
 }
 

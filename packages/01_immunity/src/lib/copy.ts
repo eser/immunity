@@ -15,7 +15,7 @@ function copy(instance: any): any {
                 [itemKey]: instance[itemKey],
             });
         },
-        new type()
+        new type(),
     );
 }
 

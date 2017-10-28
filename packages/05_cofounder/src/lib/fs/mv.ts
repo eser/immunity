@@ -13,7 +13,7 @@ function mv(pathstr, dest): Promise<void> {
                 }
 
                 resolve();
-            }
+            },
         );
     });
 }

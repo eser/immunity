@@ -6,7 +6,7 @@ function glob(str, options?): Promise<any> {
         const defaultOptions = {
             nosort: true,
             nonull: false,
-            nodir: true
+            nodir: true,
         };
 
         const options_ = (options === undefined) ?
@@ -24,7 +24,7 @@ function glob(str, options?): Promise<any> {
                 }
 
                 resolve(contents);
-            }
+            },
         );
     });
 }

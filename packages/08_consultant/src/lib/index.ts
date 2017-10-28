@@ -1,5 +1,11 @@
-import Consultant from './Consultant';
+import types from './Types';
+
+import findSubRule from './findSubRule';
+import getRuleChildren from './getRuleChildren';
 
 export {
-    Consultant as default,
+    types,
+
+    findSubRule,
+    getRuleChildren,
 };

@@ -20,7 +20,7 @@ function pickFromObject(instance: any, items: Array<any>): { items: any, remaind
         {
             items: {},
             remainder: {},
-        }
+        },
     );
 }
 

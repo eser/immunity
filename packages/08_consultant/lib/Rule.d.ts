@@ -29,5 +29,4 @@ interface Rule {
 declare type RuleCollection = {
     [key: string]: Rule;
 };
-declare function getRuleChildren(rule: Rule): Promise<RuleCollection | undefined>;
-export { ValidationResult, ValidateMethod, Rule as default, RuleCollection, getRuleChildren };
+export { ValidationResult, ValidateMethod, Rule as default, RuleCollection };

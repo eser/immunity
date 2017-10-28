@@ -12,7 +12,7 @@ function rmdir(pathstr): Promise<void> {
                 }
 
                 resolve();
-            }
+            },
         );
     });
 }

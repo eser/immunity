@@ -1,1 +1,0 @@
-{"version":3,"file":"BasicFormatter.js","sourceRoot":"","sources":["../../../src/lib/logging/formatters/BasicFormatter.ts"],"names":[],"mappings":";;AAAA;IACI,MAAM,CAAC,QAAa,EAAE,OAAe,EAAE,SAAe;QAClD,MAAM,CAAC,GAAG,QAAQ,CAAC,KAAK,IAAI,OAAO,EAAE,CAAC;IAC1C,CAAC;CACJ;AAGqB,iCAAO"}

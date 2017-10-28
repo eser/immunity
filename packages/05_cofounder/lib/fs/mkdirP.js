@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
-const appendToArray_1 = require("immunity/lib/appendToArray");
 const splitArray_1 = require("immunity/lib/splitArray");
 const mkdir_1 = require("./mkdir");
 async function mkdirP(pathstr, mode) {
@@ -9,14 +8,15 @@ async function mkdirP(pathstr, mode) {
         pathstr
     ];
     while (directories.length > 0) {
-        const splitted = splitArray_1.default(directories, -1), directory = splitted.items[0];
+        const splitted = splitArray_1.default(directories, -1);
+        const directory = splitted.items[0];
         directories = splitted.remainder;
         try {
             await mkdir_1.default(directory, mode);
         }
         catch (ex) {
             if (ex.code === 'ENOENT') {
-                directories = appendToArray_1.default(directories, directory, path.dirname(directory));
+                directories = [...directories, directory, path.dirname(directory)];
                 continue;
             }
             if (ex.code === 'EEXIST') {

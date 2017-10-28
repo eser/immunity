@@ -15,7 +15,7 @@ function removeFirstMatchFromObject(instance: any, predicate: (value: any, index
                 [itemKey]: instance[itemKey],
             });
         },
-        {}
+        {},
     );
 }
 

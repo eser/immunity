@@ -13,7 +13,7 @@ function takeFromObject(instance: any, n: number): any {
 
             return obj;
         },
-        {}
+        {},
     );
 }
 

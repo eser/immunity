@@ -12,7 +12,7 @@ function rm(pathstr): Promise<void> {
                 }
 
                 resolve();
-            }
+            },
         );
     });
 }

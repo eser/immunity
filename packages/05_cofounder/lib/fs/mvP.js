@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
-const appendToArray_1 = require("immunity/lib/appendToArray");
 const glob_1 = require("./glob");
 const globParentOf_1 = require("./globParentOf");
 const mkdirP_1 = require("./mkdirP");
@@ -10,10 +9,12 @@ async function mvP(str, dest) {
     const list = await glob_1.default(str, { nodir: false });
     let createdDirectories = [];
     for (const item of list) {
-        const globParent = globParentOf_1.default(str, item), relativePath = (globParent !== null) ? item.substring(globParent.length) : item, relativeBasePath = path.dirname(relativePath);
+        const globParent = globParentOf_1.default(str, item);
+        const relativePath = (globParent !== null) ? item.substring(globParent.length) : item;
+        const relativeBasePath = path.dirname(relativePath);
         if (createdDirectories.indexOf(relativeBasePath) === -1) {
             await mkdirP_1.default(path.join(dest, relativeBasePath));
-            createdDirectories = appendToArray_1.default(createdDirectories, relativeBasePath);
+            createdDirectories = [...createdDirectories, relativeBasePath];
         }
         const destFile = path.join(dest, relativePath);
         mv_1.default(item, destFile);

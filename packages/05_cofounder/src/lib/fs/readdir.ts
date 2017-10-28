@@ -20,7 +20,7 @@ function readdir(pathstr, options?): Promise<any> {
                 }
 
                 resolve(contents);
-            }
+            },
         );
     });
 }

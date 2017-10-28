@@ -12,7 +12,7 @@ function lstat(pathstr): Promise<any> {
                 }
 
                 resolve(stats);
-            }
+            },
         );
     });
 }

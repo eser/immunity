@@ -18,7 +18,7 @@ function dropFromObject(instance: any, n: number): any {
 
             return obj;
         },
-        {}
+        {},
     );
 }
 

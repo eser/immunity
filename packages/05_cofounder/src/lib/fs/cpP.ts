@@ -1,5 +1,4 @@
 import path = require('path');
-import appendToArray from 'immunity/lib/appendToArray';
 import cp from './cp';
 import glob from './glob';
 import globParentOf from './globParentOf';
@@ -17,7 +16,7 @@ async function cpP(str, dest) {
 
         if (createdDirectories.indexOf(relativeBasePath) === -1) {
             await mkdirP(path.join(dest, relativeBasePath));
-            createdDirectories = appendToArray(createdDirectories, relativeBasePath);
+            createdDirectories = [ ...createdDirectories, relativeBasePath ];
         }
 
         const destFile = path.join(dest, relativePath);

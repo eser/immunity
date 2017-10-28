@@ -16,7 +16,7 @@ function shell(command: string, args = emptyArray, env?: { [key: string]: string
             shell: true,
             env: env_,
             encoding: 'utf8',
-        }
+        },
     );
 
     process.on('SIGTERM', () => (<any>proc).kill('SIGTERM'));

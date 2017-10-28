@@ -20,7 +20,7 @@ function readFile(pathstr, options?): Promise<any> {
                 }
 
                 resolve(content);
-            }
+            },
         );
     });
 }
