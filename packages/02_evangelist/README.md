@@ -76,6 +76,54 @@ dispatcher(initialState, [ actionAdd5, actionDiv2 ], [ logger ])
     .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
+### Emitter
+
+```js
+import { emitter } from 'evangelist';
+
+// emitter - static pub/sub sample
+const subscriberOne = (value) => console.log(`subscriberOne had value ${value}`);
+const subscriberTwo = (value) => console.log(`subscriberTwo had value ${value}`);
+
+const events = {
+    printToConsole: [ subscriberOne, subscriberTwo ],
+};
+
+/* outputs:
+   subscriberOne had value 5
+   subscriberTwo had value 5
+*/
+emitter(events, 'printToConsole', [ 5 ]);
+```
+
+### Emitter w/ Subscribers
+
+```js
+import { emitter } from 'evangelist';
+
+// emitter - event logger sample
+const subscriberOne = (value) => console.log(`subscriberOne had value ${value}`);
+const subscriberTwo = (value) => console.log(`subscriberTwo had value ${value}`);
+
+const logger = (x) => console.log('INFO', x);
+
+const events = {
+    printToConsole: [ subscriberOne, subscriberTwo ],
+};
+
+/* outputs:
+   INFO { event: 'printToConsole',
+     subscriber: 'subscriberOne',
+     args: [ 5 ] }
+   subscriberOne had value 5
+   INFO { event: 'printToConsole',
+     subscriber: 'subscriberTwo',
+     args: [ 5 ] }
+   subscriberTwo had value 5
+*/
+emitter(events, 'printToConsole', [ 5 ], [ logger ]);
+```
+
 ### Pipe
 
 ```js
@@ -99,7 +147,8 @@ console.log(`slug: ${message}`);
 ## List of modules
 
 - decorate
-- dispatch
+- dispatcher
+- emitter
 - pipe
 
 
