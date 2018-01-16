@@ -1,9 +1,11 @@
-type MutatorType = (state: any, next: MutatorType) => any;
+type MutatorType = (state: any, next: MutatorType) => any | Promise<any>;
+type SubscriberType = (entry: any) => void;
 
-function dispatcher(state: any, ...mutators: MutatorType[]): any {
+async function dispatcher(state: any, mutators: MutatorType[], subscribers?: SubscriberType[]): Promise<any> {
+    const hasSubscribers = (subscribers !== undefined);
     let index = 0;
 
-    const next = (newState) => {
+    const next = async (newState) => {
         const layer = mutators[index];
 
         if (layer === undefined) {
@@ -11,13 +13,27 @@ function dispatcher(state: any, ...mutators: MutatorType[]): any {
         }
 
         index += 1;
-        return layer(newState, (currentState) => next(currentState));
+
+        return await layer(
+            newState,
+            async (currentState) => {
+                if (hasSubscribers) {
+                    // @ts-ignore
+                    subscribers.forEach(subscriber => {
+                        subscriber({ action: layer.name, previousState: newState, newState: currentState });
+                    });
+                }
+
+                return await next(currentState);
+            }
+        );
     };
 
-    return next(state);
+    return await next(state);
 }
 
 export {
     MutatorType,
+    SubscriberType,
     dispatcher as default,
 };

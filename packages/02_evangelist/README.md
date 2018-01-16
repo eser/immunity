@@ -39,16 +39,41 @@ console.log(`generated: ${generator()}`);
 ```js
 import { dispatcher } from 'evangelist';
 
-// dispatcher - state sample
+// dispatcher - state mutation sample
 const initialState = { quarter: 1, year: 2018, sum: 1 };
 
 const actionAdd5 = (state, next) => next({ ...state, sum: state.sum + 5 });
 const actionDiv2 = (state, next) => next({ ...state, sum: state.sum / 2 });
 
-const state = dispatcher(initialState, actionAdd5, actionDiv2);
-
 // outputs 'new state is: {"quarter":1,"year":2018,"sum":3}'
-console.log(`new state is: ${JSON.stringify(state)}`);
+dispatcher(initialState, [ actionAdd5, actionDiv2 ])
+    .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
+```
+
+### Dispatcher w/ Subscribers
+
+```js
+import { dispatcher } from 'evangelist';
+
+// dispatcher - action logger sample
+const initialState = { quarter: 1, year: 2018, sum: 1 };
+
+const actionAdd5 = (state, next) => next({ ...state, sum: state.sum + 5 });
+const actionDiv2 = (state, next) => next({ ...state, sum: state.sum / 2 });
+
+const logger = (x) => console.log('INFO', x);
+
+/* outputs:
+   INFO { action: 'actionAdd5',
+     previousState: { quarter: 1, year: 2018, sum: 1 },
+     newState: { quarter: 1, year: 2018, sum: 6 } }
+   INFO { action: 'actionDiv2',
+     previousState: { quarter: 1, year: 2018, sum: 6 },
+     newState: { quarter: 1, year: 2018, sum: 3 } }
+   new state is: {"quarter":1,"year":2018,"sum":3}'
+*/
+dispatcher(initialState, [ actionAdd5, actionDiv2 ], [ logger ])
+    .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
 ### Pipe

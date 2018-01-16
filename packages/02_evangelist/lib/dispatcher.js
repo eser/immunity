@@ -1,16 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function dispatcher(state, ...mutators) {
+async function dispatcher(state, mutators, subscribers) {
+    const hasSubscribers = (subscribers !== undefined);
     let index = 0;
-    const next = (newState) => {
+    const next = async (newState) => {
         const layer = mutators[index];
         if (layer === undefined) {
             return newState;
         }
         index += 1;
-        return layer(newState, (currentState) => next(currentState));
+        return await layer(newState, async (currentState) => {
+            if (hasSubscribers) {
+                subscribers.forEach(subscriber => {
+                    subscriber({ action: layer.name, previousState: newState, newState: currentState });
+                });
+            }
+            return await next(currentState);
+        });
     };
-    return next(state);
+    return await next(state);
 }
 exports.default = dispatcher;
 //# sourceMappingURL=dispatcher.js.map
