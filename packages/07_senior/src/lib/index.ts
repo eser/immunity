@@ -1,4 +1,4 @@
-import Senior from './Senior';
+import Senior from './senior';
 
 export {
     Senior as default,

@@ -1,1 +1,0 @@
-{"version":3,"file":"getRuleChildren.js","sourceRoot":"","sources":["../src/lib/getRuleChildren.ts"],"names":[],"mappings":";;AAEA,KAAK,0BAA0B,IAAU;IACrC,EAAE,CAAC,CAAC,IAAI,CAAC,WAAW,KAAK,SAAS,CAAC,CAAC,CAAC;QACjC,MAAM,CAAC,MAAM,IAAI,CAAC,WAAW,CAAC,IAAI,CAAC,EAAE,CAAC,CAAC;IAC3C,CAAC;IAED,MAAM,CAAC,IAAI,CAAC,QAAQ,CAAC;AACzB,CAAC;AAGsB,kCAAO"}

@@ -68,9 +68,13 @@ const newOne = appendToArray(source, 'c');
 - pickFromObject
 - prependToArray
 - prependToObject
+- removeFirstMatchFromArray
+- removeFirstMatchFromObject
 - removeFromArray
 - removeKeyFromObject
 - removeValueFromObject
+- reverseArray
+- reverseObject
 - splitArray
 - splitObject
 - takeFromArray

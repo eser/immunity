@@ -21,14 +21,30 @@ Execute `npm install evangelist` to install evangelist and its dependencies into
 ## Usage
 
 ```js
-import * as evangelist from 'evangelist';
+import { decorate } from 'evangelist';
 
-// wrap - calculator sample
-let fnc = () => 5;
-fnc = evangelist.wrap(fnc, (next) => next() * 2);
-fnc = evangelist.wrap(fnc, (next) => next() + 1);
+// decorate - calculator sample
+let generator = () => 5;
+generator = decorate(generator, (func) => func() * 2);
+generator = decorate(generator, (func) => func() + 1);
 
-console.log(`fnc: ${fnc()}`); // outputs: 'fnc: 11'
+console.log(`generated: ${generator()}`); // outputs: 'generated: 11'
+```
+
+```js
+import { dispatcher } from 'evangelist';
+
+// dispatcher - state sample
+const add5 = (state, next) => next({ sum: state.sum + 5 });
+const add4 = (state, next) => next({ sum: state.sum + 4 });
+
+const state = dispatcher({ sum: 1 }, add5, add4);
+
+console.log(`new state is: ${JSON.stringify(state)}`); // outputs 'new state is: {"sum":10}'
+```
+
+```js
+import { pipe } from 'evangelist';
 
 // pipe - combine sample
 const lower = x => x.toLowerCase();
@@ -36,7 +52,7 @@ const chars = x => x.replace(/[^\w \-]+/g, '');
 const spaces = x => x.split(' ');
 const dashes = x => x.join('-');
 
-const slug = evangelist.pipe(lower, chars, spaces, dashes);
+const slug = pipe(lower, chars, spaces, dashes);
 
 const message = slug('Hello World!');
 
@@ -46,8 +62,9 @@ console.log(`slug: ${message}`); // outputs 'slug: hello-world'
 
 ## List of modules
 
+- decorate
+- dispatch
 - pipe
-- wrap
 
 
 ## Todo List

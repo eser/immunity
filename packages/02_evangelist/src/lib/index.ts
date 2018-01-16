@@ -1,7 +1,9 @@
+import decorate from './decorate';
+import dispatcher from './dispatcher';
 import pipe from './pipe';
-import wrap from './wrap';
 
 export {
+    decorate,
+    dispatcher,
     pipe,
-    wrap,
 };

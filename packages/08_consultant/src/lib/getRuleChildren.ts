@@ -1,4 +1,4 @@
-import Rule, { RuleCollection } from './Rule';
+import Rule, { RuleCollection } from './rule';
 
 async function getRuleChildren(rule: Rule): Promise<RuleCollection | undefined> {
     if (rule.getChildren !== undefined) {

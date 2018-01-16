@@ -1,4 +1,4 @@
-import types from './Types';
+import types from './types';
 
 import findSubRule from './findSubRule';
 import getRuleChildren from './getRuleChildren';

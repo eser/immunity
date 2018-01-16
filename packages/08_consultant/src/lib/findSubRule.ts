@@ -1,4 +1,4 @@
-import Rule from './Rule';
+import Rule from './rule';
 import getRuleChildren from './getRuleChildren';
 
 async function findSubRule(node: Rule, predicate: (key: string, rule: Rule) => boolean): Promise<Rule | undefined> {
