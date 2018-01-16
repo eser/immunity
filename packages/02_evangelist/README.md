@@ -18,12 +18,12 @@ Plus, as a library, Evangelist is completely tree-shanking-friendly. Your favori
 Execute `npm install evangelist` to install evangelist and its dependencies into your project directory.
 
 
-## Usage
+## Usage of modules
 
-### Decorate
+### decorate(functionToDecorate, decoratorFunction)
 
 ```js
-import { decorate } from 'evangelist';
+import decorate from 'evangelist/lib/decorate';
 
 // decorate - calculator sample
 let generator = () => 5;
@@ -34,10 +34,10 @@ generator = decorate(generator, (func) => func() + 1);
 console.log(`generated: ${generator()}`);
 ```
 
-### Dispatcher (async, awaitable)
+### dispatcher(initialState, mutators) (awaitable)
 
 ```js
-import { dispatcher } from 'evangelist';
+import dispatcher from 'evangelist/lib/dispatcher';
 
 // dispatcher - state mutation sample
 const initialState = { quarter: 1, year: 2018, sum: 1 };
@@ -50,10 +50,10 @@ dispatcher(initialState, [ actionAdd5, actionDiv2 ])
     .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
-### Dispatcher w/ Subscribers (async, awaitable)
+### dispatcher(initialState, mutators, subscribers) (awaitable)
 
 ```js
-import { dispatcher } from 'evangelist';
+import dispatcher from 'evangelist/lib/dispatcher';
 
 // dispatcher - action logger sample
 const initialState = { quarter: 1, year: 2018, sum: 1 };
@@ -76,10 +76,10 @@ dispatcher(initialState, [ actionAdd5, actionDiv2 ], [ logger ])
     .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
-### Emitter (async, awaitable)
+### emitter(events, eventName, eventParameters) (awaitable)
 
 ```js
-import { emitter } from 'evangelist';
+import emitter from 'evangelist/lib/emitter';
 
 // emitter - static pub/sub sample
 const subscriberOne = (value) => console.log(`subscriberOne had value ${value}`);
@@ -96,10 +96,10 @@ const events = {
 emitter(events, 'printToConsole', [ 5 ]);
 ```
 
-### Emitter w/ Subscribers (async, awaitable)
+### emitter(events, eventName, eventParameters, subscribers) (awaitable)
 
 ```js
-import { emitter } from 'evangelist';
+import emitter from 'evangelist/lib/emitter';
 
 // emitter - event logger sample
 const subscriberOne = (value) => console.log(`subscriberOne had value ${value}`);
@@ -124,10 +124,10 @@ const events = {
 emitter(events, 'printToConsole', [ 5 ], [ logger ]);
 ```
 
-### Pipe
+### pipe(...functionsForComposition)
 
 ```js
-import { pipe } from 'evangelist';
+import pipe from 'evangelist/lib/pipe';
 
 // pipe - combine sample
 const lower = x => x.toLowerCase();
@@ -142,14 +142,6 @@ const message = slug('Hello World!');
 // outputs 'slug: hello-world'
 console.log(`slug: ${message}`);
 ```
-
-
-## List of modules
-
-- decorate
-- dispatcher
-- emitter
-- pipe
 
 
 ## Todo List

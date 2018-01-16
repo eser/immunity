@@ -22,12 +22,16 @@ Plus, as a library, Ponyfills is completely tree-shanking-friendly. Your favorit
 Execute `npm install ponyfills` to install ponyfills and its dependencies into your project directory.
 
 
-## Usage
+## Usage of modules
 
-For example, to ensure Object.assign's availability:
+### assign(target, ...sources) (Object.assign)
+
+The `assign` method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object. (Source: [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign))
+
+For example, to ensure Object.assign will be work:
 
 ```js
-import { assign } from 'ponyfills';
+import assign from 'ponyfills/lib/assign';
 
 const test = assign({}, { test: true });
 
@@ -38,7 +42,7 @@ console.log(`Is Native: ${assign === Object.assign}`);
 Alternative usage I:
 
 ```js
-import * as ponyfills from 'ponyfills';
+import { assign } from 'ponyfills';
 
 const test = ponyfills.assign({}, { test: true });
 ```
@@ -46,15 +50,10 @@ const test = ponyfills.assign({}, { test: true });
 Alternative usage II:
 
 ```js
-import assign from 'ponyfills/lib/assign';
+import * as ponyfills from 'ponyfills';
 
 const test = assign({}, { test: true });
 ```
-
-
-## List of modules
-
-- assign: [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 
 ## Todo List

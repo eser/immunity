@@ -20,12 +20,14 @@ Additionally, as a library, Immunity is completely tree-shanking-friendly. Your 
 Execute `npm install immunity` to install immunity and its dependencies into your project directory.
 
 
-## Usage
+## Usage of modules
+
+### appendToArray(source, ...items)
 
 For example, to append a new item to an existing array:
 
 ```js
-import { appendToArray } from 'immunity';
+import appendToArray from 'immunity/lib/appendToArray';
 
 const source = [ 'a', 'b' ];
 const newOne = appendToArray(source, 'c');
@@ -34,51 +36,97 @@ console.log(`Result: ${newOne}`);
 console.log(`Is Same: ${source === newOne}`);
 ```
 
-Alternative usage I:
+### appendToObject(source, ...items)
 
-```js
-import * as immunity from 'immunity';
+Will be documented
 
-const source = [ 'a', 'b' ];
-const newOne = immunity.appendToArray(source, 'c');
-```
+### copy(source)
 
-Alternative usage II:
+Will be documented
 
-```js
-import appendToArray from 'immunity/lib/appendToArray';
+### dropFromArray(source, number)
 
-const source = [ 'a', 'b' ];
-const newOne = appendToArray(source, 'c');
-```
+Will be documented
 
+### dropFromObject(source, number)
 
-## List of modules
+Will be documented
 
-- appendToArray
-- appendToObject
-- copy
-- dropFromArray
-- dropFromObject
-- filterArray
-- filterObject
-- mergeArrays
-- mergeObjects
-- pickFromArray
-- pickFromObject
-- prependToArray
-- prependToObject
-- removeFirstMatchFromArray
-- removeFirstMatchFromObject
-- removeFromArray
-- removeKeyFromObject
-- removeValueFromObject
-- reverseArray
-- reverseObject
-- splitArray
-- splitObject
-- takeFromArray
-- takeFromObject
+### filterArray(instance, predicate)
+
+Will be documented
+
+### filterObject(instance, predicate)
+
+Will be documented
+
+### mergeArrays(...sources)
+
+Will be documented
+
+### mergeObjects(...sources)
+
+Will be documented
+
+### pickFromArray(source, items)
+
+Will be documented
+
+### pickFromObject(source, keys)
+
+Will be documented
+
+### prependToArray(source, ...items)
+
+Will be documented
+
+### prependToObject(source, ...items)
+
+Will be documented
+
+### removeFirstMatchFromArray(source, predicate)
+
+Will be documented
+
+### removeFirstMatchFromObject(source, predicate)
+
+Will be documented
+
+### removeFromArray(source, ...items)
+
+Will be documented
+
+### removeKeyFromObject(source, ...keys)
+
+Will be documented
+
+### removeValueFromObject(source, ...values)
+
+Will be documented
+
+### reverseArray(source)
+
+Will be documented
+
+### reverseObject(source)
+
+Will be documented
+
+### splitArray(source, number)
+
+Will be documented
+
+### splitObject(source, number)
+
+Will be documented
+
+### takeFromArray(source, number)
+
+Will be documented
+
+### takeFromObject(source, number)
+
+Will be documented
 
 
 ## Todo List
