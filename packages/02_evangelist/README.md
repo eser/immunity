@@ -34,7 +34,7 @@ generator = decorate(generator, (func) => func() + 1);
 console.log(`generated: ${generator()}`);
 ```
 
-### Dispatcher
+### Dispatcher (async, awaitable)
 
 ```js
 import { dispatcher } from 'evangelist';
@@ -50,7 +50,7 @@ dispatcher(initialState, [ actionAdd5, actionDiv2 ])
     .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
-### Dispatcher w/ Subscribers
+### Dispatcher w/ Subscribers (async, awaitable)
 
 ```js
 import { dispatcher } from 'evangelist';
@@ -76,7 +76,7 @@ dispatcher(initialState, [ actionAdd5, actionDiv2 ], [ logger ])
     .then(state => console.log(`new state is: ${JSON.stringify(state)}`));
 ```
 
-### Emitter
+### Emitter (async, awaitable)
 
 ```js
 import { emitter } from 'evangelist';
@@ -96,7 +96,7 @@ const events = {
 emitter(events, 'printToConsole', [ 5 ]);
 ```
 
-### Emitter w/ Subscribers
+### Emitter w/ Subscribers (async, awaitable)
 
 ```js
 import { emitter } from 'evangelist';
