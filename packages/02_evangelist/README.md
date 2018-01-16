@@ -20,6 +20,8 @@ Execute `npm install evangelist` to install evangelist and its dependencies into
 
 ## Usage
 
+### Decorate
+
 ```js
 import { decorate } from 'evangelist';
 
@@ -28,20 +30,28 @@ let generator = () => 5;
 generator = decorate(generator, (func) => func() * 2);
 generator = decorate(generator, (func) => func() + 1);
 
-console.log(`generated: ${generator()}`); // outputs: 'generated: 11'
+// outputs: 'generated: 11'
+console.log(`generated: ${generator()}`);
 ```
+
+### Dispatcher
 
 ```js
 import { dispatcher } from 'evangelist';
 
 // dispatcher - state sample
-const add5 = (state, next) => next({ sum: state.sum + 5 });
-const add4 = (state, next) => next({ sum: state.sum + 4 });
+const initialState = { quarter: 1, year: 2018, sum: 1 };
 
-const state = dispatcher({ sum: 1 }, add5, add4);
+const actionAdd5 = (state, next) => next({ ...state, sum: state.sum + 5 });
+const actionDiv2 = (state, next) => next({ ...state, sum: state.sum / 2 });
 
-console.log(`new state is: ${JSON.stringify(state)}`); // outputs 'new state is: {"sum":10}'
+const state = dispatcher(initialState, actionAdd5, actionDiv2);
+
+// outputs 'new state is: {"quarter":1,"year":2018,"sum":3}'
+console.log(`new state is: ${JSON.stringify(state)}`);
 ```
+
+### Pipe
 
 ```js
 import { pipe } from 'evangelist';
@@ -56,7 +66,8 @@ const slug = pipe(lower, chars, spaces, dashes);
 
 const message = slug('Hello World!');
 
-console.log(`slug: ${message}`); // outputs 'slug: hello-world'
+// outputs 'slug: hello-world'
+console.log(`slug: ${message}`);
 ```
 
 

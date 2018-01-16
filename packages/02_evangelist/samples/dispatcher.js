@@ -1,8 +1,10 @@
 const dispatcher = require('../lib/dispatcher').default;
 
-const add5 = (state, next) => next({ sum: state.sum + 5 });
-const add4 = (state, next) => next({ sum: state.sum + 4 });
+const initialState = { quarter: 1, year: 2018, sum: 1 };
 
-const state = dispatcher({ sum: 1 }, add5, add4);
+const actionAdd5 = (state, next) => next({ ...state, sum: state.sum + 5 });
+const actionDiv2 = (state, next) => next({ ...state, sum: state.sum / 2 });
+
+const state = dispatcher(initialState, actionAdd5, actionDiv2);
 
 console.log(`new state is: ${JSON.stringify(state)}`);
