@@ -24,7 +24,7 @@ Execute `npm install immunity` to install immunity and its dependencies into you
 
 ### appendToArray(source, ...items)
 
-For example, to append a new item to an existing array:
+appends new item(s) to an array:
 
 ```js
 import appendToArray from 'immunity/lib/appendToArray';
@@ -32,25 +32,77 @@ import appendToArray from 'immunity/lib/appendToArray';
 const source = [ 'a', 'b' ];
 const newOne = appendToArray(source, 'c');
 
-console.log(`Result: ${newOne}`);
+// output: Result: ['a','b','c']
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
 ```
 
 ### appendToObject(source, ...items)
 
-Will be documented
+appends new item(s) to a object:
+
+```js
+import appendToObject from 'immunity/lib/appendToObject';
+
+const source = { a: 1, b: 2 };
+const newOne = appendToObject(source, { c: 3 });
+
+// output: Result: {'a':1,'b':2,'c':3}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### copy(source)
 
-Will be documented
+copies an instance with its constructor:
+
+```js
+import copy from 'immunity/lib/copy';
+
+class dummy {}
+
+const source = new dummy();
+const newOne = copy(source);
+
+// output: Result: class dummy {}
+console.log('Result:', newOne.constructor);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### dropFromArray(source, number)
 
-Will be documented
+drops latest n items from an array.
+
+```js
+import dropFromArray from 'immunity/lib/dropFromArray';
+
+const source = [ 'a', 'b', 'c' ];
+const newOne = dropFromArray(source, 1);
+
+// output: Result: ['a','b']
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### dropFromObject(source, number)
 
-Will be documented
+drops latest n items from a object.
+
+```js
+import dropFromObject from 'immunity/lib/dropFromObject';
+
+const source = { a: 1, b: 2, c: 3 };
+const newOne = dropFromObject(source, 1);
+
+// output: Result: {'a':1,'b':2}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### filterArray(instance, predicate)
 
