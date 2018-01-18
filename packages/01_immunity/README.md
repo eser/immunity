@@ -74,7 +74,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### dropFromArray(source, number)
 
-drops latest n items from an array.
+gets latest n items from an array.
 
 ```js
 import dropFromArray from 'immunity/lib/dropFromArray';
@@ -82,7 +82,7 @@ import dropFromArray from 'immunity/lib/dropFromArray';
 const source = [ 'a', 'b', 'c' ];
 const newOne = dropFromArray(source, 1);
 
-// output: Result: ['a','b']
+// output: Result: ['c']
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
@@ -90,7 +90,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### dropFromObject(source, number)
 
-drops latest n items from a object.
+gets latest n items from a object.
 
 ```js
 import dropFromObject from 'immunity/lib/dropFromObject';
@@ -98,7 +98,7 @@ import dropFromObject from 'immunity/lib/dropFromObject';
 const source = { a: 1, b: 2, c: 3 };
 const newOne = dropFromObject(source, 1);
 
-// output: Result: {'a':1,'b':2}
+// output: Result: {'c':3}
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
