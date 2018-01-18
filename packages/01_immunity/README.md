@@ -24,7 +24,7 @@ Execute `npm install immunity` to install immunity and its dependencies into you
 
 ### appendToArray(source, ...items)
 
-appends new item(s) to an array:
+appends new item(s) to an array.
 
 ```js
 import appendToArray from 'immunity/lib/appendToArray';
@@ -40,7 +40,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### appendToObject(source, ...items)
 
-appends new item(s) to a object:
+appends new item(s) to a object.
 
 ```js
 import appendToObject from 'immunity/lib/appendToObject';
@@ -56,7 +56,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### copy(source)
 
-copies an instance with its constructor:
+copies an instance with its constructor.
 
 ```js
 import copy from 'immunity/lib/copy';

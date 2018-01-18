@@ -42,6 +42,8 @@
     "immunity": "^0.8.4"
   },
   "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/node": "^9.3.0",
     "eslint": "^4.5.0",
     "eslint-config-eser": "^2.0.7",
     "eslint-plugin-import": "^2.7.0",
