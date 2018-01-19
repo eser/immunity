@@ -10,7 +10,7 @@ test('pickFromObject', () => {
     expect(Object.keys(result.items)).toHaveLength(2);
     expect(result.items).toEqual({ b: 2, c: 3 });
 
-    expect(result.remainder).not.toBe(obj1);
-    expect(Object.keys(result.remainder)).toHaveLength(3);
-    expect(result.remainder).toEqual({ a: 1, d: 4, e: 5 });
+    expect(result.rest).not.toBe(obj1);
+    expect(Object.keys(result.rest)).toHaveLength(3);
+    expect(result.rest).toEqual({ a: 1, d: 4, e: 5 });
 });

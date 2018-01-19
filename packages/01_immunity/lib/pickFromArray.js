@@ -5,16 +5,16 @@ function pickFromArray(instance, items) {
         if (items.indexOf(itemValue) !== -1) {
             return {
                 items: [...obj.items, itemValue],
-                remainder: obj.remainder,
+                rest: obj.rest,
             };
         }
         return {
             items: obj.items,
-            remainder: [...obj.remainder, itemValue],
+            rest: [...obj.rest, itemValue],
         };
     }, {
         items: [],
-        remainder: [],
+        rest: [],
     });
 }
 exports.default = pickFromArray;

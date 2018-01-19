@@ -4,7 +4,7 @@ function splitArray(instance, n) {
     const offset = (n >= 0) ? n : instance.length + n;
     return {
         items: instance.slice(0, offset),
-        remainder: instance.slice(offset),
+        rest: instance.slice(offset),
     };
 }
 exports.default = splitArray;

@@ -7,16 +7,16 @@ function pickFromObject(instance, items) {
         if (items.indexOf(itemKey) !== -1) {
             return {
                 items: assign_1.default({}, obj.items, { [itemKey]: instance[itemKey] }),
-                remainder: obj.remainder,
+                rest: obj.rest,
             };
         }
         return {
             items: obj.items,
-            remainder: assign_1.default({}, obj.remainder, { [itemKey]: instance[itemKey] }),
+            rest: assign_1.default({}, obj.rest, { [itemKey]: instance[itemKey] }),
         };
     }, {
         items: {},
-        remainder: {},
+        rest: {},
     });
 }
 exports.default = pickFromObject;

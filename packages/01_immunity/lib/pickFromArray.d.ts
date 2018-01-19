@@ -1,5 +1,5 @@
 declare function pickFromArray(instance: Array<any>, items: Array<any>): {
     items: Array<any>;
-    remainder: Array<any>;
+    rest: Array<any>;
 };
 export { pickFromArray as default };

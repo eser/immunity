@@ -8,8 +8,8 @@ test('splitObject', () => {
     expect(result.items).not.toBe(obj1);
     expect(Object.keys(result.items)).toHaveLength(3);
     expect(result.items).toEqual({ a: 1, b: 2, c: 3 });
-    expect(result.remainder).not.toBe(obj1);
-    expect(Object.keys(result.remainder)).toHaveLength(2);
-    expect(result.remainder).toEqual({ d: 4, e: 5 });
+    expect(result.rest).not.toBe(obj1);
+    expect(Object.keys(result.rest)).toHaveLength(2);
+    expect(result.rest).toEqual({ d: 4, e: 5 });
 });
 //# sourceMappingURL=splitObject.js.map

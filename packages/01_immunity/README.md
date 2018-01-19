@@ -172,19 +172,67 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### pickFromArray(source, items)
 
-Will be documented
+returns matching and not matching items from an array.
+
+```js
+import pickFromArray from 'immunity/lib/pickFromArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = pickFromArray(source, [ 2, 3, 6 ]);
+
+// output: Result: {'items':[2,3],'rest':[1,4,5]}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### pickFromObject(source, keys)
 
-Will be documented
+returns matching and not matching items from an object.
+
+```js
+import pickFromObject from 'immunity/lib/pickFromObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = pickFromObject(source, [ 'b', 'c', 'f' ]);
+
+// output: Result: {'items':{'b':2,'c':3},'rest':{'a':1,'d':4,'e':5}}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### prependToArray(source, ...items)
 
-Will be documented
+prepends new item(s) to an array.
+
+```js
+import prependToArray from 'immunity/lib/prependToArray';
+
+const source = [ 'b', 'c' ];
+const newOne = prependToArray(source, 'a');
+
+// output: Result: ['a','b','c']
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### prependToObject(source, ...items)
 
-Will be documented
+prepends new item(s) to an object.
+
+```js
+import prependToObject from 'immunity/lib/prependToObject';
+
+const source = { b: 2, c: 3 };
+const newOne = prependToObject(source, { a: 1 });
+
+// output: Result: {'a':1,'b':2,'c':3}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### removeFirstMatchFromArray(source, predicate)
 

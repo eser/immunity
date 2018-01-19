@@ -10,7 +10,7 @@ test('splitArray', () => {
     expect(result.items).toHaveLength(3);
     expect(result.items).toEqual([ 1, 2, 3 ]);
 
-    expect(result.remainder).not.toBe(arr1);
-    expect(result.remainder).toHaveLength(2);
-    expect(result.remainder).toEqual([ 4, 5 ]);
+    expect(result.rest).not.toBe(arr1);
+    expect(result.rest).toHaveLength(2);
+    expect(result.rest).toEqual([ 4, 5 ]);
 });

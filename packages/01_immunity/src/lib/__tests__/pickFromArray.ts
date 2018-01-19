@@ -11,8 +11,8 @@ test('pickFromArray', () => {
     expect(result.items).toHaveLength(2);
     expect(result.items).toEqual([ 2, 3 ]);
 
-    expect(result.remainder).not.toBe(arr1);
-    expect(result.remainder).not.toBe(arr2);
-    expect(result.remainder).toHaveLength(3);
-    expect(result.remainder).toEqual([ 1, 4, 5 ]);
+    expect(result.rest).not.toBe(arr1);
+    expect(result.rest).not.toBe(arr2);
+    expect(result.rest).toHaveLength(3);
+    expect(result.rest).toEqual([ 1, 4, 5 ]);
 });
