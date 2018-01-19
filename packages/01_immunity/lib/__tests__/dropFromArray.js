@@ -6,7 +6,7 @@ test('dropFromArray', () => {
     const int1 = 1;
     const result = dropFromArray_1.default(arr1, int1);
     expect(result).not.toBe(arr1);
-    expect(result).toHaveLength(int1);
-    expect(result).toEqual(['c']);
+    expect(result).toHaveLength(2);
+    expect(result).toEqual(['b', 'c']);
 });
 //# sourceMappingURL=dropFromArray.js.map

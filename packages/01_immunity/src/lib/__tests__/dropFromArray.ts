@@ -7,6 +7,6 @@ test('dropFromArray', () => {
     const result = dropFromArray(arr1, int1);
 
     expect(result).not.toBe(arr1);
-    expect(result).toHaveLength(int1);
-    expect(result).toEqual([ 'c' ]);
+    expect(result).toHaveLength(2);
+    expect(result).toEqual([ 'b', 'c' ]);
 });

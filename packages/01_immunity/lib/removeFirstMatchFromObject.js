@@ -4,7 +4,7 @@ const assign_1 = require("ponyfills/lib/assign");
 function removeFirstMatchFromObject(instance, predicate) {
     let notFound = true;
     return Object.keys(instance).reduce((obj, itemKey) => {
-        if (notFound && predicate(itemKey, instance[itemKey], obj)) {
+        if (notFound && predicate(instance[itemKey], itemKey, obj)) {
             notFound = false;
             return obj;
         }

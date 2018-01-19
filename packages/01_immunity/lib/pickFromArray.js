@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 function pickFromArray(instance, items) {
     return instance.reduce((obj, itemValue, itemKey) => {
-        if (items.indexOf(itemKey) !== -1) {
+        if (items.indexOf(itemValue) !== -1) {
             return {
                 items: [...obj.items, itemValue],
                 remainder: obj.remainder,

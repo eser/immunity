@@ -40,7 +40,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### appendToObject(source, ...items)
 
-appends new item(s) to a object.
+appends new item(s) to an object.
 
 ```js
 import appendToObject from 'immunity/lib/appendToObject';
@@ -74,7 +74,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### dropFromArray(source, number)
 
-gets latest n items from an array.
+skips first n items from an array.
 
 ```js
 import dropFromArray from 'immunity/lib/dropFromArray';
@@ -82,7 +82,7 @@ import dropFromArray from 'immunity/lib/dropFromArray';
 const source = [ 'a', 'b', 'c' ];
 const newOne = dropFromArray(source, 1);
 
-// output: Result: ['c']
+// output: Result: ['b','c']
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
@@ -90,7 +90,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### dropFromObject(source, number)
 
-gets latest n items from a object.
+skips first n items from an object.
 
 ```js
 import dropFromObject from 'immunity/lib/dropFromObject';
@@ -98,7 +98,7 @@ import dropFromObject from 'immunity/lib/dropFromObject';
 const source = { a: 1, b: 2, c: 3 };
 const newOne = dropFromObject(source, 1);
 
-// output: Result: {'c':3}
+// output: Result: {'b':2,'c':3}
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
@@ -106,19 +106,69 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### filterArray(instance, predicate)
 
-Will be documented
+returns matching items from an array.
+
+```js
+import filterArray from 'immunity/lib/filterArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = filterArray(source, x => x <= 3);
+
+// output: Result: [1,2,3]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### filterObject(instance, predicate)
 
-Will be documented
+returns matching items from an object.
+
+```js
+import filterObject from 'immunity/lib/filterObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = filterObject(source, x => x <= 3);
+
+// output: Result: {'a':1,'b':2,'c':3,'d':4,'e':5}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### mergeArrays(...sources)
 
-Will be documented
+merges two or more arrays into one.
+
+```js
+import mergeArrays from 'immunity/lib/mergeArrays';
+
+const source1 = [ 1, 2, 3 ];
+const source2 = [ 4, 5 ];
+const newOne = mergeArrays(source1, source2);
+
+// output: Result: [1,2,3,4,5]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### mergeObjects(...sources)
 
-Will be documented
+merges two or more objects into one.
+
+```js
+import mergeObjects from 'immunity/lib/mergeObjects';
+
+const source1 = { a: 1, b: 2, c: 3 };
+const source2 = { d: 4, e: 5 };
+const newOne = mergeObjects(source1, source2);
+
+// output: Result: {'a':1,'b':2,'c':3,'d':4,'e':5}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### pickFromArray(source, items)
 
@@ -174,11 +224,35 @@ Will be documented
 
 ### takeFromArray(source, number)
 
-Will be documented
+takes first n items from an array.
+
+```js
+import takeFromArray from 'immunity/lib/takeFromArray';
+
+const source = [ 'a', 'b', 'c' ];
+const newOne = takeFromArray(source, 2);
+
+// output: Result: ['a','b']
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### takeFromObject(source, number)
 
-Will be documented
+takes first n items from an object.
+
+```js
+import takeFromObject from 'immunity/lib/takeFromObject';
+
+const source = { a: 1, b: 2, c: 3 };
+const newOne = takeFromObject(source, 2);
+
+// output: Result: {'a':1,'b':2}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 
 ## Todo List
