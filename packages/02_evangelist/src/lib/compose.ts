@@ -1,4 +1,4 @@
-function pipe(...funcs: Function[]): Function {
+function compose(...funcs: Function[]): Function {
     return funcs.reduce(
         function (previousValue: Function, currentValue: Function): Function {
             return function (...args): any {
@@ -9,5 +9,5 @@ function pipe(...funcs: Function[]): Function {
 }
 
 export {
-    pipe as default,
+    compose as default,
 };

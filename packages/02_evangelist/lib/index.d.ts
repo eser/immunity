@@ -1,4 +1,5 @@
+import compose from './compose';
 import decorate from './decorate';
 import dispatcher from './dispatcher';
-import pipe from './pipe';
-export { decorate, dispatcher, pipe };
+import emitter from './emitter';
+export { compose, decorate, dispatcher, emitter };

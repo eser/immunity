@@ -1,12 +1,12 @@
-import pipe from '../pipe';
+import compose from '../compose';
 
-test('pipe', () => {
+test('compose', () => {
     const lower = x => x.toLowerCase();
     const chars = x => x.replace(/[^\w \-]+/g, '');
     const spaces = x => x.split(' ');
     const dashes = x => x.join('-');
 
-    const slug = pipe(lower, chars, spaces, dashes);
+    const slug = compose(lower, chars, spaces, dashes);
 
     const result = slug('Hello World!');
 

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function pipe(...funcs) {
+function compose(...funcs) {
     return funcs.reduce(function (previousValue, currentValue) {
         return function (...args) {
             return currentValue(previousValue(...args));
         };
     });
 }
-exports.default = pipe;
-//# sourceMappingURL=pipe.js.map
+exports.default = compose;
+//# sourceMappingURL=compose.js.map

@@ -20,6 +20,25 @@ Execute `npm install evangelist` to install evangelist and its dependencies into
 
 ## Usage of modules
 
+### compose(...functionsForComposition)
+
+```js
+import compose from 'evangelist/lib/compose';
+
+// compose - slug sample
+const lower = x => x.toLowerCase();
+const chars = x => x.replace(/[^\w \-]+/g, '');
+const spaces = x => x.split(' ');
+const dashes = x => x.join('-');
+
+const slug = compose(lower, chars, spaces, dashes);
+
+const message = slug('Hello World!');
+
+// outputs 'slug: hello-world'
+console.log(`slug: ${message}`);
+```
+
 ### decorate(functionToDecorate, decoratorFunction)
 
 ```js
@@ -122,25 +141,6 @@ const events = {
    subscriberTwo had value 5
 */
 emitter(events, 'printToConsole', [ 5 ], [ logger ]);
-```
-
-### pipe(...functionsForComposition)
-
-```js
-import pipe from 'evangelist/lib/pipe';
-
-// pipe - combine sample
-const lower = x => x.toLowerCase();
-const chars = x => x.replace(/[^\w \-]+/g, '');
-const spaces = x => x.split(' ');
-const dashes = x => x.join('-');
-
-const slug = pipe(lower, chars, spaces, dashes);
-
-const message = slug('Hello World!');
-
-// outputs 'slug: hello-world'
-console.log(`slug: ${message}`);
 ```
 
 
