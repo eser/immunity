@@ -1,6 +1,6 @@
 {
   "name": "evangelist",
-  "description": "Method library consists of reusable helper functions to help you save time",
+  "description": "Library of helpers that are useful for functional programming",
   "keywords": [
     "override",
     "overriding",

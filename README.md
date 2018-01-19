@@ -6,8 +6,8 @@ monorepo of libraries that empower jsmake
 | -------------------------------------------------- | -------- | -------------------------------------------------------------------------------------- |
 | [ponyfills](packages/00_ponyfills/)                   | Released | Delivers ponyfills as modules, uses native alternatives first when available           |
 | [immunity](packages/01_immunity/)                    | Released | Library of methods for maintaining immutable data structures                           |
-| [evangelist](packages/02_evangelist/)                  | Released | Library of helpers that useful for functional programming                              |
-| [enthusiast](packages/03_enthusiast/)                  | Alpha    | A stream library implementation runs on browsers and node.js                           |
+| [evangelist](packages/02_evangelist/)                  | Released | Library of helpers that are useful for functional programming                          |
+| [enthusiast](packages/03_enthusiast/)                  | Alpha    | A functional stream library implementation runs on browsers and node.js                |
 | [cofounder](packages/04_cofounder/)                   | Beta     | Library of methods offers additional functionalities besides node.js's fs library      |
 | [maester](packages/05_maester/)                     | Beta     | Async logging and exception handling library runs on browsers and node.js              |
 | [senior](packages/06_senior/)                      | Beta     | Plugin host and manager for installable/removable npm packages                         |

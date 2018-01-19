@@ -8,7 +8,7 @@
 
 ## What is the Enthusiast?
 
-Enthusiast is a stream library implementation runs on browsers and node.js.
+Enthusiast is a stream library implementation that utilizes generator functions to make streams work in functional way.
 
 Additionally, as a library, Enthusiast is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Enthusiast package.
 
@@ -18,11 +18,18 @@ Additionally, as a library, Enthusiast is completely tree-shanking-friendly. You
 Execute `npm install enthusiast` to install enthusiast and its dependencies into your project directory.
 
 
-## List of modules
+## Usage
 
-- Stream
-- Readable
-- Writable
+```js
+iterate(
+    openFile('./test.txt'),
+    compose(
+        readFile(512), // 512 bytes buffer
+        gzip(),
+        writeTo('./test.txt.gz'),
+    ), // until returns -1, which means -1 bytes read/processed (EOS)
+);
+```
 
 
 ## Todo List

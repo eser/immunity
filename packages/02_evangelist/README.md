@@ -8,7 +8,7 @@
 
 ## What is the Evangelist?
 
-Evangelist is a modern JavaScript utility belt consists of reusable helper functions.
+Evangelist is a set of helper methods that are useful and reusable for base functional programming requirements such as function composition, function decoration, event dispatching and emitting, etc.
 
 Plus, as a library, Evangelist is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Evangelist package.
 

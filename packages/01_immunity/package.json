@@ -1,6 +1,6 @@
 {
   "name": "immunity",
-  "description": "Method library for creating new immutable data from existing data structures",
+  "description": "Library of methods for maintaining immutable data structures",
   "keywords": [
     "immutable",
     "immunity",
