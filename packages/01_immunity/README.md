@@ -236,39 +236,147 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### removeFirstMatchFromArray(source, predicate)
 
-Will be documented
+removes first matching item from an array.
+
+```js
+import removeFirstMatchFromArray from 'immunity/lib/removeFirstMatchFromArray';
+
+const source = [ 1, 5, 2, 3, 4, 5 ];
+const newOne = removeFirstMatchFromArray(source, x => x === 5);
+
+// output: Result: [1,2,3,4,5]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### removeFirstMatchFromObject(source, predicate)
 
-Will be documented
+removes first matching item from an object.
+
+```js
+import removeFirstMatchFromObject from 'immunity/lib/removeFirstMatchFromObject';
+
+const source = { a: 1, f: 5, b: 2, c: 3, d: 4, e: 5 };
+const newOne = removeFirstMatchFromObject(source, x => x === 5);
+
+// output: Result: {'a':1,'b':2,'c':3,'d':4,'e':5}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### removeFromArray(source, ...items)
 
-Will be documented
+removes specified item(s) from an array.
+
+```js
+import removeFromArray from 'immunity/lib/removeFromArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = removeFromArray(source, 2, 3);
+
+// output: Result: [1,4,5]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### removeKeyFromObject(source, ...keys)
 
-Will be documented
+removes items with specified key(s) from an object.
+
+```js
+import removeKeyFromObject from 'immunity/lib/removeKeyFromObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = removeKeyFromObject(source, 'b', 'c');
+
+// output: Result: {'a':1,'d':4,'e':5}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### removeValueFromObject(source, ...values)
 
-Will be documented
+removes items with specified value(s) from an object.
+
+```js
+import removeValueFromObject from 'immunity/lib/removeValueFromObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = removeValueFromObject(source, 2, 3);
+
+// output: Result: {'a':1,'d':4,'e':5}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### reverseArray(source)
 
-Will be documented
+reverses an array content.
+
+```js
+import reverseArray from 'immunity/lib/reverseArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = reverseArray(source);
+
+// output: Result: [5,4,3,2,1]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### reverseObject(source)
 
-Will be documented
+reverses an object content.
+
+```js
+import reverseObject from 'immunity/lib/reverseObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = reverseObject(source);
+
+// output: Result: {'e':5,'d':4,'c':3,'b':2,'a':1}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### splitArray(source, number)
 
-Will be documented
+splits an array content from specified index.
+
+```js
+import splitArray from 'immunity/lib/splitArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = splitArray(source, 3);
+
+// output: Result: {'items':[1,2,3],'rest':[4,5]}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### splitObject(source, number)
 
-Will be documented
+splits an object content from specified index.
+
+```js
+import splitObject from 'immunity/lib/splitObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = splitObject(source, 3);
+
+// output: Result: {'items':{'a':1,'b':2,'c':3},'rest':{'d':4,'e':5}}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
 
 ### takeFromArray(source, number)
 

@@ -1,7 +1,7 @@
 import removeFirstMatchFromArray from '../removeFirstMatchFromArray';
 
 test('removeFirstMatchFromArray', () => {
-    const arr1 = [ 5, 1, 2, 3, 4, 5 ];
+    const arr1 = [ 1, 5, 2, 3, 4, 5 ];
     const func1 = x => x === 5;
 
     const result = removeFirstMatchFromArray(arr1, func1);
