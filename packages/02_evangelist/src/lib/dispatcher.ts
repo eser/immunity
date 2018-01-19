@@ -19,7 +19,7 @@ async function dispatcher(state: any, mutators: MutatorType[], subscribers?: Sub
             async (currentState) => {
                 if (hasSubscribers) {
                     // @ts-ignore
-                    subscribers.forEach(subscriber => {
+                    (<any>subscribers).forEach(subscriber => {
                         subscriber({ action: layer.name, previousState: newState, newState: currentState });
                     });
                 }

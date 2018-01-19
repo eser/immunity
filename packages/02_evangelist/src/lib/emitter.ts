@@ -15,7 +15,7 @@ async function emitter(events: EventsTableType, eventName: string, args?: any[],
         for (const eventSubscriber of events[eventKey]) {
             if (hasSubscribers) {
                 // @ts-ignore
-                subscribers.forEach(subscriber => {
+                (<any>subscribers).forEach(subscriber => {
                     subscriber({ event: eventKey, subscriber: eventSubscriber.name, args: args });
                 });
             }

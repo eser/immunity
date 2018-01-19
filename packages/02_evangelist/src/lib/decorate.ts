@@ -1,5 +1,5 @@
-function decorate(target: Function, decorator: Function): Function {
-    return function (...args): any {
+function decorate(target: Function, decorator: Function) {
+    return function (...args: any[]): any {
         return decorator(...args, target);
     };
 };
