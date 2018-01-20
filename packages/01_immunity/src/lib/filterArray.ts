@@ -1,5 +1,9 @@
-function filterArray(instance: Array<any>, predicate: (value: any, index?: number, array?: Array<any>) => any): Array<any> {
-    return instance.filter(predicate);
+function filterArray(instance: Iterable<any>, predicate: (value: any, index?: number, instance?: Iterable<any>) => any): Array<any> {
+    const arrInstance = (instance.constructor === Array) ?
+        <Array<any>>instance :
+        [ ...instance ];
+
+    return arrInstance.filter(predicate);
 }
 
 export {

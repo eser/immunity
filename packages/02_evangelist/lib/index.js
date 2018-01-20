@@ -8,4 +8,6 @@ const dispatcher_1 = require("./dispatcher");
 exports.dispatcher = dispatcher_1.default;
 const emitter_1 = require("./emitter");
 exports.emitter = emitter_1.default;
+const iterate_1 = require("./iterate");
+exports.iterate = iterate_1.default;
 //# sourceMappingURL=index.js.map

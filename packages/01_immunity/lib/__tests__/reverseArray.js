@@ -8,4 +8,16 @@ test('reverseArray', () => {
     expect(result).toHaveLength(5);
     expect(result).toEqual([5, 4, 3, 2, 1]);
 });
+test('reverseArray with generator', () => {
+    const gen1 = function* () {
+        yield 1;
+        yield 2;
+        yield 3;
+        yield 4;
+        yield 5;
+    };
+    const result = reverseArray_1.default(gen1());
+    expect(result).toHaveLength(5);
+    expect(result).toEqual([5, 4, 3, 2, 1]);
+});
 //# sourceMappingURL=reverseArray.js.map

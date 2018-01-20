@@ -1,2 +1,2 @@
-declare function mergeArrays(...arrays: Array<Array<any>>): Array<any>;
+declare function mergeArrays(...arrays: Array<Iterable<any>>): Array<any>;
 export { mergeArrays as default };

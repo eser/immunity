@@ -1,1 +1,1 @@
-{"version":3,"file":"decorate.js","sourceRoot":"","sources":["../src/lib/decorate.ts"],"names":[],"mappings":";;AAAA,kBAAkB,MAAgB,EAAE,SAAmB;IACnD,MAAM,CAAC,UAAU,GAAG,IAAW;QAC3B,MAAM,CAAC,SAAS,CAAC,GAAG,IAAI,EAAE,MAAM,CAAC,CAAC;IACtC,CAAC,CAAC;AACN,CAAC;AAGe,2BAAO;AAHtB,CAAC"}
+{"version":3,"file":"decorate.js","sourceRoot":"","sources":["../src/lib/decorate.ts"],"names":[],"mappings":";;AAAA,kBAAkB,MAAgB,EAAE,SAAmB;IACnD,MAAM,CAAC,UAAU,GAAG,IAAgB;QAChC,MAAM,CAAC,SAAS,CAAC,GAAG,IAAI,EAAE,MAAM,CAAC,CAAC;IACtC,CAAC,CAAC;AACN,CAAC;AAGe,2BAAO;AAHtB,CAAC"}

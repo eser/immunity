@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function removeFirstMatchFromArray(instance, predicate) {
+    const arrInstance = (instance.constructor === Array) ?
+        instance :
+        [...instance];
     let notFound = true;
-    return instance.filter((itemValue, itemKey, obj) => {
+    return arrInstance.filter((itemValue, itemKey, obj) => {
         if (notFound && predicate(itemValue, itemKey, obj)) {
             notFound = false;
             return false;

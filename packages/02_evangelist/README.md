@@ -143,6 +143,32 @@ const events = {
 emitter(events, 'printToConsole', [ 5 ], [ logger ]);
 ```
 
+### iterate(iterable, func) (awaitable)
+
+```js
+import iterate from 'evangelist/lib/iterate';
+
+// iterate - url fetcher example
+const generator = function* () {
+    yield 'http://localhost/samples/1'; // { value: 1 }
+    yield 'http://localhost/samples/2'; // { value: 2 }
+    yield 'http://localhost/samples/3'; // { value: 3 }
+};
+
+const fetchUrl = async function (url) {
+    const response = await fetch(url);
+    const document = await response.json();
+
+    console.log(`value is ${document.value}`);
+}
+
+/* outputs:
+   value is 1
+   value is 2
+   value is 3
+*/
+iterate(generator(), fetchUrl);
+```
 
 ## Todo List
 

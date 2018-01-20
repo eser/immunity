@@ -1,7 +1,7 @@
 type MutatorType = (state: any, next: MutatorType) => any | Promise<any>;
 type SubscriberType = (entry: any) => void;
 
-async function dispatcher(state: any, mutators: MutatorType[], subscribers?: SubscriberType[]): Promise<any> {
+async function dispatcher(state: any, mutators: Array<MutatorType>, subscribers?: Array<SubscriberType>): Promise<any> {
     const hasSubscribers = (subscribers !== undefined);
     let index = 0;
 

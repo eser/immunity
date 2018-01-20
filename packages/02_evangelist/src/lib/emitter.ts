@@ -1,8 +1,8 @@
-type EventType = (...args: any[]) => void;
-type EventsTableType = { [key: string]: EventType[] };
+type EventType = (...args: Array<any>) => void;
+type EventsTableType = { [key: string]: Array<EventType> };
 type SubscriberType = (entry: any) => void;
 
-async function emitter(events: EventsTableType, eventName: string, args?: any[], subscribers?: SubscriberType[]): Promise<void> {
+async function emitter(events: EventsTableType, eventName: string, args?: Array<any>, subscribers?: Array<SubscriberType>): Promise<void> {
     const hasSubscribers = (subscribers !== undefined);
     const isEventWildcard = (eventName === '*');
     const argsPass = (args !== undefined) ? args : [];

@@ -1,2 +1,2 @@
-declare function dropFromArray(instance: Array<any>, n: number): any[];
+declare function dropFromArray(instance: Iterable<any>, n: number): Array<any>;
 export { dropFromArray as default };

@@ -1,7 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function reverseArray(instance) {
-    return instance.reduce((obj, itemValue, itemKey) => {
+    const arrInstance = (instance.constructor === Array) ?
+        instance :
+        [...instance];
+    return arrInstance.reduce((obj, itemValue, itemKey) => {
         return [itemValue, ...obj];
     }, []);
 }

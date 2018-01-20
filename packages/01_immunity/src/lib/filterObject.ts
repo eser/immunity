@@ -1,6 +1,6 @@
 import assign from 'ponyfills/lib/assign';
 
-function filterObject(instance: any, predicate: (value: any, key?: any, object?: any) => any): any {
+function filterObject(instance: any, predicate: (value: any, key?: any, instance?: any) => any): any {
     return Object.keys(instance).reduce(
         (obj, itemKey) => {
             if (predicate(instance[itemKey], itemKey, obj)) {

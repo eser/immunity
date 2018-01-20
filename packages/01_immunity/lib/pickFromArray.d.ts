@@ -1,4 +1,4 @@
-declare function pickFromArray(instance: Array<any>, items: Array<any>): {
+declare function pickFromArray(instance: Iterable<any>, items: Iterable<any>): {
     items: Array<any>;
     rest: Array<any>;
 };

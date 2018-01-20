@@ -8,4 +8,13 @@ test('prependToArray', () => {
     expect(result).not.toBe(arr1);
     expect(result).toEqual(['a', 'b', 'c']);
 });
+test('prependToArray with generator', () => {
+    const gen1 = function* () {
+        yield 'b';
+        yield 'c';
+    };
+    const val1 = 'a';
+    const result = prependToArray_1.default(gen1(), val1);
+    expect(result).toEqual(['a', 'b', 'c']);
+});
 //# sourceMappingURL=prependToArray.js.map

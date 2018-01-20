@@ -1,5 +1,9 @@
-function reverseArray(instance: Array<any>): Array<any> {
-    return instance.reduce(
+function reverseArray(instance: Iterable<any>): Array<any> {
+    const arrInstance = (instance.constructor === Array) ?
+        <Array<any>>instance :
+        [ ...instance ];
+
+    return arrInstance.reduce(
         (obj, itemValue, itemKey) => {
             return [ itemValue, ...obj ];
         },

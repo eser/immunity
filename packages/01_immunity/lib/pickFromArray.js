@@ -1,8 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function pickFromArray(instance, items) {
-    return instance.reduce((obj, itemValue, itemKey) => {
-        if (items.indexOf(itemValue) !== -1) {
+    const arrInstance = (instance.constructor === Array) ?
+        instance :
+        [...instance];
+    const arrItems = (items.constructor === Array) ?
+        items :
+        [...items];
+    return arrInstance.reduce((obj, itemValue, itemKey) => {
+        if (arrItems.indexOf(itemValue) !== -1) {
             return {
                 items: [...obj.items, itemValue],
                 rest: obj.rest,

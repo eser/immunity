@@ -1,5 +1,5 @@
-function mergeArrays(...arrays: Array<Array<any>>): Array<any> {
-    return arrays.reduce(
+function mergeArrays(...arrays: Array<Iterable<any>>): Array<any> {
+    return <Array<any>>arrays.reduce(
         (obj, array) => [ ...obj, ...array ],
         [],
     );

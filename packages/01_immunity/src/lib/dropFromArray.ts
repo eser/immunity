@@ -1,5 +1,9 @@
-function dropFromArray(instance: Array<any>, n: number): any[] {
-    return instance.slice(n);
+function dropFromArray(instance: Iterable<any>, n: number): Array<any> {
+    const arrInstance = (instance.constructor === Array) ?
+        <Array<any>>instance :
+        [ ...instance ];
+
+    return arrInstance.slice(n);
 }
 
 export {

@@ -1,2 +1,2 @@
-declare function reverseArray(instance: Array<any>): Array<any>;
+declare function reverseArray(instance: Iterable<any>): Array<any>;
 export { reverseArray as default };

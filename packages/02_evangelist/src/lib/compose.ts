@@ -1,7 +1,7 @@
-function compose(...funcs: Function[]): Function {
+function compose(...funcs: Array<(...args: Array<any>) => any>): any {
     return funcs.reduce(
-        function (previousValue: Function, currentValue: Function): Function {
-            return function (...args): any {
+        (previousValue, currentValue) => {
+            return function (...args: Array<any>): any {
                 return currentValue(previousValue(...args));
             }
         },

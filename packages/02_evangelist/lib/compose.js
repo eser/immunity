@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function compose(...funcs) {
-    return funcs.reduce(function (previousValue, currentValue) {
+    return funcs.reduce((previousValue, currentValue) => {
         return function (...args) {
             return currentValue(previousValue(...args));
         };

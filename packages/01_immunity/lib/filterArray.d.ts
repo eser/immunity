@@ -1,2 +1,2 @@
-declare function filterArray(instance: Array<any>, predicate: (value: any, index?: number, array?: Array<any>) => any): Array<any>;
+declare function filterArray(instance: Iterable<any>, predicate: (value: any, index?: number, instance?: Iterable<any>) => any): Array<any>;
 export { filterArray as default };

@@ -24,7 +24,7 @@ Execute `npm install immunity` to install immunity and its dependencies into you
 
 ### appendToArray(source, ...items)
 
-appends new item(s) to an array.
+appends new item(s) to an array or a generator.
 
 ```js
 import appendToArray from 'immunity/lib/appendToArray';
@@ -74,7 +74,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### dropFromArray(source, number)
 
-skips first n items from an array.
+skips first n items from an array or a generator.
 
 ```js
 import dropFromArray from 'immunity/lib/dropFromArray';
@@ -106,7 +106,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### filterArray(instance, predicate)
 
-returns matching items from an array.
+returns matching items from an array or a generator.
 
 ```js
 import filterArray from 'immunity/lib/filterArray';
@@ -172,7 +172,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### pickFromArray(source, items)
 
-returns matching and not matching items from an array.
+returns matching and not matching items from an array or a generator.
 
 ```js
 import pickFromArray from 'immunity/lib/pickFromArray';
@@ -204,7 +204,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### prependToArray(source, ...items)
 
-prepends new item(s) to an array.
+prepends new item(s) to an array or a generator.
 
 ```js
 import prependToArray from 'immunity/lib/prependToArray';
@@ -236,7 +236,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### removeFirstMatchFromArray(source, predicate)
 
-removes first matching item from an array.
+removes first matching item from an array or a generator.
 
 ```js
 import removeFirstMatchFromArray from 'immunity/lib/removeFirstMatchFromArray';
@@ -268,7 +268,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### removeFromArray(source, ...items)
 
-removes specified item(s) from an array.
+removes specified item(s) from an array or a generator.
 
 ```js
 import removeFromArray from 'immunity/lib/removeFromArray';
@@ -300,7 +300,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### removeValueFromObject(source, ...values)
 
-removes items with specified value(s) from an object.
+removes items with specified value(s) from an object or a generator.
 
 ```js
 import removeValueFromObject from 'immunity/lib/removeValueFromObject';
@@ -316,7 +316,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### reverseArray(source)
 
-reverses an array content.
+reverses an array or a generator content.
 
 ```js
 import reverseArray from 'immunity/lib/reverseArray';
@@ -348,7 +348,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### splitArray(source, number)
 
-splits an array content from specified index.
+splits an array or a generator content from specified index.
 
 ```js
 import splitArray from 'immunity/lib/splitArray';
@@ -380,7 +380,7 @@ console.log(`Is Same: ${source === newOne}`);
 
 ### takeFromArray(source, number)
 
-takes first n items from an array.
+takes first n items from an array or a generator.
 
 ```js
 import takeFromArray from 'immunity/lib/takeFromArray';
