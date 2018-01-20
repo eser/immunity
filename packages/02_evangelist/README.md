@@ -160,18 +160,21 @@ const fetchUrl = async function (url) {
     const response = await fetch(url);
     const document = await response.json();
 
-    console.log(`value is ${document.value}`);
+    return document.value;
 }
 
 const add5 = async value => await value + 5;
 const printToConsole = async value => { console.log(await value); };
 
 /* outputs:
-   value is 1
-   value is 2
-   value is 3
+   value is 6
+   value is 7
+   value is 8
 */
-iterate(generator(), compose(fetchUrl, add5, printToConsole));
+iterate(
+    generator(),
+    compose(fetchUrl, add5, printToConsole),
+);
 ```
 
 ## Todo List
