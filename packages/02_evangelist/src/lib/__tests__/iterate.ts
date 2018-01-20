@@ -1,4 +1,5 @@
 import iterate from '../iterate';
+import compose from '../compose';
 
 test('iterate', async () => {
     const gen1 = function* () {
@@ -9,9 +10,7 @@ test('iterate', async () => {
 
     let total = 0;
 
-    const func1 = function (x) {
-        total += x;
-    };
+    const func1 = x => { total += x; };
 
     const result = await iterate(gen1(), func1);
 
@@ -41,4 +40,29 @@ test('iterate async', async () => {
     const result = await iterate(gen1(), func1);
 
     expect(total).toEqual(6);
+});
+
+test('iterate with compose', async () => {
+    const gen1 = function* () {
+        yield { value: 1 };
+        yield { value: 2 };
+        yield { value: 3 };
+    };
+
+    let total = 0;
+
+    const getValue = x => Promise.resolve(x.value);
+    const add5 = async value => await value + 5;
+    const sumWithTotal = async value => { total += await value; };
+
+    const result = await iterate(
+        gen1(),
+        compose(
+            getValue,
+            add5,
+            sumWithTotal,
+        ),
+    );
+
+    expect(total).toEqual(21);
 });

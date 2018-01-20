@@ -147,6 +147,7 @@ emitter(events, 'printToConsole', [ 5 ], [ logger ]);
 
 ```js
 import iterate from 'evangelist/lib/iterate';
+import compose from 'evangelist/lib/compose';
 
 // iterate - url fetcher example
 const generator = function* () {
@@ -162,12 +163,15 @@ const fetchUrl = async function (url) {
     console.log(`value is ${document.value}`);
 }
 
+const add5 = async value => await value + 5;
+const printToConsole = async value => { console.log(await value); };
+
 /* outputs:
    value is 1
    value is 2
    value is 3
 */
-iterate(generator(), fetchUrl);
+iterate(generator(), compose(fetchUrl, add5, printToConsole));
 ```
 
 ## Todo List
