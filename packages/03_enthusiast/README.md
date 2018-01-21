@@ -22,15 +22,16 @@ Execute `npm install enthusiast` to install enthusiast and its dependencies into
 
 ```js
 import fromNodeStream from 'enthusiast/lib/fromNodeStream';
+import toNodeStream from 'enthusiast/lib/toNodeStream';
 import iterate from 'evangelist/lib/iterate';
 import compose from 'evangelist/lib/compose';
 
 iterate(
+    // open file and read 512 bytes buffer on each generator call
     fromNodeStream(fs.createReadStream('./test.txt'), 512),
     compose(
-        readFile(), // read 512 bytes buffer
         gzip(),
-        writeTo('./test.txt.gz'),
+        toNodeStream(fs.createWriteStream('./test.txt.gz')),
     ),
 );
 ```
