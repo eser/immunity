@@ -1,36 +1,11 @@
 import { Readable } from 'stream';
 
-class DynamicIterator<T> implements IterableIterator<T | null> {
-    source: Readable;
-    size?: number;
-    nextPointer: () => T | null;
+import CustomIterator from './types/customIterator';
 
-    constructor(source: Readable, size?: number) {
-        this.source = source;
-        this.size = size;
-    }
-
-    next(): IteratorResult<T | null> {
-        const result = this.nextPointer();
-
-        if (result !== null) {
-            return { done: false, value: result };
-        }
-
-        return { done: true, value: null };
-    }
-
-    [Symbol.iterator](): IterableIterator<T | null> {
-        return this;
-    }
-}
-
-function fromNodeStream(source: Readable, size?: number): Promise<DynamicIterator<any>> {
+function fromNodeStream(source: Readable, size?: number): Promise<CustomIterator<any>> {
     return new Promise((resolve, reject) => {
-        const dynamicIterator = new DynamicIterator<any>(source, size);
-
         source.on('readable', () => {
-            dynamicIterator.nextPointer = () => {
+            const nextPointer = () => {
                 const buffer = source.read(size);
 
                 if (buffer === null) {
@@ -40,12 +15,12 @@ function fromNodeStream(source: Readable, size?: number): Promise<DynamicIterato
                 return { type: 'chunk', data: buffer };
             };
 
-            resolve(dynamicIterator);
+            resolve(new CustomIterator<any>(nextPointer));
         });
     });
 }
 
 export {
-    DynamicIterator,
+    CustomIterator,
     fromNodeStream as default,
 };
