@@ -18,13 +18,49 @@ Additionally, as a library, Enthusiast is completely tree-shanking-friendly. You
 Execute `npm install enthusiast` to install enthusiast and its dependencies into your project directory.
 
 
-## Usage
+## Usage of modules
+
+### Reading a stream
+
+```js
+import fromNodeStream from 'enthusiast/lib/fromNodeStream';
+import iterate from 'evangelist/lib/iterate';
+import * as fs from 'fs';
+
+iterate(
+    // open file and read 512 bytes buffer on each generator call
+    fromNodeStream(fs.createReadStream('./test.txt'), 512),
+    item => {
+        console.log(item.data.toString('utf8'));
+    },
+);
+```
+
+### Writing to a stream
+
+```js
+import toNodeStream from 'enthusiast/lib/toNodeStream';
+import compose from 'evangelist/lib/compose';
+import * as fs from 'fs';
+
+const logFormatter = (logEntry) => `${Date.now()} ${logEntry}\n`;
+
+const writeLog = compose(
+    logFormatter,
+    toNodeStream(fs.createWriteStream(‘./logFile’)),
+);
+
+writeLog('a sample log entry');
+```
+
+### Transforming a stream
 
 ```js
 import fromNodeStream from 'enthusiast/lib/fromNodeStream';
 import toNodeStream from 'enthusiast/lib/toNodeStream';
 import iterate from 'evangelist/lib/iterate';
 import compose from 'evangelist/lib/compose';
+import * as fs from 'fs';
 
 iterate(
     // open file and read 512 bytes buffer on each generator call
