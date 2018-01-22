@@ -1,9 +1,7 @@
-import Stream from './stream';
-import Readable from './readable';
-import Writable from './writable';
+import fromNodeStream from './fromNodeStream';
+import toNodeStream from './toNodeStream';
 
 export {
-    Stream,
-    Readable,
-    Writable,
+    fromNodeStream,
+    toNodeStream,
 };
