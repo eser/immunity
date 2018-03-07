@@ -8,7 +8,7 @@ function assignPolyfill(target: Object, ...sources: Object[]) {
     return target;
 }
 
-const assign = (Object.assign !== undefined) ? Object.assign : assignPolyfill;
+const assign = (Object.hasOwnProperty('assign') ? Object['assign'] : assignPolyfill);
 
 export {
     assign as default,

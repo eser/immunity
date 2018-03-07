@@ -3,7 +3,7 @@
 ## Committers
 
 * Eser Ozvataf - @eserozvataf (http://eser.ozvataf.com/)
-
+* Quentin Decaunes - @storm1er
 
 ## Supporters
 
