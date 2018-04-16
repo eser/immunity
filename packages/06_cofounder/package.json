@@ -1,0 +1,58 @@
+{
+  "name": "cofounder",
+  "description": "Method library offers additional functionalities besides node.js's fs library",
+  "keywords": [
+    "fs",
+    "file",
+    "system"
+  ],
+  "version": "0.8.4",
+  "homepage": "",
+  "author": "Eser Ozvataf <eser@ozvataf.com>",
+  "contributors": [
+    {
+      "name": "Eser Ozvataf",
+      "email": "eser@ozvataf.com",
+      "url": "http://eser.ozvataf.com/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eserozvataf/jsmake-libraries.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eserozvataf/jsmake-libraries/issues",
+    "email": "eser@ozvataf.com"
+  },
+  "license": "Apache-2.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "lint": "eslint ./src/",
+    "test": "tsc && jest"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "bin": {},
+  "dependencies": {
+    "glob-all": "^3.1.0",
+    "glob-parent": "^3.1.0",
+    "immunity": "^0.8.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.5",
+    "eslint": "^4.5.0",
+    "eslint-config-eser": "^2.0.7",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^22.4.3"
+  }
+}
