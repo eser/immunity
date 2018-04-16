@@ -17,6 +17,7 @@ const getOrResolveRange_1 = require("./methods/getOrResolveRange");
 const set_1 = require("./methods/set");
 const setRange_1 = require("./methods/setRange");
 const ensure_1 = require("./methods/ensure");
+const all_1 = require("./methods/all");
 const filter_1 = require("./methods/filter");
 const filterByTag_1 = require("./methods/filterByTag");
 class ServiceManager {
@@ -60,6 +61,9 @@ class ServiceManager {
             }
             return result.result;
         });
+    }
+    all() {
+        return all_1.default(this.items);
     }
     filter(predicate) {
         return filter_1.default(this.items, predicate);

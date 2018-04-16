@@ -11,6 +11,7 @@ import getOrResolveRange from './methods/getOrResolveRange';
 import set from './methods/set';
 import setRange from './methods/setRange';
 import ensure from './methods/ensure';
+import all from './methods/all';
 import filter, { FilterPredicate } from './methods/filter';
 import filterByTag from './methods/filterByTag';
 
@@ -71,6 +72,10 @@ class ServiceManager {
         }
 
         return result.result;
+    }
+
+    all(): Array<string> {
+        return all(this.items);
     }
 
     filter(predicate: FilterPredicate): Array<string> {

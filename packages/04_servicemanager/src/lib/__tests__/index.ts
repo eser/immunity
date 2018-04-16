@@ -58,6 +58,43 @@ test('getOrResolveRange', () => {
     expect(seyma).toEqual('Hi seyma');
 });
 
+test('filterByTag', () => {
+    const services = new ServiceManager();
+
+    services.set('eser', '12345');
+    services.set('seyma', '6789');
+    services.set('kedi', '9999');
+
+    const allOfThem = services.all();
+
+    expect(allOfThem).toEqual([ 'eser', 'seyma', 'kedi' ]);
+});
+
+
+test('filter', () => {
+    const services = new ServiceManager();
+
+    services.set('eser', '12345');
+    services.set('seyma', '6789');
+    services.set('kedi', '9999');
+
+    const filtered = services.filter((service, dependency) => dependency.indexOf('s') >= 0);
+
+    expect(filtered).toEqual([ 'eser', 'seyma' ]);
+});
+
+test('filterByTag', () => {
+    const services = new ServiceManager();
+
+    services.set('eser', '12345', ServiceLifetime.Singleton, [ 'human' ]);
+    services.set('seyma', '6789', ServiceLifetime.Singleton, [ 'human' ]);
+    services.set('kedi', '9999', ServiceLifetime.Singleton, [ 'cat' ]);
+
+    const filtered = services.filterByTag('cat');
+
+    expect(filtered).toEqual([ 'kedi' ]);
+});
+
 test('ensure', async () => {
     const resolver = (dependency, resolve) => {
         resolve(`Hi ${dependency}`);

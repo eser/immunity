@@ -47,6 +47,30 @@ test('getOrResolveRange', () => {
     expect(eser).toEqual('Hi eser');
     expect(seyma).toEqual('Hi seyma');
 });
+test('filterByTag', () => {
+    const services = new _1.ServiceManager();
+    services.set('eser', '12345');
+    services.set('seyma', '6789');
+    services.set('kedi', '9999');
+    const allOfThem = services.all();
+    expect(allOfThem).toEqual(['eser', 'seyma', 'kedi']);
+});
+test('filter', () => {
+    const services = new _1.ServiceManager();
+    services.set('eser', '12345');
+    services.set('seyma', '6789');
+    services.set('kedi', '9999');
+    const filtered = services.filter((service, dependency) => dependency.indexOf('s') >= 0);
+    expect(filtered).toEqual(['eser', 'seyma']);
+});
+test('filterByTag', () => {
+    const services = new _1.ServiceManager();
+    services.set('eser', '12345', _1.ServiceLifetime.Singleton, ['human']);
+    services.set('seyma', '6789', _1.ServiceLifetime.Singleton, ['human']);
+    services.set('kedi', '9999', _1.ServiceLifetime.Singleton, ['cat']);
+    const filtered = services.filterByTag('cat');
+    expect(filtered).toEqual(['kedi']);
+});
 test('ensure', () => __awaiter(this, void 0, void 0, function* () {
     const resolver = (dependency, resolve) => {
         resolve(`Hi ${dependency}`);

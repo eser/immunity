@@ -14,6 +14,7 @@ declare class ServiceManager {
     getOrResolve(dependency: any): any;
     getOrResolveRange(...dependencies: Array<any>): any;
     ensure(dependencies: Array<any>, callback: (...services: Array<any>) => any): Promise<any>;
+    all(): Array<string>;
     filter(predicate: FilterPredicate): Array<string>;
     filterByTag(tag: string): Array<string>;
 }
