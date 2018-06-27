@@ -5,4 +5,4 @@ declare class StreamLogger {
     log(severity: any, message: string, extraData?: any): void;
     direct(message: string): void;
 }
-export { StreamLogger as default };
+export { StreamLogger as default, };

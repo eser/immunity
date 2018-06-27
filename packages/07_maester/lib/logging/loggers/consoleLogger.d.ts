@@ -4,4 +4,4 @@ declare class ConsoleLogger {
     log(severity: any, message: string, extraData?: any): void;
     direct(message: string): void;
 }
-export { ConsoleLogger as default };
+export { ConsoleLogger as default, };

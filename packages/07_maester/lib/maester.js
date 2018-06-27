@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const baseException_1 = require("./exceptions/baseException");
-const logManager_1 = require("./logging/logManager");
-const logUtils_1 = require("./logging/logUtils");
-const defaultSeverities = {
+var baseException_1 = require("./exceptions/baseException");
+var logManager_1 = require("./logging/logManager");
+var logUtils_1 = require("./logging/logUtils");
+var defaultSeverities = {
     debug: { color: 'gray', label: 'debug' },
     info: { color: 'white', label: 'info' },
     warn: { color: 'yellow', label: 'warn' },
     error: { color: 'red', label: 'err!' },
 };
-class Maester {
-    constructor() {
+var Maester = (function () {
+    function Maester() {
         this.events = new EventEmitter();
         this.paused = false;
         this.exceptions = {
@@ -19,25 +19,26 @@ class Maester {
         this.logging = new logManager_1.default(this.events, defaultSeverities, 'info');
         logUtils_1.default.linkLogMethods(this.logging, this);
     }
-    setSeverities(severities, level) {
+    Maester.prototype.setSeverities = function (severities, level) {
         logUtils_1.default.unlinkLogMethods(this.logging, this);
         this.logging.setSeverities(severities, level);
         logUtils_1.default.linkLogMethods(this.logging, this);
-    }
-    resume() {
+    };
+    Maester.prototype.resume = function () {
         if (!this.paused) {
             return;
         }
         this.events.resume();
         this.paused = false;
-    }
-    pause() {
+    };
+    Maester.prototype.pause = function () {
         if (this.paused) {
             return;
         }
         this.events.pause();
         this.paused = true;
-    }
-}
+    };
+    return Maester;
+}());
 exports.default = Maester;
 //# sourceMappingURL=maester.js.map

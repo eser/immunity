@@ -14,4 +14,4 @@ declare class Consultant {
     help(): Promise<void>;
     helpForId(id: string): Promise<void>;
 }
-export { Consultant as default };
+export { Consultant as default, };

@@ -1,1 +1,1 @@
-{"version":3,"file":"prependToObject.js","sourceRoot":"","sources":["../src/lib/prependToObject.ts"],"names":[],"mappings":";;AAAA,iDAA0C;AAE1C,yBAAyB,QAAa,EAAE,GAAG,MAAkB;IACzD,MAAM,CAAC,gBAAM,CAAC,EAAE,EAAE,GAAG,MAAM,EAAE,QAAQ,CAAC,CAAC;AAC3C,CAAC;AAGsB,kCAAO"}
+{"version":3,"file":"prependToObject.js","sourceRoot":"","sources":["../src/lib/prependToObject.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA,+CAA0C;AAE1C,yBAAyB,QAAa;IAAE,gBAAqB;SAArB,UAAqB,EAArB,qBAAqB,EAArB,IAAqB;QAArB,+BAAqB;;IACzD,OAAO,gBAAM,yBAAC,EAAE,GAAK,MAAM,GAAE,QAAQ,IAAE;AAC3C,CAAC;AAGsB,kCAAO"}

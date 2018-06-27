@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class StreamLogger {
-    constructor(formatter, targetStream) {
+var StreamLogger = (function () {
+    function StreamLogger(formatter, targetStream) {
         this.formatter = formatter;
         this.targetStream = targetStream;
     }
-    log(severity, message, extraData) {
-        this.targetStream.write(`${this.formatter.format(severity, message, extraData)}\n`);
-    }
-    direct(message) {
-        this.targetStream.write(`${message}`);
-    }
-}
+    StreamLogger.prototype.log = function (severity, message, extraData) {
+        this.targetStream.write(this.formatter.format(severity, message, extraData) + "\n");
+    };
+    StreamLogger.prototype.direct = function (message) {
+        this.targetStream.write("" + message);
+    };
+    return StreamLogger;
+}());
 exports.default = StreamLogger;
 //# sourceMappingURL=streamLogger.js.map

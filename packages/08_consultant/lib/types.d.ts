@@ -1,6 +1,6 @@
 declare enum Types {
     command = "command",
     stringParameter = "stringParameter",
-    booleanParameter = "booleanParameter",
+    booleanParameter = "booleanParameter"
 }
-export { Types as default };
+export { Types as default, };

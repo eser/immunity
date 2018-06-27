@@ -1,19 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class CustomIterator {
-    constructor(nextPointer) {
+var CustomIterator = (function () {
+    function CustomIterator(nextPointer) {
         this.nextPointer = nextPointer;
     }
-    next() {
-        const result = this.nextPointer();
+    CustomIterator.prototype.next = function () {
+        var result = this.nextPointer();
         if (result !== null) {
             return { done: false, value: result };
         }
         return { done: true, value: null };
-    }
-    [Symbol.iterator]() {
+    };
+    CustomIterator.prototype[Symbol.iterator] = function () {
         return this;
-    }
-}
+    };
+    return CustomIterator;
+}());
 exports.default = CustomIterator;
 //# sourceMappingURL=customIterator.js.map

@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const assign_1 = require("ponyfills/lib/assign");
+var assign_1 = require("ponyfills/lib/assign");
 function removeFirstMatchFromObject(instance, predicate) {
-    let notFound = true;
-    return Object.keys(instance).reduce((obj, itemKey) => {
+    var notFound = true;
+    return Object.keys(instance).reduce(function (obj, itemKey) {
+        var _a;
         if (notFound && predicate(instance[itemKey], itemKey, obj)) {
             notFound = false;
             return obj;
         }
-        return assign_1.default({}, obj, {
-            [itemKey]: instance[itemKey],
-        });
+        return assign_1.default({}, obj, (_a = {},
+            _a[itemKey] = instance[itemKey],
+            _a));
     }, {});
 }
 exports.default = removeFirstMatchFromObject;

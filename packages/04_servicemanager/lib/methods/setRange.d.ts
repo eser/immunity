@@ -5,4 +5,4 @@ declare type SetRangeResult = {
     newCollection: ServiceDefinitionCollection;
 };
 declare function setRange(collection: ServiceDefinitionCollection, ...declarations: Array<ServiceDeclaration>): SetRangeResult;
-export { setRange as default, SetRangeResult };
+export { setRange as default, SetRangeResult, };

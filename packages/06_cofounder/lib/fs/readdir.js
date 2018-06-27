@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
-const appendToObject_1 = require("immunity/lib/appendToObject");
+var fs = require("fs");
+var appendToObject_1 = require("immunity/lib/appendToObject");
 function readdir(pathstr, options) {
-    return new Promise((resolve, reject) => {
-        const defaultOptions = { encoding: 'utf8' };
-        const options_ = (options === undefined) ?
+    return new Promise(function (resolve, reject) {
+        var defaultOptions = { encoding: 'utf8' };
+        var options_ = (options === undefined) ?
             defaultOptions :
             appendToObject_1.default(options, defaultOptions);
-        fs.readdir(pathstr, options_, (err, contents) => {
+        fs.readdir(pathstr, options_, function (err, contents) {
             if (err) {
                 reject(err);
                 return;

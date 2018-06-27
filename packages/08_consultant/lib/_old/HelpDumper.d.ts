@@ -5,4 +5,4 @@ declare class HelpDumper {
     dumpSingle(rule: Rule, stream: any, indentation: string): Promise<number>;
     dump(rules: Rule, stream: any, indentation?: string): Promise<void>;
 }
-export { HelpDumper as default };
+export { HelpDumper as default, };

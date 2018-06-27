@@ -6,4 +6,4 @@ declare type GetOrResolveRangeResult = {
     newCollection?: ServiceDefinitionCollection;
 };
 declare function getOrResolveRange(collection: ServiceDefinitionCollection, resolver: ServiceResolver | undefined, ...dependencies: Array<any>): GetOrResolveRangeResult;
-export { getOrResolveRange as default, GetOrResolveRangeResult };
+export { getOrResolveRange as default, GetOrResolveRangeResult, };

@@ -18,4 +18,4 @@ declare class Consultation {
     validate(): Promise<ConsultationResult>;
     inquire(): Promise<ConsultationResult>;
 }
-export { ConsultationError, ConsultationResult, Consultation as default };
+export { ConsultationError, ConsultationResult, Consultation as default, };

@@ -29,4 +29,4 @@ interface Rule {
 declare type RuleCollection = {
     [key: string]: Rule;
 };
-export { ValidationResult, ValidateMethod, Rule as default, RuleCollection };
+export { ValidationResult, ValidateMethod, Rule as default, RuleCollection, };

@@ -1,5 +1,5 @@
 declare enum ServiceLifetime {
     Transient = "transient",
-    Singleton = "singleton",
+    Singleton = "singleton"
 }
-export { ServiceLifetime as default };
+export { ServiceLifetime as default, };

@@ -4,4 +4,4 @@ interface ServiceDefinition {
     lifetime: ServiceLifetime;
     tags: Array<string>;
 }
-export { ServiceDefinition as default };
+export { ServiceDefinition as default, };

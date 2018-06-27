@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+var fs = require("fs");
 function rmdir(pathstr) {
-    return new Promise((resolve, reject) => {
-        fs.rmdir(pathstr, (err) => {
+    return new Promise(function (resolve, reject) {
+        fs.rmdir(pathstr, function (err) {
             if (err) {
                 reject(err);
                 return;

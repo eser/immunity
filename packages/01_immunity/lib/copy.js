@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const assign_1 = require("ponyfills/lib/assign");
+var assign_1 = require("ponyfills/lib/assign");
 function copy(instance) {
-    const type = instance.constructor;
-    return Object.keys(instance).reduce((obj, itemKey) => {
+    var type = instance.constructor;
+    return Object.keys(instance).reduce(function (obj, itemKey) {
+        var _a, _b;
         if (!(instance[itemKey] instanceof Function) && (instance[itemKey] instanceof Object)) {
-            return assign_1.default(new type(), obj, {
-                [itemKey]: copy(instance[itemKey]),
-            });
+            return assign_1.default(new type(), obj, (_a = {},
+                _a[itemKey] = copy(instance[itemKey]),
+                _a));
         }
-        return assign_1.default(new type(), obj, {
-            [itemKey]: instance[itemKey],
-        });
+        return assign_1.default(new type(), obj, (_b = {},
+            _b[itemKey] = instance[itemKey],
+            _b));
     }, new type());
 }
 exports.default = copy;

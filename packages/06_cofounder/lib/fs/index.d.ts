@@ -16,4 +16,4 @@ import rmdirP from './rmdirP';
 import rmP from './rmP';
 import writeFile from './writeFile';
 import writeFileP from './writeFileP';
-export { cp, cpP, glob, globParent, globParentOf, lstat, mkdir, mkdirP, mv, mvP, readdir, readFile, rm, rmdir, rmdirP, rmP, writeFile, writeFileP };
+export { cp, cpP, glob, globParent, globParentOf, lstat, mkdir, mkdirP, mv, mvP, readdir, readFile, rm, rmdir, rmdirP, rmP, writeFile, writeFileP, };

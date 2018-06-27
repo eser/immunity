@@ -1,2 +1,2 @@
 import shell from './shell';
-export { shell };
+export { shell, };

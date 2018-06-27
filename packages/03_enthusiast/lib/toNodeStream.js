@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function toNodeStream(target) {
-    return (value) => {
-        return new Promise((resolve, reject) => {
-            const callback = () => resolve(value);
-            const result = target.write(value);
+    return function (value) {
+        return new Promise(function (resolve, reject) {
+            var callback = function () { return resolve(value); };
+            var result = target.write(value);
             if (result) {
                 target.once('drain', callback);
             }

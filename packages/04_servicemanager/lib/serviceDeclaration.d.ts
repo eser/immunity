@@ -2,4 +2,4 @@ import ServiceDefinition from './serviceDefinition';
 interface ServiceDeclaration extends ServiceDefinition {
     dependency: any;
 }
-export { ServiceDeclaration as default };
+export { ServiceDeclaration as default, };

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const yargsParser = require("yargs-parser");
-const yargsConfiguration = {
+var yargsParser = require("yargs-parser");
+var yargsConfiguration = {
     configuration: {
         'short-option-groups': false,
         'camel-case-expansion': true,
@@ -10,10 +10,13 @@ const yargsConfiguration = {
         'boolean-negation': true,
     },
 };
-class ArgsParser {
-    static parse(args) {
-        return yargsParser(args, yargsConfiguration);
+var ArgsParser = (function () {
+    function ArgsParser() {
     }
-}
+    ArgsParser.parse = function (args) {
+        return yargsParser(args, yargsConfiguration);
+    };
+    return ArgsParser;
+}());
 exports.default = ArgsParser;
 //# sourceMappingURL=ArgsParser.js.map

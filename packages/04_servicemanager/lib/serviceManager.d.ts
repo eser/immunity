@@ -18,4 +18,4 @@ declare class ServiceManager {
     filter(predicate: FilterPredicate): Array<string>;
     filterByTag(tag: string): Array<string>;
 }
-export { ServiceManager as default };
+export { ServiceManager as default, };

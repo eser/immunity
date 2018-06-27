@@ -6,4 +6,4 @@ declare type EnsureResult = {
     newCollection?: ServiceDefinitionCollection;
 };
 declare function ensure(collection: ServiceDefinitionCollection, dependencies: Array<any>, callback: (...services: Array<any>) => any, resolver?: ServiceResolver): Promise<EnsureResult>;
-export { ensure as default, EnsureResult };
+export { ensure as default, EnsureResult, };

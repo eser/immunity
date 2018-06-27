@@ -12,4 +12,4 @@ declare type LoggerType = {
 declare type LoggerTypeConstructorType = {
     new (formatter: FormatterType, ...args: Array<any>): LoggerType;
 };
-export { SeverityType, FormatterType, LoggerType, LoggerTypeConstructorType };
+export { SeverityType, FormatterType, LoggerType, LoggerTypeConstructorType, };

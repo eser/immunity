@@ -3,4 +3,4 @@ declare class BaseException extends Error {
     constructor(message: string, innerDetails: any);
     static wrap(errorObject: any): BaseException;
 }
-export { BaseException as default };
+export { BaseException as default, };

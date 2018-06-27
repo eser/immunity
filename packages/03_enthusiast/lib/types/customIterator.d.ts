@@ -4,4 +4,4 @@ declare class CustomIterator<T> implements IterableIterator<T | null> {
     next(): IteratorResult<T | null>;
     [Symbol.iterator](): IterableIterator<T | null>;
 }
-export { CustomIterator as default };
+export { CustomIterator as default, };

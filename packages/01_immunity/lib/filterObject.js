@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const assign_1 = require("ponyfills/lib/assign");
+var assign_1 = require("ponyfills/lib/assign");
 function filterObject(instance, predicate) {
-    return Object.keys(instance).reduce((obj, itemKey) => {
+    return Object.keys(instance).reduce(function (obj, itemKey) {
+        var _a;
         if (predicate(instance[itemKey], itemKey, obj)) {
-            return assign_1.default({}, obj, {
-                [itemKey]: instance[itemKey],
-            });
+            return assign_1.default({}, obj, (_a = {},
+                _a[itemKey] = instance[itemKey],
+                _a));
         }
         return obj;
     }, {});

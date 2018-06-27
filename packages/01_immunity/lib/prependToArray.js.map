@@ -1,1 +1,1 @@
-{"version":3,"file":"prependToArray.js","sourceRoot":"","sources":["../src/lib/prependToArray.ts"],"names":[],"mappings":";;AAAA,wBAAwB,QAAuB,EAAE,GAAG,MAAkB;IAClE,MAAM,CAAC;QACH,GAAG,MAAM;QACT,GAAG,QAAQ;KACd,CAAC;AACN,CAAC;AAGqB,iCAAO;AAH5B,CAAC"}
+{"version":3,"file":"prependToArray.js","sourceRoot":"","sources":["../src/lib/prependToArray.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA,wBAAwB,QAAuB;IAAE,gBAAqB;SAArB,UAAqB,EAArB,qBAAqB,EAArB,IAAqB;QAArB,+BAAqB;;IAClE,gBACO,MAAM,EACN,QAAQ,EACb;AACN,CAAC;AAGqB,iCAAO;AAH5B,CAAC"}

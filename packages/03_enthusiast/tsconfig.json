@@ -1,11 +1,13 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
+        "importHelpers": false,
         "sourceMap": true,
         "declaration": true,
+        "downlevelIteration": true,
         "experimentalDecorators": true,
         "noImplicitAny": false,
         "removeComments": true,
@@ -13,12 +15,14 @@
         "strict": true,
         "newLine": "LF",
         "rootDir": "./src/",
-        "outDir": "./"
+        "outDir": "./",
+        "lib": [
+            "es2015"
+        ]
     },
     "include": [
         "./src/**/*"
     ],
     "exclude": [
-        "./node_modules"
     ]
 }

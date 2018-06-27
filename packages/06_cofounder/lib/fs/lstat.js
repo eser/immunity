@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+var fs = require("fs");
 function lstat(pathstr) {
-    return new Promise((resolve, reject) => {
-        fs.lstat(pathstr, (err, stats) => {
+    return new Promise(function (resolve, reject) {
+        fs.lstat(pathstr, function (err, stats) {
             if (err) {
                 reject(err);
                 return;

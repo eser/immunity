@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const assign_1 = require("ponyfills/lib/assign");
+var assign_1 = require("ponyfills/lib/assign");
 function dropFromObject(instance, n) {
-    const keys = Object.keys(instance);
-    let index = 0;
-    return Object.keys(instance).reduce((obj, itemKey) => {
+    var keys = Object.keys(instance);
+    var index = 0;
+    return Object.keys(instance).reduce(function (obj, itemKey) {
+        var _a;
         if (n > index) {
             index += 1;
             return obj;
         }
-        return assign_1.default({}, obj, {
-            [itemKey]: instance[itemKey],
-        });
+        return assign_1.default({}, obj, (_a = {},
+            _a[itemKey] = instance[itemKey],
+            _a));
     }, {});
 }
 exports.default = dropFromObject;

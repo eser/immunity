@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function pathNotation(sourceObj, targetPath, defaultValue, delimiter = '.') {
-    const targetPath_ = targetPath.split(delimiter);
-    let sourceObj_ = sourceObj;
+function pathNotation(sourceObj, targetPath, defaultValue, delimiter) {
+    if (delimiter === void 0) { delimiter = '.'; }
+    var targetPath_ = targetPath.split(delimiter);
+    var sourceObj_ = sourceObj;
     while (targetPath_.length > 0) {
-        const property = targetPath_.shift();
+        var property = targetPath_.shift();
         if (property === undefined || !(property in sourceObj_)) {
             return defaultValue;
         }

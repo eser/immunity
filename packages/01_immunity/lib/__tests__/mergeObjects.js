@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const mergeObjects_1 = require("../mergeObjects");
-test('mergeObjects', () => {
-    const obj1 = { a: 1, b: 2, c: 3 };
-    const obj2 = { d: 4, e: 5 };
-    const result = mergeObjects_1.default(obj1, obj2);
+var mergeObjects_1 = require("../mergeObjects");
+test('mergeObjects', function () {
+    var obj1 = { a: 1, b: 2, c: 3 };
+    var obj2 = { d: 4, e: 5 };
+    var result = mergeObjects_1.default(obj1, obj2);
     expect(result).not.toBe(obj1);
     expect(result).not.toBe(obj2);
     expect(Object.keys(result)).toHaveLength(5);

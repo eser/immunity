@@ -1,2 +1,2 @@
 declare function removeKeyFromObject(instance: any, ...keys: Array<string>): any;
-export { removeKeyFromObject as default };
+export { removeKeyFromObject as default, };

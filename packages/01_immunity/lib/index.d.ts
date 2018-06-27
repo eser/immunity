@@ -20,4 +20,4 @@ import splitArray from './splitArray';
 import splitObject from './splitObject';
 import takeFromArray from './takeFromArray';
 import takeFromObject from './takeFromObject';
-export { appendToArray, appendToObject, copy, dropFromArray, dropFromObject, filterArray, filterObject, mergeArrays, mergeObjects, pickFromArray, pickFromObject, prependToArray, prependToObject, removeFirstMatchFromArray, removeFirstMatchFromObject, removeFromArray, removeKeyFromObject, removeValueFromObject, splitArray, splitObject, takeFromArray, takeFromObject };
+export { appendToArray, appendToObject, copy, dropFromArray, dropFromObject, filterArray, filterObject, mergeArrays, mergeObjects, pickFromArray, pickFromObject, prependToArray, prependToObject, removeFirstMatchFromArray, removeFirstMatchFromObject, removeFromArray, removeKeyFromObject, removeValueFromObject, splitArray, splitObject, takeFromArray, takeFromObject, };

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const getOrResolveRange_1 = require("./getOrResolveRange");
+var getOrResolveRange_1 = require("./getOrResolveRange");
 function getOrResolve(collection, resolver, dependency) {
-    const result = getOrResolveRange_1.default(collection, resolver, dependency);
+    var result = getOrResolveRange_1.default(collection, resolver, dependency);
     return {
         isChanged: result.isChanged,
         result: result.result[0],

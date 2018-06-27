@@ -1,2 +1,2 @@
 import Senior from './senior';
-export { Senior as default };
+export { Senior as default, };

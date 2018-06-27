@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+var fs = require("fs");
 function mv(pathstr, dest) {
-    return new Promise((resolve, reject) => {
-        fs.rename(pathstr, dest, (err) => {
+    return new Promise(function (resolve, reject) {
+        fs.rename(pathstr, dest, function (err) {
             if (err) {
                 reject(err);
                 return;

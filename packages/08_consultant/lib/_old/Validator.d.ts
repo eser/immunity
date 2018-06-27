@@ -67,4 +67,4 @@ declare class Validator {
         [key: string]: any;
     }): Promise<ConsultationResult>;
 }
-export { ValidationOutputType, Validator as default };
+export { ValidationOutputType, Validator as default, };

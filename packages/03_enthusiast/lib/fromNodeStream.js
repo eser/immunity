@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const customIterator_1 = require("./types/customIterator");
+var customIterator_1 = require("./types/customIterator");
 exports.CustomIterator = customIterator_1.default;
 function fromNodeStream(source, size) {
-    return new Promise((resolve, reject) => {
-        source.on('readable', () => {
-            const nextPointer = () => {
-                const buffer = source.read(size);
+    return new Promise(function (resolve, reject) {
+        source.on('readable', function () {
+            var nextPointer = function () {
+                var buffer = source.read(size);
                 if (buffer === null) {
                     return null;
                 }

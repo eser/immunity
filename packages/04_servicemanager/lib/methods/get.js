@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const resolveDependency_1 = require("./resolveDependency");
+var resolveDependency_1 = require("./resolveDependency");
 function get(collection, dependency) {
-    const serviceDefinition = collection.get(dependency);
+    var serviceDefinition = collection.get(dependency);
     if (serviceDefinition === undefined) {
         return undefined;
     }

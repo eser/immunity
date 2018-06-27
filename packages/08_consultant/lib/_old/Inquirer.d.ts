@@ -3,4 +3,4 @@ import Rule from './Rule';
 declare class Inquirer {
     inquire(rules: Rule): Promise<ConsultationResult>;
 }
-export { Inquirer as default };
+export { Inquirer as default, };
