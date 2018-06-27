@@ -32,7 +32,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "lint": "eslint ./src/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/",
     "test": "jest"
   },
   "directories": {
@@ -53,7 +53,8 @@
     "jest": "^23.2.0",
     "ts-jest": "^22.4.6",
     "tslib": "^1.9.3",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "typescript-eslint-parser": "^16.0.1"
   },
   "jest": {
     "testPathIgnorePatterns": [
