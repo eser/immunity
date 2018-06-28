@@ -55,11 +55,5 @@
     "tslib": "^1.9.3",
     "typescript": "^2.9.2",
     "typescript-eslint-parser": "^16.0.1"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/src/"
-    ]
   }
 }
