@@ -1,3 +1,3 @@
-import fromNodeStream from './fromNodeStream';
+import fromNodeStream, { CustomIterator } from './fromNodeStream';
 import toNodeStream from './toNodeStream';
-export { fromNodeStream, toNodeStream, };
+export { fromNodeStream, CustomIterator, toNodeStream, };

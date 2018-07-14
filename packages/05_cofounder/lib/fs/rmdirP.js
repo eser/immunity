@@ -85,7 +85,7 @@ function rmdirP(pathstr) {
                     if (!(directories.length > 0)) return [3, 21];
                     splitted = splitArray_1.default(directories, -1);
                     directory = splitted.items[0];
-                    directories = splitted.remainder;
+                    directories = splitted.rest;
                     _b.label = 2;
                 case 2:
                     _b.trys.push([2, 19, , 20]);

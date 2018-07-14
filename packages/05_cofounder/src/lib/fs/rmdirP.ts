@@ -14,7 +14,7 @@ async function rmdirP(pathstr) {
         const splitted = splitArray(directories, -1);
         const directory = splitted.items[0];
 
-        directories = splitted.remainder;
+        directories = splitted.rest;
 
         try {
             if (directory[1]) {

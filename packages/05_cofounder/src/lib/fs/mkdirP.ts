@@ -11,7 +11,7 @@ async function mkdirP(pathstr, mode?) {
         const splitted = splitArray(directories, -1);
         const directory = splitted.items[0];
 
-        directories = splitted.remainder;
+        directories = splitted.rest;
 
         try {
             await mkdir(directory, mode);

@@ -72,7 +72,7 @@ function mkdirP(pathstr, mode) {
                     if (!(directories.length > 0)) return [3, 6];
                     splitted = splitArray_1.default(directories, -1);
                     directory = splitted.items[0];
-                    directories = splitted.remainder;
+                    directories = splitted.rest;
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 4, , 5]);
