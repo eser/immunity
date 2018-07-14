@@ -67,4 +67,4 @@ It is publicly open for any contribution. Bugfixes, new features and extra modul
 [dep-image]: https://img.shields.io/david/eserozvataf/senior.svg?style=flat-square
 [dep-url]: https://github.com/eserozvataf/jsmake-libraries
 [license-image]: https://img.shields.io/npm/l/senior.svg?style=flat-square
-[license-url]: https://github.com/eserozvataf/jsmake-libraries/blob/master/05_senior/LICENSE
+[license-url]: https://github.com/eserozvataf/jsmake-libraries/blob/master/06_senior/LICENSE
