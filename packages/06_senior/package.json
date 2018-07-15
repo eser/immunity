@@ -47,6 +47,7 @@
   "bin": {},
   "dependencies": {
     "cofounder": "^0.8.4",
+    "evangelist": "^0.8.4",
     "immunity": "^0.8.4"
   },
   "devDependencies": {

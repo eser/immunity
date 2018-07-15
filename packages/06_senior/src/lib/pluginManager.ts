@@ -1,15 +1,22 @@
 import path = require('path');
 import os = require('os');
-import * as cofounder from 'cofounder';
+import emitter from 'evangelist/lib/emitter';
+import mkdirP from 'cofounder/lib/fs/mkdirP';
+import lstat from 'cofounder/lib/fs/lstat';
+import saveFile from 'cofounder/lib/json/saveFile';
+import shell from 'cofounder/lib/os/shell';
 import mergeObjects from 'immunity/lib/mergeObjects';
 import appendToObject from 'immunity/lib/appendToObject';
 
 // TODO refactor it without eventemitter
-class Senior {
+class PluginManager {
     name: string;
     modulePrefix: string;
 
-    events: EventEmitter;
+    events: {
+        install: Array<(moduleName: string) => void>,
+        uninstall: Array<(moduleName: string) => void>,
+    };
 
     homePath: string;
     packageJsonFile: string;
@@ -18,21 +25,24 @@ class Senior {
         this.name = name;
         this.modulePrefix = modulePrefix;
 
-        this.events = new EventEmitter();
+        this.events = {
+            install: [],
+            uninstall: [],
+        };
 
         this.homePath = path.join(os.homedir(), `.${this.name}`);
         this.packageJsonFile = path.join(this.homePath, 'package.json');
     }
 
     async ensureRequirements(): Promise<void> {
-        await cofounder.fs.mkdirP(this.homePath);
+        await mkdirP(this.homePath);
 
         try {
-            /* const stat = */await cofounder.fs.lstat(this.packageJsonFile);
+            /* const stat = */await lstat(this.packageJsonFile);
         }
         catch (ex) {
             if (ex.code === 'ENOENT') {
-                await cofounder.json.saveFile(this.packageJsonFile, {});
+                await saveFile(this.packageJsonFile, {});
             }
         }
     }
@@ -61,10 +71,10 @@ class Senior {
 
         const moduleName_ = `${this.modulePrefix}${moduleName}`;
 
-        const proc = cofounder.os.shell(`npm install ${moduleName_} --prefix ${this.homePath}`);
+        const proc = shell(`npm install ${moduleName_} --prefix ${this.homePath}`);
 
         if (proc.status === 0) {
-            this.events.emit('install', moduleName_);
+            await emitter(this.events, 'install', [ moduleName_ ]);
 
             return true;
         }
@@ -77,10 +87,10 @@ class Senior {
 
         const moduleName_ = `${this.modulePrefix}${moduleName}`;
 
-        const proc = cofounder.os.shell(`npm uninstall ${moduleName_} --prefix ${this.homePath}`);
+        const proc = shell(`npm uninstall ${moduleName_} --prefix ${this.homePath}`);
 
         if (proc.status === 0) {
-            this.events.emit('uninstall', moduleName_);
+            await emitter(this.events, 'uninstall', [ moduleName_ ]);
 
             return true;
         }
@@ -182,5 +192,5 @@ class Senior {
 }
 
 export {
-    Senior as default,
+    PluginManager as default,
 };

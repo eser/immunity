@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var senior_1 = require("./senior");
-exports.default = senior_1.default;
+var pluginManager_1 = require("./pluginManager");
+exports.PluginManager = pluginManager_1.default;
+var plugins = new pluginManager_1.default('senior');
+exports.default = plugins;
 //# sourceMappingURL=index.js.map

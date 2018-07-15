@@ -1,5 +1,8 @@
-import Senior from './senior';
+import PluginManager from './pluginManager';
+
+const plugins = new PluginManager('senior');
 
 export {
-    Senior as default,
+    plugins as default,
+    PluginManager,
 };

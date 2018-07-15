@@ -1,2 +1,3 @@
-import Senior from './senior';
-export { Senior as default, };
+import PluginManager from './pluginManager';
+declare const plugins: PluginManager;
+export { plugins as default, PluginManager, };
