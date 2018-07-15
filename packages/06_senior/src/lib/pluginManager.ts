@@ -12,7 +12,6 @@ import path = require('path');
 import os = require('os');
 import emitter from 'evangelist/lib/emitter';
 
-// TODO refactor it without eventemitter
 class PluginManager {
     options: Options;
 
@@ -23,13 +22,11 @@ class PluginManager {
 
     constructor(name: string, modulePrefix: string = '') {
         const homePath = path.join(os.homedir(), `.${name}`);
-        const packageJsonFile = path.join(homePath, 'package.json');
 
         this.options = {
             name: name,
             modulePrefix: modulePrefix,
             homePath: homePath,
-            packageJsonFile: packageJsonFile,
         };
 
         this.events = {

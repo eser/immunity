@@ -50,12 +50,10 @@ var PluginManager = (function () {
     function PluginManager(name, modulePrefix) {
         if (modulePrefix === void 0) { modulePrefix = ''; }
         var homePath = path.join(os.homedir(), "." + name);
-        var packageJsonFile = path.join(homePath, 'package.json');
         this.options = {
             name: name,
             modulePrefix: modulePrefix,
             homePath: homePath,
-            packageJsonFile: packageJsonFile,
         };
         this.events = {
             install: [],
