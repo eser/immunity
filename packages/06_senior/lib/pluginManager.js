@@ -34,93 +34,54 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+var ensureRequirements_1 = require("./methods/ensureRequirements");
+var getModules_1 = require("./methods/getModules");
+var install_1 = require("./methods/install");
+var list_1 = require("./methods/list");
+var load_1 = require("./methods/load");
+var loadAll_1 = require("./methods/loadAll");
+var loadFile_1 = require("./methods/loadFile");
+var uninstall_1 = require("./methods/uninstall");
 var path = require("path");
 var os = require("os");
 var emitter_1 = require("evangelist/lib/emitter");
-var mkdirP_1 = require("cofounder/lib/fs/mkdirP");
-var lstat_1 = require("cofounder/lib/fs/lstat");
-var saveFile_1 = require("cofounder/lib/json/saveFile");
-var shell_1 = require("cofounder/lib/os/shell");
-var mergeObjects_1 = require("immunity/lib/mergeObjects");
-var appendToObject_1 = require("immunity/lib/appendToObject");
 var PluginManager = (function () {
     function PluginManager(name, modulePrefix) {
         if (modulePrefix === void 0) { modulePrefix = ''; }
-        this.name = name;
-        this.modulePrefix = modulePrefix;
+        var homePath = path.join(os.homedir(), "." + name);
+        var packageJsonFile = path.join(homePath, 'package.json');
+        this.options = {
+            name: name,
+            modulePrefix: modulePrefix,
+            homePath: homePath,
+            packageJsonFile: packageJsonFile,
+        };
         this.events = {
             install: [],
             uninstall: [],
         };
-        this.homePath = path.join(os.homedir(), "." + this.name);
-        this.packageJsonFile = path.join(this.homePath, 'package.json');
     }
     PluginManager.prototype.ensureRequirements = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var ex_1;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4, mkdirP_1.default(this.homePath)];
-                    case 1:
-                        _a.sent();
-                        _a.label = 2;
-                    case 2:
-                        _a.trys.push([2, 4, , 7]);
-                        return [4, lstat_1.default(this.packageJsonFile)];
-                    case 3:
-                        _a.sent();
-                        return [3, 7];
-                    case 4:
-                        ex_1 = _a.sent();
-                        if (!(ex_1.code === 'ENOENT')) return [3, 6];
-                        return [4, saveFile_1.default(this.packageJsonFile, {})];
-                    case 5:
-                        _a.sent();
-                        _a.label = 6;
-                    case 6: return [3, 7];
-                    case 7: return [2];
-                }
+                return [2, ensureRequirements_1.default(this.options)];
             });
         });
     };
     PluginManager.prototype.list = function () {
-        var dependencies = {};
-        try {
-            var packageJson = require(this.packageJsonFile);
-            if (packageJson.dependencies !== undefined) {
-                dependencies = mergeObjects_1.default(dependencies, packageJson.dependencies);
-            }
-        }
-        catch (ex) {
-            if (ex.code !== 'MODULE_NOT_FOUND') {
-                throw ex;
-            }
-        }
-        return dependencies;
+        return list_1.default(this.options);
     };
     PluginManager.prototype.install = function (moduleName) {
         return __awaiter(this, void 0, void 0, function () {
-            var moduleName_, proc;
+            var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.ensureRequirements()];
+                    case 0: return [4, install_1.default(this.options, moduleName)];
                     case 1:
-                        _a.sent();
-                        moduleName_ = "" + this.modulePrefix + moduleName;
-                        proc = shell_1.default("npm install " + moduleName_ + " --prefix " + this.homePath);
-                        if (!(proc.status === 0)) return [3, 3];
-                        return [4, emitter_1.default(this.events, 'install', [moduleName_])];
+                        result = _a.sent();
+                        if (!result.success) return [3, 3];
+                        return [4, emitter_1.default(this.events, 'install', [result.moduleName])];
                     case 2:
                         _a.sent();
                         return [2, true];
@@ -131,16 +92,14 @@ var PluginManager = (function () {
     };
     PluginManager.prototype.uninstall = function (moduleName) {
         return __awaiter(this, void 0, void 0, function () {
-            var moduleName_, proc;
+            var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, this.ensureRequirements()];
+                    case 0: return [4, uninstall_1.default(this.options, moduleName)];
                     case 1:
-                        _a.sent();
-                        moduleName_ = "" + this.modulePrefix + moduleName;
-                        proc = shell_1.default("npm uninstall " + moduleName_ + " --prefix " + this.homePath);
-                        if (!(proc.status === 0)) return [3, 3];
-                        return [4, emitter_1.default(this.events, 'uninstall', [moduleName_])];
+                        result = _a.sent();
+                        if (!result.success) return [3, 3];
+                        return [4, emitter_1.default(this.events, 'uninstall', [result.moduleName])];
                     case 2:
                         _a.sent();
                         return [2, true];
@@ -149,114 +108,16 @@ var PluginManager = (function () {
             });
         });
     };
-    PluginManager.prototype.getModulePath = function (moduleName) {
-        return path.join(this.homePath, 'node_modules', moduleName);
-    };
-    PluginManager.prototype.getModuleIndex = function (moduleName) {
-        var pathstr = this.getModulePath(moduleName), modulePackage = path.join(pathstr, 'package.json');
-        try {
-            var contents = require(modulePackage), entryPoint = contents["main:" + this.name];
-            if (entryPoint !== undefined) {
-                return path.join(pathstr, entryPoint);
-            }
-        }
-        catch (ex) {
-            if (ex.code !== 'MODULE_NOT_FOUND') {
-                throw ex;
-            }
-        }
-        return pathstr;
-    };
     PluginManager.prototype.getModules = function () {
-        var e_1, _a, _b;
-        var list = this.list();
-        var result = {};
-        try {
-            for (var _c = __values(Object.keys(list)), _d = _c.next(); !_d.done; _d = _c.next()) {
-                var dependencyKey = _d.value;
-                result = appendToObject_1.default(result, (_b = {},
-                    _b[dependencyKey] = this.getModuleIndex(dependencyKey),
-                    _b));
-            }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
-            try {
-                if (_d && !_d.done && (_a = _c.return)) _a.call(_c);
-            }
-            finally { if (e_1) throw e_1.error; }
-        }
-        return result;
-    };
-    PluginManager.prototype.loadFile = function (filepath, globals) {
-        var e_2, _a, _b, e_3, _c;
-        var gBackups = {};
-        try {
-            for (var _d = __values(Object.keys(globals)), _e = _d.next(); !_e.done; _e = _d.next()) {
-                var globalKey = _e.value;
-                gBackups = appendToObject_1.default(gBackups, (_b = {}, _b[globalKey] = global[globalKey], _b));
-                global[globalKey] = globals[globalKey];
-            }
-        }
-        catch (e_2_1) { e_2 = { error: e_2_1 }; }
-        finally {
-            try {
-                if (_e && !_e.done && (_a = _d.return)) _a.call(_d);
-            }
-            finally { if (e_2) throw e_2.error; }
-        }
-        try {
-            var loadedModule = require(filepath);
-            return loadedModule;
-        }
-        catch (ex) {
-            if (ex.code !== 'MODULE_NOT_FOUND') {
-                throw ex;
-            }
-        }
-        finally {
-            try {
-                for (var _f = __values(Object.keys(globals)), _g = _f.next(); !_g.done; _g = _f.next()) {
-                    var globalKey = _g.value;
-                    global[globalKey] = gBackups[globalKey];
-                }
-            }
-            catch (e_3_1) { e_3 = { error: e_3_1 }; }
-            finally {
-                try {
-                    if (_g && !_g.done && (_c = _f.return)) _c.call(_f);
-                }
-                finally { if (e_3) throw e_3.error; }
-            }
-        }
-        return null;
+        return getModules_1.default(this.options);
     };
     PluginManager.prototype.load = function (moduleName, globals, loader) {
-        if (loader === void 0) { loader = this.loadFile; }
-        var moduleIndex = this.getModuleIndex(moduleName);
-        return loader(moduleIndex, globals);
+        if (loader === void 0) { loader = loadFile_1.default; }
+        return load_1.default(this.options, moduleName, globals, loader);
     };
     PluginManager.prototype.loadAll = function (globals, loader) {
-        if (loader === void 0) { loader = this.loadFile; }
-        var e_4, _a, _b;
-        var list = this.list();
-        var result = {};
-        try {
-            for (var _c = __values(Object.keys(list)), _d = _c.next(); !_d.done; _d = _c.next()) {
-                var dependencyKey = _d.value;
-                result = appendToObject_1.default(result, (_b = {},
-                    _b[dependencyKey] = this.load(dependencyKey, globals, loader),
-                    _b));
-            }
-        }
-        catch (e_4_1) { e_4 = { error: e_4_1 }; }
-        finally {
-            try {
-                if (_d && !_d.done && (_a = _c.return)) _a.call(_c);
-            }
-            finally { if (e_4) throw e_4.error; }
-        }
-        return result;
+        if (loader === void 0) { loader = loadFile_1.default; }
+        return loadAll_1.default(this.options, globals, loader);
     };
     return PluginManager;
 }());
