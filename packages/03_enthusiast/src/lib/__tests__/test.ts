@@ -4,15 +4,15 @@ import fromNodeStream from '../fromNodeStream';
 import toNodeStream from '../toNodeStream';
 import * as fs from 'fs';
 
-test('copy README.md as README.x.md', () => {
-    iterate(
+test('copy README.md as README.x.md', async () => {
+    await iterate(
         fromNodeStream(fs.createReadStream('./README.md'), 512),
         compose(
-            item => {
+            (item) => {
                 const value = item.data.toString('utf8');
-    
+
                 console.log(value);
-    
+
                 return value;
             },
             toNodeStream(fs.createWriteStream('./README.x.md')),
