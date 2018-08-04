@@ -17,7 +17,7 @@
     "line"
   ],
   "version": "0.8.4",
-  "homepage": "",
+  "homepage": "https://github.com/eserozvataf/jsmake-libraries#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
     {
@@ -31,18 +31,17 @@
     "url": "git+https://github.com/eserozvataf/jsmake-libraries.git"
   },
   "bugs": {
-    "url": "https://github.com/eserozvataf/jsmake-libraries/issues",
-    "email": "eser@ozvataf.com"
+    "url": "https://github.com/eserozvataf/jsmake-libraries/issues"
   },
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8.10.0"
   },
   "scripts": {
-    "compile": "tsc",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/",
+    "compile": "tsc --build",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mjs ./src/",
     "test": "jest"
   },
   "directories": {

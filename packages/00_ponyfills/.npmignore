@@ -1,4 +1,4 @@
-# npm
+# package directories
 node_modules/
 
 # OS X
@@ -7,8 +7,9 @@ node_modules/
 # Git
 .git*
 
-# TypeScript
+# configuration and dotfiles
 tsconfig.json
-
-# jsmake
+jest.config.js
+.eslintrc
 makefile.js
+.npmignore

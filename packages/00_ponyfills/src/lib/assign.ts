@@ -1,4 +1,4 @@
-function assignPolyfill(target: Object, ...sources: Object[]) {
+function assignPolyfill(target: Object, ...sources: Array<Object>): Object {
     for (const source of sources) {
         for (const key of Object.getOwnPropertyNames(source)) {
             target[key] = source[key];
