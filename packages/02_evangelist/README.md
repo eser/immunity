@@ -39,6 +39,22 @@ const message = slug('Hello World!');
 console.log(`slug: ${message}`);
 ```
 
+### curry(targetFunction, ...argumentsToBePrepended)
+
+```js
+import curry from 'evangelist/lib/curry';
+
+// curry - sum sample
+const sum = (a, b) => a + b;
+
+const sumWith5 = curry(sum, 5);
+
+const result = sumWith5(3);
+
+// outputs 'result: 8'
+console.log(`result: ${result}`);
+```
+
 ### decorate(functionToDecorate, decoratorFunction)
 
 ```js
