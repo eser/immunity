@@ -1,16 +1,14 @@
-import * as fs from './fs/';
-import * as json from './json/';
-import * as os from './os/';
+import node from './node/index';
+import CofounderMethods from './methods';
 
-const cofounder = {
-    fs,
-    json,
-    os,
-};
+function Cofounder(strategy): CofounderMethods | null {
+    if (strategy === 'node') {
+        return node;
+    }
+
+    return null;
+}
 
 export {
-    cofounder as default,
-    fs,
-    json,
-    os,
+    Cofounder as default,
 };
