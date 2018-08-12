@@ -8,16 +8,16 @@
 
 ## What is the CoFounder?
 
-This project is designed to offer additional file system functionalities apart from node.js's bundled fs library.
+This project is designed to offer file system functionalities within an abstraction layer.
 
-Plug, as a library, CoFounder is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole CoFounder package.
+Plus, as a library, CoFounder is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole CoFounder package.
 
 
 ## Why CoFounder?
 
 I like standartization in general concepts like file system access. I have several node.js projects and most of the time I try to keep my code design similar, portable and shareable for applicability to other scenerios. CoFounder is the one of the products that I have developed with this mindset.
 
-As an file system library it offers,
+Apart from any file system library it offers,
 
 - scanDir method to enumerate files and filestats by directory,
 - glob method to enumerate matching files,
@@ -32,13 +32,31 @@ As an file system library it offers,
 Execute `npm install cofounder` to install cofounder and its dependencies into your project directory.
 
 
-## List of modules
+## Usage
+
+### Basics
+
+To initialize a Cofounder instance:
+
+```js
+import Cofounder from 'cofounder';
+// or const Cofounder = require('cofounder').default;
+
+const cofounder = Cofounder('node');
+
+cofounder.os.shell('ls');
+```
+
+
+## List of file systems
+
+- node
+
+## List of methods
 
 - fs.cp
 - fs.cpP
 - fs.glob
-- fs.globParent
-- fs.globParentOf
 - fs.lstat
 - fs.mkdir
 - fs.mkdirP
@@ -61,6 +79,7 @@ Execute `npm install cofounder` to install cofounder and its dependencies into y
 
 - Buffered glob copy
 - Move and rename
+- Virtual file system
 
 See [GitHub Projects](https://github.com/eserozvataf/jsmake-libraries/projects) for more.
 
