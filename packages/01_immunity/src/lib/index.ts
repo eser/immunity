@@ -5,6 +5,8 @@ import dropFromArray from './dropFromArray';
 import dropFromObject from './dropFromObject';
 import filterArray from './filterArray';
 import filterObject from './filterObject';
+import mapArray from './mapArray';
+import mapObject from './mapObject';
 import mergeArrays from './mergeArrays';
 import mergeObjects from './mergeObjects';
 import pickFromArray from './pickFromArray';
@@ -29,6 +31,8 @@ export {
     dropFromObject,
     filterArray,
     filterObject,
+    mapArray,
+    mapObject,
     mergeArrays,
     mergeObjects,
     pickFromArray,

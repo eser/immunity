@@ -130,7 +130,39 @@ import filterObject from 'immunity/lib/filterObject';
 const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
 const newOne = filterObject(source, x => x <= 3);
 
-// output: Result: {'a':1,'b':2,'c':3,'d':4,'e':5}
+// output: Result: {'a':1,'b':2,'c':3}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
+
+### mapArray(instance, predicate)
+
+creates a new array with the results of calling a provided function on every element in the calling array.
+
+```js
+import mapArray from 'immunity/lib/mapArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = mapArray(source, x => x - 1);
+
+// output: Result: [0,1,2,3,4]
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
+
+### mapObject(instance, predicate)
+
+creates a new object with the results of calling a provided function on every element in the calling object.
+
+```js
+import mapObject from 'immunity/lib/mapObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = mapObject(source, (value, key) => ({ [key]: value - 1 }));
+
+// output: Result: {'a':0,'b':1,'c':2,'d':3,'e':4}
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
