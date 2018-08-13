@@ -5,7 +5,7 @@ import list from './list';
 
 import appendToObject from 'immunity/lib/appendToObject';
 
-function getModules(options: Options): { [key: string]: string } {
+function listModuleIndexes(options: Options): { [key: string]: string } {
     const listResult = list(options);
 
     let result = {};
@@ -14,7 +14,7 @@ function getModules(options: Options): { [key: string]: string } {
         result = appendToObject(
             result,
             {
-                [dependencyKey]: getModuleIndex(options, dependencyKey),
+                [dependencyKey]: getModuleIndex(dependencyKey, options),
             }
         );
     }
@@ -23,5 +23,5 @@ function getModules(options: Options): { [key: string]: string } {
 }
 
 export {
-    getModules as default,
+    listModuleIndexes as default,
 };

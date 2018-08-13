@@ -8,6 +8,8 @@ var uninstall_1 = require("./uninstall");
 exports.uninstall = uninstall_1.default;
 var list_1 = require("./list");
 exports.list = list_1.default;
+var listModuleIndexes_1 = require("./listModuleIndexes");
+exports.listModuleIndexes = listModuleIndexes_1.default;
 var load_1 = require("./load");
 exports.load = load_1.default;
 var loadAll_1 = require("./loadAll");
@@ -17,6 +19,7 @@ var npm = {
     install: install_1.default,
     uninstall: uninstall_1.default,
     list: list_1.default,
+    listModuleIndexes: listModuleIndexes_1.default,
     load: load_1.default,
     loadAll: loadAll_1.default,
 };

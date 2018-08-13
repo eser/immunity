@@ -1,12 +1,22 @@
+import mapObject from 'immunity/lib/mapObject';
+import curryRight from 'evangelist/lib/curryRight';
 import npm from './npm/index';
-import SeniorMethods from './methods';
+import SeniorMethods, { Options } from './methods';
 
-function Senior(strategy): SeniorMethods | null {
+function Senior(strategy: string, options?: Options): SeniorMethods | null {
+    let selected: SeniorMethods | null = null;
+
     if (strategy === 'npm') {
-        return npm;
+        selected = npm;
     }
 
-    return null;
+    if (selected !== null) {
+        return mapObject(selected, (value, key) => {
+            return { [key]: curryRight(value, options) };
+        });
+    }
+
+    return selected;
 }
 
 export {

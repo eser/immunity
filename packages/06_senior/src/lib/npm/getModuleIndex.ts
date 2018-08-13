@@ -3,7 +3,7 @@ import getModulePath from './getModulePath';
 
 import * as path from 'path';
 
-function getModuleIndex(options: Options, moduleName: string): string {
+function getModuleIndex(moduleName: string, options: Options): string {
     const pathstr = getModulePath(moduleName),
         modulePackage = path.join(pathstr, 'package.json');
 

@@ -10,20 +10,23 @@ interface UninstallResult {
     success: boolean;
 }
 interface SeniorMethods {
-    searchRepository(options: Options): Promise<{
+    searchRepository(options?: Options): Promise<{
         [key: string]: string;
     }>;
-    install(moduleName: string, options: Options): Promise<InstallResult>;
-    uninstall(moduleName: string, options: Options): Promise<UninstallResult>;
-    list(options: Options): {
+    install(moduleName: string, options?: Options): Promise<InstallResult>;
+    uninstall(moduleName: string, options?: Options): Promise<UninstallResult>;
+    list(options?: Options): {
+        [key: string]: string;
+    };
+    listModuleIndexes(options?: Options): {
         [key: string]: string;
     };
     load(moduleName: string, globals: {
         [key: string]: any;
-    }, options: Options): any;
+    }, options?: Options): any;
     loadAll(globals: {
         [key: string]: any;
-    }, options: Options): {
+    }, options?: Options): {
         [key: string]: any;
     };
 }

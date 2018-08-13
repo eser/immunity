@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var getModulePath_1 = require("./getModulePath");
 var path = require("path");
-function getModuleIndex(options, moduleName) {
+function getModuleIndex(moduleName, options) {
     var pathstr = getModulePath_1.default(moduleName), modulePackage = path.join(pathstr, 'package.json');
     try {
         var contents = require(modulePackage), entryPoint = contents["main:" + options.name];

@@ -1,3 +1,3 @@
 import { Options } from '../methods';
-declare function getModuleIndex(options: Options, moduleName: string): string;
+declare function getModuleIndex(moduleName: string, options: Options): string;
 export { getModuleIndex as default, };

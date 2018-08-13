@@ -4,6 +4,7 @@ import searchRepository from './searchRepository';
 import install from './install';
 import uninstall from './uninstall';
 import list from './list';
+import listModuleIndexes from './listModuleIndexes';
 import load from './load';
 import loadAll from './loadAll';
 
@@ -12,6 +13,7 @@ const npm: SeniorMethods = {
     install,
     uninstall,
     list,
+    listModuleIndexes,
     load,
     loadAll,
 };
@@ -22,6 +24,7 @@ export {
     install,
     uninstall,
     list,
+    listModuleIndexes,
     load,
     loadAll,
 };
