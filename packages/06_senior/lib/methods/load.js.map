@@ -1,1 +1,0 @@
-{"version":3,"file":"load.js","sourceRoot":"","sources":["../../src/lib/methods/load.ts"],"names":[],"mappings":";;AACA,mDAA8C;AAC9C,uCAAkC;AAElC,cAAc,OAAgB,EAAE,UAAkB,EAAE,OAA+B,EAAE,MAA6E;IAA7E,uBAAA,EAAA,SAAqE,kBAAQ;IAC9J,IAAM,WAAW,GAAG,wBAAc,CAAC,OAAO,EAAE,UAAU,CAAC,CAAC;IAExD,OAAO,MAAM,CAAC,WAAW,EAAE,OAAO,CAAC,CAAC;AACxC,CAAC;AAGW,uBAAO"}

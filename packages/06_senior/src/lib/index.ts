@@ -1,5 +1,14 @@
-import PluginManager from './pluginManager';
+import npm from './npm/index';
+import SeniorMethods from './methods';
+
+function Senior(strategy): SeniorMethods | null {
+    if (strategy === 'npm') {
+        return npm;
+    }
+
+    return null;
+}
 
 export {
-    PluginManager as default,
+    Senior as default,
 };

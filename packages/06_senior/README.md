@@ -21,13 +21,19 @@ Execute `npm install senior` to install senior and its dependencies into your pr
 ```js
 import Senior from 'senior';
 
-const plugins = new Senior('myApp');
+const pmOptions = {
+    name: 'myApp',
+    modulePrefix: 'myApp-',
+    homePath: '',
+};
+
+const pm = Senior('npm');
 
 // install plugin from npm
-plugins.install('myApp-plugin-first');
+pm.install('myApp-plugin-first', pmOptions);
 
 // executes all installed plugins
-plugins.loadAll();
+pm.loadAll(pmOptions);
 ```
 
 
