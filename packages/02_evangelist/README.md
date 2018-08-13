@@ -55,6 +55,22 @@ const result = sumWith5(3);
 console.log(`result: ${result}`);
 ```
 
+### curryRight(targetFunction, ...argumentsToBeAppended)
+
+```js
+import curryRight from 'evangelist/lib/curryRight';
+
+// curryRight - sum sample
+const dec = (a, b) => a - b;
+
+const decWith5 = curry(dec, 5);
+
+const result = decWith5(3);
+
+// outputs 'result: -2'
+console.log(`result: ${result}`);
+```
+
 ### decorate(functionToDecorate, decoratorFunction)
 
 ```js
