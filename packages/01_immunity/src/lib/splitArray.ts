@@ -3,11 +3,10 @@ function splitArray(instance: Iterable<any>, n: number): { items: Array<any>, re
         <Array<any>>instance :
         [ ...instance ];
 
-    const offset = (n >= 0) ? n : arrInstance.length + n;
-
+    // take n items
     return {
-        items: arrInstance.slice(0, offset),
-        rest: arrInstance.slice(offset),
+        items: arrInstance.slice(0, n),
+        rest: arrInstance.slice(n),
     };
 }
 

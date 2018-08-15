@@ -1,14 +1,13 @@
 import assign from 'ponyfills/lib/assign';
 
 function splitObject(instance: any, n: number): { items: any, rest: any } {
-    const keys = Object.keys(instance),
-        offset = (n >= 0) ? n : keys.length + n;
+    const keys = Object.keys(instance);
 
     let index = 0;
 
     return keys.reduce(
         (obj, itemKey) => {
-            if (index < offset) {
+            if (index < n) {
                 index += 1;
 
                 return {

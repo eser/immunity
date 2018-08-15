@@ -20,13 +20,14 @@ var __spread = (this && this.__spread) || function () {
     return ar;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function splitArray(instance, n) {
+function splitLastArray(instance, n) {
     var arrInstance = (instance.constructor === Array) ?
         instance : __spread(instance);
+    var offset = arrInstance.length - n;
     return {
-        items: arrInstance.slice(0, n),
-        rest: arrInstance.slice(n),
+        items: arrInstance.slice(offset),
+        rest: arrInstance.slice(0, offset),
     };
 }
-exports.default = splitArray;
-//# sourceMappingURL=splitArray.js.map
+exports.default = splitLastArray;
+//# sourceMappingURL=splitLastArray.js.map

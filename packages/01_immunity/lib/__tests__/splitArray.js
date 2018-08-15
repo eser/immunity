@@ -39,17 +39,6 @@ test('splitArray', function () {
     expect(result.rest).toHaveLength(2);
     expect(result.rest).toEqual([4, 5]);
 });
-test('splitArray with negative', function () {
-    var arr1 = [1, 2, 3, 4, 5];
-    var val1 = -3;
-    var result = splitArray_1.default(arr1, val1);
-    expect(result.items).not.toBe(arr1);
-    expect(result.items).toHaveLength(2);
-    expect(result.items).toEqual([1, 2]);
-    expect(result.rest).not.toBe(arr1);
-    expect(result.rest).toHaveLength(3);
-    expect(result.rest).toEqual([3, 4, 5]);
-});
 test('splitArray with generator', function () {
     var gen1 = function () {
         return __generator(this, function (_a) {

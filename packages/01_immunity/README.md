@@ -394,6 +394,22 @@ console.log(`Result: ${JSON.stringify(newOne)}`);
 console.log(`Is Same: ${source === newOne}`);
 ```
 
+### splitLastArray(source, number)
+
+splits an array or a generator content from specified last index.
+
+```js
+import splitLastArray from 'immunity/lib/splitLastArray';
+
+const source = [ 1, 2, 3, 4, 5 ];
+const newOne = splitLastArray(source, 2);
+
+// output: Result: {'items':[4,5],'rest':[1,2,3]}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
+
 ### splitObject(source, number)
 
 splits an object content from specified index.
@@ -405,6 +421,22 @@ const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
 const newOne = splitObject(source, 3);
 
 // output: Result: {'items':{'a':1,'b':2,'c':3},'rest':{'d':4,'e':5}}
+console.log(`Result: ${JSON.stringify(newOne)}`);
+// output: Is Same: false
+console.log(`Is Same: ${source === newOne}`);
+```
+
+### splitLastObject(source, number)
+
+splits an object content from specified last index.
+
+```js
+import splitLastObject from 'immunity/lib/splitLastObject';
+
+const source = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+const newOne = splitLastObject(source, 2);
+
+// output: Result: {'items':{'d':4,'e':5},'rest':{'a':1,'b':2,'c':3}}
 console.log(`Result: ${JSON.stringify(newOne)}`);
 // output: Is Same: false
 console.log(`Is Same: ${source === newOne}`);
