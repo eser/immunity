@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-function mkdir(pathstr, mode): Promise<void> {
+function mkdir(pathstr: string, mode?): Promise<void> {
     return new Promise((resolve, reject) => {
         const callback = (err) => {
             if (err) {

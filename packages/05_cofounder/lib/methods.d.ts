@@ -3,8 +3,8 @@ interface CofounderFsMethods {
     cpP(str: any, dest: any): Promise<void>;
     glob(str: any, options?: any): Promise<any>;
     lstat(pathstr: any): Promise<any>;
-    mkdir(pathstr: any, mode: any): Promise<void>;
-    mkdirP(pathstr: any, mode?: any): Promise<void>;
+    mkdir(pathstr: string, mode?: any): Promise<void>;
+    mkdirP(pathstr: string, mode?: any): Promise<void>;
     mv(pathstr: any, dest: any): Promise<void>;
     mvP(str: any, dest: any): Promise<void>;
     readdir(pathstr: any, options?: any): Promise<any>;

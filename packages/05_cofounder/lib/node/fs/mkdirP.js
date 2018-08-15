@@ -56,7 +56,7 @@ var __spread = (this && this.__spread) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var path = require("path");
-var splitArray_1 = require("immunity/lib/splitArray");
+var splitLastArray_1 = require("immunity/lib/splitLastArray");
 var mkdir_1 = require("./mkdir");
 function mkdirP(pathstr, mode) {
     return __awaiter(this, void 0, void 0, function () {
@@ -65,14 +65,17 @@ function mkdirP(pathstr, mode) {
             switch (_a.label) {
                 case 0:
                     directories = [
-                        pathstr
+                        path.normalize(pathstr),
                     ];
                     _a.label = 1;
                 case 1:
                     if (!(directories.length > 0)) return [3, 6];
-                    splitted = splitArray_1.default(directories, -1);
+                    splitted = splitLastArray_1.default(directories, 1);
                     directory = splitted.items[0];
                     directories = splitted.rest;
+                    if (directory[0] === '.') {
+                        return [3, 1];
+                    }
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 4, , 5]);
