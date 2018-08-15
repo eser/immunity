@@ -47,7 +47,8 @@
   "dependencies": {
     "cofounder": "^0.8.4",
     "evangelist": "^0.8.4",
-    "immunity": "^0.8.4"
+    "immunity": "^0.8.4",
+    "ponyfills": "^0.8.4"
   },
   "devDependencies": {
     "@types/jest": "^23.3.1",

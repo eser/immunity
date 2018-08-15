@@ -5,8 +5,8 @@ import load from './load';
 
 import appendToObject from 'immunity/lib/appendToObject';
 
-function loadAll(globals: { [key: string]: any }, options: Options): any {
-    const listResult = list(options);
+async function loadAll(globals: { [key: string]: any }, options: Options): Promise<{ [key: string]: any }> {
+    const listResult = await list(options);
 
     let result = {};
 
@@ -14,7 +14,7 @@ function loadAll(globals: { [key: string]: any }, options: Options): any {
         result = appendToObject(
             result,
             {
-                [dependencyKey]: load(dependencyKey, globals, options),
+                [dependencyKey]: await load(dependencyKey, globals, options),
             }
         );
     }

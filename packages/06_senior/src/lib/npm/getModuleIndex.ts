@@ -1,15 +1,22 @@
 import { Options } from '../methods';
+import loadFile from 'cofounder/lib/node/json/loadFile';
+
 import getModulePath from './getModulePath';
+import getPackageJsonPath from './getPackageJsonPath';
 
 import * as path from 'path';
 
-function getModuleIndex(moduleName: string, options: Options): string {
-    const pathstr = getModulePath(moduleName),
-        modulePackage = path.join(pathstr, 'package.json');
+async function getModuleIndex(moduleName: string, options: Options): Promise<string> {
+    const pathstr = getModulePath(options.homePath, moduleName),
+        modulePackage = getPackageJsonPath(pathstr);
+
+    const packageProperty: string = ((options.name || '').length > 0) ?
+        `main:${options.name}` :
+        'main';
 
     try {
-        const contents = require(modulePackage),
-            entryPoint = contents[`main:${options.name}`];
+        const contents = await loadFile(modulePackage),
+            entryPoint = contents[packageProperty];
 
         if (entryPoint !== undefined) {
             return path.join(pathstr, entryPoint);

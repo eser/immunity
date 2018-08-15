@@ -1,1 +1,1 @@
-{"version":3,"file":"getModulePath.js","sourceRoot":"","sources":["../../src/lib/npm/getModulePath.ts"],"names":[],"mappings":";;AAAA,2BAA6B;AAE7B,SAAS,aAAa,CAAC,QAAgB;IACnC,OAAO,IAAI,CAAC,IAAI,CAAC,QAAQ,EAAE,cAAc,CAAC,CAAC;AAC/C,CAAC;AAGoB,gCAAO"}
+{"version":3,"file":"getModulePath.js","sourceRoot":"","sources":["../../src/lib/npm/getModulePath.ts"],"names":[],"mappings":";;AAAA,2BAA6B;AAE7B,SAAS,aAAa,CAAC,QAAgB,EAAE,UAAkB;IACvD,IAAM,UAAU,GAAG,IAAI,CAAC,IAAI,CAAC,QAAQ,EAAE,cAAc,EAAE,UAAU,CAAC,CAAC;IAEnE,OAAO,UAAU,CAAC;AACtB,CAAC;AAGoB,gCAAO"}

@@ -1,2 +1,2 @@
-declare function getModulePath(homePath: string): string;
+declare function getModulePath(homePath: string, moduleName: string): string;
 export { getModulePath as default, };

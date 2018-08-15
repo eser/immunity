@@ -1,7 +1,9 @@
 import * as path from 'path';
 
-function getModulePath(homePath: string): string {
-    return path.join(homePath, 'node_modules');
+function getModulePath(homePath: string, moduleName: string): string {
+    const modulePath = path.join(homePath, 'node_modules', moduleName);
+
+    return modulePath;
 }
 
 export {

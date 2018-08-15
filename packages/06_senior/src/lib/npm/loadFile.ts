@@ -1,6 +1,6 @@
 import appendToObject from 'immunity/lib/appendToObject';
 
-function loadFile(filepath: string, globals: { [key: string]: any }): any {
+function loadFile(filepath: string, globals: { [key: string]: any }): Promise<any> {
     let gBackups = {};
 
     for (const globalKey of Object.keys(globals)) {
@@ -11,7 +11,7 @@ function loadFile(filepath: string, globals: { [key: string]: any }): any {
     try {
         const loadedModule = require(filepath);
 
-        return loadedModule;
+        return Promise.resolve(loadedModule);
     }
     catch (ex) {
         if (ex.code !== 'MODULE_NOT_FOUND') {
@@ -24,7 +24,7 @@ function loadFile(filepath: string, globals: { [key: string]: any }): any {
         }
     }
 
-    return null;
+    return Promise.resolve(null);
 }
 
 export {

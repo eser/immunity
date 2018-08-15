@@ -1,7 +1,9 @@
 import * as path from 'path';
 
 function getPackageJsonPath(homePath: string): string {
-    return path.join(homePath, 'package.json');
+    const packageJsonFile = path.join(homePath, 'package.json');
+
+    return packageJsonFile;
 }
 
 export {

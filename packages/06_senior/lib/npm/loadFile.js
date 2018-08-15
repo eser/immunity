@@ -30,7 +30,7 @@ function loadFile(filepath, globals) {
     }
     try {
         var loadedModule = require(filepath);
-        return loadedModule;
+        return Promise.resolve(loadedModule);
     }
     catch (ex) {
         if (ex.code !== 'MODULE_NOT_FOUND') {
@@ -52,7 +52,7 @@ function loadFile(filepath, globals) {
             finally { if (e_2) throw e_2.error; }
         }
     }
-    return null;
+    return Promise.resolve(null);
 }
 exports.default = loadFile;
 //# sourceMappingURL=loadFile.js.map

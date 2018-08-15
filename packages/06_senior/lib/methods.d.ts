@@ -15,19 +15,19 @@ interface SeniorMethods {
     }>;
     install(moduleName: string, options?: Options): Promise<InstallResult>;
     uninstall(moduleName: string, options?: Options): Promise<UninstallResult>;
-    list(options?: Options): {
+    list(options?: Options): Promise<{
         [key: string]: string;
-    };
-    listModuleIndexes(options?: Options): {
+    }>;
+    listModuleIndexes(options?: Options): Promise<{
         [key: string]: string;
-    };
+    }>;
     load(moduleName: string, globals: {
         [key: string]: any;
-    }, options?: Options): any;
+    }, options?: Options): Promise<any>;
     loadAll(globals: {
         [key: string]: any;
-    }, options?: Options): {
+    }, options?: Options): Promise<{
         [key: string]: any;
-    };
+    }>;
 }
 export { SeniorMethods as default, Options, InstallResult, UninstallResult, };

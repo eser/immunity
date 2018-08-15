@@ -3,10 +3,10 @@ import { Options } from '../methods';
 import getModuleIndex from './getModuleIndex';
 import loadFile from './loadFile';
 
-function load(moduleName: string, globals: { [key: string]: any }, options: Options): any {
-    const moduleIndex = getModuleIndex(moduleName, options);
+async function load(moduleName: string, globals: { [key: string]: any }, options: Options): Promise<any> {
+    const moduleIndex = await getModuleIndex(moduleName, options);
 
-    return loadFile(moduleIndex, globals);
+    return await loadFile(moduleIndex, globals);
 }
 
 export {

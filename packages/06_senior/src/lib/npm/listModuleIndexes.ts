@@ -5,8 +5,8 @@ import list from './list';
 
 import appendToObject from 'immunity/lib/appendToObject';
 
-function listModuleIndexes(options: Options): { [key: string]: string } {
-    const listResult = list(options);
+async function listModuleIndexes(options: Options): Promise<{ [key: string]: string }> {
+    const listResult = await list(options);
 
     let result = {};
 
@@ -14,7 +14,7 @@ function listModuleIndexes(options: Options): { [key: string]: string } {
         result = appendToObject(
             result,
             {
-                [dependencyKey]: getModuleIndex(dependencyKey, options),
+                [dependencyKey]: await getModuleIndex(dependencyKey, options),
             }
         );
     }
