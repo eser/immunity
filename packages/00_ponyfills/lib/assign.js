@@ -19,6 +19,9 @@ function assignPolyfill(target) {
     try {
         for (var sources_1 = __values(sources), sources_1_1 = sources_1.next(); !sources_1_1.done; sources_1_1 = sources_1.next()) {
             var source = sources_1_1.value;
+            if (source === null || source === undefined) {
+                continue;
+            }
             try {
                 for (var _c = __values(Object.getOwnPropertyNames(source)), _d = _c.next(); !_d.done; _d = _c.next()) {
                     var key = _d.value;
