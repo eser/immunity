@@ -6,7 +6,7 @@
     "file",
     "system"
   ],
-  "version": "0.8.4",
+  "version": "0.9.0",
   "homepage": "https://github.com/eserozvataf/jsmake-libraries#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -45,7 +45,7 @@
   "dependencies": {
     "glob-all": "^3.1.0",
     "glob-parent": "^3.1.0",
-    "immunity": "^0.8.4",
+    "immunity": "^0.9.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {

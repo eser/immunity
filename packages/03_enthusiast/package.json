@@ -2,7 +2,7 @@
   "name": "enthusiast",
   "description": "A functional stream library implementation runs on browsers and node.js",
   "keywords": [],
-  "version": "0.8.4",
+  "version": "0.9.0",
   "homepage": "https://github.com/eserozvataf/jsmake-libraries#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -39,8 +39,8 @@
   ],
   "bin": {},
   "dependencies": {
-    "immunity": "^0.8.4",
-    "evangelist": "^0.8.4",
+    "evangelist": "^0.9.0",
+    "immunity": "^0.9.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
