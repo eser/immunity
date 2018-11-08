@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var pickFromObject_1 = require("../pickFromObject");
+var tslib_1 = require("tslib");
+var pickFromObject_1 = tslib_1.__importDefault(require("../pickFromObject"));
 test('pickFromObject', function () {
     var obj1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
     var arr1 = ['b', 'c', 'f'];

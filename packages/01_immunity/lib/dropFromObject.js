@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var assign_1 = require("ponyfills/lib/assign");
+var tslib_1 = require("tslib");
+var assign_1 = tslib_1.__importDefault(require("ponyfills/lib/assign"));
 function dropFromObject(instance, n) {
     var keys = Object.keys(instance);
     var index = 0;

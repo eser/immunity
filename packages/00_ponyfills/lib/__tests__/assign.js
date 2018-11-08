@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var assign_1 = require("../assign");
+var tslib_1 = require("tslib");
+var assign_1 = tslib_1.__importDefault(require("../assign"));
 test('assign values right to left', function () {
     var obj1 = {};
     var obj2 = { test: true };

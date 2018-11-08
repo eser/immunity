@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var mapObject_1 = require("../mapObject");
+var tslib_1 = require("tslib");
+var mapObject_1 = tslib_1.__importDefault(require("../mapObject"));
 test('mapObject', function () {
     var obj1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
     var func1 = function (value, key) {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function all(collection) {
-    return Array.from(collection.keys());
+function all(context) {
+    return Array.from(context.keys());
 }
 exports.default = all;
 //# sourceMappingURL=all.js.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"getPackageJsonPath.js","sourceRoot":"","sources":["../../src/lib/npm/getPackageJsonPath.ts"],"names":[],"mappings":";;AAAA,2BAA6B;AAE7B,SAAS,kBAAkB,CAAC,QAAgB;IACxC,IAAM,eAAe,GAAG,IAAI,CAAC,IAAI,CAAC,QAAQ,EAAE,cAAc,CAAC,CAAC;IAE5D,OAAO,eAAe,CAAC;AAC3B,CAAC;AAGyB,qCAAO"}

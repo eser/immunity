@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var copy_1 = require("../copy");
+var tslib_1 = require("tslib");
+var copy_1 = tslib_1.__importDefault(require("../copy"));
 var dummy = (function () {
     function dummy() {
     }

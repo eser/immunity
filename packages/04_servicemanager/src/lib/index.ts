@@ -1,18 +1,28 @@
-import ServiceDeclaration from './serviceDeclaration';
-import ServiceDefinition from './serviceDefinition';
-import ServiceDefinitionCollection from './serviceDefinitionCollection';
-import ServiceLifetime from './serviceLifetime';
 import ServiceManager from './serviceManager';
-import ServiceResolver from './serviceResolver';
-
-const services = new ServiceManager();
+import ServiceContext from './serviceContext';
+import ServiceLifetime from './serviceLifetime';
+import singleton from './singleton';
+import transient from './transient';
+import all from './methods/all';
+import createContext from './methods/createContext';
+import ensure from './methods/ensure';
+import filter, { FilterPredicate } from './methods/filter';
+import filterByTag from './methods/filterByTag';
+import get from './methods/get';
+import getRange from './methods/getRange';
 
 export {
-    services as default,
-    ServiceDeclaration,
-    ServiceDefinition,
-    ServiceDefinitionCollection,
+    ServiceManager as default,
+    ServiceContext,
     ServiceLifetime,
-    ServiceManager,
-    ServiceResolver,
+    singleton,
+    transient,
+    all,
+    createContext,
+    ensure,
+    filter,
+    FilterPredicate,
+    filterByTag,
+    get,
+    getRange,
 };

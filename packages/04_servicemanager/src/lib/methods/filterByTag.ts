@@ -1,9 +1,8 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-
+import ServiceContext from '../serviceContext';
 import filter from './filter';
 
-function filterByTag(collection: ServiceDefinitionCollection, tag: string): Array<string> {
-    return filter(collection, (serviceDefinition, dependency) => serviceDefinition.tags.indexOf(tag) >= 0);
+function filterByTag(context: ServiceContext, tag: string): Array<string> {
+    return filter(context, (serviceTarget) => serviceTarget.tags.indexOf(tag) >= 0);
 }
 
 export {

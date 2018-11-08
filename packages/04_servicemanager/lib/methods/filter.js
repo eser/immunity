@@ -1,37 +1,12 @@
 "use strict";
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
-var __read = (this && this.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-function filter(collection, predicate) {
+var tslib_1 = require("tslib");
+function filter(context, predicate) {
     var e_1, _a;
     var result = [];
     try {
-        for (var _b = __values(collection.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
-            var _d = __read(_c.value, 2), dependency = _d[0], serviceDefinition = _d[1];
+        for (var _b = tslib_1.__values(context.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
+            var _d = tslib_1.__read(_c.value, 2), dependency = _d[0], serviceDefinition = _d[1];
             if (predicate(serviceDefinition, dependency)) {
                 result.push(dependency);
             }

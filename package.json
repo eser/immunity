@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "lerna": "^3.0.0-rc.0"
+    "lerna": "^3.4.3"
   },
   "name": "jsmake-libraries"
 }

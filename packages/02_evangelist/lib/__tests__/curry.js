@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var curry_1 = require("../curry");
+var tslib_1 = require("tslib");
+var curry_1 = tslib_1.__importDefault(require("../curry"));
 test('curry', function () {
     var sum = function (a, b) { return a + b; };
     var sumWith5 = curry_1.default(sum, 5);

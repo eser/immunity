@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var takeFromObject_1 = require("../takeFromObject");
+var tslib_1 = require("tslib");
+var takeFromObject_1 = tslib_1.__importDefault(require("../takeFromObject"));
 test('takeFromObject', function () {
     var obj1 = { a: 1, b: 2, c: 3 };
     var int1 = 2;

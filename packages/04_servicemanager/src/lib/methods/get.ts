@@ -1,15 +1,19 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
+import ServiceContext from '../serviceContext';
+import ServiceLifetime from '../serviceLifetime';
 
-import resolveDependency from './resolveDependency';
+function get(context: ServiceContext, dependency: any): any {
+    const serviceTarget = context.get(dependency);
 
-function get(collection: ServiceDefinitionCollection, dependency: any): any {
-    const serviceDefinition = collection.get(dependency);
-
-    if (serviceDefinition === undefined) {
+    if (serviceTarget === undefined) {
         return undefined;
     }
 
-    return resolveDependency(serviceDefinition.target, serviceDefinition.lifetime);
+    if (serviceTarget.lifetime === ServiceLifetime.Singleton ||
+        !(serviceTarget.target instanceof Function)) {
+        return serviceTarget.target;
+    }
+
+    return serviceTarget.target();
 }
 
 export {

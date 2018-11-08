@@ -1,3 +1,3 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-declare function get(collection: ServiceDefinitionCollection, dependency: any): any;
+import ServiceContext from '../serviceContext';
+declare function get(context: ServiceContext, dependency: any): any;
 export { get as default, };

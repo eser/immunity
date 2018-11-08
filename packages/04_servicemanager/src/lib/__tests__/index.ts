@@ -1,132 +1,89 @@
-import { ServiceManager, ServiceLifetime } from '../';
+import { createContext, singleton, transient, all, ensure, get, getRange, filter, filterByTag } from '../';
 
 test('basic get set', () => {
-    const services = new ServiceManager();
+    const services = createContext(container => {
+        container.set('eser', transient('12345'));
+    });
 
-    services.set('eser', '12345');
-
-    const eser = services.get('eser');
+    const eser = get(services, 'eser');
 
     expect(eser).toEqual('12345');
 });
 
 test('set with tag', () => {
-    const services = new ServiceManager();
+    const services = createContext(container => {
+        container.set('eser', singleton('12345', [ 'general' ]));
+        container.set('seyma', singleton('6789', [ 'other' ]));
+    });
 
-    services.set('eser', '12345', ServiceLifetime.Singleton, [ 'general' ]);
-    services.set('seyma', '6789', ServiceLifetime.Singleton, [ 'other' ]);
-
-    const generalServices = services.filterByTag('general');
+    const generalServices = filterByTag(services, 'general');
 
     expect(generalServices).toEqual([ 'eser' ]);
 });
 
 test('getRange', () => {
-    const services = new ServiceManager();
+    const services = createContext(container => {
+        container.set('eser', transient('12345'));
+        container.set('seyma', transient('6789'));
+    });
 
-    services.set('eser', '12345');
-    services.set('seyma', '6789');
-
-    const [ eser, seyma ] = services.getRange('eser', 'seyma');
+    const [ eser, seyma ] = getRange(services, 'eser', 'seyma');
 
     expect(eser).toEqual('12345');
     expect(seyma).toEqual('6789');
 });
 
-test('getOrResolve', () => {
-    const resolver = (dependency, resolve) => {
-        resolve(`Hi ${dependency}`);
-    };
+test('all', () => {
+    const services = createContext(container => {
+        container.set('eser', transient('12345'));
+        container.set('seyma', transient('6789'));
+        container.set('kedi', transient('9999'));
+    });
 
-    const services = new ServiceManager(resolver);
-
-    const eser = services.getOrResolve('eser');
-
-    expect(eser).toEqual('Hi eser');
-});
-
-test('getOrResolveRange', () => {
-    const resolver = (dependency, resolve) => {
-        resolve(`Hi ${dependency}`);
-    };
-
-    const services = new ServiceManager(resolver);
-
-    const [ eser, seyma ] = services.getOrResolveRange('eser', 'seyma');
-
-    expect(eser).toEqual('Hi eser');
-    expect(seyma).toEqual('Hi seyma');
-});
-
-test('filterByTag', () => {
-    const services = new ServiceManager();
-
-    services.set('eser', '12345');
-    services.set('seyma', '6789');
-    services.set('kedi', '9999');
-
-    const allOfThem = services.all();
+    const allOfThem = all(services);
 
     expect(allOfThem).toEqual([ 'eser', 'seyma', 'kedi' ]);
 });
 
 
 test('filter', () => {
-    const services = new ServiceManager();
+    const services = createContext(container => {
+        container.set('eser', transient('12345'));
+        container.set('seyma', transient('6789'));
+        container.set('kedi', transient('9999'));
+    });
 
-    services.set('eser', '12345');
-    services.set('seyma', '6789');
-    services.set('kedi', '9999');
-
-    const filtered = services.filter((service, dependency) => dependency.indexOf('s') >= 0);
+    const filtered = filter(services, (service, dependency) => dependency.indexOf('s') >= 0);
 
     expect(filtered).toEqual([ 'eser', 'seyma' ]);
 });
 
 test('filterByTag', () => {
-    const services = new ServiceManager();
+    const services = createContext(container => {
+        container.set('eser', singleton('12345', [ 'human' ]));
+        container.set('seyma', singleton('6789', [ 'human' ]));
+        container.set('kedi', singleton('9999', [ 'cat' ]));
+    });
 
-    services.set('eser', '12345', ServiceLifetime.Singleton, [ 'human' ]);
-    services.set('seyma', '6789', ServiceLifetime.Singleton, [ 'human' ]);
-    services.set('kedi', '9999', ServiceLifetime.Singleton, [ 'cat' ]);
-
-    const filtered = services.filterByTag('cat');
+    const filtered = filterByTag(services, 'cat');
 
     expect(filtered).toEqual([ 'kedi' ]);
 });
 
 test('ensure', async () => {
-    const resolver = (dependency, resolve) => {
-        resolve(`Hi ${dependency}`);
-    };
+    const services = createContext(container => {
+        container.set('eser', transient(() => '12345'));
+        container.set('seyma', transient(async () => Promise.resolve('6789')));
+    });
 
-    const services = new ServiceManager(resolver);
-
-    const result = await services.ensure(
+    const result = await ensure(
+        services,
         [ 'eser', 'seyma' ],
         (eser, seyma) => {
             return [ eser, seyma ];
         }
     );
 
-    expect(result[0]).toEqual('Hi eser');
-    expect(result[1]).toEqual('Hi seyma');
-});
-
-test('ensure with promises', async () => {
-    const resolver = (dependency, resolve) => {
-        resolve(Promise.resolve(`Hi ${dependency.toUpperCase()}`));
-    };
-
-    const services = new ServiceManager(resolver);
-
-    const result = await services.ensure(
-        [ 'eser', 'seyma' ],
-        (eser, seyma) => {
-            return [ eser, seyma ];
-        }
-    );
-
-    expect(result[0]).toEqual('Hi ESER');
-    expect(result[1]).toEqual('Hi SEYMA');
+    expect(result[0]).toEqual('12345');
+    expect(result[1]).toEqual('6789');
 });

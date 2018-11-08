@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var filterObject_1 = require("../filterObject");
+var tslib_1 = require("tslib");
+var filterObject_1 = tslib_1.__importDefault(require("../filterObject"));
 test('filterObject', function () {
     var obj1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
     var func1 = function (x) { return x <= 3; };

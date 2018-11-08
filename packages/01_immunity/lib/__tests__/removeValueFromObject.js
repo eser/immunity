@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var removeValueFromObject_1 = require("../removeValueFromObject");
+var tslib_1 = require("tslib");
+var removeValueFromObject_1 = tslib_1.__importDefault(require("../removeValueFromObject"));
 test('removeValueFromObject', function () {
     var arr1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
     var val1 = 2;

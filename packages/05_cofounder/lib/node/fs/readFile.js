@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs = require("fs");
-var appendToObject_1 = require("immunity/lib/appendToObject");
+var tslib_1 = require("tslib");
+var fs = tslib_1.__importStar(require("fs"));
+var appendToObject_1 = tslib_1.__importDefault(require("immunity/lib/appendToObject"));
 function readFile(pathstr, options) {
     return new Promise(function (resolve, reject) {
         var defaultOptions = { encoding: 'utf8' };

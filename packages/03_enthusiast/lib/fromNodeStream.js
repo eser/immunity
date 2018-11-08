@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var customIterator_1 = require("./types/customIterator");
+var tslib_1 = require("tslib");
+var customIterator_1 = tslib_1.__importDefault(require("./types/customIterator"));
 exports.CustomIterator = customIterator_1.default;
 function fromNodeStream(source, size) {
     return new Promise(function (resolve, reject) {

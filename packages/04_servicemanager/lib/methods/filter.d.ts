@@ -1,5 +1,5 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-import ServiceDefinition from '../serviceDefinition';
-declare type FilterPredicate = (serviceDefinition: ServiceDefinition, dependency: any) => boolean;
-declare function filter(collection: ServiceDefinitionCollection, predicate: FilterPredicate): Array<string>;
+import ServiceContext from '../serviceContext';
+import ServiceTarget from '../serviceTarget';
+declare type FilterPredicate = (serviceTarget: ServiceTarget, dependency: any) => boolean;
+declare function filter(context: ServiceContext, predicate: FilterPredicate): Array<string>;
 export { filter as default, FilterPredicate, };

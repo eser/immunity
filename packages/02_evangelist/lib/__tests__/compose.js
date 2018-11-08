@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var compose_1 = require("../compose");
+var tslib_1 = require("tslib");
+var compose_1 = tslib_1.__importDefault(require("../compose"));
 test('compose', function () {
     var lower = function (x) { return x.toLowerCase(); };
     var chars = function (x) { return x.replace(/[^\w \-]+/g, ''); };

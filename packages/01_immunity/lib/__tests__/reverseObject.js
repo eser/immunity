@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var reverseObject_1 = require("../reverseObject");
+var tslib_1 = require("tslib");
+var reverseObject_1 = tslib_1.__importDefault(require("../reverseObject"));
 test('reverseObject', function () {
     var obj1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
     var result = reverseObject_1.default(obj1);

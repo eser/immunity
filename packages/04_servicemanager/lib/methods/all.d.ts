@@ -1,3 +1,3 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-declare function all(collection: ServiceDefinitionCollection): Array<string>;
+import ServiceContext from '../serviceContext';
+declare function all(context: ServiceContext): Array<string>;
 export { all as default, };

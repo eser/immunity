@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
 var globAll = require("glob-all");
-var appendToObject_1 = require("immunity/lib/appendToObject");
+var appendToObject_1 = tslib_1.__importDefault(require("immunity/lib/appendToObject"));
 function glob(str, options) {
     return new Promise(function (resolve, reject) {
         var defaultOptions = {

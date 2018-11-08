@@ -1,15 +1,6 @@
 "use strict";
-var __values = (this && this.__values) || function (o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-    if (m) return m.call(o);
-    return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
-        }
-    };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
 function assignPolyfill(target) {
     var sources = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -17,13 +8,13 @@ function assignPolyfill(target) {
     }
     var e_1, _a, e_2, _b;
     try {
-        for (var sources_1 = __values(sources), sources_1_1 = sources_1.next(); !sources_1_1.done; sources_1_1 = sources_1.next()) {
+        for (var sources_1 = tslib_1.__values(sources), sources_1_1 = sources_1.next(); !sources_1_1.done; sources_1_1 = sources_1.next()) {
             var source = sources_1_1.value;
             if (source === null || source === undefined) {
                 continue;
             }
             try {
-                for (var _c = __values(Object.getOwnPropertyNames(source)), _d = _c.next(); !_d.done; _d = _c.next()) {
+                for (var _c = tslib_1.__values(Object.getOwnPropertyNames(source)), _d = _c.next(); !_d.done; _d = _c.next()) {
                     var key = _d.value;
                     target[key] = source[key];
                 }

@@ -1,1 +1,0 @@
-{"version":3,"file":"resolveDependency.js","sourceRoot":"","sources":["../../src/lib/methods/resolveDependency.ts"],"names":[],"mappings":";;AAAA,sDAAiD;AAEjD,2BAA2B,MAAW,EAAE,QAAyB;IAC7D,IAAI,QAAQ,KAAK,yBAAe,CAAC,SAAS,IAAI,CAAC,CAAC,MAAM,YAAY,QAAQ,CAAC,EAAE;QACzE,OAAO,MAAM,CAAC;KACjB;IAED,OAAO,MAAM,EAAE,CAAC;AACpB,CAAC;AAGwB,oCAAO"}

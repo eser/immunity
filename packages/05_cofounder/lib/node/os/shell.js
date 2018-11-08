@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var childProcess = require("child_process");
-var appendToObject_1 = require("immunity/lib/appendToObject");
+var tslib_1 = require("tslib");
+var childProcess = tslib_1.__importStar(require("child_process"));
+var appendToObject_1 = tslib_1.__importDefault(require("immunity/lib/appendToObject"));
 var emptyArray = [];
 function shell(command, args, env) {
     if (args === void 0) { args = emptyArray; }

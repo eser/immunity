@@ -1,12 +1,12 @@
 import { Options } from '../methods';
 
-import getModuleIndex from './getModuleIndex';
-import loadFile from './loadFile';
+import getModuleFunction from './getModuleFunction';
+import executeModuleFunction from '../executeModuleFunction';
 
 async function load(moduleName: string, globals: { [key: string]: any }, options: Options): Promise<any> {
-    const moduleIndex = await getModuleIndex(moduleName, options);
+    const moduleFunction = await getModuleFunction(moduleName, options);
 
-    return await loadFile(moduleIndex, globals);
+    return await executeModuleFunction(moduleFunction, globals);
 }
 
 export {

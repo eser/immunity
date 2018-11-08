@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var splitLastArray_1 = require("../splitLastArray");
+var tslib_1 = require("tslib");
+var splitLastArray_1 = tslib_1.__importDefault(require("../splitLastArray"));
 test('splitLastArray', function () {
     var arr1 = [1, 2, 3, 4, 5];
     var val1 = 2;

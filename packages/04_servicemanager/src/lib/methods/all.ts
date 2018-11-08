@@ -1,7 +1,7 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
+import ServiceContext from '../serviceContext';
 
-function all(collection: ServiceDefinitionCollection): Array<string> {
-    return Array.from(collection.keys());
+function all(context: ServiceContext): Array<string> {
+    return Array.from(context.keys());
 }
 
 export {

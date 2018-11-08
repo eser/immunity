@@ -1,14 +1,15 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
-        "importHelpers": false,
+        "esModuleInterop": true,
+        "importHelpers": true,
         "sourceMap": true,
         "declaration": true,
         "downlevelIteration": true,
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "noImplicitAny": false,
         "removeComments": true,
         "strictNullChecks": true,
@@ -18,7 +19,13 @@
         "outDir": "./",
         "lib": [
             "es5"
-        ]
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "./src/*"
+            ]
+        }
     },
     "include": [
         "./src/**/*"

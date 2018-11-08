@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var prependToObject_1 = require("../prependToObject");
+var tslib_1 = require("tslib");
+var prependToObject_1 = tslib_1.__importDefault(require("../prependToObject"));
 test('prependToObject', function () {
     var obj1 = { b: 2, c: 3 };
     var obj2 = { a: 1 };

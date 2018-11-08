@@ -1,3 +1,3 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-declare function filterByTag(collection: ServiceDefinitionCollection, tag: string): Array<string>;
+import ServiceContext from '../serviceContext';
+declare function filterByTag(context: ServiceContext, tag: string): Array<string>;
 export { filterByTag as default, };

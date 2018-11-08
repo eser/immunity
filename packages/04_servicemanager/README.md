@@ -20,49 +20,66 @@ Execute `npm install servicemanager` to install servicemanager and its dependenc
 
 ### Basics
 
-To register objects to service manager:
+To register objects to service manager, create a file/module for your service context:
 
 ```js
-import services, { ServiceLifetime } from 'servicemanager';
-// or const { default: services, ServiceLifetime } = require('servicemanager');
+//
+// serviceContext.js
+//
+import { createContext, transient, singleton } from 'servicemanager';
 
-services.set('ResourceManager', DefaultResourceManager);
-services.set('CacheManager', CustomCacheManager, ServiceLifetime.Transient);
-services.set('SessionManager', mySessionManager, ServiceLifetime.Singleton);
+const context = createContext(container => {
+    container.set('ResourceManager', transient(DefaultResourceManager));
+    container.set('CacheManager', transient(CustomCacheManager));
+    container.set('SessionManager', singleton(mySessionManager));
+});
+
+export {
+    context as default,
+};
 ```
 
 To get objects back from service manager:
 
 ```js
-import services from 'servicemanager';
-// or const services = require('servicemanager').default;
+//
+// anotherFile.js
+//
+import { get } from 'servicemanager';
+import context from './serviceContext.js';
 
 // returns a new instance for DefaultResourceManager
-const resourceManager = services.get('ResourceManager');
+const resourceManager = get(context, 'ResourceManager');
 
 // returns a new instance for CustomCacheManager
-const cacheManager = services.get('CacheManager');
+const cacheManager = get(context, 'CacheManager');
 
 // returns the same session manager object that referenced by mySessionManager
-const sessionManager = services.get('SessionManager');
+const sessionManager = get(context, 'SessionManager');
 ```
 
 Alternatively, to get all needed instances at once:
 
 ```js
-import services from 'servicemanager';
-// or const services = require('servicemanager').default;
+//
+// anotherFile2.js
+//
+import { getRange } from 'servicemanager';
+import context from './serviceContext.js';
 
-const [ resourceManager, cacheManager, sessionManager ] = services.getRange('ResourceManager', 'CacheManager', 'SessionManager');
+const [ resourceManager, cacheManager, sessionManager ] = getRange(context, 'ResourceManager', 'CacheManager', 'SessionManager');
 ```
 
 ...Or, to have them in more promise-friendly way:
 
 ```js
-import services from 'servicemanager';
-// or const services = require('servicemanager').default;
+//
+// anotherFile3.js
+//
+import { ensure } from 'servicemanager';
+import context from './serviceContext.js';
 
-services.ensure([ 'ResourceManager', 'CacheManager', 'SessionManager' ], (resourceManager, cacheManager, sessionManager) => {
+ensure(context, [ 'ResourceManager', 'CacheManager', 'SessionManager' ], (resourceManager, cacheManager, sessionManager) => {
     // awaits promisified generator functions first,
     // then services dependencies as parameters
 });
@@ -70,47 +87,21 @@ services.ensure([ 'ResourceManager', 'CacheManager', 'SessionManager' ], (resour
 
 *** Note: Service names can be anything including objects, symbols or strings.
 
-### Advanced
-
-Using resolvers:
-
-```js
-import { ServiceManager } from 'servicemanager';
-// or const ServiceManager = require('servicemanager').ServiceManager;
-
-const resolver = (dependency, resolve) => {
-    const filename = `modules/${dependency}`;
-    const result = require(filename);
-
-    resolve(result);
-};
-
-const services = new ServiceManager(resolver);
-
-// loads modules/module1 and modules/module2
-const [ module1, module2 ] = services.getOrResolveRange('module1', 'module2');
-```
 
 ### API
 
 **ServiceManager.prototype methods**
 
 ```
-constructor(resolver?: ServiceResolver)
-
-set(dependency: any, target: any, lifetime: ServiceLifetime = ServiceLifetime.Transient, tags: Array<string> = []): void
-
-setRange(...declarations: Array<ServiceDeclaration>): void
+constructor(configuration?: (ServiceContext) => void)
 
 get(dependency: any): any
 
 getRange(...dependencies: Array<any>): Array<any>
 
-getOrResolve(dependency: any): any
-
-getOrResolveRange(...dependencies: Array<any>): any
-
 ensure(dependencies: Array<any>, callback: (...services: Array<any>) => any): Promise<any>
+
+all(): Array<string>
 
 filter(predicate: FilterPredicate): Array<string>
 
@@ -124,18 +115,19 @@ Transient services call generator/dependency target each time they are requested
 whereas, Singleton services are registered when they are defined.
 
 ```js
-import services, { ServiceLifetime } from 'servicemanager';
-// or const { default: services, ServiceLifetime } = require('servicemanager');
+import { createContext, transient, singleton, get } from 'servicemanager';
 
 const date1 = Symbol('date1');
 const date2 = Symbol('date2');
 
-services.set(date1, () => new Date(), ServiceLifetime.Transient);
-services.set(date2, new Date(), ServiceLifetime.Singleton);
+const context = createContext(container => {
+    container.set(date1, transient(() => new Date()));
+    container.set(date2, singleton(new Date()));
+});
 
-console.log(services.get(date1)); // calls and returns new Date()
-console.log(services.get(date1)); // calls and returns new Date() again,
-console.log(services.get(date2)); // no calls, returns stored date.
+console.log(get(context, date1)); // calls and returns new Date()
+console.log(get(context, date1)); // calls and returns new Date() again,
+console.log(get(context, date2)); // no calls, returns stored date.
 ```
 
 

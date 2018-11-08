@@ -11,6 +11,8 @@ function Senior(strategy: string, options?: Options): SeniorMethods | null {
         name: '',
         modulePrefix: '',
         homePath: '.',
+        packageMainProperty: 'main',
+        defaultExport: 'default',
     }, options);
 
     if (strategy === 'npm') {

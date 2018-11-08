@@ -1,9 +1,8 @@
-import ServiceDefinitionCollection from '../serviceDefinitionCollection';
-
+import ServiceContext from '../serviceContext';
 import get from './get';
 
-function getRange(collection: ServiceDefinitionCollection, ...dependencies: Array<any>): Array<any> {
-    return dependencies.map((dependency) => get(collection, dependency));
+function getRange(context: ServiceContext, ...dependencies: Array<any>): Array<any> {
+    return dependencies.map((dependency) => get(context, dependency));
 }
 
 export {
