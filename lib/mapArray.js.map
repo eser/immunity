@@ -1,0 +1,1 @@
+{"version":3,"file":"mapArray.js","sourceRoot":"","sources":["../src/lib/mapArray.ts"],"names":[],"mappings":";;;AAAA,SAAS,QAAQ,CAAC,QAAuB,EAAE,SAAwE;IAC/G,IAAM,WAAW,GAAG,CAAC,QAAQ,CAAC,WAAW,KAAK,KAAK,CAAC,CAAC,CAAC;QACtC,QAAQ,CAAC,CAAC,kBACjB,QAAQ,CAAE,CAAC;IAEpB,OAAO,WAAW,CAAC,GAAG,CAAC,SAAS,CAAC,CAAC;AACtC,CAAC;AAGe,2BAAO"}
