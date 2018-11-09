@@ -1,8 +1,10 @@
-# [immunity](https://github.com/eserozvataf/immunity)
+# 🧱 [immunity](https://github.com/eserozvataf/immunity)
 
+[![build status][build-image]][build-url]
 [![npm version][npm-image]][npm-url]
 [![npm download][download-image]][npm-url]
 [![dependencies][dep-image]][dep-url]
+[![coverage status][coverage-image]][coverage-url]
 [![license][license-image]][license-url]
 
 
@@ -505,10 +507,14 @@ It is publicly open for any contribution. Bugfixes, new features and extra modul
 [Visit my patreon profile at patreon.com/eserozvataf](https://www.patreon.com/eserozvataf)
 
 
+[build-image]: https://travis-ci.org/eserozvataf/immunity.svg?branch=master
+[build-url]: https://travis-ci.org/eserozvataf/immunity
 [npm-image]: https://img.shields.io/npm/v/immunity.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/immunity
 [download-image]: https://img.shields.io/npm/dt/immunity.svg?style=flat-square
 [dep-image]: https://img.shields.io/david/eserozvataf/immunity.svg?style=flat-square
 [dep-url]: https://github.com/eserozvataf/immunity
+[coverage-image]: https://coveralls.io/repos/eserozvataf/immunity/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/r/eserozvataf/immunity?branch=master
 [license-image]: https://img.shields.io/npm/l/immunity.svg?style=flat-square
 [license-url]: https://github.com/eserozvataf/immunity/blob/master/LICENSE
