@@ -1,13 +1,21 @@
 import copy from '../copy';
 
-class dummy {}
+class dummy {
+    prop;
 
-test('copy', () => {
-    const obj1 = new dummy();
+    constructor(prop) {
+        this.prop = prop;
+    }
+}
 
-    const result = copy(obj1);
+describe('copy', () => {
+    test('basic', () => {
+        const obj1 = new dummy({ value: 5 });
 
-    expect(result).not.toBe(obj1);
-    expect(result).toBeInstanceOf(dummy);
-    expect(result).toEqual({});
+        const result = copy(obj1);
+
+        expect(result).not.toBe(obj1);
+        expect(result).toBeInstanceOf(dummy);
+        expect(result).toEqual({ prop: { value: 5 } });
+    });
 });
