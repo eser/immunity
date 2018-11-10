@@ -514,7 +514,7 @@ It is publicly open for any contribution. Bugfixes, new features and extra modul
 [download-image]: https://img.shields.io/npm/dt/immunity.svg?style=flat-square
 [dep-image]: https://img.shields.io/david/eserozvataf/immunity.svg?style=flat-square
 [dep-url]: https://github.com/eserozvataf/immunity
-[coverage-image]: https://coveralls.io/repos/eserozvataf/immunity/badge.svg?branch=master
-[coverage-url]: https://coveralls.io/r/eserozvataf/immunity?branch=master
+[coverage-image]: https://codecov.io/gh/eserozvataf/immunity/branch/master/graph/badge.svg
+[coverage-url]: https://codecov.io/gh/eserozvataf/immunity
 [license-image]: https://img.shields.io/npm/l/immunity.svg?style=flat-square
 [license-url]: https://github.com/eserozvataf/immunity/blob/master/LICENSE
