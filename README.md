@@ -14,7 +14,7 @@ Immunity is a set of helper methods in order to construct a new version of data 
 
 Compared to its alternatives, immunity only provides utility functions instead of delivering new data types/structures as a solution.
 
-Additionally, as a library, Immunity is completely tree-shanking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Immunity package.
+Additionally, as a library, Immunity is completely tree-shaking-friendly. Your favorite module bundler can easily inline the functionality you need with no extra configuration, instead of bundling the whole Immunity package.
 
 
 ## Quick start
