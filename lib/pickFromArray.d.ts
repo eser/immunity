@@ -1,4 +1,3 @@
-/// <reference types="node" />
 declare function pickFromArray(instance: Iterable<any>, items: Iterable<any>): {
     items: Array<any>;
     rest: Array<any>;
