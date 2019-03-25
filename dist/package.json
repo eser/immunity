@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "homepage": "https://github.com/eserozvataf/immunity#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -27,8 +27,8 @@
     "url": "https://github.com/eserozvataf/immunity/issues"
   },
   "license": "Apache-2.0",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "engines": {
     "node": ">=8.10.0"
   },
@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "ponyfills": "^0.10.5",
-    "rollup-plugin-commonjs": "^9.2.1",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
@@ -55,6 +54,7 @@
     "eslint-plugin-import": "^2.16.0",
     "jest": "^24.5.0",
     "rollup": "^1.7.2",
+    "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^24.0.0",

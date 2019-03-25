@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "homepage": "https://github.com/eserozvataf/immunity#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -27,8 +27,8 @@
     "url": "https://github.com/eserozvataf/immunity/issues"
   },
   "license": "Apache-2.0",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "engines": {
     "node": ">=8.10.0"
   },
