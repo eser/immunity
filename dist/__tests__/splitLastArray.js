@@ -15,7 +15,7 @@ describe('splitLastArray', function () {
         expect(result.rest).toEqual([1, 2, 3]);
     });
     test('with generator', function () {
-        var gen1 = function () {
+        var gen1 = function gen() {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, 1];

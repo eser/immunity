@@ -13,7 +13,7 @@ describe('mergeArrays', function () {
         expect(result).toEqual([1, 2, 3, 4, 5]);
     });
     test('with generator #1', function () {
-        var gen1 = function () {
+        var gen1 = function gen() {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, 1];
@@ -37,7 +37,7 @@ describe('mergeArrays', function () {
     });
     test('with generator #2', function () {
         var arr1 = [1, 2, 3];
-        var gen1 = function () {
+        var gen1 = function gen() {
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, 4];

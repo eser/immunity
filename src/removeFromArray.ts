@@ -4,7 +4,7 @@ function removeFromArray(instance: Iterable<any>, ...values: Array<any>): Array<
         [ ...instance ];
 
     return arrInstance.filter(
-        (item) => values.indexOf(item) === -1,
+        item => values.indexOf(item) === -1,
     );
 }
 

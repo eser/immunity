@@ -2,18 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var copy_1 = tslib_1.__importDefault(require("../copy"));
-var dummy = (function () {
-    function dummy(prop) {
+var Dummy = (function () {
+    function Dummy(prop) {
         this.prop = prop;
     }
-    return dummy;
+    return Dummy;
 }());
 describe('copy', function () {
     test('basic', function () {
-        var obj1 = new dummy({ value: 5 });
+        var obj1 = new Dummy({ value: 5 });
         var result = copy_1.default(obj1);
         expect(result).not.toBe(obj1);
-        expect(result).toBeInstanceOf(dummy);
+        expect(result).toBeInstanceOf(Dummy);
         expect(result).toEqual({ prop: { value: 5 } });
     });
 });

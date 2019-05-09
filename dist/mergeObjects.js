@@ -10,5 +10,4 @@ function mergeObjects() {
     return assign_1.default.apply(void 0, tslib_1.__spread([{}], objects));
 }
 exports.default = mergeObjects;
-;
 //# sourceMappingURL=mergeObjects.js.map

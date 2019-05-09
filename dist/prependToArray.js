@@ -9,5 +9,4 @@ function prependToArray(instance) {
     return tslib_1.__spread(values, instance);
 }
 exports.default = prependToArray;
-;
 //# sourceMappingURL=prependToArray.js.map

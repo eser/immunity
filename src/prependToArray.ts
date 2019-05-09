@@ -3,7 +3,7 @@ function prependToArray(instance: Iterable<any>, ...values: Array<any>): Array<a
         ...values,
         ...instance,
     ];
-};
+}
 
 export {
     prependToArray as default,

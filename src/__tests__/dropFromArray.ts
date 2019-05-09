@@ -13,7 +13,7 @@ describe('dropFromArray', () => {
     });
 
     test('with generator', () => {
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 'a';
             yield 'b';
             yield 'c';

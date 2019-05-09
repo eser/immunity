@@ -16,7 +16,7 @@ describe('mapObject', function () {
     });
     test('with value skipping', function () {
         var obj1 = { a: 1, b: 2, c: null };
-        var func1 = function (value, key) {
+        var func1 = function func(value, key) {
             var _a;
             if (value === null) {
                 return null;

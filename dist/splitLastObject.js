@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var assign_1 = tslib_1.__importDefault(require("ponyfills/assign"));
 function splitLastObject(instance, n) {
-    var keys = Object.keys(instance), offset = keys.length - n;
+    var keys = Object.keys(instance);
+    var offset = keys.length - n;
     var index = 0;
     return keys.reduce(function (obj, itemKey) {
         var _a, _b;

@@ -19,7 +19,7 @@ describe('pickFromArray', () => {
     });
 
     test('with generator #1', () => {
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 1;
             yield 2;
             yield 3;
@@ -42,7 +42,7 @@ describe('pickFromArray', () => {
 
     test('with generator #2', () => {
         const arr1 = [ 1, 2, 3, 4, 5 ];
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 2;
             yield 3;
             yield 6;

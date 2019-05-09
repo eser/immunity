@@ -14,13 +14,13 @@ describe('mapObject', () => {
 
     test('with value skipping', () => {
         const obj1 = { a: 1, b: 2, c: null };
-        const func1 = function (value, key) {
+        const func1 = function func(value, key) {
             if (value === null) {
                 return null;
             }
 
             return { [key]: value - 1 };
-        }
+        };
 
         const result = mapObject(obj1, func1);
 

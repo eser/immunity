@@ -13,7 +13,7 @@ describe('removeFirstMatchFromArray', () => {
     });
 
     test('with generator', () => {
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 1;
             yield 5;
             yield 2;

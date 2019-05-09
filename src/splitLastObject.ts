@@ -1,8 +1,8 @@
 import assign from 'ponyfills/assign';
 
 function splitLastObject(instance: any, n: number): { items: any, rest: any } {
-    const keys = Object.keys(instance),
-        offset = keys.length - n;
+    const keys = Object.keys(instance);
+    const offset = keys.length - n;
 
     let index = 0;
 

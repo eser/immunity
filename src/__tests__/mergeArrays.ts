@@ -14,7 +14,7 @@ describe('mergeArrays', () => {
     });
 
     test('with generator #1', () => {
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 1;
             yield 2;
             yield 3;
@@ -31,7 +31,7 @@ describe('mergeArrays', () => {
 
     test('with generator #2', () => {
         const arr1 = [ 1, 2, 3 ];
-        const gen1 = function* () {
+        const gen1 = function* gen() {
             yield 4;
             yield 5;
         };
