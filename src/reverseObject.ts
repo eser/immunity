@@ -1,10 +1,10 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function reverseObject(instance: any): any {
     const keys = Object.keys(instance);
 
     return keys.reduce(
-        (obj, itemKey) => assign({}, { [itemKey]: instance[itemKey] }, obj),
+        (obj, itemKey) => objectAssign({}, { [itemKey]: instance[itemKey] }, obj),
         {},
     );
 }

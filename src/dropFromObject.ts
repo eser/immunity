@@ -1,4 +1,4 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function dropFromObject(instance: any, n: number): any {
     const keys = Object.keys(instance);
@@ -13,7 +13,7 @@ function dropFromObject(instance: any, n: number): any {
                 return obj;
             }
 
-            return assign({}, obj, {
+            return objectAssign({}, obj, {
                 [itemKey]: instance[itemKey],
             });
         },

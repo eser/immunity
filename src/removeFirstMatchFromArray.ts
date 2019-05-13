@@ -1,5 +1,3 @@
-import assign from 'ponyfills/assign';
-
 function removeFirstMatchFromArray(
     instance: Iterable<any>,
     predicate: (value: any, index: number, instance: Iterable<any>) => any): Array<any> {

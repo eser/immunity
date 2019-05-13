@@ -1,7 +1,7 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function appendToObject(instance: any, ...values: Array<{ [key: string]: any }>): any {
-    return assign({}, instance, ...values);
+    return objectAssign({}, instance, ...values);
 }
 
 export {

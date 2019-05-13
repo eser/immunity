@@ -1,4 +1,4 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function mapObject(instance: any, predicate: (value: any, key?: any, instance?: any) => any): any {
     return Object.keys(instance).reduce(
@@ -6,7 +6,7 @@ function mapObject(instance: any, predicate: (value: any, key?: any, instance?: 
             const value = predicate(instance[itemKey], itemKey, obj);
 
             if (value !== null) {
-                return assign({}, obj, value);
+                return objectAssign({}, obj, value);
             }
 
             return obj;

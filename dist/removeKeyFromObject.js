@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var assign_1 = tslib_1.__importDefault(require("ponyfills/assign"));
+var objectAssign_1 = tslib_1.__importDefault(require("ponyfills/objectAssign"));
 function removeKeyFromObject(instance) {
     var keys = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -10,7 +10,7 @@ function removeKeyFromObject(instance) {
     return Object.keys(instance).reduce(function (obj, itemKey) {
         var _a;
         if (keys.indexOf(itemKey) === -1) {
-            return assign_1.default({}, obj, (_a = {},
+            return objectAssign_1.default({}, obj, (_a = {},
                 _a[itemKey] = instance[itemKey],
                 _a));
         }

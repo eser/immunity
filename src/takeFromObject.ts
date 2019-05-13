@@ -1,4 +1,4 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function takeFromObject(instance: any, n: number): any {
     let index = 0;
@@ -8,7 +8,7 @@ function takeFromObject(instance: any, n: number): any {
             if (index < n) {
                 index += 1;
 
-                return assign({}, obj, { [itemKey]: instance[itemKey] });
+                return objectAssign({}, obj, { [itemKey]: instance[itemKey] });
             }
 
             return obj;

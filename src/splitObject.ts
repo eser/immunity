@@ -1,4 +1,4 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function splitObject(instance: any, n: number): { items: any, rest: any } {
     const keys = Object.keys(instance);
@@ -11,14 +11,14 @@ function splitObject(instance: any, n: number): { items: any, rest: any } {
                 index += 1;
 
                 return {
-                    items: assign({}, obj.items, { [itemKey]: instance[itemKey] }),
+                    items: objectAssign({}, obj.items, { [itemKey]: instance[itemKey] }),
                     rest: obj.rest,
                 };
             }
 
             return {
                 items: obj.items,
-                rest: assign({}, obj.rest, { [itemKey]: instance[itemKey] }),
+                rest: objectAssign({}, obj.rest, { [itemKey]: instance[itemKey] }),
             };
         },
         {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var assign_1 = tslib_1.__importDefault(require("ponyfills/assign"));
+var objectAssign_1 = tslib_1.__importDefault(require("ponyfills/objectAssign"));
 function splitObject(instance, n) {
     var keys = Object.keys(instance);
     var index = 0;
@@ -10,13 +10,13 @@ function splitObject(instance, n) {
         if (index < n) {
             index += 1;
             return {
-                items: assign_1.default({}, obj.items, (_a = {}, _a[itemKey] = instance[itemKey], _a)),
+                items: objectAssign_1.default({}, obj.items, (_a = {}, _a[itemKey] = instance[itemKey], _a)),
                 rest: obj.rest,
             };
         }
         return {
             items: obj.items,
-            rest: assign_1.default({}, obj.rest, (_b = {}, _b[itemKey] = instance[itemKey], _b)),
+            rest: objectAssign_1.default({}, obj.rest, (_b = {}, _b[itemKey] = instance[itemKey], _b)),
         };
     }, {
         items: {},

@@ -1,4 +1,4 @@
-import assign from 'ponyfills/assign';
+import objectAssign from 'ponyfills/objectAssign';
 
 function removeFirstMatchFromObject(instance: any, predicate: (value: any, index: any, object: any) => any): any {
     let notFound = true;
@@ -11,7 +11,7 @@ function removeFirstMatchFromObject(instance: any, predicate: (value: any, index
                 return obj;
             }
 
-            return assign({}, obj, {
+            return objectAssign({}, obj, {
                 [itemKey]: instance[itemKey],
             });
         },
