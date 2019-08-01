@@ -2,18 +2,20 @@ sudo: false
 language: node_js
 
 node_js:
-- '8'
 - '10'
+- '12'
 
+# keep the npm cache around to speed up installs
 cache:
   directories:
   - node_modules
+  - "$HOME/.npm"
 
 before_install:
 - npm update
 
 install:
-- npm install
+- npm ci
 
 script:
 - npm run coverage

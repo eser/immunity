@@ -1,7 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = require("tslib");
-var copy_1 = tslib_1.__importDefault(require("../copy"));
+var copy_1 = __importDefault(require("../copy"));
 var Dummy = (function () {
     function Dummy(prop) {
         this.prop = prop;

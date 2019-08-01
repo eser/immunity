@@ -1,7 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = require("tslib");
-var mergeObjects_1 = tslib_1.__importDefault(require("../mergeObjects"));
+var mergeObjects_1 = __importDefault(require("../mergeObjects"));
 describe('mergeObjects', function () {
     test('mergeObjects', function () {
         var obj1 = { a: 1, b: 2, c: 3 };
