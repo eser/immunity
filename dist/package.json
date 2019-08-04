@@ -9,7 +9,7 @@
     "mutation",
     "mutate"
   ],
-  "version": "0.12.2",
+  "version": "0.12.3",
   "homepage": "https://github.com/eserozvataf/immunity#readme",
   "author": "Eser Ozvataf <eser@ozvataf.com>",
   "contributors": [
@@ -33,15 +33,15 @@
     "node": ">=10.13.0"
   },
   "scripts": {
-    "cleanup": "rm -rf package-lock.json node_modules/ dist/",
+    "cleanup": "rm -rf yarn.lock node_modules/ dist/",
     "compile": "tsc --build && rollup -c && cp package.json LICENSE *.md ./dist/",
-    "publish-dist": "npm publish ./dist/",
+    "publish-dist": "yarn publish ./dist/",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.mjs ./src/",
     "test": "jest",
     "coverage": "jest --coverage && codecov"
   },
   "dependencies": {
-    "ponyfills": "^0.12.5"
+    "ponyfills": "^0.12.6"
   },
   "devDependencies": {
     "@types/jest": "^24.0.16",
@@ -54,10 +54,11 @@
     "eslint-plugin-import": "^2.18.2",
     "jest": "^24.8.0",
     "rollup": "^1.18.0",
-    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-commonjs": "^10.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^24.0.2",
+    "tslib": "^1.10.0",
     "typescript": "^3.5.3"
   }
 }

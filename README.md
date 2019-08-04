@@ -19,7 +19,7 @@ Additionally, as a library, Immunity is completely tree-shaking-friendly. Your f
 
 ## Quick start
 
-Execute `npm install immunity` to install immunity and its dependencies into your project directory.
+Execute `npm install immunity` or `yarn add immunity` to install immunity and its dependencies into your project directory.
 
 
 ## Usage of modules

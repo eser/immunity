@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var dropFromObject_1 = __importDefault(require("../dropFromObject"));
+var tslib_1 = require("tslib");
+var dropFromObject_1 = tslib_1.__importDefault(require("../dropFromObject"));
 describe('dropFromObject', function () {
     test('basic', function () {
         var obj1 = { a: 1, b: 2, c: 3 };

@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var removeValueFromObject_1 = __importDefault(require("../removeValueFromObject"));
+var tslib_1 = require("tslib");
+var removeValueFromObject_1 = tslib_1.__importDefault(require("../removeValueFromObject"));
 describe('removeValueFromObject', function () {
     test('basic', function () {
         var arr1 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
