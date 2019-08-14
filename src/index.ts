@@ -23,7 +23,35 @@ import splitObject from './splitObject';
 import takeFromArray from './takeFromArray';
 import takeFromObject from './takeFromObject';
 
+const library = {
+    appendToArray,
+    appendToObject,
+    copy,
+    dropFromArray,
+    dropFromObject,
+    filterArray,
+    filterObject,
+    mapArray,
+    mapObject,
+    mergeArrays,
+    mergeObjects,
+    pickFromArray,
+    pickFromObject,
+    prependToArray,
+    prependToObject,
+    removeFirstMatchFromArray,
+    removeFirstMatchFromObject,
+    removeFromArray,
+    removeKeyFromObject,
+    removeValueFromObject,
+    splitArray,
+    splitObject,
+    takeFromArray,
+    takeFromObject,
+};
+
 export {
+    library as default,
     appendToArray,
     appendToObject,
     copy,
